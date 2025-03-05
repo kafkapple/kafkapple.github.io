@@ -1,0 +1,188 @@
+<ul>
+  <li><strong>개념</strong>
+    <ul>
+      <li><strong>여러 개의 모델(약한 학습자)을 결합</strong>하여 하나의 강력한 예측 모델을 만드는 방법.</li>
+    </ul>
+  </li>
+  <li>종류
+    <ul>
+      <li><strong>배깅(Bagging: Bootstrap Aggregating)</strong>
+        <ul>
+          <li>개념
+            <ul>
+              <li>
+                <p>원본 데이터에서 <strong>복원 추출한 여러 샘플</strong>로 <strong>여러 모델</strong>을 학습하고,</p>
+              </li>
+              <li>
+                <p>그 <strong>예측을 평균(회귀)하거나 투표(분류)하여 최종</strong> 예측을 수행</p>
+              </li>
+            </ul>
+          </li>
+          <li>단계
+            <ul>
+              <li><strong>데이터 샘플링:</strong> 원본 데이터에서 복원 추출로 여러 개의 부트스트랩 샘플을 생성.</li>
+              <li><strong>모델 학습:</strong> 각 샘플로 개별 모델(약한 학습자)을 독립적으로 학습.</li>
+              <li><strong>예측 결합:</strong> 개별 모델의 예측을 평균 또는 다수결로 결합하여 최종 예측을 산출.</li>
+            </ul>
+          </li>
+          <li>대표 알고리즘
+            <ul>
+              <li><strong>랜덤 포레스트(Random Forest)</strong>
+                <ul>
+                  <li>배깅과 무작위 특징 선택을 결합한 알고리즘으로, 여러 개의 결정 트리를 사용.</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><strong>부스팅(Boosting)</strong>
+        <ul>
+          <li>개념
+            <ul>
+              <li>약한 학습자를 <strong>순차적</strong>으로 학습하며, 이전 모델이 <strong>잘못 예측한 샘플에 가중치를 부여하여 오차를 줄여</strong>나가는 방법.</li>
+            </ul>
+          </li>
+          <li><strong>단계</strong>
+            <ul>
+              <li><strong>순차적 학습:</strong> 모델을 하나씩 순서대로 학습하며, 이전 모델의 오류를 다음 모델이 보완.</li>
+              <li><strong>가중치 조정:</strong> 잘못 예측한 샘플에 더 큰 가중치를 부여하여 다음 모델이 집중 학습.</li>
+              <li><strong>예측 결합:</strong> 개별 모델의 예측을 가중치 합산하여 최종 예측을 산출.
+                <h2 id="1-앙상블-학습-개요">1. 앙상블 학습 개요</h2>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p>앙상블 학습은 여러 모델의 예측 결과를 결합하여 일반화 성능을 높이는 기법으로, 주로 Bagging과 Boosting 두 가지 방식이 있다.</p>
+
+<h3 id="주요-개념">주요 개념</h3>
+
+<ul>
+  <li><strong>Bootstrap</strong>:
+    <ul>
+      <li>복원 추출을 사용하여 표본을 생성하고 모집단 통계량을 추론하는 통계적 방법.</li>
+      <li>복원 추출을 통해 각 표본이 독립적으로 구성됨.</li>
+    </ul>
+  </li>
+  <li><strong>Tree Ensemble</strong>:
+    <ul>
+      <li>Bagging과 Boosting을 기반으로 한 결정 트리 기반 앙상블 기법.</li>
+    </ul>
+  </li>
+  <li><strong>결과 결합 방법</strong>:
+    <ul>
+      <li><strong>Voting</strong>:
+        <ul>
+          <li>분류 문제(categorical)에서 다수결로 최종 결과 결정.</li>
+        </ul>
+      </li>
+      <li><strong>Average</strong>:
+        <ul>
+          <li>회귀 문제(continuous)에서 평균값으로 최종 결과 계산.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="2-bagging-bootstrap--aggregation">2. Bagging (Bootstrap + Aggregation)</h2>
+
+<ul>
+  <li><strong>정의</strong>:복원 추출로 생성된 여러 데이터 서브셋을 독립적으로 학습시키고 결과를 결합하는 방식.</li>
+  <li><strong>작동 원리</strong>:
+    <ol>
+      <li>Bootstrap 샘플링으로 데이터 서브셋 생성.</li>
+      <li>각 서브셋을 독립적인 모델로 학습.</li>
+      <li>결과를 Aggregation(voting/average)하여 최종 예측 생성.</li>
+    </ol>
+  </li>
+  <li><strong>대표 모델</strong>:<strong>랜덤 포레스트(Random Forest)</strong>.</li>
+  <li><strong>장점</strong>:
+    <ul>
+      <li>분산 감소로 일반화 성능 향상.</li>
+      <li>과적합 완화.</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="3-boosting">3. Boosting</h2>
+
+<ul>
+  <li><strong>정의</strong>:이전 모델의 예측 오류를 개선하는 방식으로 모델을 순차적으로 학습하며 성능을 점진적으로 향상.</li>
+  <li><strong>작동 원리</strong>:
+    <ol>
+      <li>첫 모델 학습 후 예측 오류(Residual)를 계산.</li>
+      <li>오류를 개선하는 방향으로 다음 모델 학습.</li>
+      <li>가중치를 조정하여 최종 예측 생성.</li>
+    </ol>
+  </li>
+  <li><strong>대표 알고리즘</strong>:
+    <ul>
+      <li><strong>에이다부스트(AdaBoost)</strong>:이전 모델의 오류에 가중치를 부여해 다음 모델 학습에 반영.</li>
+      <li><strong>그라디언트 부스팅 머신(GBM)</strong>:손실 함수의 그래디언트에 따라 잔차를 줄이는 방향으로 학습.
+        <ul>
+          <li><strong>XGBoost</strong>: GBM의 개선형으로 학습 속도와 정확도 향상.</li>
+          <li><strong>LightGBM</strong>: 대규모 데이터셋에 최적화.</li>
+          <li><strong>CatBoost</strong>: 범주형 데이터 처리에 특화.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>장점</strong>:
+    <ul>
+      <li>높은 예측 정확도.</li>
+      <li>점진적 성능 향상.</li>
+    </ul>
+  </li>
+  <li><strong>단점</strong>:
+    <ul>
+      <li>계산 비용이 높음.</li>
+      <li>과적합 가능성.</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="4-bagging-vs-boosting-비교">4. Bagging vs. Boosting 비교</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>특징</th>
+      <th>Bagging</th>
+      <th>Boosting</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>데이터 구성</td>
+      <td>독립적 표본 구성 (복원 추출)</td>
+      <td>이전 모델 오류를 기반으로 구성</td>
+    </tr>
+    <tr>
+      <td>모델 학습</td>
+      <td>각 모델 독립적으로 학습</td>
+      <td>이전 모델의 성능 영향을 받음</td>
+    </tr>
+    <tr>
+      <td>목적</td>
+      <td>분산 감소</td>
+      <td>편향 감소</td>
+    </tr>
+    <tr>
+      <td>결과 결합 방식</td>
+      <td>Voting</td>
+      <td>Weighted Averaging</td>
+    </tr>
+  </tbody>
+</table>
