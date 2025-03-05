@@ -2,7 +2,7 @@
 layout: list
 title: Posts
 description: >
-  This is the `list` layout for showing blog posts, which shows just the title and groups them by year of publication.
+  모든 블로그 포스트 목록입니다.
   Check out the `blog` layout for comparison.
 grouped: true
 ---

@@ -51,6 +51,28 @@ menu:
     url:               /about/
   - title:             Blog
     url:               /blog/
+  - title:             Pages
+    url:               https://kafkapple.github.io/pages
+    submenu:
+      - title:         Demo
+        url:           https://kafkapple.github.io/pages/demo
+      - title:         Gallery
+        url:           https://kafkapple.github.io/pages/gallery
+  - title:             Projects
+    url:               /projects/
+    submenu:
+      - title:         Research
+        url:           /projects/research/
+      - title:         AI/ML
+        url:           /projects/ai-ml/
+      - title:         Publications
+        url:           /projects/publications/
+  - title:             Categories
+    url:               /categories/
+  - title:             Tags
+    url:               /tags/
+  - title:             Contact
+    url:               /contact/
   - title:             Documentation
     url:               /docs/
   
