@@ -1,6 +1,5 @@
 # Config
 # ========================================================================================
-
 # Uncomment and set the URL of your site (with protocol, e.g. `https://`)
 # NOTE: You don't need to provide this property when hosting on GitHub Pages or Netlify.
 url:                   https://kafkapple.github.io
@@ -25,8 +24,7 @@ title:                 Joon
 # A short description (~150 chars) of the page used for the meta description tag.
 # Can use markdown, but no more than one paragraph (enforced by `>`)
 description:           >
-  Hydejack is a boutique Jekyll theme for hackers, nerds, and academics,
-  with a focus on personal sites that are meant to impress.
+  아름답고 쓸모 없기를
 
 # A shorter description for the sidebar.
 tagline:               모든 것은 빛난다 Fail better
@@ -42,19 +40,20 @@ logo:                  /assets/img/logo.png
 # This should be the same author as first entry in `_data/authors.yml`.
 author:
   # Used by `jekyll-feed`:
-  name:                <Jungjoon> <Park>
-  email:               <biasdrive@gmail.com>
+  name:                Jungjoon Park
+  email:               biasdrive@gmail.com
   # # Used by `jekyll-seo-tag`:
   # twitter:             <username>
 
 # Add links to the sidebar.
 menu:
+  - title:             About
+    url:               /about/
   - title:             Blog
     url:               /blog/
   - title:             Documentation
     url:               /docs/
-  - title:             About
-    url:               /about/
+  
 
 # Add links to the footer.
 # Typically you'll want to link to your cookie- or privacy policy (if appliable), etc..
