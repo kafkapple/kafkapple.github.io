@@ -2,8 +2,8 @@
 # Must be the same as `author` in `_config.yml`.
 # Change `author1` to your shortname.
 author1:
-  name:              <Jungjoon> <Park>
-  email:             <biasdrive@gmail.com>
+  name:              Jungjoon Park
+  email:             biasdrive@gmail.com
 
   # Used at the bottom of each page and at the top of the `about` layout
   # Markdown enabled, can use multiple paragraphs (enabled by `|`)
@@ -28,7 +28,7 @@ author1:
     - **2022-Present:** Co-founder, COO & Research Director at ACTNOVA.
       - Spearheaded the development of animal behavior analysis services for institutions such as MIT, Broad Institute, KAIST, and UCSD.
       - Developed innovative hardware and AI-driven analysis platforms, earning accolades like the 2022 CES Innovation Award for the AVATAR project.
-
+  |
     **AI & Machine Learning Projects**
     - Currently engaged in the 2024-25 Neuromatch Academy Deep Learning Impact Scholars Program, preparing a micro-publication on prompt strategies in emotion recognition.
     - Led multiple projects integrating ML techniques (from tabular data analysis and regression to document classification, summarization using LLMs, RAG, and MLOps) with neuroscience research.

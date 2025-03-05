@@ -24,7 +24,7 @@ title:                 Joon
 # A short description (~150 chars) of the page used for the meta description tag.
 # Can use markdown, but no more than one paragraph (enforced by `>`)
 description:           >
-  아름답고 쓸모 없기를
+  ## 아름답고 쓸모 없기를
 
 # A shorter description for the sidebar.
 tagline:               모든 것은 빛난다 Fail better
