@@ -29,7 +29,7 @@ description:           >
   with a focus on personal sites that are meant to impress.
 
 # A shorter description for the sidebar.
-tagline:               Change `tagline` in `_config.yml`
+tagline:               모든 것은 빛난다 Fail better
 
 # A list of keywords for your blog
 keywords:              []
@@ -49,8 +49,8 @@ author:
 
 # Add links to the sidebar.
 menu:
-  - title:             Example
-    url:               /example/
+  - title:             Blog
+    url:               /blog/
   - title:             Documentation
     url:               /docs/
   - title:             About
