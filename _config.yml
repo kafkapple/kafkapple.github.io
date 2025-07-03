@@ -49,15 +49,17 @@ author:
 menu:
   - title:             About
     url:               /about/
-  - title:             Blog
-    url:               /blog/
+  - title:             CV
+    url:               https://kafkapple.github.io/markdown-cv/
   - title:             Pages
     url:               https://kafkapple.github.io/pages
     submenu:
-      - title:         Demo
-        url:           https://kafkapple.github.io/pages/demo
-      - title:         Gallery
-        url:           https://kafkapple.github.io/pages/gallery
+    - title:         Demo
+      url:           https://kafkapple.github.io/pages/demo
+    - title:         Gallery
+      url:           https://kafkapple.github.io/pages/gallery
+  - title:             Blog
+    url:               /blog/
   - title:             Projects
     url:               /projects/
     submenu:
@@ -67,12 +69,6 @@ menu:
         url:           /projects/ai-ml/
       - title:         Publications
         url:           /projects/publications/
-  - title:             Categories
-    url:               /categories/
-  - title:             Tags
-    url:               /tags/
-  - title:             Contact
-    url:               /contact/
   - title:             Documentation
     url:               /docs/
   
