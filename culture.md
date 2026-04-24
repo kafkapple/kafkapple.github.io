@@ -2,50 +2,58 @@
 layout: page
 title: Culture & Arts
 description: >
-  Music, literature, and other cultural activities beyond academic research.
+  Music, literature, performance, and translation — activities beyond academic research.
 permalink: /culture/
 ---
 
-# Culture & Arts
-
-Records of music, writing, and cultural activities outside of academic research.
+Records of music, writing, performance, and cultural activities outside academic research. Items here are deliberately separated from the academic CV.
 
 ## Music — Band Activity
 
+### 49 Morphines (forty-nine morphines)
+Guitar. Active member (ongoing).
+
 ### Noeazy (노이지)
+Guitar in the Korean metalcore band Noeazy.
 
-Vocal/member in the Korean rock band **Noeazy**. Active performances and recordings across multiple years.
+- **2016** — 3rd award at **Emergenza International Final**, Germany. *(as guitar player)*
+- **2012** — Performance on **EBS Space Sympathy** (broadcast).
 
-<!-- YouTube embed example — replace VIDEO_ID with the actual video -->
-<!--
+### Jambinai (잠비나이)
+Guitar (guest / brief period) in the fusion Korean-traditional band Jambinai.
+
+- **2013** — Performance on **NAVER Onstage** (broadcast).
+
+<!-- YouTube embed template — replace VIDEO_ID (from youtube.com/watch?v=VIDEO_ID):
 <div class="video-container">
   <iframe width="100%" height="315"
     src="https://www.youtube.com/embed/VIDEO_ID"
-    title="Noeazy performance"
-    frameborder="0" allowfullscreen></iframe>
+    title="Performance title"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen></iframe>
 </div>
 -->
 
-> To embed a YouTube video, uncomment the block above and replace `VIDEO_ID` with the actual ID (the part after `v=` in a YouTube URL).
+## Performance & Interdisciplinary Projects
 
-## Literature
+### "Crowd Walk" (2019)
+Interdisciplinary performance collaboration with artist **Lang Lee (이랑)** — real-time emotion recognition based on facial expression + EEG signals. **Ilmeen Museum**, Seoul, Republic of Korea.
+
+### "Project Doona Bae" (2021)
+Project leader — behavioral & fMRI study assessing empathic abilities of actress **Bae Doona**. Featured as a chapter ("Doona Bae's brain") in the book *Actress Doona Bae*.
+
+## Writing & Translation
+
+### Translation Review (2022)
+Korean translation review for ***Thousand Brains Theory* by Jeff Hawkins** (Korean edition).
 
 ### KAIST Literary Award
-
-Recipient of the **KAIST Literary Award** for creative writing.
-
-- Category: *(specify — poetry / prose / short story)*
-- Year: *(add year)*
-- Piece title: *(add title)*
-
-## Other Activities
-
-Space for additional cultural activities, exhibitions, or collaborations.
+**Honorable Mention**, 22nd KAIST Literary Award Contest — category: Essay / Criticism.
 
 ---
 
 ## Notes
 
-- This page collects activities intentionally **excluded from the academic CV** to keep the CV focused.
-- For embedding additional media (YouTube, Vimeo, SoundCloud, images), use the HTML blocks above as templates.
-- Images can be placed in `/assets/img/culture/` and referenced as `![Caption](/assets/img/culture/filename.jpg)`.
+- Academic honors (e.g., KAIST Excellence Prize for Neuroscience 101 instruction, 2012 Computational Neuroscience Winter School Grand Prize) are listed on the [main page](/#awards--honors) under Awards & Honors.
+- To embed media: YouTube `<iframe>` template above; images go in `/assets/img/culture/` and are referenced as `![Caption](/assets/img/culture/filename.jpg)`.
