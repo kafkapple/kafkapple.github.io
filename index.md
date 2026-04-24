@@ -27,7 +27,7 @@ permalink: /
 
 - **Mar 2026** — **CLAY** accepted to **CVPR 2026** (first author: Sohwi Lim). Conditional visual similarity modulation in VLM embedding space. [Project page](https://sohwi-lim.github.io/CLAY/)
 - **Feb 2026** — Gave lab seminar *The Virtuous Cycle of NeuroAI: Bridging Biological and Artificial Intelligence* at KAIST AMILab.
-- **Aug 2025** — Started as **KAIST InnoCore Postdoctoral Fellow** at AMILab (PI: Prof. Tae-Hyun Oh). Working on 3D Gaussian Splatting for animal behavior analysis.
+- **Aug 2025** — Started as **Postdoctoral Fellow** at KAIST AMILab (PI: Prof. Tae-Hyun Oh) under the **InnoCore Postdoctoral Program**. Working on 3D Gaussian Splatting for animal behavior analysis.
 - **Jun 2025** — Led workshop *Neuro-AI Convergence — Foundation Model Workflows for Neuroscience* at DBDL, Dept. of BCS, KAIST.
 - **Apr 2025** — Preprint released: *Toward Advancing Emotion Recognition in LLMs* (Zenodo, Impact Scholars Program, Neuromatch Academy).
 
@@ -149,7 +149,7 @@ Sehoon Keum, **Jungjoon Park**, A. Kim, J. Park, K. K. Kim, Jaeseung Jeong, Hee-
 
 ## Experience
 
-`Aug 2025 – Aug 2026` **Postdoctoral Fellow (InnoCore Program)** — [AMILab](https://ami.kaist.ac.kr/), KAIST School of Computing. Host: Prof. Tae-Hyun Oh. Vision-Language Models (CLAY, CVPR 2026); 3D Gaussian Splatting for freely-moving animal reconstruction (ongoing).
+`Aug 2025 – Aug 2026` **Postdoctoral Fellow** — [AMILab](https://ami.kaist.ac.kr/), KAIST School of Computing. Host: Prof. Tae-Hyun Oh. Supported by the **InnoCore Postdoctoral Program**. Vision-Language Models (CLAY, CVPR 2026); 3D Gaussian Splatting for freely-moving animal reconstruction (ongoing).
 
 `Oct 2024 – May 2025` **Impact Scholar** — Impact Scholars Program (ISP), Neuromatch Academy. Mentored research on LLM-based emotion recognition.
 
