@@ -91,3 +91,29 @@ Example code for using Matamo as alternative analytics solution.
 </script>
 {% endif %}
 {% endcomment %}
+
+{%- comment -%}
+  Utterances comments on post pages (GitHub Issues-backed, no ads, privacy-friendly).
+  Setup required: create public repo kafkapple/kafkapple.github.io-comments and
+  install https://github.com/apps/utterances on it. Until setup, script
+  loads but no issues repo → shows small "The 'utterances/default' theme..."
+  style notice; set `comments: false` in a post's frontmatter to suppress.
+{%- endcomment -%}
+{%- if page.layout == 'post' and page.comments != false -%}
+<script>
+  (function () {
+    var existing = document.querySelector('script[src="https://utteranc.es/client.js"]');
+    if (existing) return;
+    var s = document.createElement('script');
+    s.src = 'https://utteranc.es/client.js';
+    s.setAttribute('repo', 'kafkapple/kafkapple.github.io-comments');
+    s.setAttribute('issue-term', 'pathname');
+    s.setAttribute('label', 'comment');
+    s.setAttribute('theme', 'github-light');
+    s.crossOrigin = 'anonymous';
+    s.async = true;
+    var host = document.querySelector('article.post') || document.querySelector('main') || document.body;
+    host.appendChild(s);
+  })();
+</script>
+{%- endif -%}

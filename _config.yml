@@ -56,6 +56,8 @@ menu:
     url:               /#peer-reviewed-conference-articles
   - title:             Culture & Arts
     url:               /culture/
+  - title:             TIL
+    url:               /til/
   - title:             Blog
     url:               /blog/
 
