@@ -5,8 +5,6 @@ description: >
   Postdoctoral Fellow at KAIST AMILab. NeuroAI research at the interface of neuroscience and AI.
 hide_description: true
 permalink: /
-redirect_from:
-  - /about/
 ---
 
 <!--author-->

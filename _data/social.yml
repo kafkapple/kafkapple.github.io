@@ -3,6 +3,12 @@ email:
   name: Email
   icon: icon-mail
   prepend: 'mailto:'
+google-scholar:
+  name: Google Scholar
+  icon: icon-google-scholar
+orcid:
+  name: ORCID
+  icon: icon-orcid
 amazon:
   name: Amazon
   icon: icon-amazon

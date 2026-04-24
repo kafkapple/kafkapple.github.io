@@ -8,9 +8,7 @@ author1:
   # Used at the bottom of each page and at the top of the `about` layout
   # Markdown enabled, can use multiple paragraphs (enabled by `|`)
   about:             |
-    **Jungjoon Park** — Postdoctoral Fellow at [AMILab](https://ami.kaist.ac.kr/), KAIST School of Computing (KAIST InnoCore Fellowship).
-
-    Ph.D. in Bio & Brain Engineering (KAIST, 2022). Working at the interface of neuroscience and AI — NeuroAI in both directions: applying AI to neural and behavioral data, and drawing on neuroscience to inform AI systems.
+    Postdoctoral Fellow at [AMILab](https://ami.kaist.ac.kr/), KAIST School of Computing (KAIST InnoCore Fellowship). Ph.D. in Bio & Brain Engineering (KAIST, 2022).
 
   # This photo will be used in the about section
   picture:
