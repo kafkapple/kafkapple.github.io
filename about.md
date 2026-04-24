@@ -1,55 +1,49 @@
 ---
 layout: about
-image: /assets/img/blog/hydejack-9.jpg
+title: About
 description: >
-  About page
+  Jungjoon Park — Postdoctoral Fellow at KAIST AMILab. NeuroAI research bridging neuroscience and AI.
 hide_description: true
-redirect_from:
-  - /download/
 ---
 
 # About
 
 <!--author-->
-  
-## **Education & Academic Background**
-- **B.S. (2005-2010):** Bio and Brain Engineering, KAIST.
-- **M.S. (2010-2013):** Focused on the investigation of empathy in terms of age and memory.
-- **Ph.D. (2013-2022):** Conducted an in-depth study on the behavioral and genetic factors influencing observational fear learning and empathy.
 
-## **Neuroscience Research Experience**
-- **2011-2012:** Trainee at KIST, where I honed my early research skills.
-- **2012-2021:** Researcher at IBS and KIST, contributing to large-scale studies published in top journals.
-- Led projects involving single-unit recordings, fMRI, EEG, and advanced behavioral analytics.
-
-## **Startup & Leadership Roles**
-- **2022-Present:** Co-founder, COO & Research Director at ACTNOVA.
-  - Spearheaded the development of animal behavior analysis services for institutions such as MIT, Broad Institute, KAIST, and UCSD.
-  - Developed innovative hardware and AI-driven analysis platforms, earning accolades like the 2022 CES Innovation Award for the AVATAR project.
-|
-## **AI & Machine Learning Projects**
-- Currently engaged in the 2024-25 Neuromatch Academy Deep Learning Impact Scholars Program, preparing a micro-publication on prompt strategies in emotion recognition.
-- Led multiple projects integrating ML techniques (from tabular data analysis and regression to document classification, summarization using LLMs, RAG, and MLOps) with neuroscience research.
-- Founded the KAIST NeuroAI academic group to foster research discussions on brain-inspired AI.
-
-## **Research Projects & Grants**
-- Directed and contributed to government-funded projects including:
-  - EEG-fMRI based lie detection system (2022).
-  - Multi-scale modeling of instinctual behavior (2021-2022).
-  - Studies on the influence of social context on fear empathy (2019-2022).
-
-## **Vision & Future Directions**
-My overarching goal is to bridge the gap between neuroscience and artificial general intelligence (AGI) by leveraging brain-inspired approaches to develop more adaptive and intuitive machine learning models. I continuously seek to challenge conventional paradigms and foster interdisciplinary collaboration to propel both fields forward.
-
-I welcome questions and discussions on how my diverse background in neuroscience, startup leadership, and advanced AI research can contribute to pioneering research in AGI and brain-inspired AI.
-
+*I work at the interface of neuroscience and AI — using AI to study neural and behavioral data, and drawing on neuroscience to inform AI systems. Prior work has examined context-dependent perception and cognition in rodent empathy, emotion-aware LLM reasoning, and conditional similarity in vision-language models (CLAY). At KAIST [AMILab](https://ami.kaist.ac.kr/), I am working on computational methods for animal behavior analysis.*
 {:.lead}
 
-1. this list will be replaced by the toc
-{:toc .large-only}
+Based in Daejeon, Republic of Korea. [CV](/markdown-cv/){:.button} · [Google Scholar](https://scholar.google.com/citations?user=D_rZCWYAAAAJ){:.button} · [ORCID](https://orcid.org/0000-0002-2944-0697){:.button} · [GitHub](https://github.com/kafkapple){:.button}
 
-![Screenshot](/assets/img/blog/hydejack-9.jpg){:.lead width="1920" height="1080" loading="lazy"}
+## News
 
-Hydejack's cover page on a variety of screen sizes.
-{:.figcaption}
+- **Apr 2026** — New Postdoctoral Fellow site launched; CV reorganized in canonical academic order.
+- **Mar 2026** — **CLAY** (first-author: Lim, S.) accepted to **CVPR 2026** — conditional visual similarity modulation in VLM embedding space.
+- **Feb 2026** — Gave lab seminar: *The Virtuous Cycle of NeuroAI: Bridging Biological and Artificial Intelligence* at KAIST AMILab.
+- **Aug 2025** — Started as **KAIST InnoCore Postdoctoral Fellow** at AMILab (PI: Prof. Tae-Hyun Oh). Working on 3D Gaussian Splatting for animal behavior analysis.
+- **Jun 2025** — Led workshop: *Neuro-AI Convergence — Foundation Model Workflows for Neuroscience* at DBDL, Department of BCS, KAIST.
+- **Apr 2025** — Preprint released: *Toward Advancing Emotion Recognition in LLMs* (Zenodo, Impact Scholars Program, Neuromatch Academy).
 
+## Selected Publications
+
+- Lim, S.; Lee, H.; **Park, J.-J.**; Oh, T.-H. *CLAY: Conditional Visual Similarity Modulation in Vision-Language Embedding Space.* **CVPR 2026**. [arXiv:2604.11539](https://arxiv.org/abs/2604.11539)
+- **Park, J.-J.**; Ha, S.; Shin, H.-S.; Jeong, J. *Experience of a Hierarchical Relationship between a Pair of Mice Specifically Influences Their Affective Empathy toward Each Other.* **Genes, Brain and Behavior** 21(5):e12810, 2022. [DOI](https://doi.org/10.1111/gbb.12810)
+- Lee, J.-H.; Latchoumane, C.-F. V.; **Park, J.-J.**; et al. *The Rostroventral Part of the Thalamic Reticular Nucleus Modulates Fear Extinction.* **Nature Communications** 10:4637, 2019. [DOI](https://doi.org/10.1038/s41467-019-12496-9)
+- Keum, S.; **Park, J.-J.**; et al. *Variability in Empathic Fear Response among 11 Inbred Strains of Mice.* **Genes, Brain and Behavior** 15(2):231–242, 2016. [DOI](https://doi.org/10.1111/gbb.12278)
+- **Park, J.-J.**; Mashayekh Esfahan, N.; Narayan, A. *Toward Advancing Emotion Recognition in LLMs* (Preprint). **Zenodo**, Apr 2025. [DOI](https://doi.org/10.5281/zenodo.15126322)
+
+Full publication list on [CV](/markdown-cv/) or [Google Scholar](https://scholar.google.com/citations?user=D_rZCWYAAAAJ).
+
+## Research Interests
+
+- **Context-dependent perception and cognition** — how social, temporal, and relational context reshapes perception and decision-making, studied through rodent empathy circuits, LLM emotion reasoning, and vision-language models.
+- **NeuroAI (dual-direction)** — applying AI to neural and behavioral data, and drawing on neuroscience to inform AI architectures for adaptive, generalizable intelligence.
+- **Computational behavior analysis** — 3D reconstruction and embodied modeling of freely-moving animals to produce quantitative, interpretable behavioral descriptors.
+
+## Community
+
+Co-founder and organizer of **Neureka** and **KAIST NeuroAI Communities** — interdisciplinary seminar series (2020–Present) featuring speakers including Prof. Peter Dayan.
+
+## Contact
+
+Email: [biasdrive@gmail.com](mailto:biasdrive@gmail.com)

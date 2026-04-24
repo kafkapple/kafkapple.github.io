@@ -19,15 +19,15 @@ baseurl:               ''
 lang:                  en
 
 # The title of your blog. Used in the sidebar and the browser tab.
-title:                 Joon
+title:                 Jungjoon Park
 
 # A short description (~150 chars) of the page used for the meta description tag.
 # Can use markdown, but no more than one paragraph (enforced by `>`)
 description:           >
-  ## 아름답고 쓸모 없기를
+  Postdoctoral Fellow at KAIST AMILab. NeuroAI research at the interface of neuroscience and AI.
 
 # A shorter description for the sidebar.
-tagline:               모든 것은 빛난다 Fail better
+tagline:               NeuroAI · Postdoc · KAIST AMILab
 
 # A list of keywords for your blog
 keywords:              []
@@ -50,28 +50,12 @@ menu:
   - title:             About
     url:               /about/
   - title:             CV
-    url:               https://kafkapple.github.io/markdown-cv/
-  - title:             Pages
-    url:               https://kafkapple.github.io/pages
-    submenu:
-    - title:         Demo
-      url:           https://kafkapple.github.io/pages/demo
-    - title:         Gallery
-      url:           https://kafkapple.github.io/pages/gallery
+    url:               /markdown-cv/
+  - title:             Publications
+    url:               /about/#selected-publications
   - title:             Blog
     url:               /blog/
-  - title:             Projects
-    url:               /projects/
-    submenu:
-      - title:         Research
-        url:           /projects/research/
-      - title:         AI/ML
-        url:           /projects/ai-ml/
-      - title:         Publications
-        url:           /projects/publications/
-  - title:             Documentation
-    url:               /docs/
-  
+
 
 # Add links to the footer.
 # Typically you'll want to link to your cookie- or privacy policy (if appliable), etc..
@@ -84,7 +68,7 @@ legal:
     url:               /CHANGELOG/
 
 # This text will appear in a `<small>` tag in the footer of every page.
-copyright:             © 2024. All rights reserved.
+copyright:             © 2026 Jungjoon Park.
 
 # Format of the permalinks
 permalink:             /:categories/:year-:month-:day-:title/

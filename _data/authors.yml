@@ -8,10 +8,9 @@ author1:
   # Used at the bottom of each page and at the top of the `about` layout
   # Markdown enabled, can use multiple paragraphs (enabled by `|`)
   about:             |
-    **Jungjoon Park - Research Scientist in Brain-Inspired AI & AGI**
+    **Jungjoon Park** — Postdoctoral Fellow at [AMILab](https://ami.kaist.ac.kr/), KAIST School of Computing (KAIST InnoCore Fellowship).
 
-    I am a research scientist with over 15 years of full-stack neuroscience experience, holding a Ph.D. in Bio and Brain Engineering from KAIST. 
-    My work has spanned across human, non-human primate, and rodent studies, focusing on behavioral, genetic, electrophysiological, and computational analyses of empathy, social memory, and fear responses.
+    Ph.D. in Bio & Brain Engineering (KAIST, 2022). Working at the interface of neuroscience and AI — NeuroAI in both directions: applying AI to neural and behavioral data, and drawing on neuroscience to inform AI systems.
 
   # This photo will be used in the about section
   picture:
@@ -26,8 +25,11 @@ author1:
   # Rearrange to change the order in which they appear
   # You can also provide an absolute URL (starting with https://) instead of usernames
   social:
-    #twitter:         <username>
-    github:          <kafkapple>
+    email:           biasdrive@gmail.com
+    github:          kafkapple
+    google-scholar:  https://scholar.google.com/citations?user=D_rZCWYAAAAJ
+    orcid:           https://orcid.org/0000-0002-2944-0697
+    linkedin:        joon-park-0940919b
     # email:           <mail@domain.tld>
     # rss:             https://<url>/feed.xml
     # facebook:        <username>
