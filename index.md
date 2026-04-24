@@ -16,7 +16,6 @@ permalink: /
 
 ## News
 
-- **Apr 2026** — Site redesigned; CV reorganized in canonical academic order.
 - **Mar 2026** — **CLAY** accepted to **CVPR 2026** (first author: Sohwi Lim). Conditional visual similarity modulation in VLM embedding space. [Project page](https://sohwi-lim.github.io/CLAY/)
 - **Feb 2026** — Gave lab seminar *The Virtuous Cycle of NeuroAI: Bridging Biological and Artificial Intelligence* at KAIST AMILab.
 - **Aug 2025** — Started as **KAIST InnoCore Postdoctoral Fellow** at AMILab (PI: Prof. Tae-Hyun Oh). Working on 3D Gaussian Splatting for animal behavior analysis.
@@ -33,17 +32,20 @@ permalink: /
 
 \* denotes equal contribution; **bold** denotes the author.
 
-### Peer-Reviewed Conference Articles
+## Peer-Reviewed Conference Articles
 
-<!-- TODO: replace with actual CLAY teaser once project releases media. Placeholder image uses existing asset. -->
-[![CLAY](/assets/img/blog/9.1.0-1.png){:.float-right height="120px"}](https://sohwi-lim.github.io/CLAY/)
 **CLAY: Conditional Visual Similarity Modulation in Vision-Language Embedding Space**
 Sohwi Lim, Hyoseok Lee, **Jungjoon Park**, Tae-Hyun Oh.
 *IEEE/CVF Conference on Computer Vision and Pattern Recognition* (**CVPR 2026**).
 [[Project Page](https://sohwi-lim.github.io/CLAY/)] · [[arXiv](https://arxiv.org/abs/2604.11539)]
-{:.clearfix}
 
-### Peer-Reviewed Journal Articles
+<!-- To add a teaser image later, once CLAY releases media:
+[![CLAY teaser](/assets/img/pubs/clay-teaser.gif){:.float-right width="220px"}](https://sohwi-lim.github.io/CLAY/)
+Place file at /assets/img/pubs/ and uncomment above; add {:.clearfix} below the entry.
+-->
+
+
+## Peer-Reviewed Journal Articles
 
 **Experience of a Hierarchical Relationship between a Pair of Mice Specifically Influences Their Affective Empathy toward Each Other**
 **Jungjoon Park**, Sungjoon Ha, Hee-Sup Shin, Jaeseung Jeong.
@@ -60,7 +62,7 @@ Sehoon Keum, **Jungjoon Park**, Arie Kim, Jinyoung Park, Kyung Keun Kim, Jaeseun
 *Genes, Brain and Behavior* 15(2):231–242 (2016).
 [[DOI](https://doi.org/10.1111/gbb.12278)]
 
-### Peer-Reviewed Workshop Posters (Non-Archival)
+## Peer-Reviewed Workshop Posters (Non-Archival)
 
 **AVATAR: AI Vision Analysis for Three-Dimensional Action in Real-Time**
 Dae-Gun Kim, Jeongtaek Kim, Woochul Jung, **Jungjoon Park**, Minhyung Kim, Anna Shin, Yong-Cheol Jeong, Seunghwan Park, Gayeon Shin, Young Woo Lee, Junga Kwon, Daesoo Kim.
@@ -68,14 +70,14 @@ Dae-Gun Kim, Jeongtaek Kim, Woochul Jung, **Jungjoon Park**, Minhyung Kim, Anna 
 **Non-archival** (not in CVPR proceedings).
 [[Workshop page](https://www.cv4animals.com/2022-accepted-papers)]
 
-### Preprints
+## Preprints
 
 **Toward Advancing Emotion Recognition in LLMs: A Comparative Study of Prompt Strategies, Few-Shot Learning, and Model Ensembling**
 **Jungjoon Park**, Nastaran Mashayekh Esfahan, Aravind Narayan.
 *Zenodo* (Apr 2025).
 [[DOI](https://doi.org/10.5281/zenodo.15126322)]
 
-### Manuscripts in Preparation
+## Manuscripts in Preparation
 
 - **Park, J.-J.** et al. *Differential Contributions of CaMKIIα in the Medial Amygdala versus Anterior Cingulate Cortex to Social Memory and Empathic Fear.*
 - **Park, J.-J.** et al. *CaMKIIα in the Anterior Cingulate Cortex is Not Required for the Formation of Remote Memory.*

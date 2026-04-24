@@ -36,6 +36,7 @@ keywords:              []
 # If provided, it will be shown at the top of the sidebar.
 # It also used by the `jekyll-seo-tag` plugin.
 logo:                  /assets/img/logo.png
+favicon:               /assets/img/favicon-192.png
 
 # This should be the same author as first entry in `_data/authors.yml`.
 author:
@@ -52,7 +53,7 @@ menu:
   - title:             CV
     url:               /markdown-cv/
   - title:             Publications
-    url:               /#publications
+    url:               /#peer-reviewed-conference-articles
   - title:             Culture & Arts
     url:               /culture/
   - title:             Blog

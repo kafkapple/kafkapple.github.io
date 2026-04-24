@@ -28,6 +28,9 @@ author1:
     google-scholar:  https://scholar.google.com/citations?user=D_rZCWYAAAAJ
     orcid:           https://orcid.org/0000-0002-2944-0697
     linkedin:        joon-park-0940919b
+    # google-scholar / orcid: Hydejack icon font does not include these glyphs.
+    # Custom inline SVG rendering via _includes/components/social-list-item.html
+    # (override of theme default) using currentColor-compatible vector paths.
     # email:           <mail@domain.tld>
     # rss:             https://<url>/feed.xml
     # facebook:        <username>
