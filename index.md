@@ -58,7 +58,7 @@ Sohwi Lim, Hyoseok Lee, **Jungjoon Park**, Tae-Hyun Oh.
 ### 2025
 
 <div class="pub" markdown="1">
-**Toward Advancing Emotion Recognition in LLMs: A Comparative Study of Prompt Strategies, Few-Shot Learning, and Model Ensembling** *(Preprint)*
+**Toward Advancing Emotion Recognition in LLMs: A Comparative Study of Prompt Strategies, Few-Shot Learning, and Model Ensembling**
 {:.pub-title}
 
 **Jungjoon Park**, Nastaran Mashayekh Esfahan, Aravind Narayan.
@@ -88,7 +88,7 @@ Sohwi Lim, Hyoseok Lee, **Jungjoon Park**, Tae-Hyun Oh.
 </div>
 
 <div class="pub" markdown="1">
-**AVATAR: AI Vision Analysis for Three-Dimensional Action in Real-Time** *(Workshop, Non-Archival)*
+**AVATAR: AI Vision Analysis for Three-Dimensional Action in Real-Time**
 {:.pub-title}
 
 Dae-Gun Kim, Jeongtaek Kim, Woochul Jung, **Jungjoon Park**, Minhyung Kim, Anna Shin, Yong-Cheol Jeong, Seunghwan Park, Gayeon Shin, Young Woo Lee, Junga Kwon, Daesoo Kim.
