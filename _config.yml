@@ -50,16 +50,16 @@ author:
 menu:
   - title:             About
     url:               /
-  - title:             CV
-    url:               /markdown-cv/
   - title:             Publications
-    url:               /#peer-reviewed-conference-articles
+    url:               /#publications
   - title:             Culture & Arts
     url:               /culture/
   - title:             TIL
     url:               /til/
   - title:             Blog
     url:               /blog/
+  - title:             CV
+    url:               /markdown-cv/
 
 
 # Add links to the footer.

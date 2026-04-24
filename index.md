@@ -135,6 +135,18 @@ S. Keum, **J. Park**, A. Kim, J. Park, K. K. Kim, J. Jeong, H.-S. Shin.
 
 <p class="pub-footnote"><small>* denotes equal contribution; <strong>bold</strong> denotes the author.</small></p>
 
+## Teaching & Mentorship
+
+`Jun 2025` **Workshop Instructor** — *Neuro-AI Convergence: Foundation Model Workflows for Neuroscience*, DBDL, Dept. of BCS, KAIST. 3-hour seminar + hands-on workshop applying foundation models to brain and behavior data.
+
+`Spring 2022` **Instructor** — *Neuroscience 101: What on Earth Is Neuroscience?*, KAIST Global Leadership Center, Humanities/Leadership Program III.
+
+`Dec 2020 – Aug 2022` **Instructor** — *Python for Neuroscientists*, CCS, IBS. Hands-on course covering data handling, analysis, and visualization for neuroscience research.
+
+`Fall 2019 – Fall 2021` **Instructor** — *A Small, Good Thing: Stories of Mind and Life*, KAIST Global Leadership Center, Humanities/Leadership Program III. Discussion-based seminars on cognitive neuroscience, psychology, and self-development.
+
+`Feb 2012 – Oct 2013` **Supervisor** — Tip-of-the-Tongue Phenomenon in Korean-English Bilinguals (high-school mentee: Jiyoon Park). Literature review, experimental design, analysis, and manuscript preparation.
+
 ## Experience
 
 `Aug 2025 – Aug 2026` **Postdoctoral Fellow (InnoCore Program)** — [AMILab](https://ami.kaist.ac.kr/), KAIST School of Computing. Host: Prof. Tae-Hyun Oh. Vision-Language Models (CLAY, CVPR 2026); 3D Gaussian Splatting for freely-moving animal reconstruction (ongoing).
