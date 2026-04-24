@@ -123,7 +123,7 @@ Joon-Hyuk Lee, Charles-Francois V. Latchoumane, **Jungjoon Park**, Jinhyun Kim, 
 **Variability in Empathic Fear Response among 11 Inbred Strains of Mice**
 {:.pub-title}
 
-S. Keum, **J. Park**, A. Kim, J. Park, K. K. Kim, J. Jeong, H.-S. Shin.
+Sehoon Keum, **Jungjoon Park**, A. Kim, J. Park, K. K. Kim, Jaeseung Jeong, Hee-Sup Shin.
 {:.pub-authors}
 
 *Genes, Brain and Behavior* 15(2):231–242.
