@@ -117,3 +117,21 @@ Example code for using Matamo as alternative analytics solution.
   })();
 </script>
 {%- endif -%}
+
+{%- comment -%}
+  Mermaid diagram support (client-side, no Jekyll plugin required).
+  Usage in any post:
+    <div class="mermaid">
+    graph LR
+      A --> B
+    </div>
+  Loads only if a .mermaid element is present.
+{%- endcomment -%}
+<script>
+  if (document.querySelector('.mermaid')) {
+    var m = document.createElement('script');
+    m.src = 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js';
+    m.onload = function () { mermaid.initialize({ startOnLoad: true, theme: 'default' }); };
+    document.head.appendChild(m);
+  }
+</script>
