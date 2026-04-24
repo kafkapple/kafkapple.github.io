@@ -8,7 +8,9 @@ author1:
   # Used at the bottom of each page and at the top of the `about` layout
   # Markdown enabled, can use multiple paragraphs (enabled by `|`)
   about:             |
-    Postdoctoral Fellow at [AMILab](https://ami.kaist.ac.kr/), KAIST School of Computing (KAIST InnoCore Fellowship). Ph.D. in Bio & Brain Engineering (KAIST, 2022).
+    Postdoctoral Fellow at [AMILab](https://ami.kaist.ac.kr/), KAIST School of Computing (KAIST InnoCore Fellowship).
+
+    Ph.D. in Bio & Brain Engineering (KAIST, 2022).
 
   # This photo will be used in the about section
   picture:

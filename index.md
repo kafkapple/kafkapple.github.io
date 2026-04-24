@@ -7,9 +7,18 @@ hide_description: true
 permalink: /
 ---
 
+<style>
+.pub { margin: 0.25em 0 0.75em 0; line-height: 1.45; }
+.pub-title { font-weight: 600; }
+.pub-authors { font-size: 0.95em; }
+.pub-venue { font-size: 0.92em; color: #555; }
+.pub-links { font-size: 0.9em; }
+.pub-footnote { margin-top: 1.5em; color: #666; }
+</style>
+
 <!--author-->
 
-*I work at the interface of neuroscience and AI — using AI to study neural and behavioral data, and drawing on neuroscience to inform AI systems. Prior work has examined context-dependent perception and cognition in rodent empathy, emotion-aware LLM reasoning, and conditional similarity in vision-language models (CLAY). At KAIST [AMILab](https://ami.kaist.ac.kr/), I am working on computational methods for animal behavior analysis.*
+*I work at the interface of neuroscience and AI — using AI to study neural and behavioral data, and drawing on neuroscience to inform AI systems. Prior work has examined context-dependent perception and cognition in rodent empathy, emotion-aware LLM reasoning, and conditional similarity in vision-language models. At KAIST [AMILab](https://ami.kaist.ac.kr/), I am working on computational methods for animal behavior analysis.*
 {:.lead}
 
 [CV](/markdown-cv/){:.button} · [Google Scholar](https://scholar.google.com/citations?user=D_rZCWYAAAAJ){:.button} · [ORCID](https://orcid.org/0000-0002-2944-0697){:.button} · [GitHub](https://github.com/kafkapple){:.button}
@@ -25,81 +34,122 @@ permalink: /
 ## Research Interests
 
 - **Context-dependent perception and cognition** — how social, temporal, and relational context reshapes perception and decision-making, studied through rodent empathy circuits, LLM emotion reasoning, and vision-language models.
-- **NeuroAI (dual-direction)** — applying AI to neural and behavioral data, and drawing on neuroscience to inform AI architectures for adaptive, generalizable intelligence.
+- **Virtuous Cycle of NeuroAI** — applying AI to neural and behavioral data, and drawing on neuroscience to inform AI architectures for adaptive, generalizable intelligence.
 - **Computational behavior analysis** — 3D reconstruction and embodied modeling of freely-moving animals to produce quantitative, interpretable behavioral descriptors.
 
 ## Publications
 
-\* denotes equal contribution; **bold** denotes the author.
+### 2026
 
-## Peer-Reviewed Conference Articles
-
+<div class="pub" markdown="1">
 **CLAY: Conditional Visual Similarity Modulation in Vision-Language Embedding Space**
+{:.pub-title}
+
 Sohwi Lim, Hyoseok Lee, **Jungjoon Park**, Tae-Hyun Oh.
+{:.pub-authors}
+
 *IEEE/CVF Conference on Computer Vision and Pattern Recognition* (**CVPR 2026**).
+{:.pub-venue}
+
 [[Project Page](https://sohwi-lim.github.io/CLAY/)] · [[arXiv](https://arxiv.org/abs/2604.11539)]
+{:.pub-links}
+</div>
 
-<!-- To add a teaser image later, once CLAY releases media:
-[![CLAY teaser](/assets/img/pubs/clay-teaser.gif){:.float-right width="220px"}](https://sohwi-lim.github.io/CLAY/)
-Place file at /assets/img/pubs/ and uncomment above; add {:.clearfix} below the entry.
--->
+### 2025
 
+<div class="pub" markdown="1">
+**Toward Advancing Emotion Recognition in LLMs: A Comparative Study of Prompt Strategies, Few-Shot Learning, and Model Ensembling** *(Preprint)*
+{:.pub-title}
 
-## Peer-Reviewed Journal Articles
-
-**Experience of a Hierarchical Relationship between a Pair of Mice Specifically Influences Their Affective Empathy toward Each Other**
-**Jungjoon Park**, Sungjoon Ha, Hee-Sup Shin, Jaeseung Jeong.
-*Genes, Brain and Behavior* 21(5):e12810 (2022).
-[[DOI](https://doi.org/10.1111/gbb.12810)]
-
-**The Rostroventral Part of the Thalamic Reticular Nucleus Modulates Fear Extinction**
-Jin-Hui Lee, Charles-Francois V. Latchoumane, **Jungjoon Park**, Jeongrak Kim, Jaeseung Jeong, Kyoung-Han Lee, Hee-Sup Shin.
-*Nature Communications* 10:4637 (2019).
-[[DOI](https://doi.org/10.1038/s41467-019-12496-9)]
-
-**Variability in Empathic Fear Response among 11 Inbred Strains of Mice**
-Sehoon Keum, **Jungjoon Park**, Arie Kim, Jinyoung Park, Kyung Keun Kim, Jaeseung Jeong, Hee-Sup Shin.
-*Genes, Brain and Behavior* 15(2):231–242 (2016).
-[[DOI](https://doi.org/10.1111/gbb.12278)]
-
-## Peer-Reviewed Workshop Posters (Non-Archival)
-
-**AVATAR: AI Vision Analysis for Three-Dimensional Action in Real-Time**
-Dae-Gun Kim, Jeongtaek Kim, Woochul Jung, **Jungjoon Park**, Minhyung Kim, Anna Shin, Yong-Cheol Jeong, Seunghwan Park, Gayeon Shin, Young Woo Lee, Junga Kwon, Daesoo Kim.
-*CV4Animals Workshop @ CVPR 2022*, New Orleans, LA, USA. Poster ID 8, Track I.
-**Non-archival** (not in CVPR proceedings).
-[[Workshop page](https://www.cv4animals.com/2022-accepted-papers)]
-
-## Preprints
-
-**Toward Advancing Emotion Recognition in LLMs: A Comparative Study of Prompt Strategies, Few-Shot Learning, and Model Ensembling**
 **Jungjoon Park**, Nastaran Mashayekh Esfahan, Aravind Narayan.
-*Zenodo* (Apr 2025).
+{:.pub-authors}
+
+*Zenodo*, Apr 2025.
+{:.pub-venue}
+
 [[DOI](https://doi.org/10.5281/zenodo.15126322)]
+{:.pub-links}
+</div>
 
-## Manuscripts in Preparation
+### 2022
 
-- **Park, J.-J.** et al. *Differential Contributions of CaMKIIα in the Medial Amygdala versus Anterior Cingulate Cortex to Social Memory and Empathic Fear.*
-- **Park, J.-J.** et al. *CaMKIIα in the Anterior Cingulate Cortex is Not Required for the Formation of Remote Memory.*
-- **Park, J.-J.** et al. *Maturity-Specific Effects of Heterospecific Social Cues on Observational Fear Learning.*
-- **Park, J.-J.** et al. *Neuronal Variability, Not Mean Firing, Encodes Empathic State in mPFC Ensembles.*
+<div class="pub" markdown="1">
+**Experience of a Hierarchical Relationship between a Pair of Mice Specifically Influences Their Affective Empathy toward Each Other**
+{:.pub-title}
 
-## Research Experience
+**Jungjoon Park**, Seungshin Ha, Hee-Sup Shin, Jaeseung Jeong.
+{:.pub-authors}
 
-`Aug 2025 – Aug 2026` **Postdoctoral Fellow (InnoCore Program)** — [AMILab](https://ami.kaist.ac.kr/), KAIST School of Computing.
-Host: Prof. Tae-Hyun Oh. Vision-Language Models (CLAY, CVPR 2026); 3D Gaussian Splatting for freely-moving animal reconstruction and quantitative behavior analysis (ongoing).
+*Genes, Brain and Behavior* 21(5):e12810.
+{:.pub-venue}
 
-`Oct 2024 – May 2025` **Impact Scholar** — Impact Scholars Program (ISP), Neuromatch Academy.
-Mentored research on LLM-based emotion recognition.
+[[DOI](https://doi.org/10.1111/gbb.12810)]
+{:.pub-links}
+</div>
 
-`Sep 2022 – May 2024` **Chief Operating Officer & Research Director** — ACTNOVA.
-Co-founded and scaled a neuroscience-AI startup, raising ₩4.3B in pre-Series A.
+<div class="pub" markdown="1">
+**AVATAR: AI Vision Analysis for Three-Dimensional Action in Real-Time** *(Workshop, Non-Archival)*
+{:.pub-title}
 
-`Nov 2014 – Feb 2018` **Researcher** (Trainee from Jan 2012) — Center for Cognition and Sociality (CCS), Institute for Basic Science (IBS).
-Chemogenetics, in-vivo electrophysiology, and behavioral assays on affective empathy and social memory.
+Dae-Gun Kim, Jeongtaek Kim, Woochul Jung, **Jungjoon Park**, Minhyung Kim, Anna Shin, Yong-Cheol Jeong, Seunghwan Park, Gayeon Shin, Young Woo Lee, Junga Kwon, Daesoo Kim.
+{:.pub-authors}
 
-`Mar 2018 – Aug 2022` / `Mar 2006 – Aug 2010` **Researcher** — Brain Dynamics Laboratory, KAIST.
-NHP behavioral datasets, human fMRI — neural correlates of empathy.
+*CV4Animals Workshop @ CVPR 2022*, New Orleans. Poster ID 8, Track I. Not in CVPR proceedings.
+{:.pub-venue}
+
+[[Workshop page](https://www.cv4animals.com/2022-accepted-papers)]
+{:.pub-links}
+</div>
+
+### 2019
+
+<div class="pub" markdown="1">
+**The Rostroventral Part of the Thalamic Reticular Nucleus Modulates Fear Extinction**
+{:.pub-title}
+
+Joon-Hyuk Lee, Charles-Francois V. Latchoumane, **Jungjoon Park**, Jinhyun Kim, Jaeseung Jeong, Kwang-Hyung Lee, Hee-Sup Shin.
+{:.pub-authors}
+
+*Nature Communications* 10:4637.
+{:.pub-venue}
+
+[[DOI](https://doi.org/10.1038/s41467-019-12496-9)]
+{:.pub-links}
+</div>
+
+### 2016
+
+<div class="pub" markdown="1">
+**Variability in Empathic Fear Response among 11 Inbred Strains of Mice**
+{:.pub-title}
+
+S. Keum, **J. Park**, A. Kim, J. Park, K. K. Kim, J. Jeong, H.-S. Shin.
+{:.pub-authors}
+
+*Genes, Brain and Behavior* 15(2):231–242.
+{:.pub-venue}
+
+[[DOI](https://doi.org/10.1111/gbb.12278)]
+{:.pub-links}
+</div>
+
+<p class="pub-footnote"><small>* denotes equal contribution; <strong>bold</strong> denotes the author.</small></p>
+
+## Experience
+
+`Aug 2025 – Aug 2026` **Postdoctoral Fellow (InnoCore Program)** — [AMILab](https://ami.kaist.ac.kr/), KAIST School of Computing. Host: Prof. Tae-Hyun Oh. Vision-Language Models (CLAY, CVPR 2026); 3D Gaussian Splatting for freely-moving animal reconstruction (ongoing).
+
+`Oct 2024 – May 2025` **Impact Scholar** — Impact Scholars Program (ISP), Neuromatch Academy. Mentored research on LLM-based emotion recognition.
+
+`Sep 2022 – May 2024` **Chief Operating Officer & Research Director** — ACTNOVA. Co-founded and scaled a neuroscience-AI startup, raising ₩4.3B in pre-Series A.
+
+`Mar 2018 – Aug 2022` **Graduate Researcher** — Brain Dynamics Laboratory, KAIST. NHP behavioral datasets, human fMRI — neural correlates of empathy. Ph.D. completed Aug 2022.
+
+`Nov 2014 – Feb 2018` **Researcher** (Trainee from Jan 2012) — Center for Cognition and Sociality (CCS), Institute for Basic Science (IBS). Chemogenetics, in-vivo electrophysiology, and behavioral assays on affective empathy and social memory.
+
+`Mar 2011 – Dec 2012` **Trainee** — Brain Science Institute (BSI), KIST. Rodent social behavior and system consolidation mechanisms.
+
+`Mar 2006 – Aug 2010` **Undergraduate Researcher** — Brain Dynamics Laboratory, KAIST. Comparative and computational cognitive neuroscience — NHP and human fMRI datasets.
 
 ## Awards & Honors
 

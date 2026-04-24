@@ -38,7 +38,7 @@ Guitar (guest / brief period) in the fusion Korean-traditional band Jambinai.
 ## Performance & Interdisciplinary Projects
 
 ### "Crowd Walk" (2019)
-Interdisciplinary performance collaboration with artist **Lang Lee (이랑)** — real-time emotion recognition based on facial expression + EEG signals. **Ilmeen Museum**, Seoul, Republic of Korea.
+Interdisciplinary performance collaboration with artist **Lang Lee (이랑)** — real-time emotion recognition based on facial expression + EEG signals. **Ilmin Museum of Art** (일민미술관), Seoul, Republic of Korea.
 
 ### "Project Doona Bae" (2021)
 Project leader — behavioral & fMRI study assessing empathic abilities of actress **Bae Doona**. Featured as a chapter ("Doona Bae's brain") in the book *Actress Doona Bae*.
@@ -46,7 +46,7 @@ Project leader — behavioral & fMRI study assessing empathic abilities of actre
 ## Writing & Translation
 
 ### Translation Review (2022)
-Korean translation review for ***Thousand Brains Theory* by Jeff Hawkins** (Korean edition).
+Korean translation review for ***A Thousand Brains: A New Theory of Intelligence*** by **Jeff Hawkins** (Korean edition).
 
 ### KAIST Literary Award
 **Honorable Mention**, 22nd KAIST Literary Award Contest — category: Essay / Criticism.
