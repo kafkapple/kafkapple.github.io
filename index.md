@@ -37,11 +37,19 @@ permalink: /
 - **Virtuous Cycle of NeuroAI** — applying AI to neural and behavioral data, and drawing on neuroscience to inform AI architectures for adaptive, generalizable intelligence.
 - **Computational behavior analysis** — 3D reconstruction and embodied modeling of freely-moving animals to produce quantitative, interpretable behavioral descriptors.
 
-## Publications
+## Selected Publications
+
+A curated subset (4 most representative). [**View full publications →**](/publications/)
 
 ### 2026
 
-<div class="pub" markdown="1">
+<div class="pub" markdown="1" style="display:flex;gap:1em;align-items:flex-start;">
+<a href="https://sohwi-lim.github.io/CLAY/" style="flex:0 0 auto;">
+  <img src="/assets/img/pubs/clay-teaser.jpg" alt="CLAY teaser"
+       onerror="this.style.display='none'"
+       style="width:160px;height:auto;border-radius:4px;border:1px solid #eee;"/>
+</a>
+<div style="flex:1;min-width:0;">
 **CLAY: Conditional Visual Similarity Modulation in Vision-Language Embedding Space**
 {:.pub-title}
 
@@ -53,6 +61,7 @@ Sohwi Lim, Hyoseok Lee, **Jungjoon Park**, Tae-Hyun Oh.
 
 [[Project Page](https://sohwi-lim.github.io/CLAY/)] · [[arXiv](https://arxiv.org/abs/2604.11539)]
 {:.pub-links}
+</div>
 </div>
 
 ### 2025
@@ -87,20 +96,6 @@ Sohwi Lim, Hyoseok Lee, **Jungjoon Park**, Tae-Hyun Oh.
 {:.pub-links}
 </div>
 
-<div class="pub" markdown="1">
-**AVATAR: AI Vision Analysis for Three-Dimensional Action in Real-Time**
-{:.pub-title}
-
-Dae-Gun Kim, Jeongtaek Kim, Woochul Jung, **Jungjoon Park**, Minhyung Kim, Anna Shin, Yong-Cheol Jeong, Seunghwan Park, Gayeon Shin, Young Woo Lee, Junga Kwon, Daesoo Kim.
-{:.pub-authors}
-
-*CV4Animals Workshop @ CVPR 2022*, New Orleans. Poster ID 8, Track I. Not in CVPR proceedings.
-{:.pub-venue}
-
-[[Workshop page](https://www.cv4animals.com/2022-accepted-papers)]
-{:.pub-links}
-</div>
-
 ### 2019
 
 <div class="pub" markdown="1">
@@ -117,23 +112,7 @@ Joon-Hyuk Lee, Charles-Francois V. Latchoumane, **Jungjoon Park**, Jinhyun Kim, 
 {:.pub-links}
 </div>
 
-### 2016
-
-<div class="pub" markdown="1">
-**Variability in Empathic Fear Response among 11 Inbred Strains of Mice**
-{:.pub-title}
-
-S. Keum, **J. Park**, A. Kim, J. Park, K. K. Kim, J. Jeong, H.-S. Shin.
-{:.pub-authors}
-
-*Genes, Brain and Behavior* 15(2):231–242.
-{:.pub-venue}
-
-[[DOI](https://doi.org/10.1111/gbb.12278)]
-{:.pub-links}
-</div>
-
-<p class="pub-footnote"><small>* denotes equal contribution; <strong>bold</strong> denotes the author.</small></p>
+<p class="pub-footnote"><small>* denotes equal contribution; <strong>bold</strong> denotes the author. <a href="/publications/">View full list →</a></small></p>
 
 ## Teaching & Mentorship
 

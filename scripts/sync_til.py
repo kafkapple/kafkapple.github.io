@@ -105,11 +105,15 @@ def is_excluded(fm: dict) -> bool:
     return False
 
 
-def build_post(meta: dict) -> str:
+def build_post(meta: dict, source_fm: dict) -> str:
     """Construct Jekyll-compatible post with frontmatter."""
     body, _ = read_source(meta["source"])
     # Escape YAML-special chars in title
     title_safe = meta["title"].replace('"', '\\"')
+    # Pass through 'featured' flag from source frontmatter (for /til/ Featured panel)
+    featured_line = ""
+    if str(source_fm.get("featured", "")).lower() == "true":
+        featured_line = "featured: true\n"
     return (
         "---\n"
         f"layout: post\n"
@@ -117,6 +121,7 @@ def build_post(meta: dict) -> str:
         f"date: {meta['date']:%Y-%m-%d}\n"
         "categories: [til]\n"
         "tags: [TIL]\n"
+        f"{featured_line}"
         "---\n\n"
         f"{body}\n"
     )
@@ -160,7 +165,7 @@ def main() -> int:
         if args.dry_run:
             print(f"  [dry] would write {out_path.name}")
         else:
-            out_path.write_text(build_post(meta), encoding="utf-8")
+            out_path.write_text(build_post(meta, fm), encoding="utf-8")
             print(f"  + {out_path.name}")
         created += 1
 

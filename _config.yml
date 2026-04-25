@@ -51,7 +51,7 @@ menu:
   - title:             About
     url:               /
   - title:             Publications
-    url:               /#publications
+    url:               /publications/
   - title:             Research
     url:               /research/
     submenu:

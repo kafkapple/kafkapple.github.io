@@ -13,8 +13,25 @@ sitemap: true
   Auto-synced from <a href="https://github.com/kafkapple/TIL">kafkapple/TIL</a>.
   <strong>{{ site.categories.til | size }}</strong> notes total ·
   <a href="/search/">🔍 검색</a> ·
-  <a href="#heatmap">📊 통계</a>
+  <a href="#heatmap">📊 통계</a> ·
+  <a href="#featured">⭐ Featured</a>
 </p>
+
+{%- assign featured_til = site.categories.til | where: "featured", true -%}
+{%- if featured_til.size > 0 -%}
+<section id="featured" style="margin:1em 0 2em 0;padding:1em 1.2em;background:#f8f9fa;border-left:3px solid #36649B;border-radius:4px;">
+  <h2 style="margin-top:0;color:#36649B;">⭐ Featured TIL</h2>
+  <p style="font-size:0.9em;color:#666;margin:0.2em 0 0.8em 0;">큐레이션된 핵심 TIL 노트 ({{ featured_til.size }}개). 전체 목록은 아래 연도별 그룹 참조.</p>
+  <ul style="margin:0;padding-left:1.2em;">
+  {%- for post in featured_til -%}
+    <li style="margin-bottom:0.4em;">
+      <a href="{{ post.url }}"><strong>{{ post.title }}</strong></a>
+      <small style="color:#888;">· {{ post.date | date: "%Y-%m-%d" }}</small>
+    </li>
+  {%- endfor -%}
+  </ul>
+</section>
+{%- endif -%}
 
 {%- comment -%}
   Inline post-date list rendered at Jekyll build time (avoids fetch failure on /til/ page).
