@@ -16,8 +16,14 @@ sitemap: true
   <a href="#heatmap">📊 통계</a>
 </p>
 
-<!-- Posting heatmap (last 365 days) -->
-<details id="heatmap" style="margin:0 0 1.5em 0;">
+{%- comment -%}
+  Inline post-date list rendered at Jekyll build time (avoids fetch failure on /til/ page).
+{%- endcomment -%}
+<script id="til-dates" type="application/json">
+[{% for post in site.categories.til %}"{{ post.date | date: "%Y-%m-%d" }}"{% unless forloop.last %},{% endunless %}{% endfor %}]
+</script>
+
+<details id="heatmap" style="margin:0 0 1.5em 0;" open>
   <summary style="cursor:pointer;font-weight:600;color:#36649B;padding:0.4em 0;">
     📊 Posting heatmap (지난 1년)
   </summary>
@@ -28,38 +34,36 @@ sitemap: true
 
 <script>
 (function () {
-  fetch('/search.json').then(function (r) { return r.json(); }).then(function (all) {
-    var posts = all.filter(function (p) { return p.category === 'til'; });
-    var stats = document.getElementById('til-stats');
+  function renderStats() {
+    var statsEl = document.getElementById('til-stats');
     var hmap = document.getElementById('til-heatmap');
     var mstats = document.getElementById('til-month-stats');
+    var dataEl = document.getElementById('til-dates');
+    if (!statsEl || !dataEl) return;
 
-    // Aggregate by date
-    var byDate = {};
-    var byMonth = {};
-    var byYear = {};
-    posts.forEach(function (p) {
-      var d = p.date;
+    var dates;
+    try { dates = JSON.parse(dataEl.textContent.trim()); }
+    catch (e) { statsEl.textContent = '⚠ 데이터 파싱 실패: ' + e.message; return; }
+
+    if (!dates.length) { statsEl.textContent = '아직 TIL 포스트가 없습니다.'; return; }
+
+    var byDate = {}, byMonth = {}, byYear = {};
+    dates.forEach(function (d) {
       byDate[d] = (byDate[d] || 0) + 1;
-      var ym = d.substring(0, 7);
-      byMonth[ym] = (byMonth[ym] || 0) + 1;
-      var y = d.substring(0, 4);
-      byYear[y] = (byYear[y] || 0) + 1;
+      byMonth[d.substring(0,7)] = (byMonth[d.substring(0,7)] || 0) + 1;
+      byYear[d.substring(0,4)] = (byYear[d.substring(0,4)] || 0) + 1;
     });
+    var sorted = dates.slice().sort();
     var totalDays = Object.keys(byDate).length;
-    var firstDate = posts.length ? posts[posts.length-1].date : '-';
-    var lastDate = posts.length ? posts[0].date : '-';
+    statsEl.innerHTML =
+      '총 <strong>' + dates.length + '</strong>개 · 작성한 날 <strong>' + totalDays + '</strong>일 · ' +
+      '기간 <strong>' + sorted[0] + ' ~ ' + sorted[sorted.length-1] + '</strong>';
 
-    stats.innerHTML =
-      '총 <strong>' + posts.length + '</strong>개 · 작성한 날 <strong>' + totalDays + '</strong>일 · ' +
-      '기간 <strong>' + firstDate + ' ~ ' + lastDate + '</strong>';
-
-    // 365-day heatmap (rolling window)
+    // 53-week emoji heatmap
     var today = new Date();
-    var rows = ['', '', '', '', '', '', ''];
+    var rows = ['','','','','','',''];
     var dayNames = ['일','월','화','수','목','금','토'];
     var weeks = 53;
-    var labels = '';
     for (var w = weeks - 1; w >= 0; w--) {
       for (var d = 0; d < 7; d++) {
         var date = new Date(today);
@@ -70,24 +74,20 @@ sitemap: true
         rows[d] += sym;
       }
     }
-    var html = '';
-    for (var i = 0; i < 7; i++) {
-      html += '<div>' + dayNames[i] + ' ' + rows[i] + '</div>';
-    }
-    html += '<div style="margin-top:0.5em;color:#666;">⬜ 0 · 🟩 1 · 🟢 2 · 💚 3 · 🌳 4+ 노트/일</div>';
-    hmap.innerHTML = html;
+    hmap.innerHTML = rows.map(function (r, i) { return '<div>' + dayNames[i] + ' ' + r + '</div>'; }).join('') +
+      '<div style="margin-top:0.5em;color:#666;">⬜ 0 · 🟩 1 · 🟢 2 · 💚 3 · 🌳 4+ 노트/일</div>';
 
-    // Yearly + Monthly bar
-    var years = Object.keys(byYear).sort().reverse();
+    // Monthly bar
     var months = Object.keys(byMonth).sort();
     var maxMonth = Math.max.apply(null, Object.values(byMonth));
     var monthRows = months.map(function (m) {
       var n = byMonth[m];
-      var bar = '█'.repeat(Math.round(n / maxMonth * 30));
+      var bar = '█'.repeat(Math.max(1, Math.round(n / maxMonth * 30)));
       return '<tr><td style="padding-right:1em;">' + m + '</td>' +
              '<td style="font-family:monospace;color:#36649B;">' + bar + '</td>' +
              '<td style="padding-left:0.5em;">' + n + '</td></tr>';
     }).join('');
+    var years = Object.keys(byYear).sort().reverse();
     mstats.innerHTML =
       '<details open><summary style="font-weight:600;cursor:pointer;">📅 월별 누적</summary>' +
       '<table style="border-collapse:collapse;margin-top:0.5em;">' + monthRows + '</table></details>' +
@@ -95,8 +95,15 @@ sitemap: true
       '<ul style="margin:0.4em 0 0 1em;">' +
       years.map(function (y) { return '<li>' + y + ': <strong>' + byYear[y] + '</strong>개</li>'; }).join('') +
       '</ul></details>';
-  }).catch(function (e) {
-    document.getElementById('til-stats').textContent = '⚠ 통계 로드 실패: ' + e.message;
-  });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', renderStats);
+  } else {
+    renderStats();
+  }
+  // Re-run on Hydejack SPA navigation if available
+  var pushState = document.querySelector('hy-push-state');
+  if (pushState) pushState.addEventListener('hy-push-state-after', renderStats);
 })();
 </script>

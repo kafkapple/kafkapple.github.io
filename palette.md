@@ -3,7 +3,7 @@ layout: page
 title: Palette Preview (internal)
 description: >
   Sidebar color candidates — pick one and report back.
-permalink: /_palette/
+permalink: /palette/
 sitemap: false
 ---
 
