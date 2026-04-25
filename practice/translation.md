@@ -4,10 +4,12 @@ title: Translation Review — A Thousand Brains (2022)
 description: >
   Korean translation review for Jeff Hawkins' "A Thousand Brains:
   A New Theory of Intelligence".
-permalink: /culture/translation/
+permalink: /practice/translation/
+redirect_from:
+  - /culture/translation/
 ---
 
-[← Back to Culture & Arts](/culture/)
+[← Back to Practice](/practice/)
 
 **Year**: 2022.
 **Role**: Translation review (Korean edition).

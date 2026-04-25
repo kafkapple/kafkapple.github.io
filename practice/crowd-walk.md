@@ -4,10 +4,12 @@ title: Crowd Walk (2019)
 description: >
   Interdisciplinary performance with artist Lang Lee at Ilmin Museum of Art —
   real-time emotion recognition via face and EEG.
-permalink: /culture/crowd-walk/
+permalink: /practice/crowd-walk/
+redirect_from:
+  - /culture/crowd-walk/
 ---
 
-[← Back to Culture & Arts](/culture/)
+[← Back to Practice](/practice/)
 
 **Year**: 2019.
 **Venue**: Ilmin Museum of Art (일민미술관), Seoul, Republic of Korea.

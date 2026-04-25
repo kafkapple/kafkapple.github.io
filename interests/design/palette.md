@@ -4,7 +4,9 @@ title: Palette Preview
 description: >
   Sidebar color sandbox — click "Apply" to preview live, copy the YAML snippet,
   or tell me a number to commit it.
-permalink: /palette/
+permalink: /interests/design/palette/
+redirect_from:
+  - /palette/
 sitemap: false
 ---
 

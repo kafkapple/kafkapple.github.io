@@ -3,7 +3,9 @@ layout: page
 title: Design
 description: >
   UX references, visual design inspirations, and aesthetic directions I find compelling.
-permalink: /design/
+permalink: /interests/design/
+redirect_from:
+  - /design/
 sitemap: true
 ---
 
@@ -22,6 +24,35 @@ sitemap: true
 </style>
 
 A curated reference library for visual design, interaction patterns, and aesthetics that inform my side projects and creative work. Organized by style/approach rather than medium.
+
+---
+
+## Tools — Interactive
+
+<div class="ref-grid">
+
+<div class="ref-card">
+<h3>📐 <a href="/interests/design/theory/">Theory</a></h3>
+<span class="ref-tag tag-type">Reference</span><span class="ref-tag">Grid</span><span class="ref-tag">Gestalt</span>
+<p class="ref-desc">Grid systems, Gestalt principles, color psychology, generative art theory, and UX heuristics — a personal reference for design principles I draw on in data visualization and scientific figure-making.</p>
+<div class="ref-links"><a href="/interests/design/theory/">Open Theory →</a></div>
+</div>
+
+<div class="ref-card">
+<h3>👁 <a href="/interests/design/perception/">Perception Lab</a></h3>
+<span class="ref-tag tag-type">Interactive</span><span class="ref-tag tag-tool">Canvas</span><span class="ref-tag">Demo</span>
+<p class="ref-desc">Five interactive demos at the intersection of neuroscience and design — visual illusions, contrast sensitivity, and temporal perception. Hands-on exploration with adjustable parameters.</p>
+<div class="ref-links"><a href="/interests/design/perception/">Open Perception Lab →</a></div>
+</div>
+
+<div class="ref-card">
+<h3>🎨 <a href="/interests/design/palette/">Palette Sandbox</a></h3>
+<span class="ref-tag tag-type">Interactive</span><span class="ref-tag tag-tool">CSS Vars</span><span class="ref-tag">Live</span>
+<p class="ref-desc">Sidebar color preview — click <strong>Apply</strong> to swap the site accent in real time, copy YAML snippet, or send a code to commit. Forty+ curated palettes from academic to Asian-inspired.</p>
+<div class="ref-links"><a href="/interests/design/palette/">Open Palette →</a></div>
+</div>
+
+</div>
 
 ---
 
@@ -125,4 +156,4 @@ A curated reference library for visual design, interaction patterns, and aesthet
 
 ---
 
-*See also: [Design Theory →](/design/theory/) for grid systems, Gestalt, and generative art theory.*
+*See also: [Design Theory →](/interests/design/theory/) for grid systems, Gestalt, and generative art theory.*

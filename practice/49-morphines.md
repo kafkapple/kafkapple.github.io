@@ -4,10 +4,12 @@ title: 49 Morphines
 description: >
   Bass guitar in 49 Morphines (49 몰핀스) — Korean hardcore/post-hardcore band.
   Live recordings 2012–2025.
-permalink: /culture/49-morphines/
+permalink: /practice/49-morphines/
+redirect_from:
+  - /culture/49-morphines/
 ---
 
-[← Back to Culture & Arts](/culture/)
+[← Back to Practice](/practice/)
 
 **Role**: Bass guitar.
 **Band**: 49 Morphines (49 몰핀스 / 49 몰핀즈).

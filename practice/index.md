@@ -1,15 +1,18 @@
 ---
 layout: page
-title: Culture & Arts
+title: Practice
 description: >
-  Music, performance, writing, and translation.
-permalink: /culture/
+  Active creative practice — music performance, interdisciplinary collaborations,
+  writing, and translation.
+permalink: /practice/
+redirect_from:
+  - /culture/
 sitemap: true
 ---
 
 ## Music — Bands
 
-### [49 Morphines](/culture/49-morphines/)
+### [49 Morphines](/practice/49-morphines/)
 
 Bass · 2013–present
 
@@ -20,7 +23,7 @@ Bass · 2013–present
 
 ---
 
-### [Noeazy](/culture/noeazy/)
+### [Noeazy](/practice/noeazy/)
 
 Guitar · 2007–2019
 
@@ -31,7 +34,7 @@ Guitar · 2007–2019
 
 ---
 
-### [Jambinai](/culture/jambinai/)
+### [Jambinai](/practice/jambinai/)
 
 Guitar (guest) · 2013–2014
 
@@ -44,7 +47,7 @@ Guitar (guest) · 2013–2014
 
 ## Performance & Interdisciplinary
 
-### Crowd Walk (2019)
+### [Crowd Walk (2019)](/practice/crowd-walk/)
 
 Performed with artist **Lang Lee** at *Ilmin Museum of Art*, Seoul. Real-time emotion recognition from facial expression and EEG drove a crowd-movement performance piece — the audience's collective affective state became a choreographic parameter.
 
@@ -52,7 +55,7 @@ Performed with artist **Lang Lee** at *Ilmin Museum of Art*, Seoul. Real-time em
 
 ---
 
-### Project Doona Bae (2021)
+### [Project Doona Bae (2021)](/practice/doona-bae/)
 
 Behavioral and fMRI study of actress Doona Bae's empathic abilities, published as a chapter in the companion book *Actress Doona Bae*. Examined neural correlates of screen performance and empathic resonance using quantitative imaging methods.
 
@@ -62,7 +65,7 @@ Behavioral and fMRI study of actress Doona Bae's empathic abilities, published a
 
 ## Writing & Translation
 
-### Translation Review (2022)
+### [Translation Review (2022)](/practice/translation/)
 
 Contributed as a science reviewer for the Korean edition of Jeff Hawkins' ***A Thousand Brains: A New Theory of Intelligence*** (천 개의 뇌, 이데아, 2022). Verified technical accuracy of neuroscience and memory hierarchy passages.
 
@@ -70,7 +73,7 @@ Contributed as a science reviewer for the Korean edition of Jeff Hawkins' ***A T
 
 ---
 
-### KAIST Literary Award
+### [KAIST Literary Award](/practice/literary/)
 
 Honorable Mention, 22nd KAIST Literary Contest, Essay/Criticism category. The piece explored the phenomenology of memory from a neuroscience perspective.
 

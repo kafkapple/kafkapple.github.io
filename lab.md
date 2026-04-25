@@ -292,4 +292,22 @@ Experiments in creative coding, generative systems, and browser-native interacti
 
 ---
 
-*Source for all experiments: vanilla Canvas API + no dependencies. See [Design references →](/design/) for tools and inspirations.*
+*Source for all experiments: vanilla Canvas API + no dependencies. See [Design references →](/interests/design/) for tools and inspirations.*
+
+---
+
+## Site Experiments
+
+External test sites I'm building outside this Jekyll repo to evaluate alternative templates and frameworks.
+
+<div class="lab-grid">
+
+<div class="lab-card" style="padding:1em 1.1em;">
+<div class="lab-card-title" style="border:none;padding:0;">Next.js Blog Template <span class="lab-tag">Next.js</span><span class="lab-tag">test build</span></div>
+<div class="lab-card-desc" style="padding:0.5em 0 0 0;">
+A static-export Next.js blog deployed via GitHub Actions to a project page. Used to evaluate Next.js + MDX as an alternative to the current Jekyll/Hydejack stack.<br>
+→ <a href="https://kafkapple.github.io/nextjs-blog/" target="_blank" rel="noopener">View live</a> · <a href="https://github.com/kafkapple/nextjs-blog" target="_blank" rel="noopener">Source</a>
+</div>
+</div>
+
+</div>

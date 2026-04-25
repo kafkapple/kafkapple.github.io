@@ -4,10 +4,12 @@ title: Jambinai
 description: >
   Guest guitar in the Korean fusion-traditional band Jambinai —
   NAVER Onstage Episode 157 (2013).
-permalink: /culture/jambinai/
+permalink: /practice/jambinai/
+redirect_from:
+  - /culture/jambinai/
 ---
 
-[← Back to Culture & Arts](/culture/)
+[← Back to Practice](/practice/)
 
 **Role**: Guitar (guest) · **Period**: 2013–2014
 

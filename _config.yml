@@ -65,21 +65,34 @@ menu:
         url:           /process/
       - title:         Talks
         url:           /talks/
-  - title:             Culture & Arts
-    url:               /culture/
+  - title:             Practice
+    url:               /practice/
     submenu:
       - title:         Overview
-        url:           /culture/
-      - title:         Design References
-        url:           /design/
-      - title:         Design Theory
-        url:           /design/theory/
-      - title:         Perception Lab
-        url:           /design/perception/
-      - title:         "🎨 Palette Studio"
-        url:           /palette/
-      - title:         Lab
-        url:           /lab/
+        url:           /practice/
+      - title:         Noeazy
+        url:           /practice/noeazy/
+      - title:         49 Morphines
+        url:           /practice/49-morphines/
+      - title:         Jambinai
+        url:           /practice/jambinai/
+  - title:             Interests
+    url:               /interests/
+    submenu:
+      - title:         Overview
+        url:           /interests/
+      - title:         "🎨 Design"
+        url:           /interests/design/
+      - title:         "📚 Literature"
+        url:           /interests/literature/
+      - title:         "🎬 Film"
+        url:           /interests/film/
+      - title:         "🎵 Music"
+        url:           /interests/music/
+      - title:         "📖 Comics"
+        url:           /interests/comics/
+  - title:             Lab
+    url:               /lab/
   - title:             TIL
     url:               /til/
   - title:             Blog
@@ -316,7 +329,7 @@ hydejack:
   # Only use if you know what Service Workers are and how they can impact your site!
   offline:
     enabled:           true
-    cache_version:     15
+    cache_version:     16
     precache_assets:
       - /assets/img/swipe.svg
       - /assets/img/logo.png

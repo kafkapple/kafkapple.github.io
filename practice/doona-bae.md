@@ -4,10 +4,12 @@ title: Project Doona Bae (2021)
 description: >
   Behavioral and fMRI study assessing empathic abilities of actress Bae Doona;
   featured as a book chapter.
-permalink: /culture/doona-bae/
+permalink: /practice/doona-bae/
+redirect_from:
+  - /culture/doona-bae/
 ---
 
-[← Back to Culture & Arts](/culture/)
+[← Back to Practice](/practice/)
 
 **Year**: 2021.
 **Role**: Project leader.

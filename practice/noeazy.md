@@ -5,11 +5,13 @@ description: >
   Guitar in the Korean metalcore band Noeazy — Taubertal Festival
   Germany 2016 (Emergenza International Final), studio releases,
   and 2007–2019 live archive.
-permalink: /culture/noeazy/
+permalink: /practice/noeazy/
+redirect_from:
+  - /culture/noeazy/
 sitemap: true
 ---
 
-[← Back to Culture & Arts](/culture/)
+[← Back to Practice](/practice/)
 
 **Role**: Guitar · **Period**: 2007–2019.09 · **Genre**: Metalcore
 

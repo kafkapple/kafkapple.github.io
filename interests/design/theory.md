@@ -3,7 +3,9 @@ layout: page
 title: Design Theory
 description: >
   Grid systems, Gestalt, color psychology, generative art theory, and UX principles.
-permalink: /design/theory/
+permalink: /interests/design/theory/
+redirect_from:
+  - /design/theory/
 sitemap: true
 ---
 
@@ -172,4 +174,4 @@ Gestalt principles describe how the visual system groups elements before conscio
 
 ---
 
-*Back to [Design references →](/design/)*
+*Back to [Design references →](/interests/design/)*

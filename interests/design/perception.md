@@ -4,7 +4,9 @@ title: Perception Lab
 description: >
   Five interactive demos at the intersection of neuroscience and design —
   visual illusions, contrast sensitivity, and temporal perception.
-permalink: /design/perception/
+permalink: /interests/design/perception/
+redirect_from:
+  - /design/perception/
 sitemap: true
 ---
 

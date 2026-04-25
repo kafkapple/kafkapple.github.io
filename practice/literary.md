@@ -3,10 +3,12 @@ layout: page
 title: KAIST Literary Award
 description: >
   Honorable Mention, 22nd KAIST Literary Award Contest — Essay/Criticism.
-permalink: /culture/literary/
+permalink: /practice/literary/
+redirect_from:
+  - /culture/literary/
 ---
 
-[← Back to Culture & Arts](/culture/)
+[← Back to Practice](/practice/)
 
 **Award**: Honorable Mention.
 **Contest**: 22nd KAIST Literary Award.
