@@ -47,15 +47,25 @@ sitemap: false
 <script>
 (function () {
   function applyPalette(name, c1, c2) {
+    var grad = 'linear-gradient(to bottom, ' + c1 + ', ' + c2 + ')';
+    // Method 1: direct inline-style override on the actual sidebar-bg element
+    // (Hydejack writes its gradient as an inline style="background:...", so
+    //  setting setProperty with 'important' on the same element wins.)
+    document.querySelectorAll('.sidebar-bg').forEach(function (el) {
+      el.style.setProperty('background', grad, 'important');
+      el.style.setProperty('background-color', c2, 'important');
+      el.style.setProperty('background-image', 'none', 'important');
+      el.style.setProperty('background', grad, 'important');
+    });
+    // Method 2: inject CSS rule with !important as backup (covers re-renders)
     var styleId = 'palette-override';
     var existing = document.getElementById(styleId);
     if (existing) existing.remove();
     var style = document.createElement('style');
     style.id = styleId;
-    // Hydejack puts the gradient on .sidebar-bg via inline style; override it.
     style.textContent =
-      '.sidebar-bg { background: linear-gradient(to bottom, ' + c1 + ', ' + c2 + ') !important; } ' +
-      '#_sidebar, .sidebar { background: linear-gradient(to bottom, ' + c1 + ', ' + c2 + ') !important; } ' +
+      '.sidebar-bg { background: ' + grad + ' !important; background-image: none !important; } ' +
+      '#_sidebar { background: ' + grad + ' !important; } ' +
       ':root { --accent-color: ' + c2 + ' !important; }';
     document.head.appendChild(style);
     document.getElementById('preview-name').textContent = name + ' (' + c2 + ')';
@@ -70,6 +80,11 @@ sitemap: false
   function resetPalette() {
     var existing = document.getElementById('palette-override');
     if (existing) existing.remove();
+    document.querySelectorAll('.sidebar-bg').forEach(function (el) {
+      el.style.removeProperty('background');
+      el.style.removeProperty('background-color');
+      el.style.removeProperty('background-image');
+    });
     document.getElementById('preview-name').textContent = '(none — click Apply)';
     document.getElementById('yaml-snippet').textContent = '— Apply a palette to see the snippet —';
     localStorage.removeItem('palette-preview');
@@ -467,6 +482,115 @@ sitemap: false
     <code>rgb(85,90,95)</code>
     <div class="swatch-note"><ul><li>Pencil-lead gray</li><li>Neutral but with depth</li></ul></div>
     <button class="apply-btn" data-name="E6. Graphite" data-c1="rgb(50,55,60)" data-c2="rgb(85,90,95)">▶ Apply</button>
+  </div>
+</div>
+
+</div>
+
+## G. Pantone Color of the Year (chronological)
+{:.section-h}
+
+Official Pantone Color of the Year, 2017–2025. All cards same size for consistent comparison.
+
+<div class="swatch-grid">
+
+<div class="swatch">
+  <div class="swatch-top" style="background: linear-gradient(to bottom, rgb(96,127,53), rgb(136,176,75));">G1. 2017 — Greenery</div>
+  <div class="swatch-body">
+    <div class="swatch-name">Greenery</div>
+    <code>rgb(136,176,75)</code> · Pantone 15-0343
+    <div class="swatch-note"><ul><li>Fresh spring green</li><li>Use as accent only — too saturated for sidebar</li></ul></div>
+    <button class="apply-btn" data-name="G1. Greenery (2017)" data-c1="rgb(96,127,53)" data-c2="rgb(136,176,75)">▶ Apply</button>
+  </div>
+</div>
+
+<div class="swatch">
+  <div class="swatch-top" style="background: linear-gradient(to bottom, rgb(66,53,98), rgb(95,75,139));">G2. 2018 — Ultra Violet</div>
+  <div class="swatch-body">
+    <div class="swatch-name">Ultra Violet</div>
+    <code>rgb(95,75,139)</code> · Pantone 18-3838
+    <div class="swatch-note"><ul><li>Mystical / creative violet</li><li>Distinctive, sober</li></ul></div>
+    <button class="apply-btn" data-name="G2. Ultra Violet (2018)" data-c1="rgb(66,53,98)" data-c2="rgb(95,75,139)">▶ Apply</button>
+  </div>
+</div>
+
+<div class="swatch">
+  <div class="swatch-top" style="background: linear-gradient(to bottom, rgb(194,75,64), rgb(255,111,97));">G3. 2019 — Living Coral</div>
+  <div class="swatch-body">
+    <div class="swatch-name">Living Coral</div>
+    <code>rgb(255,111,97)</code> · Pantone 16-1546
+    <div class="swatch-note"><ul><li>Warm coral pink</li><li>⚠ Very high saturation — sparingly</li></ul></div>
+    <button class="apply-btn" data-name="G3. Living Coral (2019)" data-c1="rgb(194,75,64)" data-c2="rgb(255,111,97)">▶ Apply</button>
+  </div>
+</div>
+
+<div class="swatch">
+  <div class="swatch-top" style="background: linear-gradient(to bottom, rgb(8,52,94), rgb(15,76,129));">G4. 2020 — Classic Blue</div>
+  <div class="swatch-body">
+    <div class="swatch-name">Classic Blue</div>
+    <code>rgb(15,76,129)</code> · Pantone 19-4052
+    <div class="swatch-note"><ul><li>Trustworthy, calm</li><li>⭐ Best academic Pantone</li></ul></div>
+    <button class="apply-btn" data-name="G4. Classic Blue (2020)" data-c1="rgb(8,52,94)" data-c2="rgb(15,76,129)">▶ Apply</button>
+  </div>
+</div>
+
+<div class="swatch">
+  <div class="swatch-top" style="background: linear-gradient(to bottom, rgb(111,113,115), rgb(147,149,151));">G5. 2021 — Ultimate Gray</div>
+  <div class="swatch-body">
+    <div class="swatch-name">Ultimate Gray</div>
+    <code>rgb(147,149,151)</code> · Pantone 17-5104
+    <div class="swatch-note"><ul><li>True neutral monochrome</li><li>(2021 paired with Illuminating yellow)</li></ul></div>
+    <button class="apply-btn" data-name="G5. Ultimate Gray (2021)" data-c1="rgb(111,113,115)" data-c2="rgb(147,149,151)">▶ Apply</button>
+  </div>
+</div>
+
+<div class="swatch">
+  <div class="swatch-top" style="background: linear-gradient(to bottom, rgb(191,166,62), rgb(245,223,77)); color:#5C5018;">G5b. 2021 — Illuminating</div>
+  <div class="swatch-body">
+    <div class="swatch-name">Illuminating</div>
+    <code>rgb(245,223,77)</code> · Pantone 13-0647
+    <div class="swatch-note"><ul><li>Optimistic yellow (paired with Ultimate Gray)</li><li>⚠ Strong — accent only</li></ul></div>
+    <button class="apply-btn" data-name="G5b. Illuminating (2021)" data-c1="rgb(191,166,62)" data-c2="rgb(245,223,77)">▶ Apply</button>
+  </div>
+</div>
+
+<div class="swatch">
+  <div class="swatch-top" style="background: linear-gradient(to bottom, rgb(77,78,128), rgb(102,103,171));">G6. 2022 — Very Peri</div>
+  <div class="swatch-body">
+    <div class="swatch-name">Very Peri</div>
+    <code>rgb(102,103,171)</code> · Pantone 17-3938
+    <div class="swatch-note"><ul><li>Periwinkle blue-violet</li><li>Calm + curious</li></ul></div>
+    <button class="apply-btn" data-name="G6. Very Peri (2022)" data-c1="rgb(77,78,128)" data-c2="rgb(102,103,171)">▶ Apply</button>
+  </div>
+</div>
+
+<div class="swatch">
+  <div class="swatch-top" style="background: linear-gradient(to bottom, rgb(140,27,54), rgb(187,38,73));">G7. 2023 — Viva Magenta</div>
+  <div class="swatch-body">
+    <div class="swatch-name">Viva Magenta</div>
+    <code>rgb(187,38,73)</code> · Pantone 18-1750
+    <div class="swatch-note"><ul><li>Bold crimson-magenta</li><li>⚠ High intensity</li></ul></div>
+    <button class="apply-btn" data-name="G7. Viva Magenta (2023)" data-c1="rgb(140,27,54)" data-c2="rgb(187,38,73)">▶ Apply</button>
+  </div>
+</div>
+
+<div class="swatch">
+  <div class="swatch-top" style="background: linear-gradient(to bottom, rgb(219,146,112), rgb(255,190,152)); color:#5C3A2E;">G8. 2024 — Peach Fuzz</div>
+  <div class="swatch-body">
+    <div class="swatch-name">Peach Fuzz</div>
+    <code>rgb(255,190,152)</code> · Pantone 13-1023
+    <div class="swatch-note"><ul><li>Soft peach</li><li>⚠ Light — needs dark text</li></ul></div>
+    <button class="apply-btn" data-name="G8. Peach Fuzz (2024)" data-c1="rgb(219,146,112)" data-c2="rgb(255,190,152)">▶ Apply</button>
+  </div>
+</div>
+
+<div class="swatch">
+  <div class="swatch-top" style="background: linear-gradient(to bottom, rgb(128,89,77), rgb(164,120,100));">G9. 2025 — Mocha Mousse</div>
+  <div class="swatch-body">
+    <div class="swatch-name">Mocha Mousse</div>
+    <code>rgb(164,120,100)</code> · Pantone 17-1230
+    <div class="swatch-note"><ul><li>Warm latte / cocoa</li><li>Earthy, comforting</li></ul></div>
+    <button class="apply-btn" data-name="G9. Mocha Mousse (2025)" data-c1="rgb(128,89,77)" data-c2="rgb(164,120,100)">▶ Apply</button>
   </div>
 </div>
 

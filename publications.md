@@ -70,7 +70,7 @@ Sohwi Lim, Hyoseok Lee, **Jungjoon Park**, Tae-Hyun Oh.
 **AVATAR: AI Vision Analysis for Three-Dimensional Action in Real-Time** *(Workshop, Non-Archival)*
 {:.pub-title}
 
-Dae-Gun Kim, Jeongtaek Kim, Woochul Jung, **Jungjoon Park**, Minhyung Kim, Anna Shin, Yong-Cheol Jeong, Seunghwan Park, Gayeon Shin, Young Woo Lee, Junga Kwon, Daesoo Kim.
+Daegun Kim, Jineun Kim, Wongyo Jung, **Jungjoon Park**, Mingyu Kim, Anna Shin, Yong-Cheol Jeong, Seahyung Park, Gwanhoo Shin, Ye Won Lee, Jea Kwon, Daesoo Kim.
 {:.pub-authors}
 
 *CV4Animals Workshop @ CVPR 2022*, New Orleans. Poster ID 8, Track I. Not in CVPR proceedings. *(Workshop poster author list (12 names) verified via official poster schedule; bioRxiv preprint 10.1101/2021.12.31.474634 is an earlier core-author version.)*

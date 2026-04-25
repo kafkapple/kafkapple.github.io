@@ -1,10 +1,13 @@
 <!-- Custom head injection -->
 
-<!-- Force light mode (Hydejack free uses prefers-color-scheme:dark via PRO sass which is bundled but not always desired) -->
+<!-- Force light mode + remove avatar's body-bg-colored ring (visible as dark border in light mode) -->
 <style>
-  /* Always render in light mode regardless of OS preference. Comment this block out to allow OS-driven dark mode (only effective if Hydejack PRO sass present). */
-  :root { color-scheme: light only; }
+  :root { color-scheme: light only; --body-bg: #fff; }
   body { background-color: #fff; color: #333; }
+  /* Hydejack's `.content .avatar` adds `border: 1rem solid var(--body-bg)` for floating frame.
+     In some pages the body-bg variable resolves dark before page CSS loads, causing a visible
+     black ring around the profile photo on light backgrounds. Force the ring transparent. */
+  .content .avatar { border: 0 !important; box-shadow: none !important; }
 </style>
 
 {%- comment -%}
