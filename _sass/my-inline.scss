@@ -1,4 +1,8 @@
-// You can add CSS rules here that will be inlined into each document.
-// .sidebar a {
-//   text-shadow: rgba(0, 0, 0, 0.25) 0.1rem 0.1rem 0.15rem;
-// }
+// Force Forest Green accent color — overrides any cached per-page inline style
+html {
+  --accent-color: rgb(46,85,56);
+  --theme-color: rgb(26,56,40);
+}
+// Ensure sidebar avatar background matches theme (visible when photo fails to load)
+.sidebar-about .avatar,
+.avatar { background-color: rgb(46,85,56); }

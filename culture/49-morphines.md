@@ -16,11 +16,11 @@ permalink: /culture/49-morphines/
 A Korean hardcore / post-hardcore band; I play bass. Below is a featured
 recent recording followed by a chronological list of live performances.
 
-## Featured — Agp Studio (Sep 15, 2025)
+## Featured — EarthDom, Tokyo (Sep 15, 2025)
 
-{% include youtube.html id="VFlzVLBumpI" title="[Agp Studio] 49 Morphines — September 15, 2025" quality="maxresdefault" %}
+{% include youtube.html id="VFlzVLBumpI" title="49 Morphines — Live @ EarthDom, Tokyo, 2025-09-15" quality="maxresdefault" %}
 
-Studio session capture (Sep 15, 2025).
+Japan tour, EarthDom (新大久保, Shinjuku, Tokyo).
 
 ## Heart of Despair — Club SHARP (Jul 9, 2022)
 
@@ -32,7 +32,7 @@ New Flash Vol. 5 show.
 
 | Date | Title / Venue | Link |
 |---|---|---|
-| 2025-09-15 | Agp Studio session | [▶](https://youtu.be/VFlzVLBumpI) |
+| 2025-09-15 | EarthDom, Tokyo (Japan) | [▶](https://youtu.be/VFlzVLBumpI) |
 | 2025-08-24 | *Initiate* — palecistus × 49morphines @babydoll, Seoul | [▶](https://youtu.be/eVFmVxJ7fd8) |
 | 2022-08-14 | CLUB AOR, Hongdae, Seoul | [▶](https://youtu.be/AvqPknA0bkY) |
 | 2022-07-09 | *Heart of Despair* @ Club SHARP (New Flash Vol. 5) | [▶](https://youtu.be/orW4fuTrojg) |

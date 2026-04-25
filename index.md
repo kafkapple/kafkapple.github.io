@@ -41,10 +41,7 @@ permalink: /
 - **Virtuous Cycle of NeuroAI** — applying AI to neural and behavioral data, and drawing on neuroscience to inform AI architectures for adaptive, generalizable intelligence.
 - **Computational behavior analysis** — 3D reconstruction and embodied modeling of freely-moving animals to produce quantitative, interpretable behavioral descriptors.
 
-## Selected Publications
-
-<!-- Featured publications: to add/remove from homepage, set `featured: true/false` in _data/publications.yml -->
-All current publications shown. [**View full list →**](/publications/)
+## Publications
 
 {% assign featured = site.data.publications %}
 {% assign featured_years = featured | map: "year" | uniq | sort | reverse %}
@@ -57,7 +54,7 @@ All current publications shown. [**View full list →**](/publications/)
 {% endfor %}
 {% endfor %}
 
-<p class="pub-footnote"><small>* denotes equal contribution; <strong>bold</strong> denotes the author. <a href="/publications/">View full list →</a></small></p>
+<p class="pub-footnote"><small>* denotes equal contribution; <strong>bold</strong> denotes the author. <a href="https://scholar.google.com/citations?user=D_rZCWYAAAAJ">Google Scholar</a></small></p>
 
 ## Selected Projects
 

@@ -4,15 +4,14 @@ title: Noeazy
 description: >
   Guitar in the Korean metalcore band Noeazy — Taubertal Festival
   Germany 2016 (Emergenza International Final), studio releases,
-  and 2009–2019 live archive.
+  and 2007–2019 live archive.
 permalink: /culture/noeazy/
+sitemap: true
 ---
 
 [← Back to Culture & Arts](/culture/)
 
-**Role**: Guitar.
-**Genre**: Metalcore.
-**Origin**: Daejeon, Republic of Korea.
+**Role**: Guitar · **Period**: 2007–2019.09 · **Genre**: Metalcore
 
 Noeazy (노이지) is a Korean metalcore band; I played guitar across a long
 stretch including the international competition years.
@@ -90,11 +89,35 @@ Individual song captures from the same set:
 - New EP "Bioshock" Thank you Video Vol.1 — [▶](https://youtu.be/XX3Ufo9__jY)
 - 박기타 마지막 공연 인터뷰 (interview before farewell show) — [▶](https://youtu.be/8Ba6RF1Kk9c)
 
-## Highlights
+## International Performances
 
-- **2016** — 3rd award, Emergenza International Final, Taubertal Festival, Germany
-- **2012** — Performance on EBS Space Sympathy (Korean public TV broadcast)
-- Multiple EPs (*Bioshock*, ...) and tours of Korea + select international venues
+| Date | Venue | Location |
+|------|-------|----------|
+| 2012.04.14 | Drunkard's Stadium | Kashiwa, Chiba, Japan |
+| 2016.08.14 | **Taubertal Festival — Emergenza Final (3rd place, encore)** | Rothenburg ob der Tauber, Germany |
+| 2018.02.24 | Huck Finn (Grind Freaks × Undergrind) | Nagoya, Japan |
+
+## Festivals
+
+| Year | Festival |
+|------|----------|
+| 2013.07.06 | 대전 호락호ROCK 페스티벌 (구 충남도청) |
+| 2014 | 잔다리페스타 · 그린플러그드 페스티벌 |
+| 2015 | 잔다리페스타 · 라이브클럽데이 |
+| 2016 | 잔다리페스타 · 에머겐자 |
+| 2017 | 잔다리페스타 |
+| — | KAIST 축제 |
+| 2019 | JUMF 전주 얼티밋 뮤직 페스티벌 · Punch Drunk Fest |
+
+## Recognition
+
+| Year | Honor |
+|------|-------|
+| 2010.07 | EBS 공감 헬로루키 선정 |
+| 2010.08.14 | 제전 국제 음악 영화제 라이브초이스 #68 |
+| 2010.10 | 쌈싸페 숨은 고수 |
+| — | 펜타포트 락 페스티벌 / 부산 락 페스티벌 출연 |
+| **2019** | **한국대중음악상 노미네이트** |
 
 ## Links
 

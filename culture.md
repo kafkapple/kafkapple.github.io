@@ -2,32 +2,27 @@
 layout: page
 title: Culture & Arts
 description: >
-  Music, performance, writing, and translation — activities outside academic
-  research.
+  Music, performance, writing, and translation.
 permalink: /culture/
 sitemap: true
 ---
 
-Activities deliberately separated from the academic CV.
-
----
-
 ## Music — Bands
 
-### 49 Morphines
+### [49 Morphines](/culture/49-morphines/)
 
-Bass guitar. Indie rock band active in the Daejeon / KAIST scene. The name references a study on placebo analgesia.
+Bass · 2013–present
 
 <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;margin:1em 0 2em 0;">
-<iframe src="https://www.youtube.com/embed/HbphtFspT7A" frameborder="0" allowfullscreen
+<iframe src="https://www.youtube.com/embed/VFlzVLBumpI" frameborder="0" allowfullscreen
   style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:4px;"></iframe>
 </div>
 
 ---
 
-### Noeazy
+### [Noeazy](/culture/noeazy/)
 
-Guitar in a Korean metalcore band. **2016 Emergenza International Final** (Düsseldorf, Germany) — competed as one of ~1,000 bands. Earlier: *2012 EBS Space Sympathy* broadcast.
+Guitar · 2007–2019
 
 <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;margin:1em 0 2em 0;">
 <iframe src="https://www.youtube.com/embed/zYNiCLNHMHo" frameborder="0" allowfullscreen
@@ -36,9 +31,9 @@ Guitar in a Korean metalcore band. **2016 Emergenza International Final** (Düss
 
 ---
 
-### Jambinai
+### [Jambinai](/culture/jambinai/)
 
-Brief guest collaboration with Jambinai, a post-rock/folk fusion group known internationally. Performed at *2013 NAVER Onstage*, a curated Korean music showcase.
+Guitar (guest) · 2013–2014
 
 <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;margin:1em 0 2em 0;">
 <iframe src="https://www.youtube.com/embed/56dv3XHUISY" frameborder="0" allowfullscreen
@@ -77,10 +72,10 @@ Contributed as a science reviewer for the Korean edition of Jeff Hawkins' ***A T
 
 ### KAIST Literary Award
 
-Honorable Mention, 22nd KAIST Literary Contest, Essay/Criticism category. The piece explored the phenomenology of memory from a neuroscience perspective — written for a general audience.
+Honorable Mention, 22nd KAIST Literary Contest, Essay/Criticism category. The piece explored the phenomenology of memory from a neuroscience perspective.
 
 `Essay · Honorable Mention`
 
 ---
 
-Academic honors (e.g., Neuroscience 101 instruction, Computational Neuroscience Winter School) are listed on the [main page](/#awards--honors). Talks and seminars: see [Talks](/talks/).
+Academic honors are listed on the [main page](/#awards--honors). Talks and seminars: see [Talks](/talks/).

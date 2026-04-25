@@ -9,8 +9,7 @@ permalink: /culture/jambinai/
 
 [← Back to Culture & Arts](/culture/)
 
-**Role**: Guitar (guest / brief period).
-**Period**: ~2013.
+**Role**: Guitar (guest) · **Period**: 2013–2014
 
 Jambinai (잠비나이) is a Korean post-rock band that fuses traditional
 Korean instruments (geomungo, haegeum, piri) with electric guitar and

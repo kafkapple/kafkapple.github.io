@@ -16,7 +16,7 @@ sitemap: true
 .pub-footnote { margin-top: 0.3em; color: #777; font-size: 0.85em; }
 </style>
 
-A complete chronological listing. Selected works are highlighted on the [home page](/#selected-publications).
+Complete chronological listing.
 
 {% assign years = site.data.publications | map: "year" | uniq | sort | reverse %}
 {% for year in years %}
