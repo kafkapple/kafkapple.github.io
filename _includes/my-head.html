@@ -1,4 +1,12 @@
-<!-- Add HTML tags here to be included in the head. You can delete the below: -->
+<!-- Custom head injection -->
+
+<!-- Force light mode (Hydejack free uses prefers-color-scheme:dark via PRO sass which is bundled but not always desired) -->
+<style>
+  /* Always render in light mode regardless of OS preference. Comment this block out to allow OS-driven dark mode (only effective if Hydejack PRO sass present). */
+  :root { color-scheme: light only; }
+  body { background-color: #fff; color: #333; }
+</style>
+
 <link rel="dns-prefetch" href="https://assets.gumroad.com">
 <script type="module">
   const loadJS = x => new Promise(r => window.loadJS(x).addEventListener('load', r));

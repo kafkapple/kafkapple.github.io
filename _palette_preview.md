@@ -117,9 +117,118 @@ theme_color: rgb(36,65,98)
 ### 실시간 토글 가능성 (참고)
 
 - **Hydejack PRO**: Light/Dark mode + accent 토글 내장 (유료)
-- **Free + 커스텀**: JavaScript + localStorage 기반 팔레트 스위처 구현 가능 (사용자가 CSS 변수를 덮어쓰고 선택 기억)
-  - 장점: 방문자 개인화 유지
-  - 단점: CSS 구조 개입 필요, 테마 재작성 리스크
-  - **권장도**: 개인 홈페이지에선 오버엔지니어링. 사이드바 색은 **한 번 정하면 끝**이 실용적.
+- **Free + 커스텀**: JavaScript + localStorage 기반 팔레트 스위처 구현 가능
+- **권장도**: 개인 홈페이지에선 오버엔지니어링. 사이드바 색은 **한 번 정하면 끝**이 실용적.
 
-취향대로 1–8 중 번호 알려주세요.
+---
+
+## Pantone Color of the Year (2017–2025)
+
+학술 사이트에 적용 시 채도(saturation) 주의 — 너무 강한 색은 피로감 유발. 아래는 reference 가치, 톤 다운하여 사용 권장.
+
+<div class="swatch-grid">
+
+<div class="swatch">
+  <div class="swatch-top" style="background: linear-gradient(to bottom, #80594D, #A47864);">P1. Mocha Mousse (2025)</div>
+  <div class="swatch-body">
+    <div class="swatch-name">Pantone 17-1230 — Mocha Mousse</div>
+    <code>#A47864</code><br/>
+    <div class="swatch-note">2025 올해의 색. 부드러운 카페오레, 따뜻함.</div>
+  </div>
+</div>
+
+<div class="swatch">
+  <div class="swatch-top" style="background: linear-gradient(to bottom, #DB9270, #FFBE98); color:#5C3A2E;">P2. Peach Fuzz (2024)</div>
+  <div class="swatch-body">
+    <div class="swatch-name">Pantone 13-1023 — Peach Fuzz</div>
+    <code>#FFBE98</code><br/>
+    <div class="swatch-note">2024 올해의 색. 부드러운 복숭아. 가독성 위해 어두운 텍스트 필요.</div>
+  </div>
+</div>
+
+<div class="swatch">
+  <div class="swatch-top" style="background: linear-gradient(to bottom, #8C1B36, #BB2649);">P3. Viva Magenta (2023)</div>
+  <div class="swatch-body">
+    <div class="swatch-name">Pantone 18-1750 — Viva Magenta</div>
+    <code>#BB2649</code><br/>
+    <div class="swatch-note">2023 올해의 색. 강렬한 마젠타. 학술용엔 다소 강함.</div>
+  </div>
+</div>
+
+<div class="swatch">
+  <div class="swatch-top" style="background: linear-gradient(to bottom, #4D4E80, #6667AB);">P4. Very Peri (2022)</div>
+  <div class="swatch-body">
+    <div class="swatch-name">Pantone 17-3938 — Very Peri</div>
+    <code>#6667AB</code><br/>
+    <div class="swatch-note">2022 올해의 색. periwinkle 보라. 신비롭고 차분.</div>
+  </div>
+</div>
+
+<div class="swatch">
+  <div class="swatch-top" style="background: linear-gradient(to bottom, #6F7173, #939597);">P5. Ultimate Gray (2021)</div>
+  <div class="swatch-body">
+    <div class="swatch-name">Pantone 17-5104 — Ultimate Gray</div>
+    <code>#939597</code><br/>
+    <div class="swatch-note">2021 올해의 색 (with Illuminating). 안정적 중립.</div>
+  </div>
+</div>
+
+<div class="swatch">
+  <div class="swatch-top" style="background: linear-gradient(to bottom, #BFA63E, #F5DF4D); color:#5C5018;">P6. Illuminating (2021)</div>
+  <div class="swatch-body">
+    <div class="swatch-name">Pantone 13-0647 — Illuminating</div>
+    <code>#F5DF4D</code><br/>
+    <div class="swatch-note">2021 올해의 색 짝꿍. 활기찬 노랑. 강조용으로만.</div>
+  </div>
+</div>
+
+<div class="swatch">
+  <div class="swatch-top" style="background: linear-gradient(to bottom, #082F58, #0F4C81);">P7. Classic Blue (2020) ⭐</div>
+  <div class="swatch-body">
+    <div class="swatch-name">Pantone 19-4052 — Classic Blue</div>
+    <code>#0F4C81</code><br/>
+    <div class="swatch-note">2020 올해의 색. 학술 사이트에 가장 적합. 신뢰/안정.</div>
+  </div>
+</div>
+
+<div class="swatch">
+  <div class="swatch-top" style="background: linear-gradient(to bottom, #C24B40, #FF6F61);">P8. Living Coral (2019)</div>
+  <div class="swatch-body">
+    <div class="swatch-name">Pantone 16-1546 — Living Coral</div>
+    <code>#FF6F61</code><br/>
+    <div class="swatch-note">2019 올해의 색. 따뜻한 산호색. 강렬한 톤.</div>
+  </div>
+</div>
+
+<div class="swatch">
+  <div class="swatch-top" style="background: linear-gradient(to bottom, #423562, #5F4B8B);">P9. Ultra Violet (2018)</div>
+  <div class="swatch-body">
+    <div class="swatch-name">Pantone 18-3838 — Ultra Violet</div>
+    <code>#5F4B8B</code><br/>
+    <div class="swatch-note">2018 올해의 색. 짙은 보라. 신비/창의.</div>
+  </div>
+</div>
+
+<div class="swatch">
+  <div class="swatch-top" style="background: linear-gradient(to bottom, #607F35, #88B04B);">P10. Greenery (2017)</div>
+  <div class="swatch-body">
+    <div class="swatch-name">Pantone 15-0343 — Greenery</div>
+    <code>#88B04B</code><br/>
+    <div class="swatch-note">2017 올해의 색. 신선한 연두. 활기.</div>
+  </div>
+</div>
+
+</div>
+
+---
+
+### 학술 사이트 권장 (Pantone 기준)
+
+| 추천 | 사유 |
+|---|---|
+| ⭐ **P7. Classic Blue (2020)** | 학술 표준 톤, 가독성·신뢰성 최상 |
+| **P5. Ultimate Gray (2021)** | 모노크롬 미니멀 |
+| **P4. Very Peri (2022)** | 부드러운 보라, 차분 |
+| ⚠️ **P2/P3/P6/P8** | 학술용엔 채도 너무 높음 (강조 컬러로만) |
+
+번호 1–8 (앞 슬레이트/옥스포드/포레스트 등) 또는 P1–P10 (Pantone) 중 선택해 주시면 즉시 반영합니다.

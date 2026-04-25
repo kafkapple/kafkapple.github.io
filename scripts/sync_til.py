@@ -70,19 +70,44 @@ def parse_source(path: pathlib.Path) -> dict | None:
     }
 
 
-def read_body(src: pathlib.Path) -> str:
+def read_source(src: pathlib.Path) -> tuple[str, dict]:
+    """Return (body, frontmatter_dict). Empty dict if no frontmatter."""
     text = src.read_text(encoding="utf-8", errors="replace")
-    # Strip existing Jekyll-conflicting frontmatter (YAML at top), keep body
+    fm = {}
     if text.startswith("---"):
         end = text.find("\n---", 3)
         if end != -1:
+            raw_fm = text[3:end]
+            for line in raw_fm.splitlines():
+                m = re.match(r"^([A-Za-z_-]+):\s*(.*)$", line.strip())
+                if m:
+                    fm[m.group(1).lower()] = m.group(2).strip().strip("\"'")
             text = text[end + 4 :].lstrip("\n")
-    return text
+    return text, fm
+
+
+def is_excluded(fm: dict) -> bool:
+    """Check if source frontmatter requests homepage exclusion.
+    Triggers (any one):
+      - homepage: false
+      - private: true
+      - publish: false
+      - tags contains 'homepage-exclude' (string match anywhere in tags field)
+    """
+    if str(fm.get("homepage", "")).lower() == "false":
+        return True
+    if str(fm.get("private", "")).lower() == "true":
+        return True
+    if str(fm.get("publish", "")).lower() == "false":
+        return True
+    if "homepage-exclude" in fm.get("tags", ""):
+        return True
+    return False
 
 
 def build_post(meta: dict) -> str:
     """Construct Jekyll-compatible post with frontmatter."""
-    body = read_body(meta["source"])
+    body, _ = read_source(meta["source"])
     # Escape YAML-special chars in title
     title_safe = meta["title"].replace('"', '\\"')
     return (
@@ -116,11 +141,17 @@ def main() -> int:
 
     sources = sorted(TIL_REPO.glob("*.md"))
     print(f"Found {len(sources)} source files in {TIL_REPO}")
-    created, skipped = 0, 0
+    created, skipped, excluded = 0, 0, 0
     for src in sources:
         meta = parse_source(src)
         if meta is None:
             skipped += 1
+            continue
+        # Per-post homepage exclusion check via source frontmatter
+        _, fm = read_source(src)
+        if is_excluded(fm):
+            excluded += 1
+            print(f"  [skip-excluded] {src.name} (homepage:false / private:true / homepage-exclude tag)")
             continue
         out_path = TARGET_DIR / meta["jekyll_name"]
         if out_path.exists() and not args.force:
@@ -133,7 +164,7 @@ def main() -> int:
             print(f"  + {out_path.name}")
         created += 1
 
-    print(f"\nDone. Created: {created}, Skipped: {skipped}")
+    print(f"\nDone. Created: {created}, Skipped (already exists): {skipped}, Excluded (opt-out): {excluded}")
     print(f"Target: {TARGET_DIR}")
     if not args.dry_run and created > 0:
         print("\nNext steps:")
