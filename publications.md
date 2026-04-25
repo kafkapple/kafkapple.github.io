@@ -73,7 +73,7 @@ Sohwi Lim, Hyoseok Lee, **Jungjoon Park**, Tae-Hyun Oh.
 Dae-Gun Kim, Jeongtaek Kim, Woochul Jung, **Jungjoon Park**, Minhyung Kim, Anna Shin, Yong-Cheol Jeong, Seunghwan Park, Gayeon Shin, Young Woo Lee, Junga Kwon, Daesoo Kim.
 {:.pub-authors}
 
-*CV4Animals Workshop @ CVPR 2022*, New Orleans. Poster ID 8, Track I. Not in CVPR proceedings. *(Note: bioRxiv preprint 10.1101/2021.12.31.474634 has a smaller core author set; workshop poster includes additional contributors.)*
+*CV4Animals Workshop @ CVPR 2022*, New Orleans. Poster ID 8, Track I. Not in CVPR proceedings. *(Workshop poster author list (12 names) verified via official poster schedule; bioRxiv preprint 10.1101/2021.12.31.474634 is an earlier core-author version.)*
 {:.pub-venue}
 
 [[Workshop page](https://www.cv4animals.com/2022-accepted-papers)] · [[bioRxiv preprint](https://doi.org/10.1101/2021.12.31.474634)]
