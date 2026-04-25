@@ -135,3 +135,119 @@ Example code for using Matamo as alternative analytics solution.
     document.head.appendChild(m);
   }
 </script>
+
+<script>
+// ── Palette: global click/reset + restore on SPA navigation ──────────────
+(function () {
+  function applyPalette(name, c1, c2) {
+    var grad = 'linear-gradient(to bottom, ' + c1 + ', ' + c2 + ')';
+    document.querySelectorAll('.sidebar-bg').forEach(function (el) {
+      el.style.setProperty('background', grad, 'important');
+    });
+    var prev = document.getElementById('palette-override');
+    if (prev) prev.remove();
+    var style = document.createElement('style');
+    style.id = 'palette-override';
+    style.textContent =
+      '.sidebar-bg { background: ' + grad + ' !important; } ' +
+      '#_sidebar { background: ' + grad + ' !important; } ' +
+      ':root { --accent-color: ' + c2 + ' !important; }';
+    document.head.appendChild(style);
+    var n = document.getElementById('preview-name');
+    if (n) n.textContent = name + ' (' + c2 + ')';
+    var y = document.getElementById('yaml-snippet');
+    if (y) y.textContent =
+      'accent_image:\n  background: linear-gradient(to bottom, ' + c1 + ', ' + c2 + ')\n' +
+      '  overlay: false\naccent_color: ' + c2 + '\ntheme_color: ' + c1;
+    localStorage.setItem('palette-preview', JSON.stringify({ name: name, c1: c1, c2: c2 }));
+  }
+  function resetPalette() {
+    var prev = document.getElementById('palette-override');
+    if (prev) prev.remove();
+    document.querySelectorAll('.sidebar-bg').forEach(function (el) {
+      el.style.removeProperty('background');
+    });
+    var n = document.getElementById('preview-name');
+    if (n) n.textContent = '(none — click Apply)';
+    var y = document.getElementById('yaml-snippet');
+    if (y) y.textContent = '— Apply a palette to see the snippet —';
+    localStorage.removeItem('palette-preview');
+  }
+  function restorePalette() {
+    try {
+      var saved = JSON.parse(localStorage.getItem('palette-preview') || 'null');
+      if (saved) applyPalette(saved.name, saved.c1, saved.c2);
+    } catch (e) {}
+  }
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest('.apply-btn');
+    if (btn) { applyPalette(btn.dataset.name, btn.dataset.c1, btn.dataset.c2); return; }
+    if (e.target.id === 'reset-btn') resetPalette();
+  });
+  restorePalette();
+  document.getElementById('_pushState').addEventListener('hy-push-state-after', restorePalette);
+})();
+
+// ── TIL stats: render from JSON data element, re-render on SPA nav ───────
+(function () {
+  function renderTilStats() {
+    var statsEl = document.getElementById('til-stats');
+    if (!statsEl) return;
+    var jsonEl = document.getElementById('til-dates-json');
+    if (!jsonEl) return;
+    var dates;
+    try { dates = JSON.parse(jsonEl.textContent); } catch (e) { return; }
+    var hmap = document.getElementById('til-heatmap');
+    var mstats = document.getElementById('til-month-stats');
+    if (!hmap || !mstats) return;
+    if (!dates.length) { statsEl.textContent = '아직 TIL 포스트가 없습니다.'; return; }
+    var byDate = {}, byMonth = {}, byYear = {};
+    dates.forEach(function (d) {
+      byDate[d] = (byDate[d] || 0) + 1;
+      byMonth[d.substring(0, 7)] = (byMonth[d.substring(0, 7)] || 0) + 1;
+      byYear[d.substring(0, 4)] = (byYear[d.substring(0, 4)] || 0) + 1;
+    });
+    var sorted = dates.slice().sort();
+    var totalDays = Object.keys(byDate).length;
+    statsEl.innerHTML =
+      '총 <strong>' + dates.length + '</strong>개 · 작성한 날 <strong>' + totalDays + '</strong>일 · ' +
+      '기간 <strong>' + sorted[0] + ' ~ ' + sorted[sorted.length - 1] + '</strong>';
+    var today = new Date();
+    var rows = ['', '', '', '', '', '', ''];
+    var dayNames = ['일', '월', '화', '수', '목', '금', '토'];
+    for (var w = 52; w >= 0; w--) {
+      for (var d = 0; d < 7; d++) {
+        var date = new Date(today);
+        date.setDate(today.getDate() - (w * 7) - (today.getDay() - d));
+        var key = date.toISOString().substring(0, 10);
+        var c = byDate[key] || 0;
+        var sym = c === 0 ? '⬜' : c === 1 ? '🟩' : c === 2 ? '🟢' : c === 3 ? '💚' : '🌳';
+        rows[d] += sym;
+      }
+    }
+    hmap.innerHTML = rows.map(function (r, i) {
+      return '<div>' + dayNames[i] + ' ' + r + '</div>';
+    }).join('') +
+      '<div style="margin-top:0.5em;color:#666;">⬜ 0 · 🟩 1 · 🟢 2 · 💚 3 · 🌳 4+ 노트/일</div>';
+    var months = Object.keys(byMonth).sort();
+    var maxMonth = Math.max.apply(null, Object.values(byMonth));
+    var monthRows = months.map(function (m) {
+      var n = byMonth[m];
+      var bar = '█'.repeat(Math.max(1, Math.round(n / maxMonth * 30)));
+      return '<tr><td style="padding-right:1em;">' + m + '</td>' +
+             '<td style="font-family:monospace;color:#36649B;">' + bar + '</td>' +
+             '<td style="padding-left:0.5em;">' + n + '</td></tr>';
+    }).join('');
+    var years = Object.keys(byYear).sort().reverse();
+    mstats.innerHTML =
+      '<details open><summary style="font-weight:600;cursor:pointer;">📅 월별 누적</summary>' +
+      '<table style="border-collapse:collapse;margin-top:0.5em;">' + monthRows + '</table></details>' +
+      '<details><summary style="font-weight:600;cursor:pointer;margin-top:0.6em;">📆 연도별 합계</summary>' +
+      '<ul style="margin:0.4em 0 0 1em;">' +
+      years.map(function (y) { return '<li>' + y + ': <strong>' + byYear[y] + '</strong>개</li>'; }).join('') +
+      '</ul></details>';
+  }
+  renderTilStats();
+  document.getElementById('_pushState').addEventListener('hy-push-state-after', renderTilStats);
+})();
+</script>
