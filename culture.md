@@ -1,61 +1,30 @@
 ---
+layout: page
 title: Culture & Arts
 description: >
-  Music, literature, performance, and translation — activities beyond academic
-  research.
+  Music, performance, writing, and translation — activities outside academic
+  research. Each item links to a detail page with media and notes.
+permalink: /culture/
 ---
-Records of music, writing, performance, and cultural activities outside academic research. Items here are deliberately separated from the academic CV.
 
-## Music — Band Activity
+Activities deliberately separated from the academic CV. Brief blurbs below; click each title for a dedicated page with embeds, photos, and longer notes.
 
-### 49 Morphines 
+## Music — Bands
 
-Bass Guitar. 
+- **[49 Morphines](/culture/49-morphines/)** — Bass guitar (ongoing).
+- **[Noeazy](/culture/noeazy/)** — Guitar, Korean metalcore. *2016 Emergenza International Final (Germany), 2012 EBS Space Sympathy.*
+- **[Jambinai](/culture/jambinai/)** — Guitar (guest, brief). *2013 NAVER Onstage.*
 
-### Noeazy 
+## Performance & Interdisciplinary
 
-Guitar in the Korean metalcore band Noeazy.
-
-- **2016** — 3rd award at **Emergenza International Final**, Germany. *(as guitar player)*
-- **2012** — Performance on **EBS Space Sympathy** (broadcast).
-
-### Jambinai 
-
-Guitar (guest / brief period) in the fusion Korean-traditional band Jambinai.
-
-- **2013** — Performance on **NAVER Onstage** (broadcast).
-
-<!-- YouTube 임베드 예시 (썸네일 자동 — 클릭 시 재생):
-{% include youtube.html id="VIDEO_ID" title="Performance title" %}
-VIDEO_ID = youtube.com/watch?v=XXXXX 의 XXXXX 부분만 -->
-
-
-
-
-## Performance & Interdisciplinary Projects
-
-### "Crowd Walk" (2019)
-
-Interdisciplinary performance collaboration with artist **Lang Lee (이랑)** — real-time emotion recognition based on facial expression + EEG signals. **Ilmin Museum of Art** (일민미술관), Seoul, Republic of Korea.
-
-### "Project Doona Bae" (2021)
-
-Project leader — behavioral & fMRI study assessing empathic abilities of actress **Bae Doona**. Featured as a chapter ("Doona Bae's brain") in the book *Actress Doona Bae*.
+- **[Crowd Walk (2019)](/culture/crowd-walk/)** — Performance with artist Lang Lee at Ilmin Museum of Art. Real-time emotion recognition (face + EEG).
+- **[Project Doona Bae (2021)](/culture/doona-bae/)** — Behavioral & fMRI study of empathic abilities; chapter in book *Actress Doona Bae*.
 
 ## Writing & Translation
 
-### Translation Review (2022)
-
-Korean translation review for ***A Thousand Brains: A New Theory of Intelligence*** by **Jeff Hawkins** (Korean edition).
-
-### KAIST Literary Award
-
-**Honorable Mention**, 22nd KAIST Literary Award Contest — category: Essay / Criticism.
+- **[Translation Review (2022)](/culture/translation/)** — Korean edition of Jeff Hawkins' *A Thousand Brains: A New Theory of Intelligence*.
+- **[KAIST Literary Award](/culture/literary/)** — Honorable Mention, 22nd Contest, Essay/Criticism category.
 
 ---
 
-## Notes
-
-- Academic honors (e.g., KAIST Excellence Prize for Neuroscience 101 instruction, 2012 Computational Neuroscience Winter School Grand Prize) are listed on the [main page](/#awards--honors) under Awards & Honors.
-- To embed media: YouTube `<iframe>` template above; images go in `/assets/img/culture/` and are referenced as `![Caption](/assets/img/culture/filename.jpg)`.
-
+Academic honors (e.g., Neuroscience 101 instruction, Computational Neuroscience Winter School) are listed on the [main page](/#awards--honors). Talks and seminars: see [Talks](/talks/).
