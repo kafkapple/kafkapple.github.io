@@ -184,8 +184,12 @@ Example code for using Matamo as alternative analytics solution.
     if (btn) { applyPalette(btn.dataset.name, btn.dataset.c1, btn.dataset.c2); return; }
     if (e.target.id === 'reset-btn') resetPalette();
   });
-  restorePalette();
-  document.getElementById('_pushState').addEventListener('hy-push-state-after', restorePalette);
+  function initPalette() { restorePalette(); }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPalette);
+  } else { initPalette(); }
+  var _ps = document.getElementById('_pushState');
+  if (_ps) _ps.addEventListener('hy-push-state-after', restorePalette);
 })();
 
 // ── TIL stats: render from JSON data element, re-render on SPA nav ───────
@@ -247,7 +251,10 @@ Example code for using Matamo as alternative analytics solution.
       years.map(function (y) { return '<li>' + y + ': <strong>' + byYear[y] + '</strong>개</li>'; }).join('') +
       '</ul></details>';
   }
-  renderTilStats();
-  document.getElementById('_pushState').addEventListener('hy-push-state-after', renderTilStats);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', renderTilStats);
+  } else { renderTilStats(); }
+  var _ps2 = document.getElementById('_pushState');
+  if (_ps2) _ps2.addEventListener('hy-push-state-after', renderTilStats);
 })();
 </script>

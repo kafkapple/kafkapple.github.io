@@ -67,15 +67,15 @@ menu:
         url:           /talks/
   - title:             Culture & Arts
     url:               /culture/
-  - title:             Design
-    url:               /design/
     submenu:
-      - title:         References
+      - title:         Overview
+        url:           /culture/
+      - title:         Design References
         url:           /design/
-      - title:         Theory
+      - title:         Design Theory
         url:           /design/theory/
-  - title:             Lab
-    url:               /lab/
+      - title:         Lab
+        url:           /lab/
   - title:             TIL
     url:               /til/
   - title:             Blog
@@ -127,14 +127,14 @@ remote_theme: hydecorp/hydejack@v9
 # Minimalist academic palette: slate-blue sidebar, soft off-white main.
 # No sidebar image — clean solid gradient from accent_color.
 accent_image:
-  background:          linear-gradient(to bottom, rgb(36,65,98), rgb(54,100,139))
+  background:          linear-gradient(to bottom, rgb(26,56,40), rgb(46,85,56))
   overlay:             false
-accent_color:          rgb(54,100,139)
+accent_color:          rgb(46,85,56)
 
 # This is used for the `theme-color` meta tag,
 # which changes the background color of the browser UI in certain browsers.
 # Defaults to `accent_color`.
-theme_color:           rgb(36,65,98)
+theme_color:           rgb(26,56,40)
 
 # IMPORTANT:
 # As of Hydejack 9.2, Google Fonts are turned off by default due to a stronger focus on privacy.
