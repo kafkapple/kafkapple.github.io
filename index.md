@@ -61,7 +61,7 @@ Sohwi Lim, Hyoseok Lee, **Jungjoon Park**, Tae-Hyun Oh.
 **Toward Advancing Emotion Recognition in LLMs: A Comparative Study of Prompt Strategies, Few-Shot Learning, and Model Ensembling**
 {:.pub-title}
 
-**Jungjoon Park**, Nastaran Mashayekh Esfahan, Aravind Narayan.
+**Jungjoon Park**, Nikoo Mashayekh Esfahan, Arasu Narayan.
 {:.pub-authors}
 
 *Zenodo*, Apr 2025.
