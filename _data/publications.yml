@@ -4,6 +4,7 @@
 
 - id: clay
   year: 2026
+  month: "Apr"
   title: "CLAY: Conditional Visual Similarity Modulation in Vision-Language Embedding Space"
   authors: "Sohwi Lim, Hyoseok Lee, <strong>Jungjoon Park</strong>, Tae-Hyun Oh"
   venue: "IEEE/CVF Conference on Computer Vision and Pattern Recognition (<strong>CVPR 2026</strong>)"
@@ -15,6 +16,19 @@
       url: "https://sohwi-lim.github.io/CLAY/"
     - text: "arXiv"
       url: "https://arxiv.org/abs/2604.11539"
+
+- id: rcv-emotion-llm
+  year: 2025
+  month: "Dec"
+  title: "Systematic Benchmarking of Prompt Engineering Strategies for LLM-based Emotion Recognition"
+  authors: "<strong>Jungjoon Park</strong>, Nikoo Mashayekh, Arasu Narayan"
+  venue: "RCV 초세대 협력 워크샵 (Next-Generation Collaboration Workshop), Dec 2025"
+  note: "Poster, Domestic (Korea)"
+  featured: true
+  thumbnail: ""
+  links:
+    - text: "Poster PDF"
+      url: "/assets/pdf/RCV_Jungjoon_Park.pdf"
 
 - id: emotion-llm
   year: 2025

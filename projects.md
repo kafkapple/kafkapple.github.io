@@ -89,16 +89,6 @@ A complete record of engineering and research projects outside publications. Sel
 
 ---
 
-## 2022 — Neuroscience × AI
-
-<div class="proj">
-<p class="proj-title">AVATAR: AI Vision Analysis for Three-Dimensional Action in Real-Time</p>
-<p class="proj-meta">KAIST × ACTNOVA · CV4Animals Workshop @ CVPR 2022, New Orleans</p>
-<p class="proj-desc">Real-time 3D behavioral analysis system combining multi-camera pose estimation with multi-modal clustering of cognitive-control behavioral sequences. Poster presentation (Track I, Poster ID 8). <a href="https://www.cv4animals.com/2022-accepted-papers">Workshop page</a> · <a href="https://doi.org/10.1101/2021.12.31.474634">bioRxiv</a></p>
-</div>
-
----
-
 ## 2025 — Applied AI
 
 <div class="proj">
@@ -111,6 +101,16 @@ A complete record of engineering and research projects outside publications. Sel
 <p class="proj-title">Walk-into-AI — MLOps Pipeline Template</p>
 <p class="proj-meta">Independent · 2025</p>
 <p class="proj-desc">Production-ready MLOps template with Hydra + W&B + DVC integration. Covers experiment tracking, model versioning, and CI/CD deployment for research-to-production handoff. <a href="https://github.com/kafkapple">GitHub</a></p>
+</div>
+
+---
+
+## 2022 — Neuroscience × AI
+
+<div class="proj">
+<p class="proj-title">AVATAR: AI Vision Analysis for Three-Dimensional Action in Real-Time</p>
+<p class="proj-meta">KAIST × ACTNOVA · CV4Animals Workshop @ CVPR 2022, New Orleans</p>
+<p class="proj-desc">Real-time 3D behavioral analysis system combining multi-camera pose estimation with multi-modal clustering of cognitive-control behavioral sequences. Poster presentation (Track I, Poster ID 8). <a href="https://www.cv4animals.com/2022-accepted-papers">Workshop page</a> · <a href="https://doi.org/10.1101/2021.12.31.474634">bioRxiv</a></p>
 </div>
 
 ---

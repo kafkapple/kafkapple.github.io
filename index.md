@@ -29,7 +29,7 @@ permalink: /
 
 ## News
 
-- **Mar 2026** — **CLAY** accepted to **CVPR 2026** (first author: Sohwi Lim). Conditional visual similarity modulation in VLM embedding space. [Project page](https://sohwi-lim.github.io/CLAY/)
+- **Apr 2026** — **CLAY** accepted to **CVPR 2026** (first author: Sohwi Lim). Conditional visual similarity modulation in VLM embedding space. [Project page](https://sohwi-lim.github.io/CLAY/)
 - **Feb 2026** — Gave lab seminar *The Virtuous Cycle of NeuroAI: Bridging Biological and Artificial Intelligence* at KAIST AMILab.
 - **Aug 2025** — Started as **Postdoctoral Fellow** at KAIST AMILab (PI: Prof. Tae-Hyun Oh) under the **InnoCore Postdoctoral Program**. Working on 3D Gaussian Splatting for animal behavior analysis.
 - **Jun 2025** — Led workshop *Neuro-AI Convergence — Foundation Model Workflows for Neuroscience* at DBDL, Dept. of BCS, KAIST.
@@ -46,7 +46,7 @@ permalink: /
 <!-- Featured publications: to add/remove from homepage, set `featured: true/false` in _data/publications.yml -->
 All current publications shown. [**View full list →**](/publications/)
 
-{% assign featured = site.data.publications | where: "featured", true %}
+{% assign featured = site.data.publications %}
 {% assign featured_years = featured | map: "year" | uniq | sort | reverse %}
 {% for year in featured_years %}
 ### {{ year }}
