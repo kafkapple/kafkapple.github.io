@@ -1,0 +1,15 @@
+{% assign pub = include.pub %}
+<p class="pub-title">{{ pub.title }}</p>
+<p class="pub-authors">{{ pub.authors }}</p>
+<p class="pub-venue">
+  <em>{{ pub.venue }}</em>
+  {% if pub.note != "" %}<span style="color:#777;"> ({{ pub.note }})</span>{% endif %}
+</p>
+{% if pub.footnote %}
+<p class="pub-footnote" style="font-size:0.82em;color:#777;margin-top:0.2em;">{{ pub.footnote }}</p>
+{% endif %}
+<p class="pub-links">
+  {% for link in pub.links %}
+    <a href="{{ link.url }}">{{ link.text }}</a>{% unless forloop.last %} · {% endunless %}
+  {% endfor %}
+</p>

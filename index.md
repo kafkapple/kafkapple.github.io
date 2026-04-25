@@ -8,12 +8,16 @@ permalink: /
 ---
 
 <style>
-.pub { margin: 0.25em 0 0.75em 0; line-height: 1.45; }
-.pub-title { font-weight: 600; }
-.pub-authors { font-size: 0.95em; }
-.pub-venue { font-size: 0.92em; color: #555; }
-.pub-links { font-size: 0.9em; }
-.pub-footnote { margin-top: 1.5em; color: #666; }
+.pub { margin: 0.25em 0 1.4em 0; line-height: 1.5; }
+.pub-title { font-weight: 600; margin: 0 0 0.2em 0; }
+.pub-authors { font-size: 0.95em; margin: 0 0 0.1em 0; }
+.pub-venue { font-size: 0.92em; color: #555; margin: 0 0 0.15em 0; }
+.pub-links { font-size: 0.9em; margin: 0; }
+.pub-footnote { margin-top: 0.3em; color: #777; font-size: 0.85em; }
+.proj { margin: 0.25em 0 1em 0; padding: 0.6em 0.8em; border-left: 3px solid #aaa; }
+.proj-title { font-weight: 600; margin: 0 0 0.15em 0; }
+.proj-meta { font-size: 0.88em; color: #666; margin: 0 0 0.1em 0; }
+.proj-desc { font-size: 0.93em; margin: 0; }
 </style>
 
 <!--author-->
@@ -39,80 +43,67 @@ permalink: /
 
 ## Selected Publications
 
-A curated subset (4 most representative). [**View full publications →**](/publications/)
+<!-- Featured publications: to add/remove from homepage, set `featured: true/false` in _data/publications.yml -->
+All current publications shown. [**View full list →**](/publications/)
 
-### 2026
+{% assign featured = site.data.publications | where: "featured", true %}
+{% assign featured_years = featured | map: "year" | uniq | sort | reverse %}
+{% for year in featured_years %}
+### {{ year }}
 
-<div class="pub" markdown="1" style="display:flex;gap:1em;align-items:flex-start;">
-<a href="https://sohwi-lim.github.io/CLAY/" style="flex:0 0 auto;">
-  <img src="/assets/img/pubs/clay-teaser.jpg" alt="CLAY teaser"
-       onerror="this.style.display='none'"
-       style="width:160px;height:auto;border-radius:4px;border:1px solid #eee;"/>
-</a>
-<div style="flex:1;min-width:0;">
-**CLAY: Conditional Visual Similarity Modulation in Vision-Language Embedding Space**
-{:.pub-title}
-
-Sohwi Lim, Hyoseok Lee, **Jungjoon Park**, Tae-Hyun Oh.
-{:.pub-authors}
-
-*IEEE/CVF Conference on Computer Vision and Pattern Recognition* (**CVPR 2026**).
-{:.pub-venue}
-
-[[Project Page](https://sohwi-lim.github.io/CLAY/)] · [[arXiv](https://arxiv.org/abs/2604.11539)]
-{:.pub-links}
-</div>
-</div>
-
-### 2025
-
-<div class="pub" markdown="1">
-**Toward Advancing Emotion Recognition in LLMs: A Comparative Study of Prompt Strategies, Few-Shot Learning, and Model Ensembling**
-{:.pub-title}
-
-**Jungjoon Park**, Nikoo Mashayekh Esfahan, Arasu Narayan.
-{:.pub-authors}
-
-*Zenodo*, Apr 2025.
-{:.pub-venue}
-
-[[DOI](https://doi.org/10.5281/zenodo.15126322)]
-{:.pub-links}
-</div>
-
-### 2022
-
-<div class="pub" markdown="1">
-**Experience of a Hierarchical Relationship between a Pair of Mice Specifically Influences Their Affective Empathy toward Each Other**
-{:.pub-title}
-
-**Jungjoon Park**, Seungshin Ha, Hee-Sup Shin, Jaeseung Jeong.
-{:.pub-authors}
-
-*Genes, Brain and Behavior* 21(5):e12810.
-{:.pub-venue}
-
-[[DOI](https://doi.org/10.1111/gbb.12810)]
-{:.pub-links}
-</div>
-
-### 2019
-
-<div class="pub" markdown="1">
-**The Rostroventral Part of the Thalamic Reticular Nucleus Modulates Fear Extinction**
-{:.pub-title}
-
-Joon-Hyuk Lee, Charles-Francois V. Latchoumane, **Jungjoon Park**, Jinhyun Kim, Jaeseung Jeong, Kwang-Hyung Lee, Hee-Sup Shin.
-{:.pub-authors}
-
-*Nature Communications* 10:4637.
-{:.pub-venue}
-
-[[DOI](https://doi.org/10.1038/s41467-019-12496-9)]
-{:.pub-links}
-</div>
+{% assign year_pubs = featured | where: "year", year %}
+{% for pub in year_pubs %}
+{% include pub_card.html pub=pub show_thumbnail=true %}
+{% endfor %}
+{% endfor %}
 
 <p class="pub-footnote"><small>* denotes equal contribution; <strong>bold</strong> denotes the author. <a href="/publications/">View full list →</a></small></p>
+
+## Selected Projects
+
+A selection of engineering and research projects outside publications. [**View all projects →**](/projects/)
+
+### 2025 — AI/ML Engineering
+
+<div class="proj">
+<p class="proj-title">Chemical-Process Anomaly Detection — <strong>1st Place</strong> (39 submissions)</p>
+<p class="proj-meta">Upstage AI Lab · 2024–2025</p>
+<p class="proj-desc">Unsupervised fault detection on 52-dimensional industrial sensor data. Methods: IsolationForest, SGDOneClassSVM, PCA+K-Means, Transformer Autoencoder. F1 0.9000 / Accuracy 0.9405.</p>
+</div>
+
+<div class="proj">
+<p class="proj-title">Scientific RAG QA — <strong>3rd Place</strong> (53 submissions)</p>
+<p class="proj-meta">Upstage AI Lab · 2024–2025</p>
+<p class="proj-desc">Science knowledge retrieval & QA. Stack: SBERT, BGE-M3, BM25, FAISS, LangChain. mAP 0.8394.</p>
+</div>
+
+<div class="proj">
+<p class="proj-title">Document-Type Classification — <strong>3rd Place</strong> (48 submissions)</p>
+<p class="proj-meta">Upstage AI Lab · 2024–2025</p>
+<p class="proj-desc">17-class document image classification. Stack: Hydra, W&B, Focal Loss. Macro-F1 0.9213.</p>
+</div>
+
+### 2023–2024 — Startup & Industry
+
+<div class="proj">
+<p class="proj-title">ACTNOVA — AI Behaviour Analytics Platform</p>
+<p class="proj-meta">Co-founder & R&D Lead · 2022–2024</p>
+<p class="proj-desc">Built YOLOv8 + XGBoost pipeline for automated behavioral phenotyping; reduced analysis time by 70%. Cross-lab collaboration (MIT, KAIST, Broad Institute). Raised ₩4.3B pre-Series A.</p>
+</div>
+
+<div class="proj">
+<p class="proj-title">Cognitive-Control Circuit Phenotyping — R&D Grant Finalist</p>
+<p class="proj-meta">Bio-Medical Technology Development Program (Brain Science Convergence) · 2024</p>
+<p class="proj-desc">Advanced phenotyping of cognitive-control circuits in ASD. Designed deep-learning pipeline for behavioral-sequence embedding (autoregressive + hyperbolic space). Short-listed to final presentation round.</p>
+</div>
+
+### 2022 — Neuroscience × AI
+
+<div class="proj">
+<p class="proj-title">AVATAR: 3D Real-Time Behavioral Analysis System</p>
+<p class="proj-meta">KAIST × ACTNOVA · CVPR 2022 Workshop</p>
+<p class="proj-desc">AI Vision Analysis for Three-Dimensional Action in Real-Time. Poster presentation at CV4Animals Workshop, CVPR 2022. Deployed for multi-modal clustering of cognitive-control behavioral sequences.</p>
+</div>
 
 ## Teaching & Mentorship
 

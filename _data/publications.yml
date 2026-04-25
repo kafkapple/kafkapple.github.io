@@ -1,0 +1,80 @@
+# Publications data — edit `featured: true/false` to control homepage display
+# Order within the file determines display order (reverse-chronological recommended)
+# Max featured on homepage: 10
+
+- id: clay
+  year: 2026
+  title: "CLAY: Conditional Visual Similarity Modulation in Vision-Language Embedding Space"
+  authors: "Sohwi Lim, Hyoseok Lee, <strong>Jungjoon Park</strong>, Tae-Hyun Oh"
+  venue: "IEEE/CVF Conference on Computer Vision and Pattern Recognition (<strong>CVPR 2026</strong>)"
+  note: ""
+  featured: true
+  thumbnail: /assets/img/pubs/clay-teaser.jpg
+  links:
+    - text: "Project Page"
+      url: "https://sohwi-lim.github.io/CLAY/"
+    - text: "arXiv"
+      url: "https://arxiv.org/abs/2604.11539"
+
+- id: emotion-llm
+  year: 2025
+  title: "Toward Advancing Emotion Recognition in LLMs: A Comparative Study of Prompt Strategies, Few-Shot Learning, and Model Ensembling"
+  authors: "<strong>Jungjoon Park</strong>, Nikoo Mashayekh Esfahan, Arasu Narayan"
+  venue: "Zenodo, Apr 2025"
+  note: "Preprint"
+  featured: true
+  thumbnail: ""
+  links:
+    - text: "DOI"
+      url: "https://doi.org/10.5281/zenodo.15126322"
+
+- id: mice-hierarchy-empathy
+  year: 2022
+  title: "Experience of a Hierarchical Relationship between a Pair of Mice Specifically Influences Their Affective Empathy toward Each Other"
+  authors: "<strong>Jungjoon Park</strong>, Seungshin Ha, Hee-Sup Shin, Jaeseung Jeong"
+  venue: "Genes, Brain and Behavior 21(5):e12810"
+  note: ""
+  featured: true
+  thumbnail: ""
+  links:
+    - text: "DOI"
+      url: "https://doi.org/10.1111/gbb.12810"
+
+- id: avatar
+  year: 2022
+  title: "AVATAR: AI Vision Analysis for Three-Dimensional Action in Real-Time"
+  authors: "Daegun Kim, Jineun Kim, Wongyo Jung, <strong>Jungjoon Park</strong>, Mingyu Kim, Anna Shin, Yong-Cheol Jeong, Seahyung Park, Gwanhoo Shin, Ye Won Lee, Jea Kwon, Daesoo Kim"
+  venue: "CV4Animals Workshop @ CVPR 2022, New Orleans. Poster ID 8, Track I. Not in CVPR proceedings."
+  note: "Workshop, Non-Archival"
+  footnote: "Workshop poster author list (12 names) verified via official poster schedule; bioRxiv preprint 10.1101/2021.12.31.474634 is an earlier core-author version."
+  featured: true
+  thumbnail: ""
+  links:
+    - text: "Workshop page"
+      url: "https://www.cv4animals.com/2022-accepted-papers"
+    - text: "bioRxiv preprint"
+      url: "https://doi.org/10.1101/2021.12.31.474634"
+
+- id: trn-fear-extinction
+  year: 2019
+  title: "The Rostroventral Part of the Thalamic Reticular Nucleus Modulates Fear Extinction"
+  authors: "Joon-Hyuk Lee, Charles-Francois V. Latchoumane, <strong>Jungjoon Park</strong>, Jinhyun Kim, Jaeseung Jeong, Kwang-Hyung Lee, Hee-Sup Shin"
+  venue: "Nature Communications 10:4637"
+  note: ""
+  featured: true
+  thumbnail: ""
+  links:
+    - text: "DOI"
+      url: "https://doi.org/10.1038/s41467-019-12496-9"
+
+- id: empathic-fear-variability
+  year: 2016
+  title: "Variability in Empathic Fear Response among 11 Inbred Strains of Mice"
+  authors: "S. Keum, <strong>J. Park</strong>, A. Kim, J. Park, K. K. Kim, J. Jeong, H.-S. Shin"
+  venue: "Genes, Brain and Behavior 15(2):231–242"
+  note: ""
+  featured: true
+  thumbnail: ""
+  links:
+    - text: "DOI"
+      url: "https://doi.org/10.1111/gbb.12278"

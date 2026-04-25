@@ -52,6 +52,8 @@ menu:
     url:               /
   - title:             Publications
     url:               /publications/
+  - title:             Projects
+    url:               /projects/
   - title:             Research
     url:               /research/
     submenu:
@@ -65,6 +67,15 @@ menu:
         url:           /talks/
   - title:             Culture & Arts
     url:               /culture/
+  - title:             Design
+    url:               /design/
+    submenu:
+      - title:         References
+        url:           /design/
+      - title:         Theory
+        url:           /design/theory/
+  - title:             Lab
+    url:               /lab/
   - title:             TIL
     url:               /til/
   - title:             Blog
