@@ -74,6 +74,8 @@ menu:
         url:           /design/
       - title:         Design Theory
         url:           /design/theory/
+      - title:         Perception Lab
+        url:           /design/perception/
       - title:         Lab
         url:           /lab/
   - title:             TIL
