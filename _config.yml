@@ -60,7 +60,7 @@ menu:
     url:               /blog/
   - title:             CV
     url:               /markdown-cv/
-  - title:             Search
+  - title:             "🔍 Search"
     url:               /search/
 
 

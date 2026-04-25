@@ -9,8 +9,94 @@ permalink: /til/
 sitemap: true
 ---
 
-<p style="color:#666;margin-bottom:1.2em;">
+<p style="color:#666;margin-bottom:0.6em;">
   Auto-synced from <a href="https://github.com/kafkapple/TIL">kafkapple/TIL</a>.
-  <strong>{{ site.categories.til | size }}</strong> notes total · grouped by year below.
-  <a href="/search/">전체 검색 →</a>
+  <strong>{{ site.categories.til | size }}</strong> notes total ·
+  <a href="/search/">🔍 검색</a> ·
+  <a href="#heatmap">📊 통계</a>
 </p>
+
+<!-- Posting heatmap (last 365 days) -->
+<details id="heatmap" style="margin:0 0 1.5em 0;">
+  <summary style="cursor:pointer;font-weight:600;color:#36649B;padding:0.4em 0;">
+    📊 Posting heatmap (지난 1년)
+  </summary>
+  <div id="til-stats" style="margin:0.5em 0;color:#555;font-size:0.9em;">집계 중…</div>
+  <div id="til-heatmap" style="overflow-x:auto;font-family:'SF Mono',Menlo,monospace;font-size:0.7em;line-height:1.1;color:#888;"></div>
+  <div id="til-month-stats" style="margin-top:1em;font-size:0.9em;"></div>
+</details>
+
+<script>
+(function () {
+  fetch('/search.json').then(function (r) { return r.json(); }).then(function (all) {
+    var posts = all.filter(function (p) { return p.category === 'til'; });
+    var stats = document.getElementById('til-stats');
+    var hmap = document.getElementById('til-heatmap');
+    var mstats = document.getElementById('til-month-stats');
+
+    // Aggregate by date
+    var byDate = {};
+    var byMonth = {};
+    var byYear = {};
+    posts.forEach(function (p) {
+      var d = p.date;
+      byDate[d] = (byDate[d] || 0) + 1;
+      var ym = d.substring(0, 7);
+      byMonth[ym] = (byMonth[ym] || 0) + 1;
+      var y = d.substring(0, 4);
+      byYear[y] = (byYear[y] || 0) + 1;
+    });
+    var totalDays = Object.keys(byDate).length;
+    var firstDate = posts.length ? posts[posts.length-1].date : '-';
+    var lastDate = posts.length ? posts[0].date : '-';
+
+    stats.innerHTML =
+      '총 <strong>' + posts.length + '</strong>개 · 작성한 날 <strong>' + totalDays + '</strong>일 · ' +
+      '기간 <strong>' + firstDate + ' ~ ' + lastDate + '</strong>';
+
+    // 365-day heatmap (rolling window)
+    var today = new Date();
+    var rows = ['', '', '', '', '', '', ''];
+    var dayNames = ['일','월','화','수','목','금','토'];
+    var weeks = 53;
+    var labels = '';
+    for (var w = weeks - 1; w >= 0; w--) {
+      for (var d = 0; d < 7; d++) {
+        var date = new Date(today);
+        date.setDate(today.getDate() - (w * 7) - (today.getDay() - d));
+        var key = date.toISOString().substring(0, 10);
+        var c = byDate[key] || 0;
+        var sym = c === 0 ? '⬜' : c === 1 ? '🟩' : c === 2 ? '🟢' : c === 3 ? '💚' : '🌳';
+        rows[d] += sym;
+      }
+    }
+    var html = '';
+    for (var i = 0; i < 7; i++) {
+      html += '<div>' + dayNames[i] + ' ' + rows[i] + '</div>';
+    }
+    html += '<div style="margin-top:0.5em;color:#666;">⬜ 0 · 🟩 1 · 🟢 2 · 💚 3 · 🌳 4+ 노트/일</div>';
+    hmap.innerHTML = html;
+
+    // Yearly + Monthly bar
+    var years = Object.keys(byYear).sort().reverse();
+    var months = Object.keys(byMonth).sort();
+    var maxMonth = Math.max.apply(null, Object.values(byMonth));
+    var monthRows = months.map(function (m) {
+      var n = byMonth[m];
+      var bar = '█'.repeat(Math.round(n / maxMonth * 30));
+      return '<tr><td style="padding-right:1em;">' + m + '</td>' +
+             '<td style="font-family:monospace;color:#36649B;">' + bar + '</td>' +
+             '<td style="padding-left:0.5em;">' + n + '</td></tr>';
+    }).join('');
+    mstats.innerHTML =
+      '<details open><summary style="font-weight:600;cursor:pointer;">📅 월별 누적</summary>' +
+      '<table style="border-collapse:collapse;margin-top:0.5em;">' + monthRows + '</table></details>' +
+      '<details><summary style="font-weight:600;cursor:pointer;margin-top:0.6em;">📆 연도별 합계</summary>' +
+      '<ul style="margin:0.4em 0 0 1em;">' +
+      years.map(function (y) { return '<li>' + y + ': <strong>' + byYear[y] + '</strong>개</li>'; }).join('') +
+      '</ul></details>';
+  }).catch(function (e) {
+    document.getElementById('til-stats').textContent = '⚠ 통계 로드 실패: ' + e.message;
+  });
+})();
+</script>
