@@ -65,12 +65,30 @@ content:
         required: true
 
   # -----------------------------------------------------------------------------
-  # Culture & Arts — single page, editable content
+  # Practice — active creative work overview (single page)
   # -----------------------------------------------------------------------------
-  - name: culture
-    label: Culture & Arts page
+  - name: practice
+    label: Practice page (/practice/)
     type: file
-    path: culture.md
+    path: practice/index.md
+    fields:
+      - name: title
+        label: Title
+        type: string
+      - name: description
+        label: Description
+        type: string
+      - name: body
+        label: Body (Markdown)
+        type: rich-text
+
+  # -----------------------------------------------------------------------------
+  # Interests Hub — passive cultural curation (single page)
+  # -----------------------------------------------------------------------------
+  - name: interests
+    label: Interests Hub (/interests/)
+    type: file
+    path: interests/index.md
     fields:
       - name: title
         label: Title

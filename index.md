@@ -37,9 +37,13 @@ permalink: /
 
 ## Research Interests
 
-- **Context-dependent perception and cognition** — how social, temporal, and relational context reshapes perception and decision-making, studied through rodent empathy circuits, LLM emotion reasoning, and vision-language models.
-- **Virtuous Cycle of NeuroAI** — applying AI to neural and behavioral data, and drawing on neuroscience to inform AI architectures for adaptive, generalizable intelligence.
-- **Computational behavior analysis** — 3D reconstruction and embodied modeling of freely-moving animals to produce quantitative, interpretable behavioral descriptors.
+> **Brain-Inspired Cognitive Architect** — designing autonomous agents capable of systematic generalization and continual learning, drawing first principles from neuroscience.
+
+- **Brain-based learning algorithms & architectures** — continual learning and systems consolidation (CLS), hierarchical/compositional representations (cortical columns, capsule networks), world models with universal reference frames (Thousand Brains Theory).
+- **Computational modeling of cognition & decision-making** — dual-process accounts (System 1/2), heuristics, cognitive biases and reward systems, atypical cognition modeling, AI safety implications.
+- **Embodied social intelligence** — imitation and social learning (inverse RL), multi-agent systems and theory of mind, sensorimotor integration and active inference.
+
+A four-stage cognitive architecture ties these together: object-centric perception & grounding · predictive abstraction & symbolization · semantic integration & continual learning · metacognitive control & adaptive inference.
 
 ## Publications
 
