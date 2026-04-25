@@ -25,6 +25,11 @@ Guitar (guest / brief period) in the fusion Korean-traditional band Jambinai.
 
 - **2013** — Performance on **NAVER Onstage** (broadcast).
 
+<!-- YouTube 임베드 예시 (썸네일 자동 — 클릭 시 재생):
+{% include youtube.html id="VIDEO_ID" title="Performance title" %}
+VIDEO_ID = youtube.com/watch?v=XXXXX 의 XXXXX 부분만 -->
+
+
 
 
 ## Performance & Interdisciplinary Projects

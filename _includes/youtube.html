@@ -1,0 +1,27 @@
+{%- comment -%}
+  Lightweight YouTube embed with auto-thumbnail (no JS load until click).
+  Usage:
+    {% include youtube.html id="dQw4w9WgXcQ" %}
+    {% include youtube.html id="dQw4w9WgXcQ" title="Performance — Crowd Walk 2019" %}
+    {% include youtube.html id="dQw4w9WgXcQ" quality="maxresdefault" %}
+  Quality options: default | hqdefault (480x360) | mqdefault | sddefault | maxresdefault (1280x720)
+{%- endcomment -%}
+{%- assign vid = include.id -%}
+{%- assign t = include.title | default: "YouTube video" -%}
+{%- assign q = include.quality | default: "hqdefault" -%}
+<div class="yt-embed" style="position:relative;max-width:720px;margin:1em 0;cursor:pointer;border-radius:8px;overflow:hidden;background:#000;"
+     onclick="var i=document.createElement('iframe');i.src='https://www.youtube.com/embed/{{ vid }}?autoplay=1';i.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';i.allowFullscreen=true;i.style='position:absolute;top:0;left:0;width:100%;height:100%;border:0';this.innerHTML='';this.appendChild(i);">
+  <img src="https://img.youtube.com/vi/{{ vid }}/{{ q }}.jpg" alt="{{ t }}"
+       style="width:100%;height:auto;display:block;aspect-ratio:16/9;object-fit:cover;"/>
+  <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.15);transition:background 0.2s;">
+    <svg viewBox="0 0 68 48" width="68" height="48" aria-hidden="true">
+      <path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="#f00"/>
+      <path d="M45 24L27 14v20" fill="#fff"/>
+    </svg>
+  </div>
+  {%- if include.title -%}
+    <div style="position:absolute;bottom:0;left:0;right:0;padding:0.5em 0.8em;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,0.7));font-size:0.9em;">
+      {{ t }}
+    </div>
+  {%- endif -%}
+</div>
