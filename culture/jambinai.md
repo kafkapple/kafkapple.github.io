@@ -2,7 +2,8 @@
 layout: page
 title: Jambinai
 description: >
-  Guest guitar in the Korean fusion-traditional band Jambinai — NAVER Onstage 2013.
+  Guest guitar in the Korean fusion-traditional band Jambinai —
+  NAVER Onstage Episode 157 (2013).
 permalink: /culture/jambinai/
 ---
 
@@ -12,15 +13,20 @@ permalink: /culture/jambinai/
 **Period**: ~2013.
 
 Jambinai (잠비나이) is a Korean post-rock band that fuses traditional
-Korean instruments (geomungo, haegeum, piri) with electric and percussion
-elements. Founded by Ilwoo Lee, Eunyoung Sim, and Bomi Kim.
+Korean instruments (geomungo, haegeum, piri) with electric guitar and
+percussion. Founded by Ilwoo Lee, Eunyoung Sim, and Bomi Kim.
 
-I joined as a guest guitarist for a NAVER Onstage broadcast performance
-in 2013.
+I joined as a guest guitarist for a NAVER Onstage broadcast in 2013.
 
-## NAVER Onstage Performance (2013)
+## NAVER Onstage Episode 157 — "Connection"
 
-{% include youtube.html id="56dv3XHUISY" title="Jambinai — NAVER Onstage 2013" quality="maxresdefault" %}
+**Title**: *온스테이지 157. 잠비나이 — Connection*
+**Show**: NAVER Onstage (Korean live-music broadcast platform)
+**Episode**: 157
+**Song**: *Connection*
+**Year**: 2013
+
+{% include youtube.html id="56dv3XHUISY" title="온스테이지 157. 잠비나이 — Connection" quality="maxresdefault" %}
 
 ## Notes
 
@@ -28,8 +34,8 @@ This was a stylistically unusual collaboration — switching from metalcore
 (Noeazy) to a band that uses traditional Korean string instruments
 required learning a different rhythmic vocabulary and tone. The
 experience shaped how I think about "context" in performance: the same
-guitar phrase reads differently when placed against geomungo vs. distorted
-power chords.
+guitar phrase reads differently when placed against geomungo vs.
+distorted power chords.
 
 ## Links
 

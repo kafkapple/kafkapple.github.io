@@ -34,10 +34,13 @@ where this loop is operative.
 - **2018 (Oct)** Oral, *NAS-Optimized CNN for Driver Monitoring with XAI*, ETRI AI System Development Seminar, Pangyo. **[Video below ↓](#ddsa-2018)**
 - **2013 (Nov)** Poster, *The Precision of Contextual Familiarity Memory Is Attenuated in Remote Retrieval*, SfN Annual Meeting, San Diego.
 
-## DDSA Driver Monitoring Demo (2018) {#ddsa-2018}
+## DDSA Driver Monitoring — Facial Emotion Recognition Demo (2018) {#ddsa-2018}
 
-Award-winning system from the **Dongguk Driver Safety Association (DDSA)**
-competition: a NAS-optimized CNN for real-time driver state analysis with
-Grad-CAM explainability. **Grand Prize (DDSA), Encouragement Prize (ETRI).**
+Award-winning system from the **DDSA driver safety competition** (2018):
+a NAS-optimized CNN for real-time facial emotion recognition applied to
+driver state monitoring, with Grad-CAM explainability for model
+interpretability. **Grand Prize (DDSA), Encouragement Prize (ETRI).**
 
-{% include youtube.html id="SJyrKreEzos" title="DDSA Driver Monitoring Demo (2018)" quality="maxresdefault" %}
+**Video title**: *데이터 사이언스 프로젝트 6 — Prediction and Feedback System Based on Facial Emotion Recognition in Video*
+
+{% include youtube.html id="SJyrKreEzos" title="Prediction and Feedback System — Facial Emotion Recognition (2018)" quality="maxresdefault" %}
