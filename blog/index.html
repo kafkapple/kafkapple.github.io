@@ -1,14 +1,32 @@
 ---
-layout: list
+layout: page
 title: Blog
-slug: blog
 description: >
   Personal insights, reflections, and longer-form writing on research,
   NeuroAI, and ideas crossing neuroscience and AI.
 sitemap: true
 ---
 
-<p style="color:#888;font-style:italic;margin:1em 0;">
-  This space is reserved for upcoming personal essays and longer-form
-  reflections. For daily learning notes (TIL), see <a href="/til/">/til/</a>.
-</p>
+{%- comment -%}
+  Explicit category filter. Avoids Hydejack list/blog layout's `default:site.posts`
+  fallback which would otherwise show all 122 TIL posts when category=blog is empty.
+{%- endcomment -%}
+{%- assign blog_posts = site.categories.blog | default: empty -%}
+
+{%- if blog_posts.size == 0 -%}
+<div style="margin:2em 0;padding:1.5em 1.8em;background:#f8f9fa;border-left:3px solid #36649B;border-radius:4px;color:#555;">
+  <p style="margin:0 0 0.6em 0;"><strong>This space is reserved for upcoming personal essays.</strong></p>
+  <p style="margin:0;font-size:0.95em;">Personal insights, longer-form reflections on research and the intersection of neuroscience and AI will appear here.</p>
+  <p style="margin:0.8em 0 0 0;font-size:0.95em;">For daily learning notes, see <a href="/til/">TIL</a> · For talks and recorded seminars, see <a href="/talks/">Talks</a>.</p>
+</div>
+{%- else -%}
+<ul class="related-posts" style="list-style:none;padding-left:0;">
+{%- for post in blog_posts -%}
+  <li style="margin-bottom:1.2em;">
+    <h3 style="margin:0;"><a href="{{ post.url }}">{{ post.title }}</a></h3>
+    <small style="color:#888;">{{ post.date | date: "%Y-%m-%d" }}{% if post.tags.size > 0 %} · {{ post.tags | join: ", " }}{% endif %}</small>
+    {% if post.description %}<p style="margin:0.4em 0 0 0;color:#555;">{{ post.description }}</p>{% endif %}
+  </li>
+{%- endfor -%}
+</ul>
+{%- endif -%}

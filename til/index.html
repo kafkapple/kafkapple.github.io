@@ -33,13 +33,6 @@ sitemap: true
 </section>
 {%- endif -%}
 
-{%- comment -%}
-  Inline post-date list rendered at Jekyll build time (avoids fetch failure on /til/ page).
-{%- endcomment -%}
-<script id="til-dates" type="application/json">
-[{% for post in site.categories.til %}"{{ post.date | date: "%Y-%m-%d" }}"{% unless forloop.last %},{% endunless %}{% endfor %}]
-</script>
-
 <details id="heatmap" style="margin:0 0 1.5em 0;" open>
   <summary style="cursor:pointer;font-weight:600;color:#36649B;padding:0.4em 0;">
     📊 Posting heatmap (지난 1년)
@@ -51,18 +44,24 @@ sitemap: true
 
 <script>
 (function () {
+  // Inline date array generated at Jekyll build time — bypasses all
+  // DOM-lookup / JSON-parse / SPA-script-execution race conditions.
+  var dates = [
+    {%- for post in site.categories.til -%}
+      "{{ post.date | date: "%Y-%m-%d" }}"{%- unless forloop.last -%},{%- endunless -%}
+    {%- endfor -%}
+  ];
+
   function renderStats() {
     var statsEl = document.getElementById('til-stats');
     var hmap = document.getElementById('til-heatmap');
     var mstats = document.getElementById('til-month-stats');
-    var dataEl = document.getElementById('til-dates');
-    if (!statsEl || !dataEl) return;
+    if (!statsEl || !hmap || !mstats) return;
 
-    var dates;
-    try { dates = JSON.parse(dataEl.textContent.trim()); }
-    catch (e) { statsEl.textContent = '⚠ 데이터 파싱 실패: ' + e.message; return; }
-
-    if (!dates.length) { statsEl.textContent = '아직 TIL 포스트가 없습니다.'; return; }
+    if (!dates.length) {
+      statsEl.textContent = '아직 TIL 포스트가 없습니다.';
+      return;
+    }
 
     var byDate = {}, byMonth = {}, byYear = {};
     dates.forEach(function (d) {
@@ -74,14 +73,12 @@ sitemap: true
     var totalDays = Object.keys(byDate).length;
     statsEl.innerHTML =
       '총 <strong>' + dates.length + '</strong>개 · 작성한 날 <strong>' + totalDays + '</strong>일 · ' +
-      '기간 <strong>' + sorted[0] + ' ~ ' + sorted[sorted.length-1] + '</strong>';
+      '기간 <strong>' + sorted[0] + ' ~ ' + sorted[sorted.length - 1] + '</strong>';
 
-    // 53-week emoji heatmap
     var today = new Date();
-    var rows = ['','','','','','',''];
-    var dayNames = ['일','월','화','수','목','금','토'];
-    var weeks = 53;
-    for (var w = weeks - 1; w >= 0; w--) {
+    var rows = ['', '', '', '', '', '', ''];
+    var dayNames = ['일', '월', '화', '수', '목', '금', '토'];
+    for (var w = 52; w >= 0; w--) {
       for (var d = 0; d < 7; d++) {
         var date = new Date(today);
         date.setDate(today.getDate() - (w * 7) - (today.getDay() - d));
@@ -91,10 +88,11 @@ sitemap: true
         rows[d] += sym;
       }
     }
-    hmap.innerHTML = rows.map(function (r, i) { return '<div>' + dayNames[i] + ' ' + r + '</div>'; }).join('') +
+    hmap.innerHTML = rows.map(function (r, i) {
+      return '<div>' + dayNames[i] + ' ' + r + '</div>';
+    }).join('') +
       '<div style="margin-top:0.5em;color:#666;">⬜ 0 · 🟩 1 · 🟢 2 · 💚 3 · 🌳 4+ 노트/일</div>';
 
-    // Monthly bar
     var months = Object.keys(byMonth).sort();
     var maxMonth = Math.max.apply(null, Object.values(byMonth));
     var monthRows = months.map(function (m) {
@@ -110,17 +108,22 @@ sitemap: true
       '<table style="border-collapse:collapse;margin-top:0.5em;">' + monthRows + '</table></details>' +
       '<details><summary style="font-weight:600;cursor:pointer;margin-top:0.6em;">📆 연도별 합계</summary>' +
       '<ul style="margin:0.4em 0 0 1em;">' +
-      years.map(function (y) { return '<li>' + y + ': <strong>' + byYear[y] + '</strong>개</li>'; }).join('') +
+      years.map(function (y) {
+        return '<li>' + y + ': <strong>' + byYear[y] + '</strong>개</li>';
+      }).join('') +
       '</ul></details>';
   }
 
+  // Run immediately if DOM ready, otherwise wait
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', renderStats);
   } else {
     renderStats();
   }
-  // Re-run on Hydejack SPA navigation if available
-  var pushState = document.querySelector('hy-push-state');
-  if (pushState) pushState.addEventListener('hy-push-state-after', renderStats);
+  // Re-run on Hydejack SPA navigation
+  var ps = document.querySelector('hy-push-state');
+  if (ps) ps.addEventListener('hy-push-state-after', renderStats);
+  // Defensive: retry once after 500ms in case theme injects DOM late
+  setTimeout(renderStats, 500);
 })();
 </script>
