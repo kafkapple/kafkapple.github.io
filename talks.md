@@ -15,7 +15,9 @@ embedded where available.
 *The Virtuous Cycle of NeuroAI: Bridging Biological and Artificial Intelligence.*
 **Feb 2026.**
 
-{% include youtube.html id="pNfBXntZh10" title="NeuroAI Seminar — Virtuous Cycle of NeuroAI" quality="maxresdefault" %}
+> 🔒 The original recording (`pNfBXntZh10`) is currently set to **Private**
+> on YouTube. Embed temporarily disabled. Please contact me directly if
+> you would like access.
 
 The talk frames NeuroAI as a two-direction loop — using AI to study
 brains and behavior, and drawing on neuroscience to inform AI
