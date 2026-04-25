@@ -33,7 +33,7 @@ These work in the CMS but the rich-text editor may strip or mangle non-markdown 
 
 - Pages with embedded `<style>` blocks (e.g., `lab.md`, `practice/*.md`, `interests/design/*.md`)
 - Pages with custom HTML widgets (e.g., `<canvas>` tags, custom `<div class="...">` grids)
-- Pages with Liquid template tags (e.g., `{% include %}`, `{% for %}`)
+- Pages with Liquid template tags (e.g., {% raw %}`{% include %}`, `{% for %}`{% endraw %})
 
 → For these, **prefer GitHub web editor** (the `.` shortcut on the repo page) or local clone + push.
 
