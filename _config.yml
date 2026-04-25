@@ -52,6 +52,8 @@ menu:
     url:               /
   - title:             Publications
     url:               /#publications
+  - title:             Research
+    url:               /research-questions/
   - title:             Culture & Arts
     url:               /culture/
   - title:             TIL

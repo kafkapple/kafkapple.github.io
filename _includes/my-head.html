@@ -7,6 +7,54 @@
   body { background-color: #fff; color: #333; }
 </style>
 
+{%- comment -%}
+  JSON-LD structured data for LLM agents and search engines.
+  - schema.org Person on the home page (about/landing)
+  - schema.org ScholarlyArticle on each publication entry (rendered inline in index.md per-pub)
+  This block emits Person on every page (canonical author identity).
+{%- endcomment -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://kafkapple.github.io/#me",
+  "name": "Jungjoon Park",
+  "givenName": "Jungjoon",
+  "familyName": "Park",
+  "alternateName": ["J.-J. Park", "박정준"],
+  "url": "https://kafkapple.github.io/",
+  "image": "https://kafkapple.github.io/assets/img/profile.jpg",
+  "email": "biasdrive@gmail.com",
+  "jobTitle": "Postdoctoral Fellow",
+  "affiliation": {
+    "@type": "Organization",
+    "name": "AMILab (Advanced Machine Intelligence), KAIST School of Computing",
+    "url": "https://ami.kaist.ac.kr/"
+  },
+  "alumniOf": {
+    "@type": "CollegeOrUniversity",
+    "name": "Korea Advanced Institute of Science and Technology (KAIST)",
+    "department": "Department of Bio and Brain Engineering"
+  },
+  "sameAs": [
+    "https://scholar.google.com/citations?user=D_rZCWYAAAAJ",
+    "https://orcid.org/0000-0002-2944-0697",
+    "https://github.com/kafkapple",
+    "https://www.linkedin.com/in/joon-park-0940919b/"
+  ],
+  "knowsAbout": [
+    "NeuroAI",
+    "Computational Neuroscience",
+    "Vision-Language Models",
+    "3D Gaussian Splatting",
+    "Affective Empathy",
+    "Behavioral Analysis",
+    "Brain-Inspired AI"
+  ],
+  "description": "Researcher at the interface of neuroscience and AI. Uses AI to study neural and behavioral data and draws on neuroscience to inform AI systems."
+}
+</script>
+
 <link rel="dns-prefetch" href="https://assets.gumroad.com">
 <script type="module">
   const loadJS = x => new Promise(r => window.loadJS(x).addEventListener('load', r));
