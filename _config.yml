@@ -53,7 +53,14 @@ menu:
   - title:             Publications
     url:               /#publications
   - title:             Research
-    url:               /research-questions/
+    url:               /research/
+    submenu:
+      - title:         Overview
+        url:           /research/
+      - title:         Open Questions
+        url:           /research-questions/
+      - title:         How I Think
+        url:           /process/
   - title:             Culture & Arts
     url:               /culture/
   - title:             TIL
