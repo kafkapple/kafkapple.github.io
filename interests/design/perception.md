@@ -575,10 +575,17 @@ demos.tbw = (function(){
 })();
 
 /* ── Boot ────────────────────────────────────────────────── */
-function boot() { switchDemo('afterimage'); }
+function boot() {
+  // Guard: only run when actually on the perception page
+  if (!document.getElementById('demo-nav')) return;
+  switchDemo('afterimage');
+}
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', boot);
 } else { boot(); }
+
+// Expose global for SPA re-init via my-body.html
+window._initPerception = boot;
 
 var _ps = document.getElementById('_pushState');
 if (_ps) {
@@ -586,8 +593,12 @@ if (_ps) {
     if (currentId && demos[currentId] && demos[currentId].destroy) {
       demos[currentId].destroy();
     }
+    currentId = null;
   });
-  _ps.addEventListener('hy-push-state-after', boot);
+  // Guard: only boot when navigating TO the perception page
+  _ps.addEventListener('hy-push-state-after', function() {
+    if (document.getElementById('demo-nav')) boot();
+  });
 }
 
 })();

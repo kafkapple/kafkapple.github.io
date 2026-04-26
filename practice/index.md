@@ -14,7 +14,9 @@ sitemap: true
 
 ### [49 Morphines](/practice/49-morphines/)
 
-Bass · 2013–present
+Bass · 2013–present · *Post-rock / Doom metal*
+
+무거운 리프와 서정적 사운드스케이프를 결합한 한국 포스트록·둠메탈 밴드 — 느리게 쌓아올리는 다층적 텍스처가 특징.
 
 <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;margin:1em 0 2em 0;">
 <iframe src="https://www.youtube.com/embed/VFlzVLBumpI" frameborder="0" allowfullscreen
@@ -25,7 +27,9 @@ Bass · 2013–present
 
 ### [Noeazy](/practice/noeazy/)
 
-Guitar · 2007–2019
+Guitar · 2007–2019 · *Metalcore*
+
+국내 메탈코어 씬의 대표 밴드; 공격적인 리프와 브레이크다운, 2016년 독일 타우버탈 페스티발 Emergenza International Final 진출.
 
 <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;margin:1em 0 2em 0;">
 <iframe src="https://www.youtube.com/embed/zYNiCLNHMHo" frameborder="0" allowfullscreen
@@ -36,7 +40,9 @@ Guitar · 2007–2019
 
 ### [Jambinai](/practice/jambinai/)
 
-Guitar (guest) · 2013–2014
+Guitar (guest) · 2013–2014 · *Experimental / Post-rock*
+
+가야금·해금·피리 등 국악기와 포스트록을 결합한 실험 밴드 — NPR, Pitchfork 등 해외 매체에 소개된 국제적으로 주목받는 그룹. [Wikipedia →](https://en.wikipedia.org/wiki/Jambinai)
 
 <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;margin:1em 0 2em 0;">
 <iframe src="https://www.youtube.com/embed/56dv3XHUISY" frameborder="0" allowfullscreen

@@ -8,38 +8,57 @@ html {
 .sidebar-about .avatar,
 .avatar { background-color: rgb(46,85,56); }
 
-// Light mode: warm off-white main background (Hydejack default feel)
+// Light mode: warm off-white main background
 body {
   background-color: #f5f5f0;
 }
 
-// ── Dark mode: Hydejack adds `dark-mode` class to <html> via toggle ──────────
-// Also cover `hy-dark` and attribute variants for compatibility.
+// ── Dark mode: Forest Green-tinted dark ───────────────────────────────────────
+// Hydejack adds `dark-mode` class to <html> via toggle; also cover attribute variants.
+$dark-bg: #0f1a12;
+$dark-text: #d4ddd6;
+$dark-heading: #e8f0ea;
+$dark-muted: #8aa890;
+$dark-link: rgb(110, 190, 135);
+$dark-link-hover: rgb(145, 215, 160);
+$dark-border: #253a2c;
+
 html.dark-mode body,
 html[hy-mode="dark"] body,
 html[data-mode="dark"] body {
-  background-color: #1b1b2e !important;
-  color: #d0d0d8 !important;
-  --body-bg: #1b1b2e;
+  background-color: #{$dark-bg} !important;
+  color: #{$dark-text} !important;
+  --body-bg: #{$dark-bg};
 }
 
+// All major content containers
+html.dark-mode #_main,
+html.dark-mode #_content,
 html.dark-mode .content,
 html.dark-mode .page-about .content,
 html.dark-mode .page,
+html.dark-mode .page-body,
+html.dark-mode .page-header,
 html.dark-mode article,
 html.dark-mode main,
 html.dark-mode .layout-page,
+html[hy-mode="dark"] #_main,
+html[hy-mode="dark"] #_content,
 html[hy-mode="dark"] .content,
 html[hy-mode="dark"] .page-about .content,
 html[hy-mode="dark"] .page,
+html[hy-mode="dark"] .page-body,
+html[hy-mode="dark"] .page-header,
 html[hy-mode="dark"] article,
-html[hy-mode="dark"] main {
-  background-color: #1b1b2e !important;
-  color: #d0d0d8 !important;
+html[hy-mode="dark"] main,
+html[hy-mode="dark"] .layout-page {
+  background-color: #{$dark-bg} !important;
+  color: #{$dark-text} !important;
 }
 
+// Project/publication meta text
 html.dark-mode .proj {
-  border-color: #3a3a5a !important;
+  border-color: #{$dark-border} !important;
 }
 
 html.dark-mode .pub-venue,
@@ -49,32 +68,44 @@ html.dark-mode .proj-desc,
 html[hy-mode="dark"] .pub-venue,
 html[hy-mode="dark"] .pub-footnote,
 html[hy-mode="dark"] .proj-meta,
-html[hy-mode="dark"] .proj-desc { color: #a0a0b8 !important; }
+html[hy-mode="dark"] .proj-desc { color: #{$dark-muted} !important; }
 
+// Headings
 html.dark-mode h1, html.dark-mode h2, html.dark-mode h3, html.dark-mode h4,
 html[hy-mode="dark"] h1, html[hy-mode="dark"] h2,
 html[hy-mode="dark"] h3, html[hy-mode="dark"] h4 {
-  color: #e8e8f0 !important;
+  color: #{$dark-heading} !important;
 }
 
-html.dark-mode a, html[hy-mode="dark"] a { color: rgb(100,170,120) !important; }
-html.dark-mode a:hover, html[hy-mode="dark"] a:hover { color: rgb(130,200,150) !important; }
+// Links
+html.dark-mode a, html[hy-mode="dark"] a { color: #{$dark-link} !important; }
+html.dark-mode a:hover, html[hy-mode="dark"] a:hover { color: #{$dark-link-hover} !important; }
 
 // ── OS-preference dark mode (only when user hasn't explicitly chosen light) ──
 @media (prefers-color-scheme: dark) {
   html:not(.light-mode):not([hy-mode="light"]) body {
-    background-color: #1b1b2e;
-    color: #d0d0d8;
-    --body-bg: #1b1b2e;
+    background-color: #{$dark-bg};
+    color: #{$dark-text};
+    --body-bg: #{$dark-bg};
+  }
+  html:not(.light-mode):not([hy-mode="light"]) #_main,
+  html:not(.light-mode):not([hy-mode="light"]) #_content,
+  html:not(.light-mode):not([hy-mode="light"]) .content,
+  html:not(.light-mode):not([hy-mode="light"]) .page,
+  html:not(.light-mode):not([hy-mode="light"]) article,
+  html:not(.light-mode):not([hy-mode="light"]) main {
+    background-color: #{$dark-bg};
+    color: #{$dark-text};
   }
   html:not(.light-mode):not([hy-mode="light"]) .pub-venue,
   html:not(.light-mode):not([hy-mode="light"]) .pub-footnote,
   html:not(.light-mode):not([hy-mode="light"]) .proj-meta,
-  html:not(.light-mode):not([hy-mode="light"]) .proj-desc { color: #a0a0b8; }
+  html:not(.light-mode):not([hy-mode="light"]) .proj-desc { color: #{$dark-muted}; }
+  html:not(.light-mode):not([hy-mode="light"]) a { color: #{$dark-link}; }
 }
 
 // ── Sidebar menu group separators ────────────────────────────────────────────
-// Visual rule before "Practice" (Creative & Personal group)
+// Visual rule before "Creative" (Creative & Personal group)
 .nav-item > a[href="/practice/"] {
   margin-top: 0.7em !important;
   padding-top: 0.7em !important;
@@ -88,7 +119,7 @@ html.dark-mode a:hover, html[hy-mode="dark"] a:hover { color: rgb(130,200,150) !
   border-top: 1px solid rgba(255,255,255,0.22) !important;
 }
 
-// Group label above each section (inline pseudo-element approach)
+// Group label above each section
 .nav-item > a[href="/practice/"]::before {
   content: "Creative & Personal";
   display: block;
