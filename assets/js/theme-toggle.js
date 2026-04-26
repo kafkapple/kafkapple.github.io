@@ -20,8 +20,10 @@
       html.classList.add('light-mode');
     }
     var btn = document.getElementById('theme-toggle-btn');
-    if (btn) btn.setAttribute('aria-label', theme === DARK ? 'Switch to light mode' : 'Switch to dark mode');
-    if (btn) btn.textContent = theme === DARK ? '☀' : '☾'; // ☀ : ☾
+    if (btn) {
+      btn.textContent = theme === DARK ? '☀' : '☾';
+      btn.setAttribute('aria-label', theme === DARK ? 'Switch to light mode' : 'Switch to dark mode');
+    }
   }
 
   function toggle() {
@@ -31,31 +33,46 @@
   }
 
   function injectButton() {
-    if (document.getElementById('theme-toggle-btn')) return;
+    if (document.getElementById('theme-toggle-btn')) {
+      applyTheme(getTheme());
+      return;
+    }
+    if (!document.body) return;
     var btn = document.createElement('button');
     btn.id = 'theme-toggle-btn';
-    btn.setAttribute('aria-label', getTheme() === DARK ? 'Switch to light mode' : 'Switch to dark mode');
     btn.textContent = getTheme() === DARK ? '☀' : '☾';
+    btn.setAttribute('aria-label', getTheme() === DARK ? 'Switch to light mode' : 'Switch to dark mode');
     btn.addEventListener('click', toggle);
     document.body.appendChild(btn);
   }
 
-  applyTheme(getTheme());
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', injectButton);
-  } else {
+  function onNavComplete() {
     injectButton();
+    applyTheme(getTheme());
   }
 
-  // Re-inject on Hydejack SPA navigation (button removed from old DOM)
-  document.addEventListener('DOMContentLoaded', function () {
+  function attachSpaListener() {
     var ps = document.getElementById('_pushState');
-    if (ps) {
-      ps.addEventListener('hy-push-state-after', function () {
-        injectButton();
-        applyTheme(getTheme());
-      });
-    }
-  });
+    if (ps) ps.addEventListener('hy-push-state-after', onNavComplete);
+  }
+
+  // Apply theme immediately (FOUC already handled by inline head script)
+  applyTheme(getTheme());
+
+  // Inject button: now (defer = DOM ready after parsing), plus two fallbacks
+  // in case Hydejack initialization happens between defer script execution and
+  // DOMContentLoaded and clears/replaces body children.
+  injectButton();
+  setTimeout(injectButton, 100);
+  setTimeout(injectButton, 600);
+
+  // Attach SPA navigation listener
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function () {
+      injectButton();
+      attachSpaListener();
+    });
+  } else {
+    attachSpaListener();
+  }
 })();
