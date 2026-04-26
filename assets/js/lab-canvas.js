@@ -60,8 +60,43 @@
       document.addEventListener('mouseup', function () { painting = false; });
       c.addEventListener('wheel', function (e) {
         colorIdx = (colorIdx + (e.deltaY > 0 ? 1 : -1) + palette.length) % palette.length;
+        updatePaletteBtns();
         e.preventDefault();
       }, { passive: false });
+
+      // Palette buttons
+      function updatePaletteBtns() {
+        var btns = document.querySelectorAll('#pixel-palette-btns .lab-btn');
+        btns.forEach(function (b) {
+          b.classList.toggle('active', parseInt(b.dataset.pidx, 10) === colorIdx);
+        });
+      }
+      document.querySelectorAll('#pixel-palette-btns .lab-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          colorIdx = parseInt(btn.dataset.pidx, 10);
+          updatePaletteBtns();
+        });
+      });
+
+      // Clear button
+      var clearBtn = document.getElementById('pixel-clear-btn');
+      if (clearBtn) clearBtn.addEventListener('click', function () { grid.fill(0); draw(); });
+
+      // Text stamp input: Enter key stamps text onto canvas at center
+      var pixelInput = document.getElementById('pixel-input');
+      if (pixelInput) {
+        pixelInput.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' && pixelInput.value.trim()) {
+            ctx.font = 'bold 28px monospace';
+            ctx.fillStyle = palette[colorIdx];
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(pixelInput.value.trim().slice(0, 12), c.width / 2, c.height / 2);
+            pixelInput.value = '';
+          }
+        });
+      }
+
       draw();
     })();
 
@@ -156,33 +191,79 @@
       if (!c) return;
       var ctx = c.getContext('2d');
       var W = c.width, H = c.height;
-      var text = ['> INIT SYSTEM', '> LOADING...', '> NEURAL NET ACTIVE', '> PATTERN FOUND', '> OUTPUT READY'];
+
+      var palettes = {
+        phosphor: { bg: '#0a1a0a', fg: '#00ff66', scan: 'rgba(0,0,0,0.22)', glow: 'rgba(0,255,102,0.08)' },
+        amber:    { bg: '#1a0e00', fg: '#ffb000', scan: 'rgba(0,0,0,0.18)', glow: 'rgba(255,176,0,0.07)' }
+      };
+      var palKey = 'phosphor';
+
+      var defaultLines = ['> INIT SYSTEM', '> LOADING NEURAL NET...', '> PATTERN FOUND', '> OUTPUT READY', '> STANDBY_'];
+      var userText = '';
       var lineIdx = 0, charIdx = 0, scanY = 0, last = 0;
-      function drawText() {
-        ctx.fillStyle = '#0a1a0a'; ctx.fillRect(0, 0, W, H);
-        ctx.font = '13px monospace'; ctx.fillStyle = '#00ff66';
-        text.slice(0, lineIdx + 1).forEach(function (l, i) {
+      var composing = false;
+
+      // Text input wiring
+      var crtInput = document.getElementById('crt-input');
+      if (crtInput) {
+        crtInput.addEventListener('compositionstart', function () { composing = true; });
+        crtInput.addEventListener('compositionend', function () { composing = false; userText = crtInput.value; lineIdx = 0; charIdx = 0; });
+        crtInput.addEventListener('input', function () { if (!composing) { userText = crtInput.value; lineIdx = 0; charIdx = 0; } });
+      }
+
+      // Palette buttons
+      document.querySelectorAll('[data-crt]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          palKey = btn.dataset.crt;
+          document.querySelectorAll('[data-crt]').forEach(function (b) { b.classList.toggle('active', b === btn); });
+        });
+      });
+
+      function getLines() {
+        if (userText.trim()) {
+          var words = userText.trim().match(/.{1,30}(\s|$)/g) || [userText.trim()];
+          return words.map(function (w) { return '> ' + w.trim(); });
+        }
+        return defaultLines;
+      }
+
+      function drawCRT(ts) {
+        var pal = palettes[palKey];
+        scanY = (scanY + 1.5) % H;
+
+        if (ts - last > 80) {
+          last = ts;
+          var lines = getLines();
+          if (lineIdx < lines.length) {
+            charIdx++;
+            if (charIdx > lines[lineIdx].length) { charIdx = 0; lineIdx = Math.min(lineIdx + 1, lines.length - 1); }
+          }
+        }
+
+        var lines = getLines();
+        ctx.fillStyle = pal.bg; ctx.fillRect(0, 0, W, H);
+        ctx.font = '13px monospace'; ctx.fillStyle = pal.fg;
+        lines.slice(0, lineIdx + 1).forEach(function (l, i) {
           ctx.fillText(i < lineIdx ? l : l.slice(0, charIdx), 14, 30 + i * 22);
         });
-        ctx.fillStyle = 'rgba(0,0,0,0.22)';
+
+        // Scanlines
+        ctx.fillStyle = pal.scan;
         for (var y = 0; y < H; y += 2) ctx.fillRect(0, y, W, 1);
+
+        // Scanline sweep
         var g = ctx.createLinearGradient(0, scanY - 6, 0, scanY + 6);
-        g.addColorStop(0, 'rgba(0,255,102,0)'); g.addColorStop(0.5, 'rgba(0,255,102,0.08)'); g.addColorStop(1, 'rgba(0,255,102,0)');
+        g.addColorStop(0, pal.glow.replace('0.08', '0')); g.addColorStop(0.5, pal.glow); g.addColorStop(1, pal.glow.replace('0.08', '0'));
         ctx.fillStyle = g; ctx.fillRect(0, scanY - 6, W, 12);
+
+        // Vignette
         var v = ctx.createRadialGradient(W / 2, H / 2, H * 0.3, W / 2, H / 2, H * 0.8);
         v.addColorStop(0, 'rgba(0,0,0,0)'); v.addColorStop(1, 'rgba(0,0,0,0.55)');
         ctx.fillStyle = v; ctx.fillRect(0, 0, W, H);
+
+        rafIds.push(requestAnimationFrame(drawCRT));
       }
-      function frame(ts) {
-        scanY = (scanY + 1.5) % H;
-        if (ts - last > 80) {
-          last = ts;
-          if (lineIdx < text.length) { charIdx++; if (charIdx > text[lineIdx].length) { charIdx = 0; lineIdx = Math.min(lineIdx + 1, text.length - 1); } }
-        }
-        drawText();
-        rafIds.push(requestAnimationFrame(frame));
-      }
-      rafIds.push(requestAnimationFrame(frame));
+      rafIds.push(requestAnimationFrame(drawCRT));
     })();
 
     // ─── 6. Color Cycle ─────────────────────────────────────

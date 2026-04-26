@@ -2,7 +2,7 @@
 layout: page
 title: Lab
 description: >
-  Experimental interactive media — generative art, creative coding, and visual experiments.
+  Interactive experiments — generative art, physics simulations, creative coding. All vanilla canvas, zero dependencies.
 permalink: /lab/
 sitemap: true
 redirect_from:
@@ -10,36 +10,107 @@ redirect_from:
 ---
 
 <style>
+/* ── Base card ── */
 .interest-item { margin: 0 0 1.6em 0; padding: 0.7em 1em 1em; border-left: 3px solid #ccd5db; line-height: 1.55; }
 .interest-item:hover { border-color: rgb(46,85,56); }
 .interest-title { font-weight: 600; margin: 0 0 0.3em 0; font-size: 1.0em; }
 .interest-desc { font-size: 0.88em; color: #666; margin: 0.4em 0 0; }
 .interest-tag { display: inline-block; font-size: 0.72em; padding: 0.08em 0.4em; border-radius: 2px; background: #e8eef6; color: #2a4a6a; margin-right: 0.3em; }
-.lab-canvas { display: block; width: 100%; cursor: crosshair; margin: 0.6em 0 0.3em; border-radius: 4px; background: #161c20; }
+
+/* ── Canvas ── */
+.lab-canvas { display: block; width: 100%; cursor: crosshair; border-radius: 4px; background: #161c20; }
+
+/* ── Section header ── */
+.lab-section { margin: 2em 0 0.4em; padding-bottom: 0.35em; border-bottom: 1px solid rgba(46,85,56,0.2); }
+.lab-section h2 { font-size: 0.95em; font-weight: 700; color: rgb(46,85,56); letter-spacing: 0.06em; text-transform: uppercase; margin: 0; }
+
+/* ── Demo row: canvas + side panel ── */
+.lab-demo-row { display: flex; gap: 0.75em; align-items: flex-start; margin: 0.6em 0 0.3em; }
+.lab-demo-row .lab-canvas { flex: 1; min-width: 0; }
+.lab-ctrl-panel {
+  width: 156px; flex-shrink: 0;
+  display: flex; flex-direction: column; gap: 0.7em;
+  padding: 0.7em 0.85em;
+  background: rgba(20,30,22,0.9);
+  border-radius: 5px;
+  border: 1px solid rgba(46,85,56,0.22);
+}
+@media (max-width: 580px) {
+  .lab-demo-row { flex-direction: column; }
+  .lab-ctrl-panel { width: 100%; }
+}
+
+/* ── Controls inside panel ── */
+.lab-ctrl-group { display: flex; flex-direction: column; gap: 0.28em; }
+.lab-label {
+  font-size: 0.68em; font-weight: 700; letter-spacing: 0.07em;
+  text-transform: uppercase; color: rgba(110,190,135,0.7);
+}
+.lab-text-input {
+  background: rgba(0,0,0,0.5);
+  border: 1px solid rgba(46,85,56,0.28);
+  border-radius: 4px;
+  padding: 0.32em 0.5em;
+  color: #8dcc9d;
+  font-family: monospace; font-size: 0.8em;
+  width: 100%; box-sizing: border-box;
+  outline: none;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+  caret-color: #4aee88;
+}
+.lab-text-input:focus {
+  border-color: rgba(46,85,56,0.65);
+  box-shadow: 0 0 0 2px rgba(46,85,56,0.12);
+}
+.lab-text-input::placeholder { color: rgba(100,160,110,0.4); }
+
+/* ── Buttons ── */
+.lab-btn-row { display: flex; gap: 0.3em; flex-wrap: wrap; }
+.lab-btn {
+  font-size: 0.74em; padding: 0.22em 0.6em;
+  background: rgba(46,85,56,0.12);
+  color: rgb(100,170,120);
+  border: 1px solid rgba(46,85,56,0.22);
+  border-radius: 3px; cursor: pointer;
+  font-family: monospace;
+  transition: background 150ms ease, border-color 150ms ease, color 150ms ease;
+  user-select: none;
+}
+.lab-btn:hover { background: rgba(46,85,56,0.28); border-color: rgba(46,85,56,0.5); color: #b0dcb8; }
+.lab-btn.active { background: rgba(46,85,56,0.55); border-color: rgba(46,85,56,0.7); color: #d4edda; }
+
+/* ── Inline button row (below canvas) ── */
+.lab-inline-btns { margin: 0.35em 0 0.5em; display: flex; gap: 0.4em; flex-wrap: wrap; }
+.lab-inline-btns .lab-btn { font-size: 0.8em; padding: 0.22em 0.75em; }
 </style>
 
-Experiments in creative coding, generative systems, and browser-native interaction. Click or hover on each to interact.
+Experiments in creative coding, generative systems, and browser-native interaction.
 
-**Demos** — [Pixel Art](#pixel-art-canvas) · [Flow Field](#flow-field) · [Cursor Blob](#cursor-blob) · [Glitch Text](#glitch-text) · [CRT Scanlines](#crt-scanlines) · [Color Cycle](#color-cycle) · [Grid Ripple](#grid-dot-spring-ripple) · [Matrix Rain](#matrix-rain) · [Particle Text](#particle-text) · [Game of Life](#game-of-life) · [Neural Spike](#neural-spike-propagation) · [Reaction-Diffusion](#reaction-diffusion-gray-scott)
+**Jump to:** [Retro & Type](#crt-scanlines) · [Drawing](#pixel-art-canvas) · [Physics](#flow-field) · [Generative](#matrix-rain) · [Neural](#game-of-life)
 
 ---
 
-<div class="interest-item" id="pixel-art-canvas">
-<p class="interest-title">Pixel Art Canvas <span class="interest-tag">draw</span></p>
-<canvas id="pixel-canvas" class="lab-canvas" width="640" height="200" style="background:#1a1e22;"></canvas>
-<p class="interest-desc">Click/drag to paint pixels. Scroll over canvas to change brush color.</p>
-</div>
+<div class="lab-section"><h2>Retro &amp; Typography</h2></div>
 
-<div class="interest-item" id="flow-field">
-<p class="interest-title">Flow Field <span class="interest-tag">generative</span></p>
-<canvas id="flow-canvas" class="lab-canvas" width="640" height="200" style="background:#0d1510;"></canvas>
-<p class="interest-desc">Perlin-noise vector field with particle trails. Click to respawn particles.</p>
+<div class="interest-item" id="crt-scanlines">
+<p class="interest-title">CRT Scanlines <span class="interest-tag">retro</span><span class="interest-tag">text</span></p>
+<div class="lab-demo-row">
+  <canvas id="crt-canvas" class="lab-canvas" width="640" height="200" style="background:#0a1a0a;"></canvas>
+  <div class="lab-ctrl-panel">
+    <div class="lab-ctrl-group">
+      <span class="lab-label">Display text</span>
+      <input type="text" id="crt-input" class="lab-text-input" placeholder="Type here…" maxlength="60" autocomplete="off" spellcheck="false">
+    </div>
+    <div class="lab-ctrl-group">
+      <span class="lab-label">Palette</span>
+      <div class="lab-btn-row">
+        <button class="lab-btn active" data-crt="phosphor">Phosphor</button>
+        <button class="lab-btn" data-crt="amber">Amber</button>
+      </div>
+    </div>
+  </div>
 </div>
-
-<div class="interest-item" id="cursor-blob">
-<p class="interest-title">Cursor Blob <span class="interest-tag">interaction</span></p>
-<canvas id="blob-canvas" class="lab-canvas" width="640" height="200" style="background:#0d0d1a;"></canvas>
-<p class="interest-desc">Move mouse over canvas. Metaball fluid simulation attracted to cursor.</p>
+<p class="interest-desc">Phosphor CRT simulation with scanline overlay. Type text to display it; click <em>Amber</em> to switch palette.</p>
 </div>
 
 <div class="interest-item" id="glitch-text">
@@ -50,60 +121,109 @@ Experiments in creative coding, generative systems, and browser-native interacti
 <p class="interest-desc">Click to trigger glitch and cycle words. Hover for continuous distortion.</p>
 </div>
 
-<div class="interest-item" id="crt-scanlines">
-<p class="interest-title">CRT Scanlines <span class="interest-tag">retro</span></p>
-<canvas id="crt-canvas" class="lab-canvas" width="640" height="200" style="background:#0a1a0a;"></canvas>
-<p class="interest-desc">Animated CRT phosphor simulation with scanline overlay and typewriter text.</p>
+---
+
+<div class="lab-section"><h2>Drawing &amp; Color</h2></div>
+
+<div class="interest-item" id="pixel-art-canvas">
+<p class="interest-title">Pixel Art Canvas <span class="interest-tag">draw</span></p>
+<div class="lab-demo-row">
+  <canvas id="pixel-canvas" class="lab-canvas" width="640" height="200" style="background:#1a1e22;"></canvas>
+  <div class="lab-ctrl-panel">
+    <div class="lab-ctrl-group">
+      <span class="lab-label">Stamp text</span>
+      <input type="text" id="pixel-input" class="lab-text-input" placeholder="Type to stamp…" maxlength="12" autocomplete="off" spellcheck="false">
+    </div>
+    <div class="lab-ctrl-group">
+      <span class="lab-label">Color</span>
+      <div class="lab-btn-row" id="pixel-palette-btns">
+        <button class="lab-btn active" data-pidx="0" style="border-color:#4aee88;">#1</button>
+        <button class="lab-btn" data-pidx="1" style="border-color:#2e9955;">#2</button>
+        <button class="lab-btn" data-pidx="2" style="border-color:#3a88c0;">#3</button>
+        <button class="lab-btn" data-pidx="3" style="border-color:#9a6adc;">#4</button>
+        <button class="lab-btn" data-pidx="4" style="border-color:#ee6060;">#5</button>
+      </div>
+    </div>
+    <div class="lab-ctrl-group">
+      <button class="lab-btn" id="pixel-clear-btn" style="width:100%;text-align:center;">Clear</button>
+    </div>
+  </div>
+</div>
+<p class="interest-desc">Click/drag to paint pixels. Pick a color above or scroll on canvas to cycle. Type and press Enter to stamp text.</p>
 </div>
 
 <div class="interest-item" id="color-cycle">
 <p class="interest-title">Color Cycle <span class="interest-tag">generative</span></p>
-<canvas id="lava-canvas" class="lab-canvas" width="640" height="200" style="background:#10101a;"></canvas>
+<canvas id="lava-canvas" class="lab-canvas" width="640" height="200" style="background:#10101a;margin:0.6em 0 0.3em;"></canvas>
 <p class="interest-desc">Metaball blobs with HSL cycle. Click to add a new blob.</p>
+</div>
+
+---
+
+<div class="lab-section"><h2>Physics &amp; Motion</h2></div>
+
+<div class="interest-item" id="flow-field">
+<p class="interest-title">Flow Field <span class="interest-tag">generative</span></p>
+<canvas id="flow-canvas" class="lab-canvas" width="640" height="200" style="background:#0d1510;margin:0.6em 0 0.3em;"></canvas>
+<p class="interest-desc">Perlin-noise vector field with particle trails. Click to respawn particles.</p>
+</div>
+
+<div class="interest-item" id="cursor-blob">
+<p class="interest-title">Cursor Blob <span class="interest-tag">interaction</span></p>
+<canvas id="blob-canvas" class="lab-canvas" width="640" height="200" style="background:#0d0d1a;margin:0.6em 0 0.3em;"></canvas>
+<p class="interest-desc">Move mouse over canvas. Metaball fluid simulation attracted to cursor.</p>
 </div>
 
 <div class="interest-item" id="grid-dot-spring-ripple">
 <p class="interest-title">Grid Dot Spring Ripple <span class="interest-tag">physics</span><span class="interest-tag">interaction</span></p>
-<canvas id="grid-ripple-canvas" class="lab-canvas" style="background:#0d1510;"></canvas>
+<canvas id="grid-ripple-canvas" class="lab-canvas" width="640" height="240" style="background:#0d1510;margin:0.6em 0 0.3em;"></canvas>
 <p class="interest-desc">N×M dot grid with spring physics. Mouse repels dots; click to send a ripple propagating outward.</p>
 </div>
 
+---
+
+<div class="lab-section"><h2>Generative Text</h2></div>
+
 <div class="interest-item" id="matrix-rain">
 <p class="interest-title">Matrix Rain <span class="interest-tag">generative</span><span class="interest-tag">NeuroAI</span></p>
-<canvas id="matrix-rain-canvas" class="lab-canvas" style="background:#0a100c;"></canvas>
+<canvas id="matrix-rain-canvas" class="lab-canvas" width="640" height="240" style="background:#0a100c;margin:0.6em 0 0.3em;"></canvas>
 <p class="interest-desc">Column-based character rain using Greek letters, math symbols, and nucleotide codes. Research terms (STDP, LTP, ReLU, axon) surface in white.</p>
 </div>
 
 <div class="interest-item" id="particle-text">
 <p class="interest-title">Particle Text <span class="interest-tag">particles</span><span class="interest-tag">typography</span></p>
-<canvas id="particle-text-canvas" class="lab-canvas" style="background:#0d1510;"></canvas>
+<canvas id="particle-text-canvas" class="lab-canvas" width="640" height="240" style="background:#0d1510;margin:0.6em 0 0.3em;"></canvas>
 <p class="interest-desc">Particles spring toward letter forms sampled from canvas text. Mouse repels; click or wait to cycle words — NeuroAI → Plasticity → Emergence → Spike.</p>
 </div>
 
+---
+
+<div class="lab-section"><h2>Cellular &amp; Neural</h2></div>
+
 <div class="interest-item" id="game-of-life">
 <p class="interest-title">Game of Life <span class="interest-tag">cellular automaton</span></p>
-<canvas id="gol-canvas" class="lab-canvas" style="background:#0a0f0c;cursor:crosshair;"></canvas>
-<div style="margin:0.3em 0 0.5em;display:flex;gap:0.5em;flex-wrap:wrap;">
-  <button id="gol-btn-gun" style="font-size:0.8em;padding:0.2em 0.7em;background:rgba(46,85,56,0.7);color:#d4ddd6;border:1px solid rgba(100,160,110,0.4);border-radius:3px;cursor:pointer;">Gosper Gun</button>
-  <button id="gol-btn-pulsar" style="font-size:0.8em;padding:0.2em 0.7em;background:rgba(46,85,56,0.7);color:#d4ddd6;border:1px solid rgba(100,160,110,0.4);border-radius:3px;cursor:pointer;">Pulsar</button>
-  <button id="gol-btn-random" style="font-size:0.8em;padding:0.2em 0.7em;background:rgba(46,85,56,0.7);color:#d4ddd6;border:1px solid rgba(100,160,110,0.4);border-radius:3px;cursor:pointer;">Random</button>
+<canvas id="gol-canvas" class="lab-canvas" width="640" height="240" style="background:#0a0f0c;cursor:crosshair;margin:0.6em 0 0;"></canvas>
+<div class="lab-inline-btns">
+  <button id="gol-btn-gun" class="lab-btn">Gosper Gun</button>
+  <button id="gol-btn-pulsar" class="lab-btn">Pulsar</button>
+  <button id="gol-btn-random" class="lab-btn">Random</button>
 </div>
 <p class="interest-desc">Conway's Game of Life with age-coded color (bright → teal → grey). Draw cells with mouse; load preset patterns above.</p>
 </div>
 
 <div class="interest-item" id="neural-spike-propagation">
 <p class="interest-title">Neural Spike Propagation <span class="interest-tag">LIF model</span><span class="interest-tag">NeuroAI</span></p>
-<canvas id="neural-spike-canvas" class="lab-canvas" style="background:#080e0a;"></canvas>
+<canvas id="neural-spike-canvas" class="lab-canvas" width="640" height="240" style="background:#080e0a;margin:0.6em 0 0.3em;"></canvas>
 <p class="interest-desc">Leaky Integrate-and-Fire neurons on a small-world graph. Color encodes membrane potential (cool → hot). Click a node to inject current; watch action potentials propagate.</p>
 </div>
 
 <div class="interest-item" id="reaction-diffusion-gray-scott">
 <p class="interest-title">Reaction-Diffusion (Gray-Scott) <span class="interest-tag">emergent patterns</span></p>
-<canvas id="rd-canvas" class="lab-canvas" style="background:#0a3c28;"></canvas>
-<div style="margin:0.3em 0 0.5em;display:flex;gap:0.5em;flex-wrap:wrap;">
-  <button id="rd-btn-0" style="font-size:0.8em;padding:0.2em 0.7em;background:rgba(46,85,56,0.7);color:#d4ddd6;border:1px solid rgba(100,160,110,0.4);border-radius:3px;cursor:pointer;">Spots</button>
-  <button id="rd-btn-1" style="font-size:0.8em;padding:0.2em 0.7em;background:rgba(46,85,56,0.7);color:#d4ddd6;border:1px solid rgba(100,160,110,0.4);border-radius:3px;cursor:pointer;">Labyrinths</button>
-  <button id="rd-btn-2" style="font-size:0.8em;padding:0.2em 0.7em;background:rgba(46,85,56,0.7);color:#d4ddd6;border:1px solid rgba(100,160,110,0.4);border-radius:3px;cursor:pointer;">Stripes</button>
+<canvas id="rd-canvas" class="lab-canvas" width="640" height="240" style="background:#0a3c28;margin:0.6em 0 0;"></canvas>
+<div class="lab-inline-btns">
+  <button id="rd-btn-0" class="lab-btn active">Spots</button>
+  <button id="rd-btn-1" class="lab-btn">Labyrinths</button>
+  <button id="rd-btn-2" class="lab-btn">Stripes</button>
 </div>
 <p class="interest-desc">Gray-Scott reaction-diffusion system. Self-organizing Turing patterns emerge from two virtual chemicals. Click preset to reset; drag mouse to deposit chemical V.</p>
 </div>
@@ -119,6 +239,6 @@ Experiments in creative coding, generative systems, and browser-native interacti
 
 ---
 
-*Source: vanilla Canvas API, no dependencies. Design references: [Design →](/interests/design/)*
+*Source: vanilla Canvas API, no dependencies. Design: [Design Lab →](/lab/design-research/)*
 
-<!-- canvas JS loaded via /assets/js/lab-canvas.js (defer in my-head.html) -->
+<!-- Canvas JS loaded via defer in _includes/my-head.html -->
