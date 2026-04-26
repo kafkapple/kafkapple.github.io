@@ -10,18 +10,14 @@
 {% assign pub = include.pub %}
 
 <div class="pub">
+  {% include pub_card_body.html pub=pub %}
   {% if show_thumb and pub.thumbnail != "" %}
-  <div style="display:flex;gap:1.2em;align-items:flex-start;">
-    <a href="{{ pub.links[0].url }}" style="flex:0 0 auto;">
+  <div style="margin-top:0.8em;">
+    <a href="{{ pub.links[0].url }}">
       <img src="{{ pub.thumbnail }}" alt="{{ pub.title }} teaser"
            onerror="this.style.display='none'"
-           style="width:480px;height:auto;border-radius:4px;border:1px solid #eee;"/>
+           style="max-width:100%;height:auto;border-radius:4px;border:1px solid #eee;"/>
     </a>
-    <div style="flex:1;min-width:0;">
-      {% include pub_card_body.html pub=pub %}
-    </div>
   </div>
-  {% else %}
-    {% include pub_card_body.html pub=pub %}
   {% endif %}
 </div>

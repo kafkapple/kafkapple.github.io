@@ -1,8 +1,57 @@
-// Force Forest Green accent color — overrides any cached per-page inline style
+// Forest Green accent + off-white light base + full dark mode support
 html {
   --accent-color: rgb(46,85,56);
   --theme-color: rgb(26,56,40);
 }
-// Ensure sidebar avatar background matches theme (visible when photo fails to load)
+
+// Sidebar avatar background
 .sidebar-about .avatar,
 .avatar { background-color: rgb(46,85,56); }
+
+// Light mode: warm off-white main background
+body {
+  background-color: #f9f9f6;
+}
+
+// Dark mode — triggered by Hydejack toggle (adds .dark-mode to <html>)
+html.dark-mode body {
+  background-color: #1b1b2e !important;
+  color: #d0d0d8 !important;
+  --body-bg: #1b1b2e;
+}
+html.dark-mode .content,
+html.dark-mode .page-about .content {
+  background-color: #1b1b2e !important;
+}
+html.dark-mode .proj {
+  border-color: #3a3a5a !important;
+}
+html.dark-mode .pub-venue,
+html.dark-mode .pub-footnote,
+html.dark-mode .proj-meta,
+html.dark-mode .proj-desc { color: #a0a0b8 !important; }
+
+// Dark mode — triggered by OS preference (prefers-color-scheme)
+@media (prefers-color-scheme: dark) {
+  html:not(.light-mode) body {
+    background-color: #1b1b2e;
+    color: #d0d0d8;
+    --body-bg: #1b1b2e;
+  }
+  html:not(.light-mode) .pub-venue,
+  html:not(.light-mode) .pub-footnote,
+  html:not(.light-mode) .proj-meta,
+  html:not(.light-mode) .proj-desc { color: #a0a0b8; }
+}
+
+// Sidebar menu group separators
+// Add visual rule before "Practice" (first Creative item) and "TIL" (first General item)
+.nav-item > a[href="/practice/"],
+.nav-item > a[href="/til/"] {
+  margin-top: 0.6em !important;
+  padding-top: 0.6em !important;
+  border-top: 1px solid rgba(255,255,255,0.18) !important;
+}
+// Small label above each group (optional: uncomment to show group headers)
+// .nav-item > a[href="/practice/"]::before { content: "Creative"; display:block; font-size:0.65em; opacity:0.5; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.3em; }
+// .nav-item > a[href="/til/"]::before { content: "Notes"; display:block; font-size:0.65em; opacity:0.5; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.3em; }

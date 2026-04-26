@@ -1,12 +1,10 @@
 <!-- Custom head injection -->
 
-<!-- Force light mode + remove avatar's body-bg-colored ring (visible as dark border in light mode) -->
+<!-- Avatar ring fix + light-mode default -->
 <style>
-  :root { color-scheme: light only; --body-bg: #fff; }
-  body { background-color: #fff; color: #333; }
   /* Hydejack's `.content .avatar` adds `border: 1rem solid var(--body-bg)` for floating frame.
      In some pages the body-bg variable resolves dark before page CSS loads, causing a visible
-     black ring around the profile photo on light backgrounds. Force the ring transparent. */
+     black ring around the profile photo. Force the ring transparent. */
   .content .avatar { border: 0 !important; box-shadow: none !important; }
 </style>
 

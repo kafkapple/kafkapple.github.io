@@ -60,53 +60,55 @@ A four-stage cognitive architecture ties these together: object-centric percepti
 
 <p class="pub-footnote"><small>* denotes equal contribution; <strong>bold</strong> denotes the author. <a href="https://scholar.google.com/citations?user=D_rZCWYAAAAJ">Google Scholar</a></small></p>
 
+## Experience
+
+`Aug 2025 – Aug 2026` **Postdoctoral Fellow** — [AMILab](https://ami.kaist.ac.kr/), KAIST School of Computing. Host: Prof. Tae-Hyun Oh. Supported by the **InnoCore Postdoctoral Program**. Vision-Language Models (CLAY, CVPR 2026); 3D Gaussian Splatting for freely-moving animal reconstruction (ongoing).
+
+`Oct 2024 – Jun 2025` **AI Engineer** — Upstage AI Lab (AI Lab Boot Camp). Completed 5 ML engineering competitions; led external company project: LLM-based parenting dialogue quality assessment system (ConnectsLab).
+
+`Oct 2024 – May 2025` **Impact Scholar** — Impact Scholars Program (ISP), Neuromatch Academy. Mentored research on LLM-based emotion recognition.
+
+`Sep 2022 – May 2024` **Co-Founder, COO & Research Director** — ACTNOVA. Co-founded and scaled a neuroscience-AI startup (₩4.3B pre-Series A). Built YOLOv8 + XGBoost pipeline for automated behavioral phenotyping (−70% analysis time); cross-lab collaboration with MIT, KAIST, and Broad Institute. Core project: [AVATAR](https://www.cv4animals.com/2022-accepted-papers) — 3D real-time behavioral analysis system (CV4Animals @ CVPR 2022).
+
+`Mar 2018 – Aug 2022` **Graduate Researcher** — Brain Dynamics Laboratory, KAIST. Rodent behavioral genetics and empathy neuroscience. Ph.D. completed Aug 2022.
+
+`Nov 2014 – Feb 2018` **Researcher** (Trainee from Jan 2012) — Center for Cognition and Sociality (CCS), Institute for Basic Science (IBS). Chemogenetics, in-vivo electrophysiology, and behavioral assays on affective empathy and social memory.
+
+`Mar 2011 – Dec 2012` **Trainee** — Brain Science Institute (BSI), KIST. Rodent social behavior and system consolidation mechanisms.
+
+`Mar 2006 – Aug 2010` **Undergraduate Researcher** — Brain Dynamics Laboratory, KAIST. URP project: monkey behavioral data analysis. Graduation research assistant: human fMRI studies of cognitive neuroscience.
+
 ## Selected Projects
 
-A selection of engineering and research projects outside publications. [**View all projects →**](/projects/)
+A selection of engineering and research projects outside publications. [**View all →**](/projects/)
 
-### 2025 — AI/ML Engineering
+### 2025 — Applied AI
 
 <div class="proj">
-<p class="proj-title">Chemical-Process Anomaly Detection — <strong>1st Place</strong> (39 submissions)</p>
+<p class="proj-title">Upstage AI Lab — AI/ML Engineering (5 Competitions)</p>
 <p class="proj-meta">Upstage AI Lab · 2024–2025</p>
-<p class="proj-desc">Unsupervised fault detection on 52-dimensional industrial sensor data. Methods: IsolationForest, SGDOneClassSVM, PCA+K-Means, Transformer Autoencoder. F1 0.9000 / Accuracy 0.9405.</p>
+<p class="proj-desc">Completed 5 ML engineering competitions across diverse domains. Highlights: <strong>1st/39</strong> Chemical Anomaly Detection (F1 0.9000); <strong>3rd/53</strong> Scientific RAG QA (mAP 0.8394); <strong>3rd/48</strong> Document Classification (Macro-F1 0.9213); <strong>2nd/24</strong> Sentiment Analysis (F1 0.7224); <strong>3rd/19</strong> Tabular Prediction (RMSE 13,760).</p>
+<p class="proj-desc" style="margin-top:0.3em;font-size:0.88em;color:#777;">Stack: PyTorch · HuggingFace · LightGBM · XGBoost · SBERT · BGE-M3 · LangChain · Hydra · W&amp;B · Optuna · FAISS</p>
 </div>
 
 <div class="proj">
-<p class="proj-title">Scientific RAG QA — <strong>3rd Place</strong> (53 submissions)</p>
-<p class="proj-meta">Upstage AI Lab · 2024–2025</p>
-<p class="proj-desc">Science knowledge retrieval & QA. Stack: SBERT, BGE-M3, BM25, FAISS, LangChain. mAP 0.8394.</p>
+<p class="proj-title">LLM-Based Parenting Coach — Dialogue Quality Assessment &amp; Plan Recommendation</p>
+<p class="proj-meta">Upstage AI Lab × ConnectsLab · Spring 2025</p>
+<p class="proj-desc">Multi-step LLM pipeline: survey-based family persona generation → dialogue simulation → 4-dimensional quality scoring (emotional relationship, active listening, communication clarity, conflict resolution) → personalized plan recommendation via ensemble of dialogue- and survey-based signals. Multi-LLM backend: GPT-4o, Claude, Gemini, Llama.</p>
+<p class="proj-desc" style="margin-top:0.3em;font-size:0.88em;color:#777;">Stack: LangChain · Hydra · W&amp;B · OpenAI · Anthropic · Google AI · Ollama</p>
 </div>
 
-<div class="proj">
-<p class="proj-title">Document-Type Classification — <strong>3rd Place</strong> (48 submissions)</p>
-<p class="proj-meta">Upstage AI Lab · 2024–2025</p>
-<p class="proj-desc">17-class document image classification. Stack: Hydra, W&B, Focal Loss. Macro-F1 0.9213.</p>
-</div>
-
-### 2023–2024 — Startup & Industry
+### 2018 — Hardware × AI
 
 <div class="proj">
-<p class="proj-title">ACTNOVA — AI Behaviour Analytics Platform</p>
-<p class="proj-meta">Co-founder & R&D Lead · 2022–2024</p>
-<p class="proj-desc">Built YOLOv8 + XGBoost pipeline for automated behavioral phenotyping; reduced analysis time by 70%. Cross-lab collaboration (MIT, KAIST, Broad Institute). Raised ₩4.3B pre-Series A.</p>
-</div>
-
-<div class="proj">
-<p class="proj-title">Cognitive-Control Circuit Phenotyping — R&D Grant Finalist</p>
-<p class="proj-meta">Bio-Medical Technology Development Program (Brain Science Convergence) · 2024</p>
-<p class="proj-desc">Advanced phenotyping of cognitive-control circuits in ASD. Designed deep-learning pipeline for behavioral-sequence embedding (autoregressive + hyperbolic space). Short-listed to final presentation round.</p>
-</div>
-
-### 2022 — Neuroscience × AI
-
-<div class="proj">
-<p class="proj-title">AVATAR: 3D Real-Time Behavioral Analysis System</p>
-<p class="proj-meta">KAIST × ACTNOVA · CVPR 2022 Workshop</p>
-<p class="proj-desc">AI Vision Analysis for Three-Dimensional Action in Real-Time. Poster presentation at CV4Animals Workshop, CVPR 2022. Deployed for multi-modal clustering of cognitive-control behavioral sequences.</p>
+<p class="proj-title"><span class="badge badge-1st">Grand Prize (DDSA)</span> NAS-Optimized CNN for Driver Monitoring with XAI</p>
+<p class="proj-meta">Hyundai-KIA / ETRI Challenge · 2018</p>
+<p class="proj-desc">Neural Architecture Search for real-time driver drowsiness detection on embedded hardware. Integrated Grad-CAM explainability for regulatory compliance. Won Grand Prize (DDSA) + Encouragement Prize (ETRI).</p>
 </div>
 
 ## Teaching & Mentorship
+
+`Nov 2025 – Feb 2026` **Research Mentor** — Seongyoon Park (Individual Research Program, KAIST AMILab). Co-mentor: Dr. Chenshuang Zhang. *Do Models See Like Humans? Landmark Identity under Perturbations in Foundation Models* — 2AFC study comparing human and foundation-model (CLIP, DINO, SigLIP) identity judgments under image perturbations (color, background, weather).
 
 `Jun 2025` **Workshop Instructor** — *Neuro-AI Convergence: Foundation Model Workflows for Neuroscience*, DBDL, Dept. of BCS, KAIST. 3-hour seminar + hands-on workshop applying foundation models to brain and behavior data.
 
@@ -117,22 +119,6 @@ A selection of engineering and research projects outside publications. [**View a
 `Fall 2019 – Fall 2021` **Instructor** — *A Small, Good Thing: Stories of Mind and Life*, KAIST Global Leadership Center, Humanities/Leadership Program III. Discussion-based seminars on cognitive neuroscience, psychology, and self-development.
 
 `Feb 2012 – Oct 2013` **Supervisor** — Tip-of-the-Tongue Phenomenon in Korean-English Bilinguals (high-school mentee: Jiyoon Park). Literature review, experimental design, analysis, and manuscript preparation.
-
-## Experience
-
-`Aug 2025 – Aug 2026` **Postdoctoral Fellow** — [AMILab](https://ami.kaist.ac.kr/), KAIST School of Computing. Host: Prof. Tae-Hyun Oh. Supported by the **InnoCore Postdoctoral Program**. Vision-Language Models (CLAY, CVPR 2026); 3D Gaussian Splatting for freely-moving animal reconstruction (ongoing).
-
-`Oct 2024 – May 2025` **Impact Scholar** — Impact Scholars Program (ISP), Neuromatch Academy. Mentored research on LLM-based emotion recognition.
-
-`Sep 2022 – May 2024` **Chief Operating Officer & Research Director** — ACTNOVA. Co-founded and scaled a neuroscience-AI startup, raising ₩4.3B in pre-Series A.
-
-`Mar 2018 – Aug 2022` **Graduate Researcher** — Brain Dynamics Laboratory, KAIST. NHP behavioral datasets, human fMRI — neural correlates of empathy. Ph.D. completed Aug 2022.
-
-`Nov 2014 – Feb 2018` **Researcher** (Trainee from Jan 2012) — Center for Cognition and Sociality (CCS), Institute for Basic Science (IBS). Chemogenetics, in-vivo electrophysiology, and behavioral assays on affective empathy and social memory.
-
-`Mar 2011 – Dec 2012` **Trainee** — Brain Science Institute (BSI), KIST. Rodent social behavior and system consolidation mechanisms.
-
-`Mar 2006 – Aug 2010` **Undergraduate Researcher** — Brain Dynamics Laboratory, KAIST. Comparative and computational cognitive neuroscience — NHP and human fMRI datasets.
 
 ## Awards & Honors
 
@@ -146,7 +132,8 @@ A selection of engineering and research projects outside publications. [**View a
 
 ## Academic Service & Community
 
-- **Co-Founder & Organizer**, Neureka & KAIST NeuroAI Communities (2020–Present) — interdisciplinary seminar series featuring speakers including Prof. Peter Dayan.
+- **Co-Founder & Organizer**, [KAIST NeuroAI Seminar Series](https://kaistneuroaimedia.wixsite.com/mysite) (Oct 2020–Present) — interdisciplinary neuroscience × AI seminar series. Featured speakers include Prof. Peter Dayan (MPI Tübingen).
+- **Co-Founder**, Neureka (Jan 2023–Present) — AI-enabled behavioral neuroscience research community.
 
 ## Contact
 

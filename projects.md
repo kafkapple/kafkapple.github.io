@@ -26,43 +26,34 @@ A complete record of engineering and research projects outside publications. Sel
 ## 2024–2025 — AI/ML Engineering (Upstage AI Lab)
 
 <div class="proj">
-<p class="proj-title"><span class="badge badge-1st">🥇 1st / 39</span> Chemical-Process Anomaly Detection</p>
+<p class="proj-title">Upstage AI Lab — AI/ML Engineering Competitions (5 tracks)</p>
 <p class="proj-meta">Upstage AI Lab · 2024–2025</p>
-<p class="proj-desc">Unsupervised fault detection on 52-dimensional multivariate industrial sensor time-series. Methods: IsolationForest, SGDOneClassSVM, PCA+K-Means clustering, Transformer Autoencoder. Metrics: F1 0.9000 / Accuracy 0.9405.</p>
-</div>
-
-<div class="proj">
-<p class="proj-title"><span class="badge badge-3rd">🥉 3rd / 53</span> Scientific RAG QA</p>
-<p class="proj-meta">Upstage AI Lab · 2024–2025</p>
-<p class="proj-desc">Retrieval-augmented question answering on scientific documents. Stack: SBERT, BGE-M3, BM25 hybrid retrieval, FAISS vector index, LangChain pipeline. Metric: mAP 0.8394.</p>
-</div>
-
-<div class="proj">
-<p class="proj-title"><span class="badge badge-3rd">🥉 3rd / 48</span> Document-Type Classification</p>
-<p class="proj-meta">Upstage AI Lab · 2024–2025</p>
-<p class="proj-desc">17-class document image classification under severe class imbalance. Stack: Hydra config management, W&B experiment tracking, Focal Loss, ensemble of vision backbones. Macro-F1 0.9213.</p>
-</div>
-
-<div class="proj">
-<p class="proj-title"><span class="badge badge-2nd">2nd / 24</span> Text-Based Sentiment Analysis</p>
-<p class="proj-meta">Upstage AI Lab · 2024–2025</p>
-<p class="proj-desc">Aspect-based sentiment classification on Korean social media text. Fine-tuned multilingual PLMs (KLUE-RoBERTa, XLM-R) with data augmentation. F1 0.7224.</p>
-</div>
-
-<div class="proj">
-<p class="proj-title"><span class="badge badge-3rd">🥉 3rd / 19</span> Tabular Prediction — Used Car Price</p>
-<p class="proj-meta">Upstage AI Lab · 2024–2025</p>
-<p class="proj-desc">Regression on structured automotive data. Stack: LightGBM, XGBoost, CatBoost ensemble with Optuna hyperparameter tuning, SHAP feature importance analysis. RMSE 13,760.</p>
+<p class="proj-desc">Completed 5 ML engineering competitions across diverse domains:</p>
+<ul style="font-size:0.93em;margin:0.4em 0 0.3em 1.2em;">
+  <li><strong>🥇 1st / 39</strong> Chemical-Process Anomaly Detection — Unsupervised fault detection on 52-dimensional industrial sensor data (IsolationForest, PCA+K-Means, Transformer Autoencoder). F1 0.9000 / Acc 0.9405</li>
+  <li><strong>2nd / 24</strong> Text-Based Sentiment Analysis — Aspect-based sentiment on Korean social media (KLUE-RoBERTa, XLM-R). F1 0.7224</li>
+  <li><strong>🥉 3rd / 53</strong> Scientific RAG QA — Science retrieval & QA (SBERT, BGE-M3, BM25, FAISS, LangChain). mAP 0.8394</li>
+  <li><strong>🥉 3rd / 48</strong> Document-Type Classification — 17-class doc image classification (Hydra, W&B, Focal Loss). Macro-F1 0.9213</li>
+  <li><strong>🥉 3rd / 19</strong> Tabular Prediction: Used Car Price — (LightGBM, XGBoost, CatBoost, Optuna, SHAP). RMSE 13,760</li>
+</ul>
+<p class="proj-desc" style="font-size:0.88em;color:#777;">Common stack: PyTorch · HuggingFace · Hydra · W&amp;B · Optuna · FAISS · LangChain</p>
 </div>
 
 ---
 
-## 2024 — Government R&D
+## 2025 — External Company Project (Upstage AI Lab × ConnectsLab)
 
 <div class="proj">
-<p class="proj-title"><span class="badge badge-finalist">Finalist</span> Cognitive-Control Circuit Phenotyping</p>
-<p class="proj-meta">Bio-Medical Technology Development Program (Brain Science Convergence) · 2024</p>
-<p class="proj-desc">Advanced behavioral phenotyping of cognitive-control circuits in ASD mouse models. Proposed deep-learning pipeline for behavioral-sequence embedding using autoregressive modeling in hyperbolic space. Short-listed to final presentation round from national competitive pool.</p>
+<p class="proj-title">LLM-Based Parenting Coach — Dialogue Quality Assessment &amp; Plan Recommendation</p>
+<p class="proj-meta">Upstage AI Lab × ConnectsLab · Spring 2025</p>
+<p class="proj-desc">Built a multi-step LLM pipeline for parent-child dialogue analysis and personalized parenting plan recommendation. Pipeline: survey-based family persona generation → dialogue simulation → 4-dimensional quality scoring (emotional relationship, active listening, communication clarity, conflict resolution) → personalized plan recommendation via ensemble of dialogue- and survey-based signals. Multi-LLM backend (GPT-4o, Claude, Gemini, Llama) with Levenshtein key correction and retry mechanisms.</p>
+<p class="proj-desc" style="margin-top:0.3em;font-size:0.88em;color:#777;">Stack: LangChain · Hydra · W&amp;B · OpenAI · Anthropic · Google AI · Ollama</p>
+</div>
+
+<div class="proj">
+<p class="proj-title">Walk-into-AI — MLOps Pipeline Template</p>
+<p class="proj-meta">Independent · 2025</p>
+<p class="proj-desc">Production-ready MLOps template with Hydra + W&B + DVC integration. Covers experiment tracking, model versioning, and CI/CD deployment for research-to-production handoff. <a href="https://github.com/kafkapple">GitHub</a></p>
 </div>
 
 ---
@@ -71,7 +62,7 @@ A complete record of engineering and research projects outside publications. Sel
 
 <div class="proj">
 <p class="proj-title">ACTNOVA — AI Behaviour Analytics Platform</p>
-<p class="proj-meta">Co-founder & R&D Lead · 2022–2024</p>
+<p class="proj-meta">Co-Founder & R&D Lead · 2022–2024</p>
 <p class="proj-desc">Built and deployed YOLOv8 + XGBoost pipeline for automated behavioral phenotyping of freely-moving rodents; reduced expert analysis time by 70%. Cross-lab collaboration with MIT, KAIST, and Broad Institute. Raised ₩4.3B pre-Series A funding.</p>
 </div>
 
@@ -84,23 +75,7 @@ A complete record of engineering and research projects outside publications. Sel
 <div class="proj">
 <p class="proj-title">3D Behavioral Reconstruction System (v1)</p>
 <p class="proj-meta">ACTNOVA · 2022–2023</p>
-<p class="proj-desc">Multi-camera markerless 3D pose estimation for group-housed rodents. Extended DeepLabCut with triangulation and temporal smoothing; served as the engineering foundation for the AVATAR publication (CVPR 2022 Workshop).</p>
-</div>
-
----
-
-## 2025 — Applied AI
-
-<div class="proj">
-<p class="proj-title">LLM-Based Personalized Coaching System</p>
-<p class="proj-meta">Independent · 2025</p>
-<p class="proj-desc">Parenting support agent built on GPT-4o with RAG over curated developmental psychology literature. Multi-turn dialogue management with context-window compression; deployed as a prototype web app.</p>
-</div>
-
-<div class="proj">
-<p class="proj-title">Walk-into-AI — MLOps Pipeline Template</p>
-<p class="proj-meta">Independent · 2025</p>
-<p class="proj-desc">Production-ready MLOps template with Hydra + W&B + DVC integration. Covers experiment tracking, model versioning, and CI/CD deployment for research-to-production handoff. <a href="https://github.com/kafkapple">GitHub</a></p>
+<p class="proj-desc">Multi-camera markerless 3D pose estimation for group-housed rodents. Extended DeepLabCut with triangulation and temporal smoothing; engineering foundation for the AVATAR publication (CVPR 2022 Workshop).</p>
 </div>
 
 ---

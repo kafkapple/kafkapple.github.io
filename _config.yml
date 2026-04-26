@@ -48,6 +48,7 @@ author:
 
 # Add links to the sidebar.
 menu:
+  # ── Research & Career ────────────────────────────────────
   - title:             About
     url:               /
   - title:             Publications
@@ -65,6 +66,9 @@ menu:
         url:           /process/
       - title:         Talks
         url:           /talks/
+  - title:             CV
+    url:               /markdown-cv/
+  # ── Creative & Personal ──────────────────────────────────
   - title:             Practice
     url:               /practice/
     submenu:
@@ -89,16 +93,13 @@ menu:
         url:           /interests/film/
       - title:         "🎵 Music"
         url:           /interests/music/
-      - title:         "📖 Comics"
-        url:           /interests/comics/
-  - title:             Lab
-    url:               /lab/
+      - title:         "🧪 Lab"
+        url:           /lab/
+  # ── General ──────────────────────────────────────────────
   - title:             TIL
     url:               /til/
   - title:             Blog
     url:               /blog/
-  - title:             CV
-    url:               /markdown-cv/
   - title:             "🔍 Search"
     url:               /search/
 
@@ -329,7 +330,7 @@ hydejack:
   # Only use if you know what Service Workers are and how they can impact your site!
   offline:
     enabled:           true
-    cache_version:     16
+    cache_version:     17
     precache_assets:
       - /assets/img/swipe.svg
       - /assets/img/logo.png
