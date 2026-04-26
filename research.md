@@ -93,6 +93,14 @@ as a neuroscientist.
 
 ---
 
+## Toward an Integrated Framework
+
+The three threads above are not independent. My long-term goal is a unified framework in which context-sensitive perception, grounded behavioral understanding, and brain-inspired learning principles combine into AI systems that model cognition more completely than current architectures do.
+
+Each thread provides a distinct foundation: context-dependent cognition establishes *what* needs to be modeled; 3D behavioral reconstruction enables *measurement* at the scale rigorous science requires; brain-inspired architectures supply *design principles* grounded in what biological systems actually do — rather than using neuroscience as decoration. A positions paper synthesizing these threads into a testable architectural framework is in preparation.
+
+---
+
 ## Get in touch
 
 Open to collaboration on:

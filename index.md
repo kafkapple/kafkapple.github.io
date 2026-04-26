@@ -39,13 +39,11 @@ permalink: /
 
 ## Research Interests
 
-> **Brain-Inspired Cognitive Architect** — designing autonomous agents capable of systematic generalization and continual learning, drawing first principles from neuroscience.
+> **NeuroAI** — studying how context shapes cognition across biological brains and AI systems, and building toward architectures grounded in neuroscience principles.
 
-- **Brain-based learning algorithms & architectures** — continual learning and systems consolidation (CLS), hierarchical/compositional representations (cortical columns, capsule networks), world models with universal reference frames (Thousand Brains Theory).
-- **Computational modeling of cognition & decision-making** — dual-process accounts (System 1/2), heuristics, cognitive biases and reward systems, atypical cognition modeling, AI safety implications.
-- **Embodied social intelligence** — imitation and social learning (inverse RL), multi-agent systems and theory of mind, sensorimotor integration and active inference.
-
-A four-stage cognitive architecture ties these together: object-centric perception & grounding · predictive abstraction & symbolization · semantic integration & continual learning · metacognitive control & adaptive inference.
+- **Context-dependent cognition** — situational, relational, and social context modulates perception and decision-making across species and substrates; from rodent empathy and social hierarchy ([GBB 2022](https://doi.org/10.1111/gbb.12822), [NatComm 2019](https://doi.org/10.1038/s41467-019-09923-8)) to emotion in LLMs and conditional visual similarity in VLMs (CLAY, CVPR 2026).
+- **Behavioral AI & 3D reconstruction** — quantitative, reproducible behavioral analysis for freely-moving animals via multi-view geometry and neural scene representations (3D Gaussian Splatting); bridging behavioral neuroscience with computer vision (AVATAR, CVPR CV4Animals 2022).
+- **Brain-inspired learning architectures** — translating neuroscience principles (hierarchical representation, continual learning, predictive coding) into testable AI design choices, evaluated against biological benchmarks rather than used merely as inspiration.
 
 ## Experience
 
