@@ -60,6 +60,52 @@ Experiments in creative coding, generative systems, and browser-native interacti
 <p class="interest-desc">Metaball blobs with HSL cycle. Click to add a new blob.</p>
 </div>
 
+<div class="interest-item">
+<p class="interest-title">Grid Dot Spring Ripple <span class="interest-tag">physics</span><span class="interest-tag">interaction</span></p>
+<canvas id="grid-ripple-canvas" class="lab-canvas" style="background:#0d1510;"></canvas>
+<p class="interest-desc">N×M dot grid with spring physics. Mouse repels dots; click to send a ripple propagating outward.</p>
+</div>
+
+<div class="interest-item">
+<p class="interest-title">Matrix Rain <span class="interest-tag">generative</span><span class="interest-tag">NeuroAI</span></p>
+<canvas id="matrix-rain-canvas" class="lab-canvas" style="background:#0a100c;"></canvas>
+<p class="interest-desc">Column-based character rain using Greek letters, math symbols, and nucleotide codes. Research terms (STDP, LTP, ReLU, axon) surface in white.</p>
+</div>
+
+<div class="interest-item">
+<p class="interest-title">Particle Text <span class="interest-tag">particles</span><span class="interest-tag">typography</span></p>
+<canvas id="particle-text-canvas" class="lab-canvas" style="background:#0d1510;"></canvas>
+<p class="interest-desc">Particles spring toward letter forms sampled from canvas text. Mouse repels; click or wait to cycle words — NeuroAI → Plasticity → Emergence → Spike.</p>
+</div>
+
+<div class="interest-item">
+<p class="interest-title">Game of Life <span class="interest-tag">cellular automaton</span></p>
+<canvas id="gol-canvas" class="lab-canvas" style="background:#0a0f0c;cursor:crosshair;"></canvas>
+<div style="margin:0.3em 0 0.5em;display:flex;gap:0.5em;flex-wrap:wrap;">
+  <button id="gol-btn-gun" style="font-size:0.8em;padding:0.2em 0.7em;background:rgba(46,85,56,0.7);color:#d4ddd6;border:1px solid rgba(100,160,110,0.4);border-radius:3px;cursor:pointer;">Gosper Gun</button>
+  <button id="gol-btn-pulsar" style="font-size:0.8em;padding:0.2em 0.7em;background:rgba(46,85,56,0.7);color:#d4ddd6;border:1px solid rgba(100,160,110,0.4);border-radius:3px;cursor:pointer;">Pulsar</button>
+  <button id="gol-btn-random" style="font-size:0.8em;padding:0.2em 0.7em;background:rgba(46,85,56,0.7);color:#d4ddd6;border:1px solid rgba(100,160,110,0.4);border-radius:3px;cursor:pointer;">Random</button>
+</div>
+<p class="interest-desc">Conway's Game of Life with age-coded color (bright → teal → grey). Draw cells with mouse; load preset patterns above.</p>
+</div>
+
+<div class="interest-item">
+<p class="interest-title">Neural Spike Propagation <span class="interest-tag">LIF model</span><span class="interest-tag">NeuroAI</span></p>
+<canvas id="neural-spike-canvas" class="lab-canvas" style="background:#080e0a;"></canvas>
+<p class="interest-desc">Leaky Integrate-and-Fire neurons on a small-world graph. Color encodes membrane potential (cool → hot). Click a node to inject current; watch action potentials propagate.</p>
+</div>
+
+<div class="interest-item">
+<p class="interest-title">Reaction-Diffusion (Gray-Scott) <span class="interest-tag">emergent patterns</span></p>
+<canvas id="rd-canvas" class="lab-canvas" style="background:#0a3c28;"></canvas>
+<div style="margin:0.3em 0 0.5em;display:flex;gap:0.5em;flex-wrap:wrap;">
+  <button id="rd-btn-0" style="font-size:0.8em;padding:0.2em 0.7em;background:rgba(46,85,56,0.7);color:#d4ddd6;border:1px solid rgba(100,160,110,0.4);border-radius:3px;cursor:pointer;">Spots</button>
+  <button id="rd-btn-1" style="font-size:0.8em;padding:0.2em 0.7em;background:rgba(46,85,56,0.7);color:#d4ddd6;border:1px solid rgba(100,160,110,0.4);border-radius:3px;cursor:pointer;">Labyrinths</button>
+  <button id="rd-btn-2" style="font-size:0.8em;padding:0.2em 0.7em;background:rgba(46,85,56,0.7);color:#d4ddd6;border:1px solid rgba(100,160,110,0.4);border-radius:3px;cursor:pointer;">Stripes</button>
+</div>
+<p class="interest-desc">Gray-Scott reaction-diffusion system. Self-organizing Turing patterns emerge from two virtual chemicals. Click preset to reset; drag mouse to deposit chemical V.</p>
+</div>
+
 ---
 
 ## Site Experiments
