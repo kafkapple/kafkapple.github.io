@@ -2,21 +2,36 @@
   var canvas = document.getElementById('neural-spike-canvas');
   if (!canvas) return;
   var ctx = canvas.getContext('2d');
+  var rCanvas = document.getElementById('neural-raster-canvas');
+  var rCtx = rCanvas ? rCanvas.getContext('2d') : null;
 
   var W, H;
-  var N = 22;
+  var N = 20;
   var nodes = [], edges = [];
+
+  // LIF parameters tuned so neurons actually fire
   var V_REST = -70, V_THRESH = -55, V_PEAK = 40, V_RESET = -75;
-  var TAU = 20, REFRAC = 18;
+  var TAU = 8, REFRAC = 15;
+  var W_SYN = 28;   // large enough: total boost ≈ 28/8/0.15 ≈ 23V > 15V threshold gap
+  var DECAY = 0.82; // i_ext decay per step
+
+  // Raster plot ring buffer
+  var HIST_LEN = 180;
+  var spikeHist = new Uint8Array(N * HIST_LEN);
+  var histIdx = 0;
+  var stepCount = 0;
 
   function getNoise() {
     var el = document.getElementById('neural-noise');
-    return el ? parseFloat(el.value) : 0.03;
+    return el ? parseFloat(el.value) : 0.04;
   }
 
   function resize() {
     W = canvas.width = canvas.offsetWidth || parseInt(canvas.getAttribute('width')) || 640;
     H = canvas.height = parseInt(canvas.getAttribute('height')) || 240;
+    if (rCanvas) {
+      rCanvas.width = rCanvas.offsetWidth || parseInt(rCanvas.getAttribute('width')) || 640;
+    }
     buildNetwork();
   }
 
@@ -25,20 +40,19 @@
     for (var i = 0; i < N; i++) {
       var angle = (i / N) * Math.PI * 2 - Math.PI / 2;
       var rx = W * 0.36, ry = H * 0.38;
-      nodes.push({ x: W / 2 + Math.cos(angle) * rx, y: H / 2 + Math.sin(angle) * ry, v: V_REST + Math.random() * 4, refrac: 0, i_ext: 0, fired: false, fireAge: 0 });
+      nodes.push({ x: W / 2 + Math.cos(angle) * rx, y: H / 2 + Math.sin(angle) * ry,
+        v: V_REST + Math.random() * 4, refrac: 0, i_ext: 0, fired: false, fireAge: 999 });
     }
+    // Ring connections
     for (var i = 0; i < N; i++) {
-      for (var k = 1; k <= 2; k++) {
-        edges.push({ from: i, to: (i + k) % N, pulse: 0, active: false, delay: 0 });
-      }
+      for (var k = 1; k <= 2; k++) edges.push({ from: i, to: (i + k) % N, pulse: 0, active: false, delay: 0 });
     }
-    for (var s = 0; s < 7; s++) {
+    // Random long-range connections (small-world)
+    for (var s = 0; s < 6; s++) {
       var a = Math.floor(Math.random() * N), b = Math.floor(Math.random() * N);
       if (a !== b) edges.push({ from: a, to: b, pulse: 0, active: false, delay: 0 });
     }
   }
-
-  var W_SYN = 6.5;
 
   function step() {
     var fired = [];
@@ -46,10 +60,13 @@
       var n = nodes[i]; n.fireAge++;
       if (n.refrac > 0) { n.refrac--; n.v = V_RESET; continue; }
       n.v += (-(n.v - V_REST) + n.i_ext) / TAU;
-      n.i_ext *= 0.85;
-      if (n.v >= V_THRESH) { n.v = V_PEAK; n.refrac = REFRAC; n.fired = true; n.fireAge = 0; fired.push(i); }
-      else { n.fired = false; }
+      n.i_ext *= DECAY;
+      if (n.v >= V_THRESH) {
+        n.v = V_PEAK; n.refrac = REFRAC; n.fired = true; n.fireAge = 0; fired.push(i);
+      } else { n.fired = false; }
     }
+
+    // Propagate spikes through synapses
     for (var e = 0; e < edges.length; e++) {
       var ed = edges[e];
       if (ed.active) {
@@ -63,7 +80,20 @@
         if (edges[e].from === src && !edges[e].active) { edges[e].active = true; edges[e].delay = 8; edges[e].pulse = 0; }
       }
     }
-    if (Math.random() < getNoise()) { nodes[Math.floor(Math.random() * N)].i_ext += 12; }
+
+    // Spontaneous noise: higher i_ext so neuron actually fires
+    if (Math.random() < getNoise()) {
+      var ni = Math.floor(Math.random() * N);
+      nodes[ni].i_ext += 55;
+    }
+
+    // Record spikes in ring buffer
+    stepCount++;
+    if (stepCount % 2 === 0) { // record every 2 sim steps (throttle raster density)
+      var col = histIdx % HIST_LEN;
+      for (var i = 0; i < N; i++) spikeHist[i * HIST_LEN + col] = nodes[i].fired ? 1 : 0;
+      histIdx = (histIdx + 1) % HIST_LEN;
+    }
   }
 
   function potentialToColor(v) {
@@ -76,6 +106,8 @@
 
   function draw() {
     ctx.fillStyle = '#080e0a'; ctx.fillRect(0, 0, W, H);
+
+    // Draw edges
     for (var e = 0; e < edges.length; e++) {
       var ed = edges[e]; var fn = nodes[ed.from], tn = nodes[ed.to];
       ctx.strokeStyle = ed.active ? 'rgba(120,255,160,0.7)' : 'rgba(46,85,56,0.3)';
@@ -90,15 +122,60 @@
       } else { ctx.lineTo(tn.x, tn.y); }
       ctx.stroke();
     }
+
+    // Draw nodes
     for (var i = 0; i < N; i++) {
       var n = nodes[i]; var col = potentialToColor(n.v);
-      var radius = n.fired ? 10 : 6 + Math.max(0, (n.v - V_REST) / (V_THRESH - V_REST)) * 3;
-      if (n.fired) { ctx.beginPath(); ctx.arc(n.x, n.y, radius + 6, 0, Math.PI * 2); ctx.fillStyle = 'rgba(180,255,200,0.15)'; ctx.fill(); }
+      var excitation = Math.max(0, (n.v - V_REST) / (V_THRESH - V_REST));
+      var radius = n.fired ? 10 : 5 + excitation * 4;
+      if (n.fired) {
+        ctx.beginPath(); ctx.arc(n.x, n.y, radius + 8, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(180,255,200,0.18)'; ctx.fill();
+      }
       ctx.beginPath(); ctx.arc(n.x, n.y, radius, 0, Math.PI * 2); ctx.fillStyle = col; ctx.fill();
     }
-    ctx.font = '10px monospace'; ctx.fillStyle = 'rgba(110,190,135,0.6)';
-    ctx.fillText('rest', 10, H - 26); ctx.fillText('threshold', 10, H - 14);
-    ctx.fillStyle = 'rgba(200,60,60,0.7)'; ctx.fillText('spike', 80, H - 20);
+
+    // Draw raster plot
+    if (!rCtx) return;
+    var RW = rCanvas.width || 640;
+    var RH = rCanvas.height || 80;
+    rCtx.fillStyle = '#060c08'; rCtx.fillRect(0, 0, RW, RH);
+
+    var rowH = Math.max(1, (RH - 12) / N);
+    var colW = RW / HIST_LEN;
+
+    // Plot spikes
+    for (var ni = 0; ni < N; ni++) {
+      for (var t = 0; t < HIST_LEN; t++) {
+        var tIdx = (histIdx - 1 - t + HIST_LEN) % HIST_LEN;
+        if (spikeHist[ni * HIST_LEN + tIdx]) {
+          var sx = RW - 1 - t * colW;
+          var sy = ni * rowH;
+          rCtx.fillStyle = 'rgba(80,255,140,0.9)';
+          rCtx.fillRect(sx, sy + 1, Math.max(1, colW), rowH - 1);
+        }
+      }
+    }
+
+    // Population rate bar (bottom strip)
+    var barY = RH - 12;
+    rCtx.fillStyle = 'rgba(46,85,56,0.5)'; rCtx.fillRect(0, barY, RW, 12);
+    for (var t = 0; t < HIST_LEN; t++) {
+      var tIdx = (histIdx - 1 - t + HIST_LEN) % HIST_LEN;
+      var count = 0;
+      for (var ni = 0; ni < N; ni++) count += spikeHist[ni * HIST_LEN + tIdx];
+      if (count > 0) {
+        var bh = Math.round((count / N) * 10);
+        var sx = RW - 1 - t * colW;
+        rCtx.fillStyle = 'rgba(80,255,140,' + (0.4 + count / N * 0.6) + ')';
+        rCtx.fillRect(sx, barY + 12 - bh, Math.max(1, colW), bh);
+      }
+    }
+
+    // Labels
+    rCtx.fillStyle = 'rgba(80,160,100,0.55)';
+    rCtx.font = '9px monospace';
+    rCtx.fillText('Raster  →  time', 4, RH - 1);
   }
 
   canvas.addEventListener('click', function (e) {
@@ -106,7 +183,7 @@
     var mx = (e.clientX - rect.left) * (W / rect.width), my = (e.clientY - rect.top) * (H / rect.height);
     var best = 0, bestD = 1e9;
     for (var i = 0; i < N; i++) { var dx = nodes[i].x - mx, dy = nodes[i].y - my; var d = dx*dx+dy*dy; if (d < bestD) { bestD = d; best = i; } }
-    nodes[best].i_ext += 20;
+    nodes[best].i_ext += 60;
   });
 
   function wireControls() {
@@ -140,7 +217,13 @@
     _ps.addEventListener('hy-push-state-start', function () { io.disconnect(); running = false; });
     _ps.addEventListener('hy-push-state-after', function () {
       var c2 = document.getElementById('neural-spike-canvas');
-      if (c2) { canvas = c2; ctx = canvas.getContext('2d'); resize(); io.observe(canvas); wireControls(); }
+      if (c2) {
+        canvas = c2; ctx = canvas.getContext('2d');
+        rCanvas = document.getElementById('neural-raster-canvas');
+        rCtx = rCanvas ? rCanvas.getContext('2d') : null;
+        spikeHist = new Uint8Array(N * HIST_LEN); histIdx = 0; stepCount = 0;
+        resize(); io.observe(canvas); wireControls();
+      }
     });
   }
 })();

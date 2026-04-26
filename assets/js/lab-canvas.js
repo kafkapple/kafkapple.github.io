@@ -82,17 +82,29 @@
       var clearBtn = document.getElementById('pixel-clear-btn');
       if (clearBtn) clearBtn.addEventListener('click', function () { grid.fill(0); draw(); });
 
-      // Text stamp input: Enter key stamps text onto canvas at center
+      // Text stamp: render to offscreen grid-res canvas, sample alpha per cell → fill grid
       var pixelInput = document.getElementById('pixel-input');
       if (pixelInput) {
         pixelInput.addEventListener('keydown', function (e) {
           if (e.key === 'Enter' && pixelInput.value.trim()) {
-            ctx.font = 'bold 28px monospace';
-            ctx.fillStyle = palette[colorIdx];
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'middle';
-            ctx.fillText(pixelInput.value.trim().slice(0, 12), c.width / 2, c.height / 2);
-            pixelInput.value = '';
+            var word = pixelInput.value.trim().slice(0, 14);
+            var off = document.createElement('canvas');
+            off.width = cols; off.height = rows;
+            var oc = off.getContext('2d');
+            oc.fillStyle = '#000'; oc.fillRect(0, 0, cols, rows);
+            var fs = Math.floor(rows * 0.75);
+            oc.font = 'bold ' + fs + 'px monospace';
+            while (oc.measureText(word).width > cols - 2 && fs > 3) { fs--; oc.font = 'bold ' + fs + 'px monospace'; }
+            oc.fillStyle = '#fff'; oc.textAlign = 'center'; oc.textBaseline = 'middle';
+            oc.fillText(word, cols / 2, rows / 2);
+            var imgd = oc.getImageData(0, 0, cols, rows).data;
+            var hexCol = parseInt(palette[colorIdx].slice(1), 16);
+            for (var ry = 0; ry < rows; ry++) {
+              for (var rx = 0; rx < cols; rx++) {
+                if (imgd[(ry * cols + rx) * 4 + 3] > 128) grid[ry * cols + rx] = hexCol;
+              }
+            }
+            draw(); pixelInput.value = '';
           }
         });
       }

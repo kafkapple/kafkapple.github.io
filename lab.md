@@ -228,12 +228,23 @@ Experiments in creative coding, generative systems, and browser-native interacti
       <input type="text" id="matrix-word-input" class="lab-text-input" placeholder="Type + Enter…" maxlength="14" autocomplete="off" spellcheck="false">
     </div>
     <div class="lab-ctrl-group">
+      <span class="lab-label">Continuous rate <span class="lab-val" id="matrix-inject-rate-val">0.0</span></span>
+      <input type="range" id="matrix-inject-rate" class="lab-slider" min="0" max="5" step="0.5" value="0">
+    </div>
+    <div class="lab-ctrl-group">
+      <span class="lab-label">Word color</span>
+      <div style="display:flex;align-items:center;gap:0.5em;">
+        <input type="color" id="matrix-word-color" value="#ffffff" style="width:32px;height:22px;padding:0;border:1px solid rgba(46,85,56,0.3);border-radius:3px;background:transparent;cursor:pointer;">
+        <span id="matrix-word-color-swatch" style="flex:1;height:18px;border-radius:3px;background:#ffffff;border:1px solid rgba(46,85,56,0.2);transition:background 150ms;"></span>
+      </div>
+    </div>
+    <div class="lab-ctrl-group">
       <span class="lab-label">Speed <span class="lab-val" id="matrix-speed-val">1.0x</span></span>
       <input type="range" id="matrix-speed" class="lab-slider" min="0.5" max="3" step="0.5" value="1">
     </div>
   </div>
 </div>
-<p class="interest-desc">Column-based character rain — Greek letters, math symbols, nucleotide codes. Research terms surface in white. Type a word and press Enter to burst it across the rain.</p>
+<p class="interest-desc">Column-based character rain — Greek letters, math symbols, nucleotide codes. Type a word + Enter to burst it; set <em>Continuous rate</em> &gt; 0 to keep injecting it. Pick any word color.</p>
 </div>
 
 <div class="interest-item" id="particle-text">
@@ -275,16 +286,17 @@ Experiments in creative coding, generative systems, and browser-native interacti
 </div>
 
 <div class="interest-item" id="neural-spike-propagation">
-<p class="interest-title">Neural Spike Propagation <span class="interest-tag">LIF model</span><span class="interest-tag">NeuroAI</span></p>
+<p class="interest-title">Neural Spike Propagation <span class="interest-tag">SNN · LIF</span><span class="interest-tag">NeuroAI</span></p>
 <canvas id="neural-spike-canvas" class="lab-canvas" width="640" height="240" style="background:#080e0a;margin:0.6em 0 0.3em;"></canvas>
+<canvas id="neural-raster-canvas" class="lab-canvas" width="640" height="80" style="background:#060c08;margin:0 0 0.3em;border-radius:4px;"></canvas>
 <div class="lab-inline-btns">
   <span class="lab-inline-slider">
     <span class="lab-label" style="font-size:0.72em;">Noise</span>
-    <input type="range" id="neural-noise" class="lab-slider" min="0.005" max="0.12" step="0.005" value="0.03">
-    <span class="lab-val" id="neural-noise-val">0.03</span>
+    <input type="range" id="neural-noise" class="lab-slider" min="0.005" max="0.15" step="0.005" value="0.04">
+    <span class="lab-val" id="neural-noise-val">0.04</span>
   </span>
 </div>
-<p class="interest-desc">Leaky Integrate-and-Fire neurons on a small-world graph. Color encodes membrane potential (cool → hot). Click a node to inject current; drag Noise to tune spontaneous activity.</p>
+<p class="interest-desc">20 LIF neurons in a small-world ring. <strong>Top</strong>: network topology — node color = membrane potential (blue→green→red); pulse dots = propagating spikes. <strong>Bottom</strong>: spike raster — each row is a neuron, each green tick is a spike; bar = population rate. Click any node to inject current; raise Noise for denser firing.</p>
 </div>
 
 <div class="interest-item" id="reaction-diffusion-gray-scott">
@@ -305,6 +317,168 @@ Experiments in creative coding, generative systems, and browser-native interacti
 
 ---
 
+<div class="lab-section"><h2>Colour System</h2></div>
+
+<div class="interest-item" id="bauhaus-palette">
+<p class="interest-title">Bauhaus Colour Wheel <span class="interest-tag">Itten · design</span></p>
+<div id="bauhaus-wheel-container" style="position:relative;overflow:hidden;height:180px;background:#111;border-radius:6px;margin:0.6em 0 0.3em;cursor:grab;user-select:none;touch-action:pan-y;">
+  <div id="bauhaus-track" style="display:flex;align-items:center;position:absolute;top:0;left:0;height:100%;will-change:transform;">
+    <!-- Palette cards injected by JS -->
+  </div>
+  <div style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;background:linear-gradient(to right,#111 0%,transparent 18%,transparent 82%,#111 100%);"></div>
+  <div id="bauhaus-indicator" style="position:absolute;bottom:8px;left:0;right:0;display:flex;justify-content:center;gap:7px;pointer-events:none;"></div>
+</div>
+<p class="interest-desc">Itten's colour theory applied as four design palettes. <strong>Drag</strong> or <strong>scroll</strong> to rotate between Classic, Itten, Klee, and Night. Selected palette propagates to all listening canvases below.</p>
+</div>
+
+<script>
+(function () {
+  var PALETTES = [
+    { name: 'Classic',   swatches: ['#D40000','#0057A8','#F5C800','#F2EFE9','#1C1C1C'] },
+    { name: 'Itten',     swatches: ['#E8320A','#1B4FBE','#F0B429','#1C1C1C','#E8E0D0'] },
+    { name: 'Klee',      swatches: ['#C45C00','#2E6B5E','#7B3FA0','#F7F0E0','#2A2018'] },
+    { name: 'Night',     swatches: ['#FF4136','#0074D9','#FFDC00','#0A0A0A','#E0E0E8'] }
+  ];
+  var CARD_W = 220, GAP = 16;
+  var current = 0, dragStart = null, dragDelta = 0, baseOffset = 0;
+
+  var container = document.getElementById('bauhaus-wheel-container');
+  var track = document.getElementById('bauhaus-track');
+  var indicator = document.getElementById('bauhaus-indicator');
+  if (!container || !track) return;
+
+  // Build cards
+  PALETTES.forEach(function (p, i) {
+    var card = document.createElement('div');
+    card.style.cssText = 'flex-shrink:0;width:' + CARD_W + 'px;margin-right:' + GAP + 'px;height:140px;margin-top:20px;border-radius:6px;overflow:hidden;transition:transform 220ms ease,box-shadow 220ms ease;';
+    card.dataset.idx = i;
+    // Color bar
+    var bar = document.createElement('div');
+    bar.style.cssText = 'display:flex;height:72%;';
+    p.swatches.forEach(function (hex) {
+      var s = document.createElement('div');
+      s.style.cssText = 'flex:1;background:' + hex + ';';
+      bar.appendChild(s);
+    });
+    // Label
+    var label = document.createElement('div');
+    label.style.cssText = 'height:28%;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.72);font-family:monospace;font-size:0.8em;font-weight:700;letter-spacing:0.1em;color:rgba(220,220,200,0.85);';
+    label.textContent = p.name.toUpperCase();
+    card.appendChild(bar); card.appendChild(label);
+    track.appendChild(card);
+  });
+
+  // Dot indicators
+  PALETTES.forEach(function (_, i) {
+    var dot = document.createElement('div');
+    dot.style.cssText = 'width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.2);transition:background 200ms,transform 200ms;';
+    indicator.appendChild(dot);
+  });
+
+  var cW = container.offsetWidth || 600;
+
+  function cardOffset(idx) {
+    return cW / 2 - CARD_W / 2 - idx * (CARD_W + GAP);
+  }
+
+  function clampIdx(i) {
+    return Math.max(0, Math.min(PALETTES.length - 1, i));
+  }
+
+  function updateCards(animated) {
+    var cards = track.querySelectorAll('[data-idx]');
+    var dots = indicator.querySelectorAll('div');
+    cards.forEach(function (card, i) {
+      var dist = Math.abs(i - current);
+      var scale = dist === 0 ? 1.05 : (dist === 1 ? 0.88 : 0.76);
+      var shadow = dist === 0 ? '0 4px 20px rgba(0,0,0,0.6)' : 'none';
+      card.style.transform = 'scale(' + scale + ')';
+      card.style.boxShadow = shadow;
+      card.style.opacity = dist > 2 ? '0.3' : (1 - dist * 0.22).toString();
+    });
+    dots.forEach(function (dot, i) {
+      dot.style.background = i === current ? 'rgba(255,255,255,0.85)' : 'rgba(255,255,255,0.2)';
+      dot.style.transform = i === current ? 'scale(1.4)' : 'scale(1)';
+    });
+    // Emit palette-change event
+    document.dispatchEvent(new CustomEvent('lab:palette-change', { detail: { palette: PALETTES[current], index: current } }));
+  }
+
+  function setTrackX(x, instant) {
+    track.style.transition = instant ? 'none' : 'transform 280ms cubic-bezier(0.25,0.46,0.45,0.94)';
+    track.style.transform = 'translateX(' + x + 'px)';
+  }
+
+  function snapTo(idx) {
+    current = clampIdx(idx);
+    baseOffset = cardOffset(current);
+    setTrackX(baseOffset, false);
+    updateCards(true);
+  }
+
+  // Initial layout
+  baseOffset = cardOffset(0);
+  setTrackX(baseOffset, true);
+  updateCards(false);
+
+  // Mouse drag
+  var startIdx = 0;
+  container.addEventListener('mousedown', function (e) {
+    startIdx = current; dragStart = e.clientX; dragDelta = 0;
+    container.style.cursor = 'grabbing';
+    track.style.transition = 'none';
+  });
+  window.addEventListener('mousemove', function (e) {
+    if (dragStart === null) return;
+    dragDelta = e.clientX - dragStart;
+    setTrackX(baseOffset + dragDelta, false);
+    // Update active indicator while dragging
+    var tentative = clampIdx(startIdx - Math.round(dragDelta / (CARD_W + GAP)));
+    if (tentative !== current) { current = tentative; updateCards(false); }
+  });
+  window.addEventListener('mouseup', function () {
+    if (dragStart === null) return;
+    var snapIdx = clampIdx(startIdx - Math.round(dragDelta / (CARD_W + GAP)));
+    // Threshold snap if sub-card drag
+    if (snapIdx === startIdx && Math.abs(dragDelta) > (CARD_W + GAP) * 0.3) {
+      snapIdx = clampIdx(startIdx + (dragDelta < 0 ? 1 : -1));
+    }
+    snapTo(snapIdx);
+    dragStart = null; container.style.cursor = 'grab';
+  });
+
+  // Scroll wheel
+  container.addEventListener('wheel', function (e) {
+    e.preventDefault();
+    snapTo(current + (e.deltaX + e.deltaY > 0 ? 1 : -1));
+  }, { passive: false });
+
+  // Touch
+  var touchX = null, touchStartIdx = 0;
+  container.addEventListener('touchstart', function (e) { touchX = e.touches[0].clientX; touchStartIdx = current; }, { passive: true });
+  container.addEventListener('touchmove', function (e) {
+    if (touchX === null) return;
+    var dx = e.touches[0].clientX - touchX;
+    setTrackX(baseOffset + dx, false);
+    e.preventDefault();
+  }, { passive: false });
+  container.addEventListener('touchend', function (e) {
+    if (touchX === null) return;
+    var dx = e.changedTouches[0].clientX - touchX;
+    snapTo(clampIdx(touchStartIdx + (dx < -(CARD_W/3) ? 1 : dx > (CARD_W/3) ? -1 : 0)));
+    touchX = null;
+  });
+
+  // Click on card to select
+  track.addEventListener('click', function (e) {
+    var card = e.target.closest('[data-idx]');
+    if (card && dragDelta === 0) snapTo(parseInt(card.dataset.idx, 10));
+  });
+})();
+</script>
+
+---
+
 ## Site Experiments
 
 <div class="interest-item">
@@ -320,13 +494,14 @@ Experiments in creative coding, generative systems, and browser-native interacti
 <script>
 (function () {
   var pairs = [
-    ['ripple-spring', 'ripple-spring-val', null],
-    ['ripple-repel',  'ripple-repel-val',  null],
-    ['matrix-speed',  'matrix-speed-val',  'x'],
-    ['particle-speed','particle-speed-val','x'],
-    ['gol-speed',     'gol-speed-val',     'x'],
-    ['neural-noise',  'neural-noise-val',  null],
-    ['rd-steps',      'rd-steps-val',      null]
+    ['ripple-spring',      'ripple-spring-val',      null],
+    ['ripple-repel',       'ripple-repel-val',       null],
+    ['matrix-speed',       'matrix-speed-val',       'x'],
+    ['matrix-inject-rate', 'matrix-inject-rate-val', null],
+    ['particle-speed',     'particle-speed-val',     'x'],
+    ['gol-speed',          'gol-speed-val',          'x'],
+    ['neural-noise',       'neural-noise-val',       null],
+    ['rd-steps',           'rd-steps-val',           null]
   ];
   function wire() {
     pairs.forEach(function (p) {
