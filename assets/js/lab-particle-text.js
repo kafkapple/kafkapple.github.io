@@ -134,6 +134,15 @@
   window.addEventListener('resize', resize);
   io.observe(canvas);
 
+  // Listen for Lab Studio global text broadcast
+  document.addEventListener('lab:text-change', function (e) {
+    if (!e.detail || !e.detail.text) return;
+    var w = e.detail.text.slice(0, 16);
+    customWord = w; buildParticles(w);
+    var ti = document.getElementById('particle-text-input');
+    if (ti) ti.value = w;
+  });
+
   var _ps = document.getElementById('_pushState');
   if (_ps) {
     _ps.addEventListener('hy-push-state-start', function () { io.disconnect(); running = false; clearInterval(intervalId); });

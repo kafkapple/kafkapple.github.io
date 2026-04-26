@@ -129,6 +129,18 @@
   window.addEventListener('resize', resize);
   io.observe(canvas);
 
+  // Listen for Lab Studio global text broadcast
+  document.addEventListener('lab:text-change', function (e) {
+    if (!e.detail || !e.detail.text) return;
+    currentWord = e.detail.text.slice(0, 14);
+    var wi = document.getElementById('matrix-word-input');
+    if (wi) wi.value = currentWord;
+    // Burst inject on any broadcast
+    for (var b = 0; b < Math.min(5, cols); b++) {
+      wordTimers[Math.floor(Math.random() * cols)] = { word: currentWord, remaining: currentWord.length };
+    }
+  });
+
   var _ps = document.getElementById('_pushState');
   if (_ps) {
     _ps.addEventListener('hy-push-state-start', function () { io.disconnect(); running = false; });

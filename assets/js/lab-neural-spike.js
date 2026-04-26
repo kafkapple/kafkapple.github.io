@@ -144,15 +144,15 @@
     var rowH = Math.max(1, (RH - 12) / N);
     var colW = RW / HIST_LEN;
 
-    // Plot spikes
+    // Plot spikes as vertical tick bars (convention: thin bar spanning row height)
     for (var ni = 0; ni < N; ni++) {
+      var sy = ni * rowH;
       for (var t = 0; t < HIST_LEN; t++) {
         var tIdx = (histIdx - 1 - t + HIST_LEN) % HIST_LEN;
         if (spikeHist[ni * HIST_LEN + tIdx]) {
           var sx = RW - 1 - t * colW;
-          var sy = ni * rowH;
-          rCtx.fillStyle = 'rgba(80,255,140,0.9)';
-          rCtx.fillRect(sx, sy + 1, Math.max(1, colW), rowH - 1);
+          rCtx.fillStyle = 'rgba(80,255,140,0.92)';
+          rCtx.fillRect(Math.round(sx), sy + 1, 2, Math.max(1, rowH - 2));
         }
       }
     }
@@ -186,10 +186,18 @@
     nodes[best].i_ext += 60;
   });
 
+  function resetSim() {
+    spikeHist = new Uint8Array(N * HIST_LEN);
+    histIdx = 0; stepCount = 0;
+    buildNetwork();
+  }
+
   function wireControls() {
     var sl = document.getElementById('neural-noise');
     var sv = document.getElementById('neural-noise-val');
     if (sl && sv) sl.addEventListener('input', function () { sv.textContent = parseFloat(sl.value).toFixed(2); });
+    var rb = document.getElementById('neural-reset-btn');
+    if (rb) rb.addEventListener('click', resetSim);
   }
 
   wireControls();

@@ -16,7 +16,7 @@
     { label: 'Labyrinths', f: 0.055, k: 0.062 },
     { label: 'Stripes', f: 0.026, k: 0.051 }
   ];
-  var pIdx = 1;
+  var pIdx = 0;
   var F = presets[pIdx].f, K = presets[pIdx].k;
   var DA = 1.0, DB = 0.5, DT = 1.0;
 
@@ -29,11 +29,19 @@
     uBuf = new Float32Array(SIM_W * SIM_H); vBuf = new Float32Array(SIM_W * SIM_H);
     uNext = new Float32Array(SIM_W * SIM_H); vNext = new Float32Array(SIM_W * SIM_H);
     uBuf.fill(1); vBuf.fill(0);
-    var cx = Math.floor(SIM_W / 2), cy = Math.floor(SIM_H / 2);
-    for (var dy = -5; dy <= 5; dy++) {
-      for (var dx = -5; dx <= 5; dx++) {
-        var i = (cy + dy) * SIM_W + (cx + dx);
-        if (i >= 0 && i < uBuf.length) { uBuf[i] = 0.5; vBuf[i] = 0.25; }
+    // Randomized seed patches so patterns differ each run
+    var numSeeds = 5 + Math.floor(Math.random() * 7);
+    for (var s = 0; s < numSeeds; s++) {
+      var cx = 4 + Math.floor(Math.random() * (SIM_W - 8));
+      var cy = 4 + Math.floor(Math.random() * (SIM_H - 8));
+      var r = 2 + Math.floor(Math.random() * 4);
+      for (var dy = -r; dy <= r; dy++) {
+        for (var dx = -r; dx <= r; dx++) {
+          if (dx * dx + dy * dy <= r * r) {
+            var i = (cy + dy) * SIM_W + (cx + dx);
+            if (i >= 0 && i < SIM_W * SIM_H) { uBuf[i] = 0.5; vBuf[i] = 0.25; }
+          }
+        }
       }
     }
     imgData = octx.createImageData(SIM_W, SIM_H);

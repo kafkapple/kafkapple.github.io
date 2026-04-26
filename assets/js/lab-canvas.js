@@ -17,6 +17,14 @@
     rafIds = [];
   }
 
+  // Module-level callbacks for Lab Studio global text panel (set once, re-assigned on initLab)
+  var _studio = { crtUpdate: null, pixelApply: null };
+  document.addEventListener('lab:text-change', function (e) {
+    if (!e.detail || !e.detail.text) return;
+    if (_studio.crtUpdate) _studio.crtUpdate(e.detail.text);
+    if (e.detail.action === 'apply' && _studio.pixelApply) _studio.pixelApply(e.detail.text);
+  });
+
   function initLab() {
     if (!document.getElementById('pixel-canvas')) return;
     cancelAll();
@@ -64,7 +72,6 @@
         e.preventDefault();
       }, { passive: false });
 
-      // Palette buttons
       function updatePaletteBtns() {
         var btns = document.querySelectorAll('#pixel-palette-btns .lab-btn');
         btns.forEach(function (b) {
@@ -78,36 +85,43 @@
         });
       });
 
-      // Clear button
       var clearBtn = document.getElementById('pixel-clear-btn');
       if (clearBtn) clearBtn.addEventListener('click', function () { grid.fill(0); draw(); });
 
-      // Text stamp: render to offscreen grid-res canvas, sample alpha per cell → fill grid
+      // Shared stamp function — used by Enter key and Lab Studio Apply button
+      function stampText(word) {
+        word = ('' + word).slice(0, 14);
+        var off = document.createElement('canvas');
+        off.width = cols; off.height = rows;
+        var oc = off.getContext('2d');
+        oc.fillStyle = '#000'; oc.fillRect(0, 0, cols, rows);
+        var fs = Math.floor(rows * 0.75);
+        oc.font = 'bold ' + fs + 'px monospace';
+        while (oc.measureText(word).width > cols - 2 && fs > 3) { fs--; oc.font = 'bold ' + fs + 'px monospace'; }
+        oc.fillStyle = '#fff'; oc.textAlign = 'center'; oc.textBaseline = 'middle';
+        oc.fillText(word, cols / 2, rows / 2);
+        var imgd = oc.getImageData(0, 0, cols, rows).data;
+        var hexCol = parseInt(palette[colorIdx].slice(1), 16);
+        for (var ry = 0; ry < rows; ry++) {
+          for (var rx = 0; rx < cols; rx++) {
+            if (imgd[(ry * cols + rx) * 4 + 3] > 128) grid[ry * cols + rx] = hexCol;
+          }
+        }
+        draw();
+      }
+
+      // Text stamp input
       var pixelInput = document.getElementById('pixel-input');
       if (pixelInput) {
         pixelInput.addEventListener('keydown', function (e) {
           if (e.key === 'Enter' && pixelInput.value.trim()) {
-            var word = pixelInput.value.trim().slice(0, 14);
-            var off = document.createElement('canvas');
-            off.width = cols; off.height = rows;
-            var oc = off.getContext('2d');
-            oc.fillStyle = '#000'; oc.fillRect(0, 0, cols, rows);
-            var fs = Math.floor(rows * 0.75);
-            oc.font = 'bold ' + fs + 'px monospace';
-            while (oc.measureText(word).width > cols - 2 && fs > 3) { fs--; oc.font = 'bold ' + fs + 'px monospace'; }
-            oc.fillStyle = '#fff'; oc.textAlign = 'center'; oc.textBaseline = 'middle';
-            oc.fillText(word, cols / 2, rows / 2);
-            var imgd = oc.getImageData(0, 0, cols, rows).data;
-            var hexCol = parseInt(palette[colorIdx].slice(1), 16);
-            for (var ry = 0; ry < rows; ry++) {
-              for (var rx = 0; rx < cols; rx++) {
-                if (imgd[(ry * cols + rx) * 4 + 3] > 128) grid[ry * cols + rx] = hexCol;
-              }
-            }
-            draw(); pixelInput.value = '';
+            stampText(pixelInput.value.trim()); pixelInput.value = '';
           }
         });
       }
+
+      // Register global handler (apply action from Lab Studio)
+      _studio.pixelApply = stampText;
 
       draw();
     })();
@@ -215,7 +229,6 @@
       var lineIdx = 0, charIdx = 0, scanY = 0, last = 0;
       var composing = false;
 
-      // Text input wiring
       var crtInput = document.getElementById('crt-input');
       if (crtInput) {
         crtInput.addEventListener('compositionstart', function () { composing = true; });
@@ -223,7 +236,12 @@
         crtInput.addEventListener('input', function () { if (!composing) { userText = crtInput.value; lineIdx = 0; charIdx = 0; } });
       }
 
-      // Palette buttons
+      // Register global handler for Lab Studio text broadcast
+      _studio.crtUpdate = function (text) {
+        userText = text; lineIdx = 0; charIdx = 0;
+        if (crtInput) crtInput.value = text;
+      };
+
       document.querySelectorAll('[data-crt]').forEach(function (btn) {
         btn.addEventListener('click', function () {
           palKey = btn.dataset.crt;
@@ -259,16 +277,13 @@
           ctx.fillText(i < lineIdx ? l : l.slice(0, charIdx), 14, 30 + i * 22);
         });
 
-        // Scanlines
         ctx.fillStyle = pal.scan;
         for (var y = 0; y < H; y += 2) ctx.fillRect(0, y, W, 1);
 
-        // Scanline sweep
         var g = ctx.createLinearGradient(0, scanY - 6, 0, scanY + 6);
         g.addColorStop(0, pal.glow.replace('0.08', '0')); g.addColorStop(0.5, pal.glow); g.addColorStop(1, pal.glow.replace('0.08', '0'));
         ctx.fillStyle = g; ctx.fillRect(0, scanY - 6, W, 12);
 
-        // Vignette
         var v = ctx.createRadialGradient(W / 2, H / 2, H * 0.3, W / 2, H / 2, H * 0.8);
         v.addColorStop(0, 'rgba(0,0,0,0)'); v.addColorStop(1, 'rgba(0,0,0,0.55)');
         ctx.fillStyle = v; ctx.fillRect(0, 0, W, H);
@@ -316,10 +331,8 @@
     })();
   }
 
-  // Expose globally for external callers
   window._initLab = initLab;
 
-  // SPA wiring: cancel on leave, init on arrive
   var _ps = document.getElementById('_pushState');
   if (_ps) {
     _ps.addEventListener('hy-push-state-start', cancelAll);
@@ -328,7 +341,6 @@
     });
   }
 
-  // Initial load
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initLab);
   } else {

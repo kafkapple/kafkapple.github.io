@@ -104,6 +104,30 @@ redirect_from:
 .lab-inline-slider { display: flex; align-items: center; gap: 0.5em; }
 .lab-inline-slider .lab-slider { width: 90px; flex-shrink: 0; }
 .lab-inline-slider .lab-label { white-space: nowrap; }
+
+/* ── Lab Studio sticky panel ── */
+#lab-studio {
+  position: fixed; right: 16px; top: 68px; z-index: 900;
+  width: 172px;
+  background: rgba(6,14,8,0.94);
+  border: 1px solid rgba(46,85,56,0.38);
+  border-radius: 6px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 22px rgba(0,0,0,0.65);
+}
+#lab-studio.collapsed #lab-studio-body { display: none; }
+#lab-studio-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.44em 0.7em; cursor: pointer;
+  border-bottom: 1px solid rgba(46,85,56,0.18);
+  font-family: monospace; font-size: 0.7em; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase; color: rgba(100,185,125,0.85);
+  user-select: none;
+}
+#lab-studio-toggle { opacity: 0.55; font-size: 1em; }
+#lab-studio-body { padding: 0.55em 0.7em 0.7em; display: flex; flex-direction: column; gap: 0.5em; }
+#lab-studio-hint { font-size: 0.62em; color: rgba(70,130,85,0.6); line-height: 1.4; }
+@media (max-width: 900px) { #lab-studio { display: none; } }
 </style>
 
 Experiments in creative coding, generative systems, and browser-native interaction.
@@ -290,6 +314,7 @@ Experiments in creative coding, generative systems, and browser-native interacti
 <canvas id="neural-spike-canvas" class="lab-canvas" width="640" height="240" style="background:#080e0a;margin:0.6em 0 0.3em;"></canvas>
 <canvas id="neural-raster-canvas" class="lab-canvas" width="640" height="80" style="background:#060c08;margin:0 0 0.3em;border-radius:4px;"></canvas>
 <div class="lab-inline-btns">
+  <button id="neural-reset-btn" class="lab-btn">Reset</button>
   <span class="lab-inline-slider">
     <span class="lab-label" style="font-size:0.72em;">Noise</span>
     <input type="range" id="neural-noise" class="lab-slider" min="0.005" max="0.15" step="0.005" value="0.04">
@@ -308,8 +333,8 @@ Experiments in creative coding, generative systems, and browser-native interacti
   <button id="rd-btn-2" class="lab-btn">Stripes</button>
   <span class="lab-inline-slider">
     <span class="lab-label" style="font-size:0.72em;">Steps/frame</span>
-    <input type="range" id="rd-steps" class="lab-slider" min="1" max="20" step="1" value="8">
-    <span class="lab-val" id="rd-steps-val">8</span>
+    <input type="range" id="rd-steps" class="lab-slider" min="1" max="20" step="1" value="4">
+    <span class="lab-val" id="rd-steps-val">4</span>
   </span>
 </div>
 <p class="interest-desc">Gray-Scott reaction-diffusion system. Self-organizing Turing patterns emerge from two virtual chemicals. Click preset to reset; drag mouse to deposit chemical V; drag Steps to speed up evolution.</p>
@@ -375,7 +400,7 @@ Experiments in creative coding, generative systems, and browser-native interacti
     indicator.appendChild(dot);
   });
 
-  var cW = container.offsetWidth || 600;
+  var cW = 600; // updated in RAF after layout
 
   function cardOffset(idx) {
     return cW / 2 - CARD_W / 2 - idx * (CARD_W + GAP);
@@ -416,10 +441,13 @@ Experiments in creative coding, generative systems, and browser-native interacti
     updateCards(true);
   }
 
-  // Initial layout
-  baseOffset = cardOffset(0);
-  setTrackX(baseOffset, true);
-  updateCards(false);
+  // Defer initial layout to RAF so container.offsetWidth is non-zero
+  requestAnimationFrame(function () {
+    cW = container.offsetWidth || 600;
+    baseOffset = cardOffset(0);
+    setTrackX(baseOffset, true);
+    updateCards(false);
+  });
 
   // Mouse drag
   var startIdx = 0;
@@ -473,6 +501,62 @@ Experiments in creative coding, generative systems, and browser-native interacti
   track.addEventListener('click', function (e) {
     var card = e.target.closest('[data-idx]');
     if (card && dragDelta === 0) snapTo(parseInt(card.dataset.idx, 10));
+  });
+})();
+</script>
+
+<!-- Lab Studio: fixed panel, persists while scrolling on this page -->
+<div id="lab-studio">
+  <div id="lab-studio-header">
+    <span>Lab Studio</span>
+    <span id="lab-studio-toggle">▾</span>
+  </div>
+  <div id="lab-studio-body">
+    <div class="lab-ctrl-group">
+      <span class="lab-label">Shared text</span>
+      <input type="text" id="lab-studio-text" class="lab-text-input" placeholder="Broadcast to all…" maxlength="16" autocomplete="off" spellcheck="false">
+    </div>
+    <div class="lab-ctrl-group">
+      <button class="lab-btn" id="lab-studio-apply" style="width:100%;text-align:center;">Stamp → Pixel Art</button>
+    </div>
+    <div id="lab-studio-hint">Sends to: Matrix Rain · Particle Text · CRT · Pixel Art</div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var panel = document.getElementById('lab-studio');
+  var header = document.getElementById('lab-studio-header');
+  var toggle = document.getElementById('lab-studio-toggle');
+  var input = document.getElementById('lab-studio-text');
+  var applyBtn = document.getElementById('lab-studio-apply');
+  if (!panel) return;
+
+  header.addEventListener('click', function () {
+    var collapsed = panel.classList.toggle('collapsed');
+    toggle.textContent = collapsed ? '▸' : '▾';
+  });
+
+  function broadcast(text, action) {
+    document.dispatchEvent(new CustomEvent('lab:text-change', { detail: { text: text, action: action || 'update' } }));
+  }
+
+  if (input) {
+    input.addEventListener('input', function () {
+      var v = input.value.trim().slice(0, 16);
+      if (v) broadcast(v, 'update');
+    });
+    input.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') {
+        var v = input.value.trim().slice(0, 16);
+        if (v) broadcast(v, 'apply');
+      }
+    });
+  }
+
+  if (applyBtn) applyBtn.addEventListener('click', function () {
+    var v = (input ? input.value.trim() : '').slice(0, 16);
+    if (v) broadcast(v, 'apply');
   });
 })();
 </script>
