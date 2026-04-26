@@ -135,7 +135,7 @@ Experiments in creative coding, generative systems, and browser-native interacti
 <p class="interest-desc">Phosphor CRT simulation with scanline overlay. Type text to display it; click <em>Amber</em> to switch palette.</p>
 </div>
 
-<div class="interest-item" id="glitch-text">
+<div class="interest-item" id="glitch-text-card">
 <p class="interest-title">Glitch Text <span class="interest-tag">typography</span></p>
 <div id="glitch-box" style="height:140px;display:flex;align-items:center;justify-content:center;background:#0a0a0a;border-radius:4px;overflow:hidden;cursor:pointer;margin:0.6em 0 0.3em;">
 <div id="glitch-text" style="font-family:monospace;font-size:2.4em;color:#fff;font-weight:700;position:relative;user-select:none;">NEURAL</div>
