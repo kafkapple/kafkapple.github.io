@@ -188,3 +188,205 @@ html.dark-mode a:hover, html[hy-mode="dark"] a:hover, html[data-theme="dark"] a:
   margin-bottom: 0.3em;
   font-weight: 600;
 }
+
+// ── Design System (design_config.yml driven) ─────────────────────────────────
+// CSS custom property defaults — overridden at runtime by design-init.js
+:root {
+  --glow-rgb: 46, 85, 56;
+  --glow-light-rgb: 110, 190, 135;
+  --dur-fast: 180ms;
+  --dur-base: 360ms;
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --mouse-x: -9999px;
+  --mouse-y: -9999px;
+}
+
+// ── Typography Enhancement ────────────────────────────────────────────────────
+.page-title,
+h1.page-title {
+  font-size: clamp(1.55rem, 1.2rem + 1.8vw, 2.5rem);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+// ── Lab Card Hover Glow ───────────────────────────────────────────────────────
+.interest-item {
+  position: relative;
+  isolation: isolate;
+  border-radius: 6px;
+  transition:
+    transform var(--dur-fast) var(--ease-spring),
+    border-color var(--dur-fast) ease;
+}
+
+.interest-item::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: inherit;
+  background: radial-gradient(
+    ellipse 80% 55% at 50% 115%,
+    rgba(var(--glow-rgb), 0.30) 0%,
+    transparent 70%
+  );
+  filter: blur(8px);
+  opacity: 0;
+  z-index: -1;
+  pointer-events: none;
+  transition: opacity var(--dur-base) ease;
+}
+
+.interest-item:hover {
+  transform: translateY(-2px);
+}
+
+.interest-item:hover::after {
+  opacity: 1;
+}
+
+html.dark-mode .interest-item::after,
+html[hy-mode="dark"] .interest-item::after,
+html[data-theme="dark"] .interest-item::after {
+  background: radial-gradient(
+    ellipse 80% 55% at 50% 115%,
+    rgba(var(--glow-light-rgb), 0.20) 0%,
+    transparent 70%
+  );
+}
+
+// ── Scroll Fade-in ────────────────────────────────────────────────────────────
+// JS adds data-fade-init attribute before observing — initial hidden state
+.interest-item[data-fade-init] {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity var(--dur-base) var(--ease-smooth),
+    transform var(--dur-base) var(--ease-smooth),
+    border-color var(--dur-fast) ease;
+}
+
+// JS adds fade-visible class when IntersectionObserver fires
+.interest-item.fade-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+// Hover state overrides transform after fade — must come after .fade-visible
+.interest-item[data-fade-init]:hover,
+.interest-item.fade-visible:hover {
+  transform: translateY(-2px);
+  transition:
+    opacity var(--dur-base) var(--ease-smooth),
+    transform var(--dur-fast) var(--ease-spring),
+    border-color var(--dur-fast) ease;
+}
+
+// ── Sliding Underline Links ───────────────────────────────────────────────────
+.page-content a:not([class]),
+.post-content a:not([class]),
+.interest-desc a {
+  position: relative;
+  text-decoration: none;
+}
+
+.page-content a:not([class])::after,
+.post-content a:not([class])::after,
+.interest-desc a::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  background: rgba(var(--glow-rgb), 0.85);
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform var(--dur-fast) var(--ease-smooth);
+}
+
+.page-content a:not([class]):hover::after,
+.post-content a:not([class]):hover::after,
+.interest-desc a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+html.dark-mode .page-content a:not([class])::after,
+html[data-theme="dark"] .page-content a:not([class])::after,
+html.dark-mode .interest-desc a::after,
+html[data-theme="dark"] .interest-desc a::after {
+  background: rgba(var(--glow-light-rgb), 0.85);
+}
+
+// ── Spotlight Cursor ──────────────────────────────────────────────────────────
+// JS injects #design-spotlight div; CSS positions it
+#design-spotlight {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9997;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  background: radial-gradient(
+    500px circle at var(--mouse-x) var(--mouse-y),
+    rgba(var(--glow-rgb), 0.07),
+    transparent 80%
+  );
+}
+
+html.dark-mode #design-spotlight,
+html[data-theme="dark"] #design-spotlight {
+  background: radial-gradient(
+    500px circle at var(--mouse-x) var(--mouse-y),
+    rgba(var(--glow-light-rgb), 0.09),
+    transparent 80%
+  );
+}
+
+// ── Reading Progress Bar ──────────────────────────────────────────────────────
+#reading-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(
+    90deg,
+    rgb(var(--glow-rgb)),
+    rgba(var(--glow-rgb), 0.4)
+  );
+  z-index: 9998;
+  transition: width 80ms linear;
+  pointer-events: none;
+}
+
+html.dark-mode #reading-progress-bar,
+html[data-theme="dark"] #reading-progress-bar {
+  background: linear-gradient(
+    90deg,
+    rgb(var(--glow-light-rgb)),
+    rgba(var(--glow-light-rgb), 0.4)
+  );
+}
+
+// ── Reduced Motion Overrides ──────────────────────────────────────────────────
+[data-motion="reduced"] .interest-item,
+[data-motion="reduced"] .interest-item[data-fade-init] {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: border-color var(--dur-fast) ease !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .interest-item,
+  .interest-item[data-fade-init] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: border-color var(--dur-fast) ease !important;
+  }
+  .interest-item::after { transition: none !important; }
+  .page-content a::after,
+  .interest-desc a::after { transition: none !important; }
+  #design-spotlight { display: none !important; }
+}

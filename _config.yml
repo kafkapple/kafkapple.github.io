@@ -329,7 +329,7 @@ hydejack:
   # Only use if you know what Service Workers are and how they can impact your site!
   offline:
     enabled:           true
-    cache_version:     22
+    cache_version:     23
     precache_assets:
       - /assets/img/swipe.svg
       - /assets/img/logo.png

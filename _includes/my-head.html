@@ -9,7 +9,20 @@
 })();
 </script>
 
+<!-- Design System: config meta tag baked at build time from _data/design_config.yml -->
+{% assign dc = site.data.design_config %}{% if dc %}
+<meta name="design-config" content="{{ dc | jsonify | xml_escape }}">
+<style>:root{
+  {% if dc.tokens.glow_rgb %}--glow-rgb:{{ dc.tokens.glow_rgb }};{% endif %}
+  {% if dc.tokens.glow_light_rgb %}--glow-light-rgb:{{ dc.tokens.glow_light_rgb }};{% endif %}
+  {% if dc.tokens.duration_fast %}--dur-fast:{{ dc.tokens.duration_fast }};{% endif %}
+  {% if dc.tokens.duration_base %}--dur-base:{{ dc.tokens.duration_base }};{% endif %}
+  {% if dc.tokens.ease_spring %}--ease-spring:{{ dc.tokens.ease_spring }};{% endif %}
+  {% if dc.tokens.ease_smooth %}--ease-smooth:{{ dc.tokens.ease_smooth }};{% endif %}
+}</style>{% endif %}
+
 <!-- Interactive page JS — defer ensures defined before any SPA navigation -->
+<script defer src="/assets/js/design-init.js"></script>
 <script defer src="/assets/js/theme-toggle.js"></script>
 <script defer src="/assets/js/lab-canvas.js"></script>
 <script defer src="/assets/js/lab-grid-ripple.js"></script>
@@ -20,6 +33,7 @@
 <script defer src="/assets/js/lab-reaction-diffusion.js"></script>
 <script defer src="/assets/js/design-trends.js"></script>
 <script defer src="/assets/js/perception.js"></script>
+<script defer src="/assets/js/design-features.js"></script>
 
 <!-- Avatar ring fix + light-mode default -->
 <style>

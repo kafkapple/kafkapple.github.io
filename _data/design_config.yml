@@ -1,0 +1,21 @@
+# Design System Configuration
+# Toggle features: true/false → git push to apply (rebuild required)
+# Tokens: CSS custom properties injected at build time + runtime
+
+features:
+  scroll_fade_in: true      # IntersectionObserver fade-in on .interest-item
+  lab_glow: true            # Hover glow via ::after radial-gradient
+  sliding_underline: true   # Link hover underline slide animation
+  spotlight_cursor: true    # Subtle cursor spotlight (desktop only)
+  reading_progress: true    # 2px progress bar fixed top
+  text_scramble: false      # ASCII scramble on [data-scramble] elements (opt-in per page)
+
+tokens:
+  glow_rgb: "46, 85, 56"           # Forest Green — used in rgba(var(--glow-rgb), alpha)
+  glow_light_rgb: "110, 190, 135"  # Lighter tint for dark mode
+  duration_fast: "180ms"
+  duration_base: "360ms"
+  ease_spring: "cubic-bezier(0.34, 1.56, 0.64, 1)"
+  ease_smooth: "cubic-bezier(0.4, 0, 0.2, 1)"
+  fade_threshold: 0.12
+  fade_stagger_ms: 80
