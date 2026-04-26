@@ -69,7 +69,7 @@ menu:
   - title:             CV
     url:               /markdown-cv/
   # ── Creative & Personal ──────────────────────────────────
-  - title:             Practice
+  - title:             Creative
     url:               /practice/
     submenu:
       - title:         Overview

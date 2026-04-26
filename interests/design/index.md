@@ -52,6 +52,13 @@ A curated reference library for visual design, interaction patterns, and aesthet
 <div class="ref-links"><a href="/interests/design/palette/">Open Palette →</a></div>
 </div>
 
+<div class="ref-card">
+<h3>🎞 <a href="/interests/design/trends/">Trends Lab</a></h3>
+<span class="ref-tag tag-type">Interactive</span><span class="ref-tag tag-tool">Canvas</span><span class="ref-tag">5 Demos</span>
+<p class="ref-desc">Five browser-native demos — generative flow field, kinetic typography, Neo-Brutalism ↔ Glassmorphism toggle, Swiss modular grid builder, and Bauhaus color harmony wheel. Adjust parameters in real time.</p>
+<div class="ref-links"><a href="/interests/design/trends/">Open Trends Lab →</a></div>
+</div>
+
 </div>
 
 ---

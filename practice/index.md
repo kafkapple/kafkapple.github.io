@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Practice
+title: Creative
 description: >
   Active creative practice — music performance, interdisciplinary collaborations,
   writing, and translation.
