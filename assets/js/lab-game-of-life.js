@@ -130,6 +130,7 @@
   });
 
   function loop() {
+    if (!canvas.isConnected) return;
     frameCount++;
     if (frameCount % FRAME_SKIP === 0) step();
     draw();
@@ -140,8 +141,20 @@
   window.addEventListener('resize', resize);
   loop();
 
-  document.addEventListener('hy-push-state-after', function () {
+  var _ps = document.getElementById('_pushState');
+  if (_ps) _ps.addEventListener('hy-push-state-after', function () {
     var c2 = document.getElementById('gol-canvas');
-    if (c2 && c2 !== canvas) { canvas = c2; ctx = canvas.getContext('2d'); resize(); }
+    if (c2 && c2 !== canvas) {
+      canvas = c2; ctx = canvas.getContext('2d'); resize(); loop();
+      var b1 = document.getElementById('gol-btn-gun');
+      var b2 = document.getElementById('gol-btn-pulsar');
+      var b3 = document.getElementById('gol-btn-random');
+      if (b1) b1.addEventListener('click', function () { loadGlider(); });
+      if (b2) b2.addEventListener('click', function () { loadPulsar(); });
+      if (b3) b3.addEventListener('click', function () {
+        grid.fill(0); age.fill(0);
+        for (var i = 0; i < grid.length; i++) { if (Math.random() < 0.3) { grid[i] = 1; age[i] = 1; } }
+      });
+    }
   });
 })();

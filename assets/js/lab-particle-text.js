@@ -78,7 +78,7 @@
   canvas.addEventListener('mouseleave', function () { mouse.x = -9999; mouse.y = -9999; });
 
   // auto-cycle every 4 seconds
-  setInterval(nextWord, 4000);
+  var intervalId = setInterval(nextWord, 4000);
 
   function step() {
     for (var i = 0; i < particles.length; i++) {
@@ -117,14 +117,24 @@
     }
   }
 
-  function loop() { step(); draw(); requestAnimationFrame(loop); }
+  function loop() {
+    if (!canvas.isConnected) return;
+    step();
+    draw();
+    requestAnimationFrame(loop);
+  }
 
   resize();
   window.addEventListener('resize', resize);
   loop();
 
-  document.addEventListener('hy-push-state-after', function () {
+  var _ps = document.getElementById('_pushState');
+  if (_ps) _ps.addEventListener('hy-push-state-after', function () {
     var c2 = document.getElementById('particle-text-canvas');
-    if (c2 && c2 !== canvas) { canvas = c2; ctx = canvas.getContext('2d'); resize(); }
+    if (c2 && c2 !== canvas) {
+      clearInterval(intervalId);
+      canvas = c2; ctx = canvas.getContext('2d'); resize(); loop();
+      intervalId = setInterval(nextWord, 4000);
+    }
   });
 })();

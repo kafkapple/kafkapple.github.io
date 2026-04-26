@@ -117,6 +117,7 @@
 
   var STEPS_PER_FRAME = 8;
   function loop() {
+    if (!canvas.isConnected) return;
     for (var s = 0; s < STEPS_PER_FRAME; s++) simStep();
     renderSim();
     requestAnimationFrame(loop);
@@ -127,8 +128,18 @@
   initSim();
   loop();
 
-  document.addEventListener('hy-push-state-after', function () {
+  var _ps = document.getElementById('_pushState');
+  if (_ps) _ps.addEventListener('hy-push-state-after', function () {
     var c2 = document.getElementById('rd-canvas');
-    if (c2 && c2 !== canvas) { canvas = c2; ctx = canvas.getContext('2d'); resize(); }
+    if (c2 && c2 !== canvas) {
+      canvas = c2; ctx = canvas.getContext('2d'); resize(); initSim(); loop();
+      ['rd-btn-0', 'rd-btn-1', 'rd-btn-2'].forEach(function (id, pi) {
+        var btn = document.getElementById(id);
+        if (!btn) return;
+        btn.addEventListener('click', function () {
+          pIdx = pi; F = presets[pi].f; K = presets[pi].k; initSim();
+        });
+      });
+    }
   });
 })();

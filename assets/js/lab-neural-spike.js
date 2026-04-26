@@ -182,14 +182,20 @@
     nodes[best].i_ext += 20;
   });
 
-  function loop() { step(); draw(); requestAnimationFrame(loop); }
+  function loop() {
+    if (!canvas.isConnected) return;
+    step();
+    draw();
+    requestAnimationFrame(loop);
+  }
 
   resize();
   window.addEventListener('resize', resize);
   loop();
 
-  document.addEventListener('hy-push-state-after', function () {
+  var _ps = document.getElementById('_pushState');
+  if (_ps) _ps.addEventListener('hy-push-state-after', function () {
     var c2 = document.getElementById('neural-spike-canvas');
-    if (c2 && c2 !== canvas) { canvas = c2; ctx = canvas.getContext('2d'); resize(); }
+    if (c2 && c2 !== canvas) { canvas = c2; ctx = canvas.getContext('2d'); resize(); loop(); }
   });
 })();
