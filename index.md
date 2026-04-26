@@ -18,6 +18,8 @@ permalink: /
 .proj-title { font-weight: 600; margin: 0 0 0.15em 0; }
 .proj-meta { font-size: 0.88em; color: #666; margin: 0 0 0.1em 0; }
 .proj-desc { font-size: 0.93em; margin: 0; }
+.badge { display:inline-block; font-size:0.78em; font-weight:700; padding:0.1em 0.5em; border-radius:3px; margin-right:0.4em; vertical-align:middle; }
+.badge-1st { background:#f0c040; color:#5a3a00; }
 </style>
 
 <!--author-->
@@ -45,21 +47,6 @@ permalink: /
 
 A four-stage cognitive architecture ties these together: object-centric perception & grounding · predictive abstraction & symbolization · semantic integration & continual learning · metacognitive control & adaptive inference.
 
-## Publications
-
-{% assign featured = site.data.publications %}
-{% assign featured_years = featured | map: "year" | uniq | sort | reverse %}
-{% for year in featured_years %}
-### {{ year }}
-
-{% assign year_pubs = featured | where: "year", year %}
-{% for pub in year_pubs %}
-{% include pub_card.html pub=pub show_thumbnail=true %}
-{% endfor %}
-{% endfor %}
-
-<p class="pub-footnote"><small>* denotes equal contribution; <strong>bold</strong> denotes the author. <a href="https://scholar.google.com/citations?user=D_rZCWYAAAAJ">Google Scholar</a></small></p>
-
 ## Experience
 
 `Aug 2025 – Aug 2026` **Postdoctoral Fellow** — [AMILab](https://ami.kaist.ac.kr/), KAIST School of Computing. Host: Prof. Tae-Hyun Oh. Supported by the **InnoCore Postdoctoral Program**. Vision-Language Models (CLAY, CVPR 2026); 3D Gaussian Splatting for freely-moving animal reconstruction (ongoing).
@@ -76,7 +63,22 @@ A four-stage cognitive architecture ties these together: object-centric percepti
 
 `Mar 2011 – Dec 2012` **Trainee** — Brain Science Institute (BSI), KIST. Rodent social behavior and system consolidation mechanisms.
 
-`Mar 2006 – Aug 2010` **Undergraduate Researcher** — Brain Dynamics Laboratory, KAIST. URP project: monkey behavioral data analysis. Graduation research assistant: human fMRI studies of cognitive neuroscience.
+`Mar 2006 – Aug 2010` **Undergraduate Researcher** — Brain Dynamics Laboratory, KAIST. URP project: behavioral data analysis in non-human primates. Graduation research: human fMRI study, cognitive neuroscience.
+
+## Publications
+
+{% assign featured = site.data.publications %}
+{% assign featured_years = featured | map: "year" | uniq | sort | reverse %}
+{% for year in featured_years %}
+### {{ year }}
+
+{% assign year_pubs = featured | where: "year", year %}
+{% for pub in year_pubs %}
+{% include pub_card.html pub=pub show_thumbnail=true %}
+{% endfor %}
+{% endfor %}
+
+<p class="pub-footnote"><small>* denotes equal contribution; <strong>bold</strong> denotes the author. <a href="https://scholar.google.com/citations?user=D_rZCWYAAAAJ">Google Scholar</a></small></p>
 
 ## Selected Projects
 
@@ -85,17 +87,10 @@ A selection of engineering and research projects outside publications. [**View a
 ### 2025 — Applied AI
 
 <div class="proj">
-<p class="proj-title">Upstage AI Lab — AI/ML Engineering (5 Competitions)</p>
+<p class="proj-title">Upstage AI Lab — AI/ML Engineering</p>
 <p class="proj-meta">Upstage AI Lab · 2024–2025</p>
-<p class="proj-desc">Completed 5 ML engineering competitions across diverse domains. Highlights: <strong>1st/39</strong> Chemical Anomaly Detection (F1 0.9000); <strong>3rd/53</strong> Scientific RAG QA (mAP 0.8394); <strong>3rd/48</strong> Document Classification (Macro-F1 0.9213); <strong>2nd/24</strong> Sentiment Analysis (F1 0.7224); <strong>3rd/19</strong> Tabular Prediction (RMSE 13,760).</p>
-<p class="proj-desc" style="margin-top:0.3em;font-size:0.88em;color:#777;">Stack: PyTorch · HuggingFace · LightGBM · XGBoost · SBERT · BGE-M3 · LangChain · Hydra · W&amp;B · Optuna · FAISS</p>
-</div>
-
-<div class="proj">
-<p class="proj-title">LLM-Based Parenting Coach — Dialogue Quality Assessment &amp; Plan Recommendation</p>
-<p class="proj-meta">Upstage AI Lab × ConnectsLab · Spring 2025</p>
-<p class="proj-desc">Multi-step LLM pipeline: survey-based family persona generation → dialogue simulation → 4-dimensional quality scoring (emotional relationship, active listening, communication clarity, conflict resolution) → personalized plan recommendation via ensemble of dialogue- and survey-based signals. Multi-LLM backend: GPT-4o, Claude, Gemini, Llama.</p>
-<p class="proj-desc" style="margin-top:0.3em;font-size:0.88em;color:#777;">Stack: LangChain · Hydra · W&amp;B · OpenAI · Anthropic · Google AI · Ollama</p>
+<p class="proj-desc">5 ML engineering competitions (Anomaly Detection, RAG QA, Document Classification, Sentiment Analysis, Tabular Prediction) + external company project: LLM-based parent-child dialogue quality assessment and parenting plan recommendation system for ConnectsLab (multi-step pipeline: persona generation → dialogue scoring → plan recommendation).</p>
+<p class="proj-desc" style="margin-top:0.3em;font-size:0.88em;color:#777;">Stack: PyTorch · HuggingFace · LangChain · LightGBM · XGBoost · Hydra · W&amp;B · OpenAI · Anthropic · Gemini · Ollama · FAISS</p>
 </div>
 
 ### 2018 — Hardware × AI
@@ -108,7 +103,7 @@ A selection of engineering and research projects outside publications. [**View a
 
 ## Teaching & Mentorship
 
-`Nov 2025 – Feb 2026` **Research Mentor** — Seongyoon Park (Individual Research Program, KAIST AMILab). Co-mentor: Dr. Chenshuang Zhang. *Do Models See Like Humans? Landmark Identity under Perturbations in Foundation Models* — 2AFC study comparing human and foundation-model (CLIP, DINO, SigLIP) identity judgments under image perturbations (color, background, weather).
+`Nov 2025 – Feb 2026` **Research Mentor** — Seongyoon Park (Individual Research Program, KAIST AMILab). Co-mentor: Dr. Chenshuang Zhang. *Do Models See Like Humans? Landmark Identity under Perturbations in Foundation Models* — Triplet-based 2AFC comparing human vs. foundation-model (OpenCLIP, DINO, SigLIP) identity judgments on landmark images under controlled perturbations (color, background, weather). Three experiments: (1) human-model preference alignment (Kendall's τ), (2) which perturbation type dominates model decisions, (3) quantitative influence of background via center-crop ratio sweep. Key finding: DINO most robust; background dominates; OpenCLIP aligns with humans on color, DINO on background.
 
 `Jun 2025` **Workshop Instructor** — *Neuro-AI Convergence: Foundation Model Workflows for Neuroscience*, DBDL, Dept. of BCS, KAIST. 3-hour seminar + hands-on workshop applying foundation models to brain and behavior data.
 
@@ -133,7 +128,7 @@ A selection of engineering and research projects outside publications. [**View a
 ## Academic Service & Community
 
 - **Co-Founder & Organizer**, [KAIST NeuroAI Seminar Series](https://kaistneuroaimedia.wixsite.com/mysite) (Oct 2020–Present) — interdisciplinary neuroscience × AI seminar series. Featured speakers include Prof. Peter Dayan (MPI Tübingen).
-- **Co-Founder**, Neureka (Jan 2023–Present) — AI-enabled behavioral neuroscience research community.
+- **Co-Founder**, Neureka (Jan 2023–Present) — interdisciplinary community for AI-enabled behavioral neuroscience research; founded jointly with colleagues from multiple KAIST labs.
 
 ## Contact
 

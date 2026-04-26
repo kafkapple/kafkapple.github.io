@@ -10,63 +10,63 @@ redirect_from:
 ---
 
 <style>
-.lab-item { margin: 0 0 1.6em 0; padding: 0.7em 1em 1em; border-left: 3px solid #ccd5db; line-height: 1.55; }
-.lab-item:hover { border-color: rgb(46,85,56); }
-.lab-title { font-weight: 600; margin: 0 0 0.3em 0; font-size: 1.0em; }
-.lab-desc { font-size: 0.88em; color: #666; margin: 0.4em 0 0; }
-.lab-tag { display: inline-block; font-size: 0.72em; padding: 0.08em 0.4em; border-radius: 2px; background: #e8eef6; color: #2a4a6a; margin-right: 0.3em; }
-.lab-canvas { display: block; width: 100%; cursor: crosshair; margin: 0.6em 0 0.3em; border-radius: 4px; }
+.interest-item { margin: 0 0 1.6em 0; padding: 0.7em 1em 1em; border-left: 3px solid #ccd5db; line-height: 1.55; }
+.interest-item:hover { border-color: rgb(46,85,56); }
+.interest-title { font-weight: 600; margin: 0 0 0.3em 0; font-size: 1.0em; }
+.interest-desc { font-size: 0.88em; color: #666; margin: 0.4em 0 0; }
+.interest-tag { display: inline-block; font-size: 0.72em; padding: 0.08em 0.4em; border-radius: 2px; background: #e8eef6; color: #2a4a6a; margin-right: 0.3em; }
+.lab-canvas { display: block; width: 100%; cursor: crosshair; margin: 0.6em 0 0.3em; border-radius: 4px; background: #161c20; }
 </style>
 
 Experiments in creative coding, generative systems, and browser-native interaction. Click or hover on each to interact.
 
 ---
 
-<div class="lab-item">
-<p class="lab-title">Pixel Art Canvas <span class="lab-tag">draw</span></p>
-<canvas id="pixel-canvas" class="lab-canvas" width="640" height="200"></canvas>
-<p class="lab-desc">Click/drag to paint pixels. Scroll over canvas to change brush color.</p>
+<div class="interest-item">
+<p class="interest-title">Pixel Art Canvas <span class="interest-tag">draw</span></p>
+<canvas id="pixel-canvas" class="lab-canvas" width="640" height="200" style="background:#1a1e22;"></canvas>
+<p class="interest-desc">Click/drag to paint pixels. Scroll over canvas to change brush color.</p>
 </div>
 
-<div class="lab-item">
-<p class="lab-title">Flow Field <span class="lab-tag">generative</span></p>
-<canvas id="flow-canvas" class="lab-canvas" width="640" height="200"></canvas>
-<p class="lab-desc">Perlin-noise vector field with particle trails. Click to respawn particles.</p>
+<div class="interest-item">
+<p class="interest-title">Flow Field <span class="interest-tag">generative</span></p>
+<canvas id="flow-canvas" class="lab-canvas" width="640" height="200" style="background:#0d1510;"></canvas>
+<p class="interest-desc">Perlin-noise vector field with particle trails. Click to respawn particles.</p>
 </div>
 
-<div class="lab-item">
-<p class="lab-title">Cursor Blob <span class="lab-tag">interaction</span></p>
-<canvas id="blob-canvas" class="lab-canvas" width="640" height="200" style="background:#0d0d1a;border-radius:4px;"></canvas>
-<p class="lab-desc">Move mouse over canvas. Metaball fluid simulation attracted to cursor.</p>
+<div class="interest-item">
+<p class="interest-title">Cursor Blob <span class="interest-tag">interaction</span></p>
+<canvas id="blob-canvas" class="lab-canvas" width="640" height="200" style="background:#0d0d1a;"></canvas>
+<p class="interest-desc">Move mouse over canvas. Metaball fluid simulation attracted to cursor.</p>
 </div>
 
-<div class="lab-item">
-<p class="lab-title">Glitch Text <span class="lab-tag">typography</span></p>
+<div class="interest-item">
+<p class="interest-title">Glitch Text <span class="interest-tag">typography</span></p>
 <div id="glitch-box" style="height:140px;display:flex;align-items:center;justify-content:center;background:#0a0a0a;border-radius:4px;overflow:hidden;cursor:pointer;margin:0.6em 0 0.3em;">
 <div id="glitch-text" style="font-family:monospace;font-size:2.4em;color:#fff;font-weight:700;position:relative;user-select:none;">NEURAL</div>
 </div>
-<p class="lab-desc">Click to trigger glitch and cycle words. Hover for continuous distortion.</p>
+<p class="interest-desc">Click to trigger glitch and cycle words. Hover for continuous distortion.</p>
 </div>
 
-<div class="lab-item">
-<p class="lab-title">CRT Scanlines <span class="lab-tag">retro</span></p>
-<canvas id="crt-canvas" class="lab-canvas" width="640" height="200"></canvas>
-<p class="lab-desc">Animated CRT phosphor simulation with scanline overlay and typewriter text.</p>
+<div class="interest-item">
+<p class="interest-title">CRT Scanlines <span class="interest-tag">retro</span></p>
+<canvas id="crt-canvas" class="lab-canvas" width="640" height="200" style="background:#0a1a0a;"></canvas>
+<p class="interest-desc">Animated CRT phosphor simulation with scanline overlay and typewriter text.</p>
 </div>
 
-<div class="lab-item">
-<p class="lab-title">Color Cycle <span class="lab-tag">generative</span></p>
-<canvas id="lava-canvas" class="lab-canvas" width="640" height="200"></canvas>
-<p class="lab-desc">Metaball blobs with HSL cycle. Click to add a new blob.</p>
+<div class="interest-item">
+<p class="interest-title">Color Cycle <span class="interest-tag">generative</span></p>
+<canvas id="lava-canvas" class="lab-canvas" width="640" height="200" style="background:#10101a;"></canvas>
+<p class="interest-desc">Metaball blobs with HSL cycle. Click to add a new blob.</p>
 </div>
 
 ---
 
 ## Site Experiments
 
-<div class="lab-item">
-<p class="lab-title">Next.js Blog Template <span class="lab-tag">Next.js</span><span class="lab-tag">test build</span></p>
-<p class="lab-desc">Static-export Next.js blog deployed via GitHub Actions. Evaluating Next.js + MDX as an alternative to the current Jekyll/Hydejack stack.<br>→ <a href="https://kafkapple.github.io/nextjs-blog/" target="_blank" rel="noopener">View live</a> · <a href="https://github.com/kafkapple/nextjs-blog" target="_blank" rel="noopener">Source</a></p>
+<div class="interest-item">
+<p class="interest-title">Next.js Blog Template <span class="interest-tag">Next.js</span><span class="interest-tag">test build</span></p>
+<p class="interest-desc">Static-export Next.js blog deployed via GitHub Actions. Evaluating Next.js + MDX as an alternative to the current Jekyll/Hydejack stack.<br>→ <a href="https://kafkapple.github.io/nextjs-blog/" target="_blank" rel="noopener">View live</a> · <a href="https://github.com/kafkapple/nextjs-blog" target="_blank" rel="noopener">Source</a></p>
 </div>
 
 ---
@@ -74,17 +74,16 @@ Experiments in creative coding, generative systems, and browser-native interacti
 *Source: vanilla Canvas API, no dependencies. Design references: [Design →](/interests/design/)*
 
 <script>
-// ── SPA-safe Lab initialization ──────────────────────────────────────────────
-// Problem: Hydejack SPA replaces <main> content but may not re-execute inline
-// scripts reliably. Solution: register initLab() for both DOMContentLoaded and
-// hy-push-state-after. Also cancel orphaned RAF loops on navigation away.
+// Expose initLab globally so my-body.html SPA watcher can call it on navigation
 (function () {
   var rafIds = [];
 
   function raf(fn) {
-    var id = requestAnimationFrame(fn);
-    rafIds.push(id);
-    return id;
+    var id = requestAnimationFrame(function(ts) {
+      var i = rafIds.indexOf(id); if (i > -1) rafIds.splice(i, 1);
+      fn(ts);
+    });
+    rafIds.push(id); return id;
   }
 
   function cancelAll() {
@@ -93,7 +92,7 @@ Experiments in creative coding, generative systems, and browser-native interacti
   }
 
   function initLab() {
-    cancelAll(); // cancel any RAF loops from previous visit
+    cancelAll();
 
     // ─── 1. Pixel Art Canvas ──────────────────────────────
     (function () {
@@ -104,7 +103,7 @@ Experiments in creative coding, generative systems, and browser-native interacti
       var cols = c.width / SZ, rows = c.height / SZ;
       var grid = new Uint32Array(cols * rows);
       var painting = false;
-      var palette = ['#e8f4f8','#b0d4e8','#6aaedc','#3a88c0','#1a5898','#0d2a5a','#ff6b6b','#ffd166','#06d6a0'];
+      var palette = ['#4aee88','#2e9955','#60c8a0','#3a88c0','#9a6adc','#ee6060','#f0c040','#88ddff','#ffffff'];
       var colorIdx = 0;
 
       function draw() {
@@ -115,7 +114,7 @@ Experiments in creative coding, generative systems, and browser-native interacti
             ctx.fillRect((i % cols) * SZ, Math.floor(i / cols) * SZ, SZ - 1, SZ - 1);
           }
         }
-        ctx.strokeStyle = '#e0e4ea'; ctx.lineWidth = 0.5;
+        ctx.strokeStyle = 'rgba(100,130,110,0.25)'; ctx.lineWidth = 0.5;
         for (var x = 0; x <= cols; x++) { ctx.beginPath(); ctx.moveTo(x * SZ, 0); ctx.lineTo(x * SZ, c.height); ctx.stroke(); }
         for (var y = 0; y <= rows; y++) { ctx.beginPath(); ctx.moveTo(0, y * SZ); ctx.lineTo(c.width, y * SZ); ctx.stroke(); }
       }
@@ -149,16 +148,16 @@ Experiments in creative coding, generative systems, and browser-native interacti
       function noise(x, y, z) { var s = x + y * 79.3 + z * 197.7; return Math.sin(s * 0.1 + Math.cos(s * 0.07)) * 0.5 + 0.5; }
       function reset(p) { p.x = Math.random() * W; p.y = Math.random() * H; p.life = Math.random() * 80 + 40; p.age = 0; }
       for (var i = 0; i < N; i++) { var p = {}; reset(p); particles.push(p); }
-      ctx.fillStyle = '#f8f9fc'; ctx.fillRect(0, 0, W, H);
+      ctx.fillStyle = '#0d1510'; ctx.fillRect(0, 0, W, H);
       function frame() {
-        ctx.fillStyle = 'rgba(248,249,252,0.07)'; ctx.fillRect(0, 0, W, H);
+        ctx.fillStyle = 'rgba(13,21,16,0.12)'; ctx.fillRect(0, 0, W, H);
         for (var j = 0; j < particles.length; j++) {
           var pp = particles[j];
           var angle = noise(pp.x / 60, pp.y / 60, t) * Math.PI * 4;
           var nx = pp.x + Math.cos(angle) * 1.2, ny = pp.y + Math.sin(angle) * 1.2;
-          var hue = 200 + noise(pp.x / 80, pp.y / 80, t + 10) * 120;
-          var alpha = Math.sin(pp.age / pp.life * Math.PI) * 0.7;
-          ctx.strokeStyle = 'hsla(' + hue + ',60%,50%,' + alpha + ')'; ctx.lineWidth = 1.2;
+          var hue = 120 + noise(pp.x / 80, pp.y / 80, t + 10) * 80;
+          var alpha = Math.sin(pp.age / pp.life * Math.PI) * 0.85;
+          ctx.strokeStyle = 'hsla(' + hue + ',70%,60%,' + alpha + ')'; ctx.lineWidth = 1.2;
           ctx.beginPath(); ctx.moveTo(pp.x, pp.y); ctx.lineTo(nx, ny); ctx.stroke();
           pp.x = nx; pp.y = ny; pp.age++;
           if (pp.age > pp.life || pp.x < 0 || pp.x > W || pp.y < 0 || pp.y > H) reset(pp);
@@ -166,7 +165,7 @@ Experiments in creative coding, generative systems, and browser-native interacti
         t += 0.005;
         rafIds.push(requestAnimationFrame(frame));
       }
-      c.addEventListener('click', function () { ctx.fillStyle = '#f8f9fc'; ctx.fillRect(0, 0, W, H); particles.forEach(reset); });
+      c.addEventListener('click', function () { ctx.fillStyle = '#0d1510'; ctx.fillRect(0, 0, W, H); particles.forEach(reset); });
       rafIds.push(requestAnimationFrame(frame));
     })();
 
@@ -297,7 +296,10 @@ Experiments in creative coding, generative systems, and browser-native interacti
     })();
   } // end initLab()
 
-  // Cancel RAF loops when navigating away
+  // Expose globally for my-body.html SPA watcher
+  window._initLab = initLab;
+
+  // Cancel RAF loops when navigating away (SPA)
   var _ps = document.getElementById('_pushState');
   if (_ps) {
     _ps.addEventListener('hy-push-state-start', cancelAll);
@@ -306,7 +308,7 @@ Experiments in creative coding, generative systems, and browser-native interacti
     });
   }
 
-  // Initial load
+  // Initial page load
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initLab);
   } else {

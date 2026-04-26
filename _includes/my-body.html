@@ -192,6 +192,18 @@ Example code for using Matamo as alternative analytics solution.
   if (_ps) _ps.addEventListener('hy-push-state-after', restorePalette);
 })();
 
+// ── Lab canvas: call global initLab() on SPA navigation to /lab/ ─────────
+(function () {
+  var _ps3 = document.getElementById('_pushState');
+  if (_ps3) {
+    _ps3.addEventListener('hy-push-state-after', function () {
+      if (document.getElementById('pixel-canvas') && typeof window._initLab === 'function') {
+        window._initLab();
+      }
+    });
+  }
+})();
+
 // ── TIL stats: render from JSON data element, re-render on SPA nav ───────
 (function () {
   function renderTilStats() {

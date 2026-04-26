@@ -11,7 +11,7 @@
 
 <div class="pub">
   {% include pub_card_body.html pub=pub %}
-  {% if show_thumb and pub.thumbnail != "" %}
+  {% if show_thumb and pub.thumbnail and pub.thumbnail != "" %}
   <div style="margin-top:0.8em;">
     <a href="{{ pub.links[0].url }}">
       <img src="{{ pub.thumbnail }}" alt="{{ pub.title }} teaser"

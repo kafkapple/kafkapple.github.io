@@ -26,10 +26,10 @@ sitemap: true
 </style>
 
 <div class="talk-stats">
-  <div class="talk-stat"><strong>9</strong>talks / seminars</div>
-  <div class="talk-stat"><strong>8</strong>years active<br><span style="font-size:0.85em">2013–2026</span></div>
-  <div class="talk-stat"><strong>5</strong>countries<br><span style="font-size:0.85em">KR · US · NL · CN · Virtual</span></div>
-  <div class="talk-stat"><strong>2</strong>with video</div>
+  <div class="talk-stat"><strong>9</strong> talks / seminars</div>
+  <div class="talk-stat"><strong>8</strong> years active<br><span style="font-size:0.85em">2013–2026</span></div>
+  <div class="talk-stat"><strong>5</strong> countries<br><span style="font-size:0.85em">KR · US · NL · CN · Virtual</span></div>
+  <div class="talk-stat"><strong>2</strong> with video</div>
 </div>
 
 **Activity by year**

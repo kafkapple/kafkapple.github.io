@@ -168,7 +168,13 @@ Five interactive demos — one per design movement. Drag, click, and adjust para
   'use strict';
   var _rafIds = [];
   function cancelAll() { _rafIds.forEach(function(id){ cancelAnimationFrame(id); }); _rafIds = []; }
-  function raf(fn) { var id = requestAnimationFrame(fn); _rafIds.push(id); return id; }
+  function raf(fn) {
+    var id = requestAnimationFrame(function() {
+      var i = _rafIds.indexOf(id); if (i > -1) _rafIds.splice(i, 1);
+      fn();
+    });
+    _rafIds.push(id); return id;
+  }
 
   /* ── util ─────────────────────────────────────── */
   function hslToRgb(h, s, l) {
@@ -359,6 +365,7 @@ Five interactive demos — one per design movement. Drag, click, and adjust para
         card.style.boxShadow='0 8px 32px rgba(0,0,0,0.25)';
         card.style.borderRadius='12px';
         card.style.backdropFilter='blur(14px)';
+        card.style.webkitBackdropFilter='blur(14px)';
         accentEl.style.display='none';
         card.querySelectorAll('div').forEach(function(d){d.style.color='rgba(255,255,255,0.9)';});
       }

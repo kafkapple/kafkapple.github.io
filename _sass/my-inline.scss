@@ -4,54 +4,109 @@ html {
   --theme-color: rgb(26,56,40);
 }
 
-// Sidebar avatar background
+// Sidebar avatar and logo background
 .sidebar-about .avatar,
 .avatar { background-color: rgb(46,85,56); }
 
-// Light mode: warm off-white main background
+// Light mode: warm off-white main background (Hydejack default feel)
 body {
-  background-color: #f9f9f6;
+  background-color: #f5f5f0;
 }
 
-// Dark mode — triggered by Hydejack toggle (adds .dark-mode to <html>)
-html.dark-mode body {
+// ── Dark mode: Hydejack adds `dark-mode` class to <html> via toggle ──────────
+// Also cover `hy-dark` and attribute variants for compatibility.
+html.dark-mode body,
+html[hy-mode="dark"] body,
+html[data-mode="dark"] body {
   background-color: #1b1b2e !important;
   color: #d0d0d8 !important;
   --body-bg: #1b1b2e;
 }
+
 html.dark-mode .content,
-html.dark-mode .page-about .content {
+html.dark-mode .page-about .content,
+html.dark-mode .page,
+html.dark-mode article,
+html.dark-mode main,
+html.dark-mode .layout-page,
+html[hy-mode="dark"] .content,
+html[hy-mode="dark"] .page-about .content,
+html[hy-mode="dark"] .page,
+html[hy-mode="dark"] article,
+html[hy-mode="dark"] main {
   background-color: #1b1b2e !important;
+  color: #d0d0d8 !important;
 }
+
 html.dark-mode .proj {
   border-color: #3a3a5a !important;
 }
+
 html.dark-mode .pub-venue,
 html.dark-mode .pub-footnote,
 html.dark-mode .proj-meta,
-html.dark-mode .proj-desc { color: #a0a0b8 !important; }
+html.dark-mode .proj-desc,
+html[hy-mode="dark"] .pub-venue,
+html[hy-mode="dark"] .pub-footnote,
+html[hy-mode="dark"] .proj-meta,
+html[hy-mode="dark"] .proj-desc { color: #a0a0b8 !important; }
 
-// Dark mode — triggered by OS preference (prefers-color-scheme)
+html.dark-mode h1, html.dark-mode h2, html.dark-mode h3, html.dark-mode h4,
+html[hy-mode="dark"] h1, html[hy-mode="dark"] h2,
+html[hy-mode="dark"] h3, html[hy-mode="dark"] h4 {
+  color: #e8e8f0 !important;
+}
+
+html.dark-mode a, html[hy-mode="dark"] a { color: rgb(100,170,120) !important; }
+html.dark-mode a:hover, html[hy-mode="dark"] a:hover { color: rgb(130,200,150) !important; }
+
+// ── OS-preference dark mode (only when user hasn't explicitly chosen light) ──
 @media (prefers-color-scheme: dark) {
-  html:not(.light-mode) body {
+  html:not(.light-mode):not([hy-mode="light"]) body {
     background-color: #1b1b2e;
     color: #d0d0d8;
     --body-bg: #1b1b2e;
   }
-  html:not(.light-mode) .pub-venue,
-  html:not(.light-mode) .pub-footnote,
-  html:not(.light-mode) .proj-meta,
-  html:not(.light-mode) .proj-desc { color: #a0a0b8; }
+  html:not(.light-mode):not([hy-mode="light"]) .pub-venue,
+  html:not(.light-mode):not([hy-mode="light"]) .pub-footnote,
+  html:not(.light-mode):not([hy-mode="light"]) .proj-meta,
+  html:not(.light-mode):not([hy-mode="light"]) .proj-desc { color: #a0a0b8; }
 }
 
-// Sidebar menu group separators
-// Add visual rule before "Practice" (first Creative item) and "TIL" (first General item)
-.nav-item > a[href="/practice/"],
-.nav-item > a[href="/til/"] {
-  margin-top: 0.6em !important;
-  padding-top: 0.6em !important;
-  border-top: 1px solid rgba(255,255,255,0.18) !important;
+// ── Sidebar menu group separators ────────────────────────────────────────────
+// Visual rule before "Practice" (Creative & Personal group)
+.nav-item > a[href="/practice/"] {
+  margin-top: 0.7em !important;
+  padding-top: 0.7em !important;
+  border-top: 1px solid rgba(255,255,255,0.22) !important;
 }
-// Small label above each group (optional: uncomment to show group headers)
-// .nav-item > a[href="/practice/"]::before { content: "Creative"; display:block; font-size:0.65em; opacity:0.5; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.3em; }
-// .nav-item > a[href="/til/"]::before { content: "Notes"; display:block; font-size:0.65em; opacity:0.5; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.3em; }
+
+// Visual rule before "TIL" (Notes group)
+.nav-item > a[href="/til/"] {
+  margin-top: 0.7em !important;
+  padding-top: 0.7em !important;
+  border-top: 1px solid rgba(255,255,255,0.22) !important;
+}
+
+// Group label above each section (inline pseudo-element approach)
+.nav-item > a[href="/practice/"]::before {
+  content: "Creative & Personal";
+  display: block;
+  font-size: 0.6em;
+  opacity: 0.55;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.3em;
+  font-weight: 600;
+}
+
+.nav-item > a[href="/til/"]::before {
+  content: "Notes & Search";
+  display: block;
+  font-size: 0.6em;
+  opacity: 0.55;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.3em;
+  font-weight: 600;
+}
