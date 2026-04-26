@@ -20,14 +20,15 @@
   var F = presets[pIdx].f, K = presets[pIdx].k;
   var DA = 1.0, DB = 0.5, DT = 1.0;
 
+  function getSteps() {
+    var el = document.getElementById('rd-steps');
+    return el ? parseInt(el.value) : 8;
+  }
+
   function initSim() {
-    uBuf = new Float32Array(SIM_W * SIM_H);
-    vBuf = new Float32Array(SIM_W * SIM_H);
-    uNext = new Float32Array(SIM_W * SIM_H);
-    vNext = new Float32Array(SIM_W * SIM_H);
-    uBuf.fill(1);
-    vBuf.fill(0);
-    // seed center patch
+    uBuf = new Float32Array(SIM_W * SIM_H); vBuf = new Float32Array(SIM_W * SIM_H);
+    uNext = new Float32Array(SIM_W * SIM_H); vNext = new Float32Array(SIM_W * SIM_H);
+    uBuf.fill(1); vBuf.fill(0);
     var cx = Math.floor(SIM_W / 2), cy = Math.floor(SIM_H / 2);
     for (var dy = -5; dy <= 5; dy++) {
       for (var dx = -5; dx <= 5; dx++) {
@@ -40,12 +41,11 @@
   }
 
   function resize() {
-    W = canvas.width = canvas.offsetWidth;
-    H = canvas.height = 240;
+    W = canvas.width = canvas.offsetWidth || parseInt(canvas.getAttribute('width')) || 640;
+    H = canvas.height = parseInt(canvas.getAttribute('height')) || 240;
   }
 
   function simStep() {
-    var n = SIM_W * SIM_H;
     for (var y = 0; y < SIM_H; y++) {
       for (var x = 0; x < SIM_W; x++) {
         var i = y * SIM_W + x;
@@ -63,27 +63,19 @@
     tmp = vBuf; vBuf = vNext; vNext = tmp;
   }
 
-  function toColor(u, v) {
-    // map (u-v) to forest-green palette
-    var t = Math.max(0, Math.min(1, u - v));
-    // 0 → deep teal, 1 → off-white/cream
-    var r = Math.round(10 + t * 230);
-    var g = Math.round(60 + t * 185);
-    var bv = Math.round(50 + t * 160);
-    return [r, g, bv];
-  }
-
   function renderSim() {
     for (var i = 0; i < SIM_W * SIM_H; i++) {
-      var c = toColor(uBuf[i], vBuf[i]);
+      var t = Math.max(0, Math.min(1, uBuf[i] - vBuf[i]));
       var p = i * 4;
-      pixels[p] = c[0]; pixels[p+1] = c[1]; pixels[p+2] = c[2]; pixels[p+3] = 255;
+      pixels[p] = Math.round(10 + t * 230);
+      pixels[p+1] = Math.round(60 + t * 185);
+      pixels[p+2] = Math.round(50 + t * 160);
+      pixels[p+3] = 255;
     }
     octx.putImageData(imgData, 0, 0);
     ctx.drawImage(off, 0, 0, W, H);
   }
 
-  // mouse deposits chemical V
   var mouseDown = false;
   canvas.addEventListener('mousedown', function () { mouseDown = true; });
   canvas.addEventListener('mouseup', function () { mouseDown = false; });
@@ -104,42 +96,49 @@
     }
   });
 
-  // preset buttons
-  ['rd-btn-0', 'rd-btn-1', 'rd-btn-2'].forEach(function (id, pi) {
-    var btn = document.getElementById(id);
-    if (!btn) return;
-    btn.addEventListener('click', function () {
-      pIdx = pi;
-      F = presets[pi].f; K = presets[pi].k;
-      initSim();
+  function wireControls() {
+    ['rd-btn-0', 'rd-btn-1', 'rd-btn-2'].forEach(function (id, pi) {
+      var btn = document.getElementById(id);
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        document.querySelectorAll('[id^="rd-btn-"]').forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        pIdx = pi; F = presets[pi].f; K = presets[pi].k; initSim();
+      });
     });
-  });
+    var sl = document.getElementById('rd-steps');
+    var sv = document.getElementById('rd-steps-val');
+    if (sl && sv) sl.addEventListener('input', function () { sv.textContent = sl.value; });
+  }
 
-  var STEPS_PER_FRAME = 8;
+  wireControls();
+
   function loop() {
     if (!canvas.isConnected) return;
-    for (var s = 0; s < STEPS_PER_FRAME; s++) simStep();
+    var s = getSteps();
+    for (var i = 0; i < s; i++) simStep();
     renderSim();
     requestAnimationFrame(loop);
   }
 
+  var running = false;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting && !running) { running = true; resize(); initSim(); loop(); }
+      else if (!e.isIntersecting) { running = false; }
+    });
+  }, { threshold: 0.1 });
+
   resize();
   window.addEventListener('resize', resize);
-  initSim();
-  loop();
+  io.observe(canvas);
 
   var _ps = document.getElementById('_pushState');
-  if (_ps) _ps.addEventListener('hy-push-state-after', function () {
-    var c2 = document.getElementById('rd-canvas');
-    if (c2 && c2 !== canvas) {
-      canvas = c2; ctx = canvas.getContext('2d'); resize(); initSim(); loop();
-      ['rd-btn-0', 'rd-btn-1', 'rd-btn-2'].forEach(function (id, pi) {
-        var btn = document.getElementById(id);
-        if (!btn) return;
-        btn.addEventListener('click', function () {
-          pIdx = pi; F = presets[pi].f; K = presets[pi].k; initSim();
-        });
-      });
-    }
-  });
+  if (_ps) {
+    _ps.addEventListener('hy-push-state-start', function () { io.disconnect(); running = false; });
+    _ps.addEventListener('hy-push-state-after', function () {
+      var c2 = document.getElementById('rd-canvas');
+      if (c2) { canvas = c2; ctx = canvas.getContext('2d'); resize(); initSim(); io.observe(canvas); wireControls(); }
+    });
+  }
 })();

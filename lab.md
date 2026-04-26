@@ -80,8 +80,30 @@ redirect_from:
 .lab-btn.active { background: rgba(46,85,56,0.55); border-color: rgba(46,85,56,0.7); color: #d4edda; }
 
 /* ── Inline button row (below canvas) ── */
-.lab-inline-btns { margin: 0.35em 0 0.5em; display: flex; gap: 0.4em; flex-wrap: wrap; }
+.lab-inline-btns { margin: 0.35em 0 0.5em; display: flex; gap: 0.4em; flex-wrap: wrap; align-items: center; }
 .lab-inline-btns .lab-btn { font-size: 0.8em; padding: 0.22em 0.75em; }
+
+/* ── Sliders ── */
+.lab-slider {
+  -webkit-appearance: none; appearance: none;
+  width: 100%; height: 4px;
+  background: rgba(46,85,56,0.25); border-radius: 2px;
+  outline: none; cursor: pointer; margin: 0;
+}
+.lab-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px; height: 14px; border-radius: 50%;
+  background: rgb(70,150,90); border: 2px solid rgba(46,85,56,0.5); cursor: pointer;
+}
+.lab-slider::-moz-range-thumb {
+  width: 14px; height: 14px; border-radius: 50%;
+  background: rgb(70,150,90); border: 2px solid rgba(46,85,56,0.5); cursor: pointer;
+  border: none;
+}
+.lab-val { font-size: 0.72em; color: rgba(130,210,155,0.9); font-family: monospace; }
+.lab-inline-slider { display: flex; align-items: center; gap: 0.5em; }
+.lab-inline-slider .lab-slider { width: 90px; flex-shrink: 0; }
+.lab-inline-slider .lab-label { white-space: nowrap; }
 </style>
 
 Experiments in creative coding, generative systems, and browser-native interaction.
@@ -176,8 +198,20 @@ Experiments in creative coding, generative systems, and browser-native interacti
 
 <div class="interest-item" id="grid-dot-spring-ripple">
 <p class="interest-title">Grid Dot Spring Ripple <span class="interest-tag">physics</span><span class="interest-tag">interaction</span></p>
-<canvas id="grid-ripple-canvas" class="lab-canvas" width="640" height="240" style="background:#0d1510;margin:0.6em 0 0.3em;"></canvas>
-<p class="interest-desc">N×M dot grid with spring physics. Mouse repels dots; click to send a ripple propagating outward.</p>
+<div class="lab-demo-row">
+  <canvas id="grid-ripple-canvas" class="lab-canvas" width="640" height="240" style="background:#0d1510;"></canvas>
+  <div class="lab-ctrl-panel">
+    <div class="lab-ctrl-group">
+      <span class="lab-label">Spring <span class="lab-val" id="ripple-spring-val">0.12</span></span>
+      <input type="range" id="ripple-spring" class="lab-slider" min="0.02" max="0.35" step="0.01" value="0.12">
+    </div>
+    <div class="lab-ctrl-group">
+      <span class="lab-label">Repel radius <span class="lab-val" id="ripple-repel-val">60</span></span>
+      <input type="range" id="ripple-repel" class="lab-slider" min="10" max="150" step="5" value="60">
+    </div>
+  </div>
+</div>
+<p class="interest-desc">N×M dot grid with spring physics. Mouse repels dots; click to send a ripple propagating outward. Adjust spring stiffness and repel radius above.</p>
 </div>
 
 ---
@@ -186,14 +220,38 @@ Experiments in creative coding, generative systems, and browser-native interacti
 
 <div class="interest-item" id="matrix-rain">
 <p class="interest-title">Matrix Rain <span class="interest-tag">generative</span><span class="interest-tag">NeuroAI</span></p>
-<canvas id="matrix-rain-canvas" class="lab-canvas" width="640" height="240" style="background:#0a100c;margin:0.6em 0 0.3em;"></canvas>
-<p class="interest-desc">Column-based character rain using Greek letters, math symbols, and nucleotide codes. Research terms (STDP, LTP, ReLU, axon) surface in white.</p>
+<div class="lab-demo-row">
+  <canvas id="matrix-rain-canvas" class="lab-canvas" width="640" height="240" style="background:#0a100c;"></canvas>
+  <div class="lab-ctrl-panel">
+    <div class="lab-ctrl-group">
+      <span class="lab-label">Inject word</span>
+      <input type="text" id="matrix-word-input" class="lab-text-input" placeholder="Type + Enter…" maxlength="14" autocomplete="off" spellcheck="false">
+    </div>
+    <div class="lab-ctrl-group">
+      <span class="lab-label">Speed <span class="lab-val" id="matrix-speed-val">1.0x</span></span>
+      <input type="range" id="matrix-speed" class="lab-slider" min="0.5" max="3" step="0.5" value="1">
+    </div>
+  </div>
+</div>
+<p class="interest-desc">Column-based character rain — Greek letters, math symbols, nucleotide codes. Research terms surface in white. Type a word and press Enter to burst it across the rain.</p>
 </div>
 
 <div class="interest-item" id="particle-text">
 <p class="interest-title">Particle Text <span class="interest-tag">particles</span><span class="interest-tag">typography</span></p>
-<canvas id="particle-text-canvas" class="lab-canvas" width="640" height="240" style="background:#0d1510;margin:0.6em 0 0.3em;"></canvas>
-<p class="interest-desc">Particles spring toward letter forms sampled from canvas text. Mouse repels; click or wait to cycle words — NeuroAI → Plasticity → Emergence → Spike.</p>
+<div class="lab-demo-row">
+  <canvas id="particle-text-canvas" class="lab-canvas" width="640" height="240" style="background:#0d1510;"></canvas>
+  <div class="lab-ctrl-panel">
+    <div class="lab-ctrl-group">
+      <span class="lab-label">Your word</span>
+      <input type="text" id="particle-text-input" class="lab-text-input" placeholder="Type a word…" maxlength="16" autocomplete="off" spellcheck="false">
+    </div>
+    <div class="lab-ctrl-group">
+      <span class="lab-label">Speed <span class="lab-val" id="particle-speed-val">1.0x</span></span>
+      <input type="range" id="particle-speed" class="lab-slider" min="0.5" max="3" step="0.5" value="1">
+    </div>
+  </div>
+</div>
+<p class="interest-desc">Particles spring toward letter forms sampled from canvas text. Type any word above to form it in real-time. Mouse repels; click canvas to cycle presets.</p>
 </div>
 
 ---
@@ -207,14 +265,26 @@ Experiments in creative coding, generative systems, and browser-native interacti
   <button id="gol-btn-gun" class="lab-btn">Gosper Gun</button>
   <button id="gol-btn-pulsar" class="lab-btn">Pulsar</button>
   <button id="gol-btn-random" class="lab-btn">Random</button>
+  <span class="lab-inline-slider">
+    <span class="lab-label" style="font-size:0.72em;">Speed</span>
+    <input type="range" id="gol-speed" class="lab-slider" min="0.5" max="4" step="0.5" value="1">
+    <span class="lab-val" id="gol-speed-val">1.0x</span>
+  </span>
 </div>
-<p class="interest-desc">Conway's Game of Life with age-coded color (bright → teal → grey). Draw cells with mouse; load preset patterns above.</p>
+<p class="interest-desc">Conway's Game of Life with age-coded color (bright → teal → grey). Draw cells with mouse; load preset patterns above. Drag Speed to accelerate.</p>
 </div>
 
 <div class="interest-item" id="neural-spike-propagation">
 <p class="interest-title">Neural Spike Propagation <span class="interest-tag">LIF model</span><span class="interest-tag">NeuroAI</span></p>
 <canvas id="neural-spike-canvas" class="lab-canvas" width="640" height="240" style="background:#080e0a;margin:0.6em 0 0.3em;"></canvas>
-<p class="interest-desc">Leaky Integrate-and-Fire neurons on a small-world graph. Color encodes membrane potential (cool → hot). Click a node to inject current; watch action potentials propagate.</p>
+<div class="lab-inline-btns">
+  <span class="lab-inline-slider">
+    <span class="lab-label" style="font-size:0.72em;">Noise</span>
+    <input type="range" id="neural-noise" class="lab-slider" min="0.005" max="0.12" step="0.005" value="0.03">
+    <span class="lab-val" id="neural-noise-val">0.03</span>
+  </span>
+</div>
+<p class="interest-desc">Leaky Integrate-and-Fire neurons on a small-world graph. Color encodes membrane potential (cool → hot). Click a node to inject current; drag Noise to tune spontaneous activity.</p>
 </div>
 
 <div class="interest-item" id="reaction-diffusion-gray-scott">
@@ -224,8 +294,13 @@ Experiments in creative coding, generative systems, and browser-native interacti
   <button id="rd-btn-0" class="lab-btn active">Spots</button>
   <button id="rd-btn-1" class="lab-btn">Labyrinths</button>
   <button id="rd-btn-2" class="lab-btn">Stripes</button>
+  <span class="lab-inline-slider">
+    <span class="lab-label" style="font-size:0.72em;">Steps/frame</span>
+    <input type="range" id="rd-steps" class="lab-slider" min="1" max="20" step="1" value="8">
+    <span class="lab-val" id="rd-steps-val">8</span>
+  </span>
 </div>
-<p class="interest-desc">Gray-Scott reaction-diffusion system. Self-organizing Turing patterns emerge from two virtual chemicals. Click preset to reset; drag mouse to deposit chemical V.</p>
+<p class="interest-desc">Gray-Scott reaction-diffusion system. Self-organizing Turing patterns emerge from two virtual chemicals. Click preset to reset; drag mouse to deposit chemical V; drag Steps to speed up evolution.</p>
 </div>
 
 ---
@@ -241,4 +316,32 @@ Experiments in creative coding, generative systems, and browser-native interacti
 
 *Source: vanilla Canvas API, no dependencies. Design: [Design Lab →](/lab/design-research/)*
 
+<!-- Slider value display: update .lab-val spans on input -->
+<script>
+(function () {
+  var pairs = [
+    ['ripple-spring', 'ripple-spring-val', null],
+    ['ripple-repel',  'ripple-repel-val',  null],
+    ['matrix-speed',  'matrix-speed-val',  'x'],
+    ['particle-speed','particle-speed-val','x'],
+    ['gol-speed',     'gol-speed-val',     'x'],
+    ['neural-noise',  'neural-noise-val',  null],
+    ['rd-steps',      'rd-steps-val',      null]
+  ];
+  function wire() {
+    pairs.forEach(function (p) {
+      var sl = document.getElementById(p[0]);
+      var sv = document.getElementById(p[1]);
+      if (!sl || !sv) return;
+      sl.addEventListener('input', function () {
+        var v = parseFloat(sl.value);
+        sv.textContent = (Number.isInteger(v) ? v : v.toFixed(p[0].indexOf('noise') >= 0 ? 2 : 1)) + (p[2] || '');
+      });
+    });
+  }
+  wire();
+  var _ps = document.getElementById('_pushState');
+  if (_ps) _ps.addEventListener('hy-push-state-after', wire);
+})();
+</script>
 <!-- Canvas JS loaded via defer in _includes/my-head.html -->
