@@ -25,7 +25,8 @@ $dark-border: #253a2c;
 
 html.dark-mode body,
 html[hy-mode="dark"] body,
-html[data-mode="dark"] body {
+html[data-mode="dark"] body,
+html[data-theme="dark"] body {
   background-color: #{$dark-bg} !important;
   color: #{$dark-text} !important;
   --body-bg: #{$dark-bg};
@@ -51,7 +52,17 @@ html[hy-mode="dark"] .page-body,
 html[hy-mode="dark"] .page-header,
 html[hy-mode="dark"] article,
 html[hy-mode="dark"] main,
-html[hy-mode="dark"] .layout-page {
+html[hy-mode="dark"] .layout-page,
+html[data-theme="dark"] #_main,
+html[data-theme="dark"] #_content,
+html[data-theme="dark"] .content,
+html[data-theme="dark"] .page-about .content,
+html[data-theme="dark"] .page,
+html[data-theme="dark"] .page-body,
+html[data-theme="dark"] .page-header,
+html[data-theme="dark"] article,
+html[data-theme="dark"] main,
+html[data-theme="dark"] .layout-page {
   background-color: #{$dark-bg} !important;
   color: #{$dark-text} !important;
 }
@@ -68,40 +79,74 @@ html.dark-mode .proj-desc,
 html[hy-mode="dark"] .pub-venue,
 html[hy-mode="dark"] .pub-footnote,
 html[hy-mode="dark"] .proj-meta,
-html[hy-mode="dark"] .proj-desc { color: #{$dark-muted} !important; }
+html[hy-mode="dark"] .proj-desc,
+html[data-theme="dark"] .pub-venue,
+html[data-theme="dark"] .pub-footnote,
+html[data-theme="dark"] .proj-meta,
+html[data-theme="dark"] .proj-desc { color: #{$dark-muted} !important; }
 
 // Headings
 html.dark-mode h1, html.dark-mode h2, html.dark-mode h3, html.dark-mode h4,
 html[hy-mode="dark"] h1, html[hy-mode="dark"] h2,
-html[hy-mode="dark"] h3, html[hy-mode="dark"] h4 {
+html[hy-mode="dark"] h3, html[hy-mode="dark"] h4,
+html[data-theme="dark"] h1, html[data-theme="dark"] h2,
+html[data-theme="dark"] h3, html[data-theme="dark"] h4 {
   color: #{$dark-heading} !important;
 }
 
 // Links
-html.dark-mode a, html[hy-mode="dark"] a { color: #{$dark-link} !important; }
-html.dark-mode a:hover, html[hy-mode="dark"] a:hover { color: #{$dark-link-hover} !important; }
+html.dark-mode a, html[hy-mode="dark"] a, html[data-theme="dark"] a { color: #{$dark-link} !important; }
+html.dark-mode a:hover, html[hy-mode="dark"] a:hover, html[data-theme="dark"] a:hover { color: #{$dark-link-hover} !important; }
 
 // ── OS-preference dark mode (only when user hasn't explicitly chosen light) ──
+// OS dark preference — only applies if user hasn't explicitly chosen a theme (data-theme) or light-mode
 @media (prefers-color-scheme: dark) {
-  html:not(.light-mode):not([hy-mode="light"]) body {
+  html:not(.light-mode):not([hy-mode="light"]):not([data-theme="light"]) body {
     background-color: #{$dark-bg};
     color: #{$dark-text};
     --body-bg: #{$dark-bg};
   }
-  html:not(.light-mode):not([hy-mode="light"]) #_main,
-  html:not(.light-mode):not([hy-mode="light"]) #_content,
-  html:not(.light-mode):not([hy-mode="light"]) .content,
-  html:not(.light-mode):not([hy-mode="light"]) .page,
-  html:not(.light-mode):not([hy-mode="light"]) article,
-  html:not(.light-mode):not([hy-mode="light"]) main {
+  html:not(.light-mode):not([hy-mode="light"]):not([data-theme="light"]) #_main,
+  html:not(.light-mode):not([hy-mode="light"]):not([data-theme="light"]) #_content,
+  html:not(.light-mode):not([hy-mode="light"]):not([data-theme="light"]) .content,
+  html:not(.light-mode):not([hy-mode="light"]):not([data-theme="light"]) .page,
+  html:not(.light-mode):not([hy-mode="light"]):not([data-theme="light"]) article,
+  html:not(.light-mode):not([hy-mode="light"]):not([data-theme="light"]) main {
     background-color: #{$dark-bg};
     color: #{$dark-text};
   }
-  html:not(.light-mode):not([hy-mode="light"]) .pub-venue,
-  html:not(.light-mode):not([hy-mode="light"]) .pub-footnote,
-  html:not(.light-mode):not([hy-mode="light"]) .proj-meta,
-  html:not(.light-mode):not([hy-mode="light"]) .proj-desc { color: #{$dark-muted}; }
-  html:not(.light-mode):not([hy-mode="light"]) a { color: #{$dark-link}; }
+  html:not(.light-mode):not([hy-mode="light"]):not([data-theme="light"]) .pub-venue,
+  html:not(.light-mode):not([hy-mode="light"]):not([data-theme="light"]) .pub-footnote,
+  html:not(.light-mode):not([hy-mode="light"]):not([data-theme="light"]) .proj-meta,
+  html:not(.light-mode):not([hy-mode="light"]):not([data-theme="light"]) .proj-desc { color: #{$dark-muted}; }
+  html:not(.light-mode):not([hy-mode="light"]):not([data-theme="light"]) a { color: #{$dark-link}; }
+}
+
+// ── Theme toggle button (fixed, injected by theme-toggle.js) ─────────────────
+#theme-toggle-btn {
+  position: fixed;
+  bottom: 1.4em;
+  right: 1.4em;
+  z-index: 9999;
+  width: 2.5em;
+  height: 2.5em;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,0.25);
+  background: rgba(46,85,56,0.88);
+  color: #fff;
+  font-size: 1.15em;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.28);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: background 0.2s, transform 0.15s;
+  line-height: 1;
+}
+#theme-toggle-btn:hover {
+  transform: scale(1.1);
+  background: rgb(46,85,56);
 }
 
 // ── Sidebar menu group separators ────────────────────────────────────────────

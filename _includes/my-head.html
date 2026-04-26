@@ -1,6 +1,16 @@
 <!-- Custom head injection -->
 
+<!-- FOUC prevention: apply saved theme before paint to avoid flash -->
+<script>
+(function(){
+  var t=localStorage.getItem('theme')||'light';
+  document.documentElement.setAttribute('data-theme',t);
+  document.documentElement.classList.add(t==='dark'?'dark-mode':'light-mode');
+})();
+</script>
+
 <!-- Interactive page JS — defer ensures defined before any SPA navigation -->
+<script defer src="/assets/js/theme-toggle.js"></script>
 <script defer src="/assets/js/lab-canvas.js"></script>
 <script defer src="/assets/js/design-trends.js"></script>
 <script defer src="/assets/js/perception.js"></script>
