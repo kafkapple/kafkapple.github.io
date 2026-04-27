@@ -18,11 +18,18 @@
   function fieldAt(x, y) {
     var cx = W / 2, cy = H / 2, dx = x - cx, dy = y - cy;
     var d = Math.sqrt(dx * dx + dy * dy) + 0.01;
-    if (mode === 'rotation') return [-dy * 0.015, dx * 0.015];
-    if (mode === 'sink')     return [-dx / d, -dy / d];
-    if (mode === 'source')   return [ dx / d,  dy / d];
-    if (mode === 'saddle')   return [ dx * 0.015, -dy * 0.015];
-    if (mode === 'wave')     return [Math.sin(y / 32 + t), Math.cos(x / 40 + t * 0.7)];
+    // Subtle time-varying perturbation for all non-wave modes
+    var breathe = 1 + Math.sin(t * 0.6) * 0.18;
+    var twist   = Math.sin(t * 0.35) * 0.14;
+    if (mode === 'rotation') return [(-dy + dx * twist) * 0.015 * breathe, (dx + dy * twist) * 0.015 * breathe];
+    if (mode === 'sink')     return [-dx / d * breathe, -dy / d * breathe];
+    if (mode === 'source')   return [ dx / d * breathe,  dy / d * breathe];
+    if (mode === 'saddle') {
+      var ct = Math.cos(t * 0.22), st = Math.sin(t * 0.22);
+      var rx = dx * ct + dy * st, ry = -dx * st + dy * ct;
+      return [rx * 0.015, -ry * 0.015];
+    }
+    if (mode === 'wave') return [Math.sin(y / 32 + t), Math.cos(x / 40 + t * 0.7)];
     return [0, 0];
   }
 
@@ -72,7 +79,7 @@
 
   function loop() {
     if (!running) return;
-    if (!paused && mode === 'wave') { t += 0.025; draw(); }
+    if (!paused) { t += mode === 'wave' ? 0.025 : 0.012; draw(); }
     requestAnimationFrame(loop);
   }
 

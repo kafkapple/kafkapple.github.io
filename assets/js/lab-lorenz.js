@@ -5,7 +5,7 @@
   if (!canvas) return;
   var ctx = canvas.getContext('2d');
   var W, H, SCALE, CX, CY;
-  var running = true, paused = false;
+  var running = true, paused = false, hoverIdx = -1;
 
   // Classic Lorenz parameters
   var sigma = 10, rho = 28, beta = 8 / 3;
@@ -51,6 +51,15 @@
       ctx.lineTo(trail[i][0], trail[i][1]);
       ctx.stroke();
     }
+    if (hoverIdx >= 0 && hoverIdx < trail.length) {
+      var tp = trail[hoverIdx];
+      ctx.beginPath(); ctx.arc(tp[0], tp[1], 5, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(255,255,200,0.92)'; ctx.fill();
+      ctx.beginPath(); ctx.arc(tp[0], tp[1], 9, 0, Math.PI * 2);
+      ctx.strokeStyle = 'rgba(255,255,200,0.3)'; ctx.lineWidth = 1.5; ctx.stroke();
+      ctx.fillStyle = 'rgba(255,255,200,0.75)'; ctx.font = '9px monospace';
+      ctx.fillText('z≈' + tp[2].toFixed(1), tp[0] + 10, tp[1] - 4);
+    }
     ctx.fillStyle = 'rgba(255,255,255,0.28)'; ctx.font = '10px monospace';
     ctx.fillText('σ=' + sigma.toFixed(1) + '  ρ=' + rho.toFixed(1) + '  β=' + beta.toFixed(2), 8, H - 8);
   }
@@ -68,6 +77,30 @@
     z = (Math.random() - 0.5) * 0.04;
     trail = [];
   }
+
+  // Mouse hover: highlight nearest trail point; click: reset with perturbation
+  canvas.addEventListener('mousemove', function (e) {
+    var rect = canvas.getBoundingClientRect();
+    var mx = (e.clientX - rect.left) * (W / canvas.offsetWidth);
+    var my = (e.clientY - rect.top) * (H / canvas.offsetHeight);
+    var minD = 1e9, closest = -1;
+    for (var i = 0; i < trail.length; i += 4) {
+      var ddx = trail[i][0] - mx, ddy = trail[i][1] - my;
+      var dd = ddx * ddx + ddy * ddy;
+      if (dd < minD) { minD = dd; closest = i; }
+    }
+    hoverIdx = (minD < 400) ? closest : -1;
+  });
+  canvas.addEventListener('mouseleave', function () { hoverIdx = -1; });
+  canvas.addEventListener('click', function (e) {
+    var rect = canvas.getBoundingClientRect();
+    var nx = (e.clientX - rect.left) / canvas.offsetWidth;
+    var ny = (e.clientY - rect.top) / canvas.offsetHeight;
+    x = (nx - 0.5) * 0.6;
+    y = (ny - 0.5) * 0.3;
+    z = 1 + nx * 12;
+    trail = [];
+  });
 
   resize();
   window.addEventListener('resize', resize);

@@ -108,23 +108,24 @@ redirect_from:
 /* ── Lab Studio sticky panel ── */
 #lab-studio {
   position: fixed; right: 16px; top: 68px; z-index: 900;
-  width: 172px;
+  width: 172px; min-width: 158px; max-width: 300px;
   background: rgba(6,14,8,0.94);
   border: 1px solid rgba(46,85,56,0.38);
   border-radius: 6px;
   backdrop-filter: blur(10px);
   box-shadow: 0 4px 22px rgba(0,0,0,0.65);
+  overflow: hidden; resize: horizontal;
 }
 #lab-studio.collapsed #lab-studio-body { display: none; }
 #lab-studio-header {
   display: flex; align-items: center; justify-content: space-between;
-  padding: 0.44em 0.7em; cursor: pointer;
+  padding: 0.44em 0.7em; cursor: move;
   border-bottom: 1px solid rgba(46,85,56,0.18);
   font-family: monospace; font-size: 0.7em; font-weight: 700;
   letter-spacing: 0.08em; text-transform: uppercase; color: rgba(100,185,125,0.85);
   user-select: none;
 }
-#lab-studio-toggle { opacity: 0.55; font-size: 1em; }
+#lab-studio-toggle { opacity: 0.55; font-size: 1em; cursor: pointer; }
 #lab-studio-body { padding: 0.55em 0.7em 0.7em; display: flex; flex-direction: column; gap: 0.5em; }
 #lab-studio-hint { font-size: 0.62em; color: rgba(70,130,85,0.6); line-height: 1.4; }
 @media (max-width: 767px) { #lab-studio { display: none; } }
@@ -387,7 +388,7 @@ Experiments in creative coding, generative systems, and browser-native interacti
 
 <div class="lab-section"><h2>Colour System</h2></div>
 
-<div class="interest-item" id="bauhaus-palette">
+<div class="interest-item fade-visible" id="bauhaus-palette" data-fade-init="1">
 <p class="interest-title">Bauhaus Colour Wheel <span class="interest-tag">Itten · design</span></p>
 <div id="bauhaus-wheel-container" style="position:relative;overflow:hidden;height:180px;background:#111;border-radius:6px;margin:0.6em 0 0.3em;cursor:grab;user-select:none;touch-action:pan-y;">
   <div id="bauhaus-track" style="display:flex;align-items:center;position:absolute;top:0;left:0;height:100%;will-change:transform;">
@@ -580,10 +581,32 @@ Experiments in creative coding, generative systems, and browser-native interacti
   var applyBtn = document.getElementById('lab-studio-apply');
   if (!panel) return;
 
-  header.addEventListener('click', function () {
+  // Collapse toggle
+  toggle.addEventListener('click', function (e) {
+    e.stopPropagation();
     var collapsed = panel.classList.toggle('collapsed');
     toggle.textContent = collapsed ? '▸' : '▾';
   });
+
+  // Draggable — drag from header (not toggle button)
+  var dragging = false, dragOffX = 0, dragOffY = 0;
+  header.addEventListener('mousedown', function (e) {
+    if (e.target === toggle) return;
+    var rect = panel.getBoundingClientRect();
+    panel.style.right = '';
+    panel.style.left = rect.left + 'px';
+    panel.style.top  = rect.top  + 'px';
+    dragOffX = e.clientX - rect.left;
+    dragOffY = e.clientY - rect.top;
+    dragging = true;
+    e.preventDefault();
+  });
+  document.addEventListener('mousemove', function (e) {
+    if (!dragging) return;
+    panel.style.left = Math.max(0, e.clientX - dragOffX) + 'px';
+    panel.style.top  = Math.max(0, e.clientY - dragOffY) + 'px';
+  });
+  document.addEventListener('mouseup', function () { dragging = false; });
 
   function broadcast(text, action) {
     document.dispatchEvent(new CustomEvent('lab:text-change', { detail: { text: text, action: action || 'update' } }));

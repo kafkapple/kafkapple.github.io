@@ -97,7 +97,6 @@
         var off = document.createElement('canvas');
         off.width = cols; off.height = rows;
         var oc = off.getContext('2d');
-        oc.fillStyle = '#000'; oc.fillRect(0, 0, cols, rows);
         var fs = Math.floor(rows * 0.75);
         oc.font = 'bold ' + fs + 'px monospace';
         while (oc.measureText(word).width > cols - 2 && fs > 3) { fs--; oc.font = 'bold ' + fs + 'px monospace'; }
@@ -221,6 +220,13 @@
       }
       box.addEventListener('click', function () { wordIdx = (wordIdx + 1) % words.length; el.textContent = words[wordIdx]; glitch(15); });
       box.addEventListener('mouseenter', function () { glitch(8); });
+
+      // Lab Studio text broadcast
+      document.addEventListener('lab:text-change', function (e) {
+        if (!e.detail || !e.detail.text) return;
+        el.textContent = ('' + e.detail.text).toUpperCase().slice(0, 16);
+        glitch(10);
+      });
     })();
 
     // ─── 5. CRT Scanlines ───────────────────────────────────
