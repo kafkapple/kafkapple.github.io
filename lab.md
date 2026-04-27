@@ -129,11 +129,59 @@ redirect_from:
 #lab-studio-body { padding: 0.55em 0.7em 0.7em; display: flex; flex-direction: column; gap: 0.5em; }
 #lab-studio-hint { font-size: 0.62em; color: rgba(70,130,85,0.6); line-height: 1.4; }
 @media (max-width: 767px) { #lab-studio { display: none; } }
+
+/* ── Floating section nav (FAB) ── */
+#lab-nav-wrap {
+  position: fixed; bottom: 4.7em; right: 1.4em; z-index: 8800;
+  display: flex; flex-direction: column; align-items: flex-end; gap: 0.35em;
+}
+#lab-nav-fab {
+  width: 2.5em; height: 2.5em; border-radius: 50%;
+  border: 1.5px solid rgba(46,85,56,0.5);
+  background: rgba(46,85,56,0.88); color: #fff;
+  font-size: 1.1em; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  flex-shrink: 0; transition: background 0.2s, transform 0.15s;
+  font-family: serif;
+}
+#lab-nav-fab:hover { background: rgb(46,85,56); transform: scale(1.08); }
+#lab-nav-menu {
+  display: none; flex-direction: column; gap: 0.22em; align-items: flex-end;
+}
+.lab-nav-link {
+  font-size: 0.7em; font-family: monospace; font-weight: 700;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 0.3em 0.65em;
+  background: rgba(46,85,56,0.9); color: rgba(200,240,210,0.92);
+  border: 1px solid rgba(46,85,56,0.4);
+  border-radius: 3px; text-decoration: none !important;
+  backdrop-filter: blur(8px);
+  display: block; white-space: nowrap;
+  transition: background 150ms ease;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.35);
+}
+.lab-nav-link:hover { background: rgba(46,85,56,1); color: #fff; }
+@media (max-width: 767px) { #lab-nav-wrap { display: none; } }
 </style>
+
+<div id="lab-nav-wrap">
+  <div id="lab-nav-menu">
+    <a href="#crt-scanlines"      class="lab-nav-link">Retro</a>
+    <a href="#pixel-art-canvas"   class="lab-nav-link">Drawing</a>
+    <a href="#flow-field"         class="lab-nav-link">Physics</a>
+    <a href="#matrix-rain"        class="lab-nav-link">Generative</a>
+    <a href="#game-of-life"       class="lab-nav-link">Neural</a>
+    <a href="#boids-flocking"     class="lab-nav-link">Nature</a>
+    <a href="#vector-field-demo"  class="lab-nav-link">Dynamics</a>
+    <a href="#bauhaus-palette"    class="lab-nav-link">Colour</a>
+  </div>
+  <button id="lab-nav-fab" aria-label="Jump to section" aria-expanded="false">§</button>
+</div>
 
 Experiments in creative coding, generative systems, and browser-native interaction.
 
-**Jump to:** [Retro & Type](#crt-scanlines) · [Drawing](#pixel-art-canvas) · [Physics](#flow-field) · [Generative](#matrix-rain) · [Neural](#game-of-life)
+**Jump to:** [Retro](#crt-scanlines) · [Drawing](#pixel-art-canvas) · [Physics](#flow-field) · [Generative](#matrix-rain) · [Neural](#game-of-life) · [Nature](#boids-flocking) · [Dynamics](#vector-field-demo) · [Colour](#bauhaus-palette)
 
 ---
 
@@ -325,20 +373,35 @@ Experiments in creative coding, generative systems, and browser-native interacti
 <p class="interest-desc">20 LIF neurons in a small-world ring. <strong>Top</strong>: network topology — node color = membrane potential (blue→green→red); pulse dots = propagating spikes. <strong>Bottom</strong>: spike raster — each row is a neuron, each green tick is a spike; bar = population rate. Click any node to inject current; raise Noise for denser firing.</p>
 </div>
 
-<div class="interest-item" id="reaction-diffusion-gray-scott">
-<p class="interest-title">Reaction-Diffusion (Gray-Scott) <span class="interest-tag">emergent patterns</span></p>
-<canvas id="rd-canvas" class="lab-canvas" width="640" height="240" style="background:#0a3c28;margin:0.6em 0 0;"></canvas>
+---
+
+<div class="lab-section"><h2>Nature &amp; Emergence</h2></div>
+
+<div class="interest-item" id="boids-flocking">
+<p class="interest-title">Murmuration / Flocking <span class="interest-tag">emergence</span><span class="interest-tag">NeuroAI</span></p>
+<canvas id="boids-canvas" class="lab-canvas" width="640" height="240" style="background:#080e0a;margin:0.6em 0 0;cursor:crosshair;"></canvas>
 <div class="lab-inline-btns">
-  <button id="rd-btn-0" class="lab-btn active">Spots</button>
-  <button id="rd-btn-1" class="lab-btn">Labyrinths</button>
-  <button id="rd-btn-2" class="lab-btn">Stripes</button>
+  <button id="boids-scatter" class="lab-btn">Scatter</button>
+  <button id="boids-flock" class="lab-btn active">Flock</button>
   <span class="lab-inline-slider">
-    <span class="lab-label" style="font-size:0.72em;">Steps/frame</span>
-    <input type="range" id="rd-steps" class="lab-slider" min="1" max="20" step="1" value="4">
-    <span class="lab-val" id="rd-steps-val">4</span>
+    <span class="lab-label" style="font-size:0.72em;">N</span>
+    <input type="range" id="boids-n" class="lab-slider" min="20" max="120" step="10" value="80">
+    <span class="lab-val" id="boids-n-val">80</span>
   </span>
 </div>
-<p class="interest-desc">Gray-Scott reaction-diffusion system. Self-organizing Turing patterns emerge from two virtual chemicals. Click preset to reset; drag mouse to deposit chemical V; drag Steps to speed up evolution.</p>
+<p class="interest-desc">Reynolds' Boids: separation, alignment, cohesion. Move mouse to repel the flock; drag N to scale the population. Analogous to neural population dynamics — local rules, global order.</p>
+</div>
+
+<div class="interest-item" id="raindrop-ripple">
+<p class="interest-title">Raindrop Ripple <span class="interest-tag">wave · cortical</span><span class="interest-tag">NeuroAI</span></p>
+<canvas id="ripple2-canvas" class="lab-canvas" width="640" height="240" style="background:#060c10;margin:0.6em 0 0;cursor:crosshair;"></canvas>
+<p class="interest-desc">Finite-difference 2D wave equation. Click to drop a virtual raindrop; move mouse for a gentle wake. Analogy: cortical spreading waves — local perturbation propagates through a continuous medium.</p>
+</div>
+
+<div class="interest-item" id="fire-spreading">
+<p class="interest-title">Fire — Spreading Activation <span class="interest-tag">cellular</span><span class="interest-tag">NeuroAI</span></p>
+<canvas id="fire-canvas" class="lab-canvas" width="640" height="240" style="background:#060404;margin:0.6em 0 0;cursor:crosshair;"></canvas>
+<p class="interest-desc">Cellular automaton fire. Move mouse or click to add heat; observe how activation spreads, rises, and cools. Inspired by spreading activation in neural networks — local ignition cascades through neighboring units.</p>
 </div>
 
 ---
@@ -400,155 +463,7 @@ Experiments in creative coding, generative systems, and browser-native interacti
 <p class="interest-desc">Itten's colour theory applied as four design palettes. <strong>Drag</strong> or <strong>scroll</strong> to rotate between Classic, Itten, Klee, and Night. Selected palette propagates to all listening canvases below.</p>
 </div>
 
-<script>
-(function () {
-  var PALETTES = [
-    { name: 'Classic',   swatches: ['#D40000','#0057A8','#F5C800','#F2EFE9','#1C1C1C'] },
-    { name: 'Itten',     swatches: ['#E8320A','#1B4FBE','#F0B429','#1C1C1C','#E8E0D0'] },
-    { name: 'Klee',      swatches: ['#C45C00','#2E6B5E','#7B3FA0','#F7F0E0','#2A2018'] },
-    { name: 'Night',     swatches: ['#FF4136','#0074D9','#FFDC00','#0A0A0A','#E0E0E8'] }
-  ];
-  var CARD_W = 220, GAP = 16;
-  var current = 0, dragStart = null, dragDelta = 0, baseOffset = 0;
-
-  var container = document.getElementById('bauhaus-wheel-container');
-  var track = document.getElementById('bauhaus-track');
-  var indicator = document.getElementById('bauhaus-indicator');
-  if (!container || !track) return;
-
-  // Build cards
-  PALETTES.forEach(function (p, i) {
-    var card = document.createElement('div');
-    card.style.cssText = 'flex-shrink:0;width:' + CARD_W + 'px;margin-right:' + GAP + 'px;height:140px;margin-top:20px;border-radius:6px;overflow:hidden;transition:transform 220ms ease,box-shadow 220ms ease;';
-    card.dataset.idx = i;
-    // Color bar
-    var bar = document.createElement('div');
-    bar.style.cssText = 'display:flex;height:72%;';
-    p.swatches.forEach(function (hex) {
-      var s = document.createElement('div');
-      s.style.cssText = 'flex:1;background:' + hex + ';';
-      bar.appendChild(s);
-    });
-    // Label
-    var label = document.createElement('div');
-    label.style.cssText = 'height:28%;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.72);font-family:monospace;font-size:0.8em;font-weight:700;letter-spacing:0.1em;color:rgba(220,220,200,0.85);';
-    label.textContent = p.name.toUpperCase();
-    card.appendChild(bar); card.appendChild(label);
-    track.appendChild(card);
-  });
-
-  // Dot indicators
-  PALETTES.forEach(function (_, i) {
-    var dot = document.createElement('div');
-    dot.style.cssText = 'width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.2);transition:background 200ms,transform 200ms;';
-    indicator.appendChild(dot);
-  });
-
-  var cW = 600; // updated in RAF after layout
-
-  function cardOffset(idx) {
-    return cW / 2 - CARD_W / 2 - idx * (CARD_W + GAP);
-  }
-
-  function clampIdx(i) {
-    return Math.max(0, Math.min(PALETTES.length - 1, i));
-  }
-
-  function updateCards(animated) {
-    var cards = track.querySelectorAll('[data-idx]');
-    var dots = indicator.querySelectorAll('div');
-    cards.forEach(function (card, i) {
-      var dist = Math.abs(i - current);
-      var scale = dist === 0 ? 1.05 : (dist === 1 ? 0.88 : 0.76);
-      var shadow = dist === 0 ? '0 4px 20px rgba(0,0,0,0.6)' : 'none';
-      card.style.transform = 'scale(' + scale + ')';
-      card.style.boxShadow = shadow;
-      card.style.opacity = dist > 2 ? '0.3' : (1 - dist * 0.22).toString();
-    });
-    dots.forEach(function (dot, i) {
-      dot.style.background = i === current ? 'rgba(255,255,255,0.85)' : 'rgba(255,255,255,0.2)';
-      dot.style.transform = i === current ? 'scale(1.4)' : 'scale(1)';
-    });
-    // Emit palette-change event
-    document.dispatchEvent(new CustomEvent('lab:palette-change', { detail: { palette: PALETTES[current], index: current } }));
-  }
-
-  function setTrackX(x, instant) {
-    track.style.transition = instant ? 'none' : 'transform 280ms cubic-bezier(0.25,0.46,0.45,0.94)';
-    track.style.transform = 'translateX(' + x + 'px)';
-  }
-
-  function snapTo(idx) {
-    current = clampIdx(idx);
-    baseOffset = cardOffset(current);
-    setTrackX(baseOffset, false);
-    updateCards(true);
-  }
-
-  // Defer initial layout to RAF so container.offsetWidth is non-zero
-  requestAnimationFrame(function () {
-    cW = container.offsetWidth || 600;
-    baseOffset = cardOffset(0);
-    setTrackX(baseOffset, true);
-    updateCards(false);
-  });
-
-  // Mouse drag
-  var startIdx = 0;
-  container.addEventListener('mousedown', function (e) {
-    cW = container.offsetWidth || cW; // re-measure in case RAF hasn't fired yet
-    startIdx = current; dragStart = e.clientX; dragDelta = 0;
-    container.style.cursor = 'grabbing';
-    track.style.transition = 'none';
-  });
-  window.addEventListener('mousemove', function (e) {
-    if (dragStart === null) return;
-    dragDelta = e.clientX - dragStart;
-    setTrackX(baseOffset + dragDelta, false);
-    // Update active indicator while dragging
-    var tentative = clampIdx(startIdx - Math.round(dragDelta / (CARD_W + GAP)));
-    if (tentative !== current) { current = tentative; updateCards(false); }
-  });
-  window.addEventListener('mouseup', function () {
-    if (dragStart === null) return;
-    var snapIdx = clampIdx(startIdx - Math.round(dragDelta / (CARD_W + GAP)));
-    // Threshold snap if sub-card drag
-    if (snapIdx === startIdx && Math.abs(dragDelta) > (CARD_W + GAP) * 0.3) {
-      snapIdx = clampIdx(startIdx + (dragDelta < 0 ? 1 : -1));
-    }
-    snapTo(snapIdx);
-    dragStart = null; container.style.cursor = 'grab';
-  });
-
-  // Scroll wheel
-  container.addEventListener('wheel', function (e) {
-    e.preventDefault();
-    snapTo(current + (e.deltaX + e.deltaY > 0 ? 1 : -1));
-  }, { passive: false });
-
-  // Touch
-  var touchX = null, touchStartIdx = 0;
-  container.addEventListener('touchstart', function (e) { touchX = e.touches[0].clientX; touchStartIdx = current; }, { passive: true });
-  container.addEventListener('touchmove', function (e) {
-    if (touchX === null) return;
-    var dx = e.touches[0].clientX - touchX;
-    setTrackX(baseOffset + dx, false);
-    e.preventDefault();
-  }, { passive: false });
-  container.addEventListener('touchend', function (e) {
-    if (touchX === null) return;
-    var dx = e.changedTouches[0].clientX - touchX;
-    snapTo(clampIdx(touchStartIdx + (dx < -(CARD_W/3) ? 1 : dx > (CARD_W/3) ? -1 : 0)));
-    touchX = null;
-  });
-
-  // Click on card to select
-  track.addEventListener('click', function (e) {
-    var card = e.target.closest('[data-idx]');
-    if (card && dragDelta === 0) snapTo(parseInt(card.dataset.idx, 10));
-  });
-})();
-</script>
+<!-- Bauhaus palette JS: /assets/js/lab-bauhaus.js (SPA-safe) -->
 
 <!-- Lab Studio: fixed panel, persists while scrolling on this page -->
 <div id="lab-studio">
@@ -593,7 +508,7 @@ Experiments in creative coding, generative systems, and browser-native interacti
   header.addEventListener('mousedown', function (e) {
     if (e.target === toggle) return;
     var rect = panel.getBoundingClientRect();
-    panel.style.right = '';
+    panel.style.right = 'auto';
     panel.style.left = rect.left + 'px';
     panel.style.top  = rect.top  + 'px';
     dragOffX = e.clientX - rect.left;
@@ -676,7 +591,7 @@ Experiments in creative coding, generative systems, and browser-native interacti
     ['particle-speed',     'particle-speed-val',     'x'],
     ['gol-speed',          'gol-speed-val',          'x'],
     ['neural-noise',       'neural-noise-val',       null],
-    ['rd-steps',           'rd-steps-val',           null]
+    ['boids-n',            'boids-n-val',            null]
   ];
   function wire() {
     pairs.forEach(function (p) {

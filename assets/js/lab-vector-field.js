@@ -1,4 +1,4 @@
-// Lab: Vector Field visualization — divergence / curl demo
+// Lab: Vector Field visualization — divergence / curl demo with particle tracers
 // Guard: #vector-field-canvas (unique to lab page)
 (function () {
   var canvas = document.getElementById('vector-field-canvas');
@@ -9,25 +9,38 @@
   var t = 0, paused = false, running = true;
   var GRID = 26;
 
+  // Particle tracers
+  var NPART = 140;
+  var parts = [];
+
+  function initParts() {
+    parts = [];
+    for (var i = 0; i < NPART; i++) {
+      parts.push({ x: Math.random() * W, y: Math.random() * H,
+                   age: Math.floor(Math.random() * 60), maxAge: 40 + Math.floor(Math.random() * 60) });
+    }
+  }
+
   function resize() {
-    W = canvas.width = canvas.offsetWidth || parseInt(canvas.getAttribute('width')) || 640;
+    W = canvas.width  = canvas.offsetWidth  || parseInt(canvas.getAttribute('width'))  || 640;
     H = canvas.height = parseInt(canvas.getAttribute('height')) || 240;
+    initParts();
     draw();
   }
 
   function fieldAt(x, y) {
     var cx = W / 2, cy = H / 2, dx = x - cx, dy = y - cy;
     var d = Math.sqrt(dx * dx + dy * dy) + 0.01;
-    // Subtle time-varying perturbation for all non-wave modes
-    var breathe = 1 + Math.sin(t * 0.6) * 0.18;
-    var twist   = Math.sin(t * 0.35) * 0.14;
+    // Stronger time-varying perturbation for visible animation
+    var breathe = 1 + Math.sin(t * 0.6) * 0.35;
+    var twist   = Math.sin(t * 0.35) * 0.22;
     if (mode === 'rotation') return [(-dy + dx * twist) * 0.015 * breathe, (dx + dy * twist) * 0.015 * breathe];
     if (mode === 'sink')     return [-dx / d * breathe, -dy / d * breathe];
     if (mode === 'source')   return [ dx / d * breathe,  dy / d * breathe];
     if (mode === 'saddle') {
       var ct = Math.cos(t * 0.22), st = Math.sin(t * 0.22);
       var rx = dx * ct + dy * st, ry = -dx * st + dy * ct;
-      return [rx * 0.015, -ry * 0.015];
+      return [rx * 0.015 * breathe, -ry * 0.015 * breathe];
     }
     if (mode === 'wave') return [Math.sin(y / 32 + t), Math.cos(x / 40 + t * 0.7)];
     return [0, 0];
@@ -37,6 +50,7 @@
     ctx.clearRect(0, 0, W, H);
     ctx.fillStyle = '#0a0e0c'; ctx.fillRect(0, 0, W, H);
 
+    // Arrow grid
     for (var x = GRID / 2; x < W; x += GRID) {
       for (var y = GRID / 2; y < H; y += GRID) {
         var v = fieldAt(x, y);
@@ -45,7 +59,7 @@
         var nx = v[0] / norm, ny = v[1] / norm;
         var len = Math.min(GRID * 0.44, mag * GRID * 0.4);
         var hue = 120 - Math.min(1, mag * 0.8) * 90;
-        var alpha = 0.45 + Math.min(0.45, mag * 0.3);
+        var alpha = 0.32 + Math.min(0.3, mag * 0.28);
 
         ctx.strokeStyle = 'hsla(' + hue + ',72%,58%,' + alpha + ')';
         ctx.lineWidth = 1.3;
@@ -65,6 +79,19 @@
       }
     }
 
+    // Particle tracers
+    for (var i = 0; i < parts.length; i++) {
+      var p = parts[i];
+      var lifeAlpha = Math.sin(p.age / p.maxAge * Math.PI);
+      var v2 = fieldAt(p.x, p.y);
+      var mag2 = Math.sqrt(v2[0] * v2[0] + v2[1] * v2[1]);
+      var hue2 = 120 - Math.min(1, mag2 * 0.8) * 90;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, 1.8, 0, Math.PI * 2);
+      ctx.fillStyle = 'hsla(' + hue2 + ',95%,82%,' + (lifeAlpha * 0.78) + ')';
+      ctx.fill();
+    }
+
     // Fixed-point marker
     if (mode !== 'wave') {
       ctx.beginPath(); ctx.arc(W / 2, H / 2, 5, 0, Math.PI * 2);
@@ -77,9 +104,34 @@
     ctx.fillText(mode, 8, H - 8);
   }
 
+  function updateParticles() {
+    for (var i = 0; i < parts.length; i++) {
+      var p = parts[i];
+      p.age++;
+      if (p.age > p.maxAge) {
+        p.x = Math.random() * W; p.y = Math.random() * H;
+        p.age = 0; p.maxAge = 40 + Math.floor(Math.random() * 60);
+        continue;
+      }
+      var v = fieldAt(p.x, p.y);
+      var mag = Math.sqrt(v[0] * v[0] + v[1] * v[1]);
+      if (mag > 0.001) {
+        var spd = Math.min(4.5, mag * 28 + 0.8);
+        p.x += v[0] / mag * spd;
+        p.y += v[1] / mag * spd;
+      }
+      if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+      if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+    }
+  }
+
   function loop() {
     if (!running) return;
-    if (!paused) { t += mode === 'wave' ? 0.025 : 0.012; draw(); }
+    if (!paused) {
+      t += mode === 'wave' ? 0.025 : 0.018;
+      updateParticles();
+      draw();
+    }
     requestAnimationFrame(loop);
   }
 
@@ -87,13 +139,13 @@
   window.addEventListener('resize', resize);
   loop();
 
-  // Controls
+  // Mode controls
   var modeIds = ['rotation', 'sink', 'source', 'saddle', 'wave'];
   modeIds.forEach(function (m) {
     var btn = document.getElementById('vf-' + m);
     if (!btn) return;
     btn.onclick = function () {
-      mode = m; t = 0; draw();
+      mode = m; t = 0; initParts(); draw();
       document.querySelectorAll('#vf-controls button').forEach(function (b) {
         b.className = b === btn ? 'lab-btn active' : 'lab-btn';
       });
