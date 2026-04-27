@@ -24,7 +24,10 @@ permalink: /
 
 <!--author-->
 
-*One question drives my work: How does the mind work — and can those principles build AI that truly generalizes? I'm a NeuroAI researcher and Postdoctoral Fellow at [KAIST AMILab](https://ami.kaist.ac.kr/), with a background spanning experimental neuroscience, cognitive and social psychology, and computer vision. My research runs in both directions: using AI to decode neural and behavioral data, and drawing on what we know about biological minds to architect better AI systems. Current focus: multi-modal learning and 3D animal behavior reconstruction. Long-term goal: cognitive architectures grounded in how minds develop and understand others.*
+*One question drives my work: How does the mind work — and can those principles build AI that truly generalizes? I'm a NeuroAI researcher and Postdoctoral Fellow at [KAIST AMILab](https://ami.kaist.ac.kr/) (PI: Prof. Tae-Hyun Oh), with a background spanning experimental neuroscience, developmental and social psychology, and computer vision.*
+{:.lead}
+
+*My research runs in both directions: using AI to decode neural and behavioral data, and drawing on what we know about biological minds to architect better AI systems. Current focus: multi-modal learning and 3D animal behavior reconstruction. Long-term goal: cognitive architectures grounded in how minds develop and understand others.*
 {:.lead}
 
 [CV](/markdown-cv/){:.button} · [Google Scholar](https://scholar.google.com/citations?user=D_rZCWYAAAAJ){:.button} · [ORCID](https://orcid.org/0000-0002-2944-0697){:.button} · [GitHub](https://github.com/kafkapple){:.button}
