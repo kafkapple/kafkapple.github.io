@@ -40,7 +40,7 @@ Korean metalcore band known for aggressive riffs and breakdowns. 3rd place at th
 
 ### [Jambinai](/practice/jambinai/)
 
-Guitar (guest) · 2013–2014 · *Post-rock / Experimental / Korean folk*
+Guitar (guest) · 2013–2014 · *Post-rock / Experimental / Gugak*
 
 Korean post-rock band fusing traditional instruments — geomungo, haegeum, piri — with electric guitar and percussion. Featured in NPR, Pitchfork, and Vice. [Wikipedia →](https://en.wikipedia.org/wiki/Jambinai)
 
