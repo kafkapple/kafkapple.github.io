@@ -1,0 +1,153 @@
+# Lab Demo Registry — SSOT / MoC
+# Single source of truth for all .interest-item sections in lab.md.
+# Fields: section_id, title, canvas_ids (list or []), js_file, scroll_fade, notes
+# scroll_fade: true = IO fade-in applies; false = canvas present, always visible (data-fade-init skipped)
+# Status: ok | broken | partial | no-canvas
+
+demos:
+  # ── Retro & Typography ───────────────────────────────────────────────────
+  - section_id: crt-scanlines
+    title: CRT Scanlines + Text Stamper
+    canvas_ids: [crt-canvas]
+    js_file: lab-canvas.js
+    scroll_fade: false
+    status: ok
+
+  - section_id: glitch-text-card
+    title: Glitch Text
+    canvas_ids: []
+    js_file: lab-canvas.js
+    scroll_fade: true
+    status: ok
+    notes: Uses div/span, not canvas. IO fade-in applies.
+
+  # ── Drawing & Color ──────────────────────────────────────────────────────
+  - section_id: pixel-art-canvas
+    title: Pixel Art Canvas
+    canvas_ids: [pixel-canvas]
+    js_file: lab-canvas.js
+    scroll_fade: false
+    status: ok
+    notes: initLab() gate on #pixel-canvas. Lab Studio text/color panel wired.
+
+  - section_id: color-cycle
+    title: Color Cycle / Lava Lamp
+    canvas_ids: [lava-canvas]
+    js_file: lab-canvas.js
+    scroll_fade: false
+    status: ok
+
+  # ── Physics & Motion ─────────────────────────────────────────────────────
+  - section_id: flow-field
+    title: Flow Field
+    canvas_ids: [flow-canvas]
+    js_file: lab-canvas.js
+    scroll_fade: false
+    status: ok
+
+  - section_id: cursor-blob
+    title: Cursor Blob
+    canvas_ids: [blob-canvas]
+    js_file: lab-canvas.js
+    scroll_fade: false
+    status: ok
+
+  - section_id: grid-dot-spring-ripple
+    title: Grid Dot Spring Ripple
+    canvas_ids: [grid-ripple-canvas]
+    js_file: lab-grid-ripple.js
+    scroll_fade: false
+    status: ok
+
+  # ── Generative Text ──────────────────────────────────────────────────────
+  - section_id: matrix-rain
+    title: Matrix Rain
+    canvas_ids: [matrix-rain-canvas]
+    js_file: lab-matrix-rain.js
+    scroll_fade: false
+    status: ok
+
+  - section_id: particle-text
+    title: Particle Text
+    canvas_ids: [particle-text-canvas]
+    js_file: lab-particle-text.js
+    scroll_fade: false
+    status: ok
+
+  # ── Cellular & Neural ────────────────────────────────────────────────────
+  - section_id: game-of-life
+    title: Game of Life
+    canvas_ids: [gol-canvas]
+    js_file: lab-game-of-life.js
+    scroll_fade: false
+    status: ok
+
+  - section_id: neural-spike-propagation
+    title: Neural Spike Propagation
+    canvas_ids: [neural-spike-canvas, neural-raster-canvas]
+    js_file: lab-neural-spike.js
+    scroll_fade: false
+    status: ok
+    notes: Two canvases (main + raster). IO-gated animation (threshold 0.1) — independent of ScrollFade.
+
+  - section_id: reaction-diffusion-gray-scott
+    title: Reaction Diffusion (Gray-Scott)
+    canvas_ids: [rd-canvas]
+    js_file: lab-reaction-diffusion.js
+    scroll_fade: false
+    status: ok
+
+  # ── Dynamical Systems ────────────────────────────────────────────────────
+  - section_id: vector-field-demo
+    title: Vector Field
+    canvas_ids: [vector-field-canvas]
+    js_file: lab-vector-field.js
+    scroll_fade: false
+    status: ok
+
+  - section_id: lorenz-attractor-demo
+    title: Lorenz Attractor
+    canvas_ids: [lorenz-canvas]
+    js_file: lab-lorenz.js
+    scroll_fade: false
+    status: ok
+
+  # ── Colour System ────────────────────────────────────────────────────────
+  - section_id: bauhaus-palette
+    title: Bauhaus Colour Carousel
+    canvas_ids: []
+    js_file: lab-canvas.js
+    scroll_fade: true
+    status: ok
+    notes: Drag carousel, no canvas. IO fade-in applies.
+
+  # ── Site Experiments ─────────────────────────────────────────────────────
+  - section_id: nextjs-blog
+    title: Next.js Blog Template
+    canvas_ids: []
+    js_file: null
+    scroll_fade: true
+    status: ok
+    notes: External link only. No JS demo.
+
+# ── Lab Studio (shared control panel) ────────────────────────────────────────
+# Not an .interest-item — shared input panel above demos.
+# Events: lab:text-change, lab:color-select → dispatched to lab-canvas.js callbacks.
+studio_panel:
+  id: lab-studio-panel
+  js_file: lab-canvas.js
+  wired_to: [crt-canvas, pixel-canvas]
+
+# ── ScrollFade Note ───────────────────────────────────────────────────────────
+# design-features.js ScrollFade skips .interest-item that contain a <canvas> child.
+# Selector: if (el.querySelector('canvas')) return;
+# Elements with scroll_fade: false are always visible from page load.
+# Elements with scroll_fade: true depend on IntersectionObserver (threshold 0.12, rootMargin -40px).
+# Fix: commit 58fd559 (2026-04-27). cache_version bumped to 28 same day.
+
+# ── JS Load Order (defer, _includes/my-head.html) ────────────────────────────
+# 1. design-init.js       2. theme-toggle.js      3. lab-canvas.js
+# 4. lab-grid-ripple.js   5. lab-matrix-rain.js   6. lab-particle-text.js
+# 7. lab-game-of-life.js  8. lab-neural-spike.js  9. lab-reaction-diffusion.js
+# 10. lab-vector-field.js 11. lab-lorenz.js        12. design-trends.js
+# 13. design-trends-ext.js 14. perception.js       15. design-features.js

@@ -16,7 +16,7 @@ sitemap: true
 
 Bass · 2013–present · *Screamo / Emotional Hardcore*
 
-Korean screamo / emotional hardcore band — intense, chaotic, and cathartic. One of the few screamo acts to emerge from South Korea. Active since the early 2010s; released internationally via Dog Knights Productions.
+Korean screamo / emotional hardcore band — intense, chaotic, and cathartic. One of the few screamo acts to emerge from South Korea. Released internationally via Dog Knights Productions.
 
 <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;margin:1em 0 2em 0;">
 <iframe src="https://www.youtube.com/embed/VFlzVLBumpI" frameborder="0" allowfullscreen
