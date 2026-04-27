@@ -342,6 +342,49 @@ Experiments in creative coding, generative systems, and browser-native interacti
 
 ---
 
+<div class="lab-section"><h2>Dynamical Systems</h2></div>
+
+<div class="interest-item" id="vector-field-demo">
+<p class="interest-title">Vector Field — Divergence &amp; Curl <span class="interest-tag">topology · physics</span></p>
+<canvas id="vector-field-canvas" class="lab-canvas" width="640" height="240" style="background:#0a0e0c;margin:0.6em 0 0;"></canvas>
+<div class="lab-inline-btns" id="vf-controls">
+  <button id="vf-rotation" class="lab-btn active">Rotation</button>
+  <button id="vf-sink" class="lab-btn">Sink</button>
+  <button id="vf-source" class="lab-btn">Source</button>
+  <button id="vf-saddle" class="lab-btn">Saddle</button>
+  <button id="vf-wave" class="lab-btn">Wave</button>
+  <button id="vf-pause" class="lab-btn">Pause</button>
+</div>
+<p class="interest-desc">A grid of arrows shows the direction and magnitude of a 2D vector field. Rotation = pure curl (zero divergence). Sink / Source = pure divergence. Saddle = hyperbolic fixed point (zero curl, zero divergence). Wave = time-varying field with no fixed point.</p>
+</div>
+
+<div class="interest-item" id="lorenz-attractor-demo">
+<p class="interest-title">Lorenz Attractor <span class="interest-tag">chaos · strange attractor</span></p>
+<canvas id="lorenz-canvas" class="lab-canvas" width="640" height="240" style="background:#060d08;margin:0.6em 0 0;"></canvas>
+<div class="lab-inline-btns">
+  <span class="lab-inline-slider">
+    <span class="lab-label" style="font-size:0.72em;">σ</span>
+    <input type="range" id="lorenz-sigma" class="lab-slider" min="2" max="20" step="0.5" value="10">
+    <span class="lab-val" id="lorenz-sigma-v">10.0</span>
+  </span>
+  <span class="lab-inline-slider">
+    <span class="lab-label" style="font-size:0.72em;">ρ</span>
+    <input type="range" id="lorenz-rho" class="lab-slider" min="10" max="50" step="0.5" value="28">
+    <span class="lab-val" id="lorenz-rho-v">28.0</span>
+  </span>
+  <span class="lab-inline-slider">
+    <span class="lab-label" style="font-size:0.72em;">β</span>
+    <input type="range" id="lorenz-beta" class="lab-slider" min="0.5" max="6" step="0.1" value="2.67">
+    <span class="lab-val" id="lorenz-beta-v">2.67</span>
+  </span>
+  <button id="lorenz-pause" class="lab-btn">Pause</button>
+  <button id="lorenz-reset" class="lab-btn">Reset</button>
+</div>
+<p class="interest-desc">The Lorenz attractor traces trajectories in a 3D chaotic system, projected onto 2D. Adjust σ (Prandtl), ρ (Rayleigh), β (geometric) to explore the butterfly's sensitivity to initial conditions — small changes diverge exponentially.</p>
+</div>
+
+---
+
 <div class="lab-section"><h2>Colour System</h2></div>
 
 <div class="interest-item" id="bauhaus-palette">
@@ -573,7 +616,7 @@ Experiments in creative coding, generative systems, and browser-native interacti
 
 ---
 
-*Source: vanilla Canvas API, no dependencies. Design: [Design Lab →](/lab/design-research/)*
+*Source: vanilla Canvas API, no dependencies. Design: [Design Trends →](/interests/design/trends/)*
 
 <!-- Slider value display: update .lab-val spans on input -->
 <script>

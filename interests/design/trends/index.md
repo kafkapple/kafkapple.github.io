@@ -57,7 +57,7 @@ canvas.demo  { display: block; width: 100%; cursor: crosshair; }
 #swiss-canvas { background: #fff; }
 </style>
 
-Five interactive demos — one per design movement. Drag, click, and adjust parameters to understand the mechanics behind each aesthetic.
+Seven interactive demos — one per design movement. Drag, click, and adjust parameters to understand the mechanics behind each aesthetic.
 
 ---
 
@@ -158,8 +158,45 @@ Five interactive demos — one per design movement. Drag, click, and adjust para
 </div>
 </div>
 
+<!-- ═══════════════════════════════════════════════════
+  6. CYBERPUNK / DIGITAL RAIN
+═══════════════════════════════════════════════════ -->
+<div class="trend-block">
+<div class="trend-label">
+  <p class="trend-name">Cyberpunk / Digital Rain</p>
+  <span class="trend-era">1984– · Gibson · Ghost in the Shell · The Matrix</span>
+</div>
+<p class="trend-desc">William Gibson's <em>Neuromancer</em> (1984) crystallized the cyberpunk visual language — neon on black, cascading data, urban decay meets high technology. The "Matrix rain" aesthetic (<em>Ghost in the Shell</em>, 1995; <em>The Matrix</em>, 1999) became the era's defining motif: Japanese katakana and Latin glyphs cascading as digital snow. Contemporary lo-fi, vaporwave, and retro-terminal aesthetics descend directly from this moment.</p>
+<div class="demo-wrap">
+  <canvas id="matrix-design-canvas" class="demo" height="240"></canvas>
+</div>
+<div class="controls">
+  <button class="tbtn" id="mxd-pause">Pause</button>
+  <div class="rng-wrap">Speed <input type="range" id="mxd-speed" min="1" max="5" value="2"><span id="mxd-speed-v">2</span></div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+  7. 8-BIT / PIXEL ART ERA
+═══════════════════════════════════════════════════ -->
+<div class="trend-block">
+<div class="trend-label">
+  <p class="trend-name">8-bit / Pixel Art Era</p>
+  <span class="trend-era">1977– · Atari · NES · Demoscene · Lo-fi Revival</span>
+</div>
+<p class="trend-desc">Hardware constraints became a design language. The Atari 2600, NES, and Game Boy imposed grid-based aesthetics that artists turned into richness — each pixel placed deliberately. The demoscene (1980s–90s) pushed these constraints as competitive art. Contemporary pixel art persists as a deliberate choice: <em>Celeste</em>, <em>Undertale</em>, lo-fi music visuals, and retro branding all employ the 8-bit vocabulary. Paint on the canvas — 16-colour NES-inspired palette.</p>
+<div class="demo-wrap" style="background:#0a0a12;">
+  <canvas id="pixel-design-canvas" class="demo" height="240"></canvas>
+</div>
+<div class="controls">
+  <div id="pixel-d-palette" style="display:flex;gap:3px;flex-wrap:wrap;align-items:center;"></div>
+  <button class="tbtn sec" id="pixel-d-reset">Reset</button>
+  <button class="tbtn sec" id="pixel-d-clear">Clear</button>
+</div>
+</div>
+
 ---
 
 *← [Design overview](/interests/design/) · [Perception Lab](/interests/design/perception/) · [Palette Sandbox](/interests/design/palette/)*
 
-<!-- JS loaded via /assets/js/design-trends.js (defer in my-head.html) -->
+<!-- JS: design-trends.js + design-trends-ext.js (defer in my-head.html) -->

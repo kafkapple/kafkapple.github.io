@@ -402,8 +402,8 @@
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initAll);
+    document.addEventListener('DOMContentLoaded', function () { requestAnimationFrame(initAll); });
   } else {
-    initAll();
+    requestAnimationFrame(initAll);
   }
 })();
