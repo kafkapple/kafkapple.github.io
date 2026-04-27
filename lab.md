@@ -452,6 +452,7 @@ Experiments in creative coding, generative systems, and browser-native interacti
   // Mouse drag
   var startIdx = 0;
   container.addEventListener('mousedown', function (e) {
+    cW = container.offsetWidth || cW; // re-measure in case RAF hasn't fired yet
     startIdx = current; dragStart = e.clientX; dragDelta = 0;
     container.style.cursor = 'grabbing';
     track.style.transition = 'none';

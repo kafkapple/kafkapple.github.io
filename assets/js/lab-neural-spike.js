@@ -187,6 +187,7 @@
   });
 
   function resetSim() {
+    if (!W || !H) return;
     spikeHist = new Uint8Array(N * HIST_LEN);
     histIdx = 0; stepCount = 0;
     buildNetwork();

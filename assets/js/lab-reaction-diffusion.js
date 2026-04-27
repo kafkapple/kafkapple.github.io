@@ -38,8 +38,10 @@
       for (var dy = -r; dy <= r; dy++) {
         for (var dx = -r; dx <= r; dx++) {
           if (dx * dx + dy * dy <= r * r) {
-            var i = (cy + dy) * SIM_W + (cx + dx);
-            if (i >= 0 && i < SIM_W * SIM_H) { uBuf[i] = 0.5; vBuf[i] = 0.25; }
+            var nx = cx + dx, ny = cy + dy;
+            if (nx < 0 || nx >= SIM_W || ny < 0 || ny >= SIM_H) continue;
+            var i = ny * SIM_W + nx;
+            uBuf[i] = 0.5; vBuf[i] = 0.25;
           }
         }
       }
