@@ -16,9 +16,7 @@ my [CV](/markdown-cv/).
 
 ## In one sentence
 
-I study how *context* changes what we perceive and decide — both in
-biological brains and in modern AI systems — and use each side to inform
-the other.
+I study how *context* — shaped by biology, development, and social experience — determines what minds perceive and decide, and I use those principles to build and test AI cognitive architectures where each side genuinely informs the other.
 
 ## The Virtuous Cycle of NeuroAI
 

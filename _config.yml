@@ -24,10 +24,10 @@ title:                 Jungjoon Park
 # A short description (~150 chars) of the page used for the meta description tag.
 # Can use markdown, but no more than one paragraph (enforced by `>`)
 description:           >
-  Postdoctoral Fellow at KAIST AMILab. NeuroAI research at the interface of neuroscience and AI.
+  NeuroAI researcher at KAIST AMILab. Using insights from cognitive and social neuroscience to study biological intelligence and build AI systems that generalize.
 
 # A shorter description for the sidebar.
-tagline:               NeuroAI · Postdoc · KAIST AMILab
+tagline:               NeuroAI · Cognitive & Social Neuroscience · KAIST AMILab
 
 # A list of keywords for your blog
 keywords:              []

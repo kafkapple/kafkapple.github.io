@@ -24,7 +24,7 @@ permalink: /
 
 <!--author-->
 
-*I work at the interface of neuroscience and AI — using AI to study neural and behavioral data, and drawing on neuroscience to inform AI systems. Prior work has examined context-dependent perception and cognition in rodent empathy, emotion-aware LLM reasoning, and conditional similarity in vision-language models. At KAIST [AMILab](https://ami.kaist.ac.kr/), I am working on computational methods for animal behavior analysis.*
+*One question drives my work: How does the mind work — and can those principles build AI that truly generalizes? I'm a NeuroAI researcher and Postdoctoral Fellow at [KAIST AMILab](https://ami.kaist.ac.kr/), with a background spanning experimental neuroscience, cognitive and social psychology, and computer vision. My research runs in both directions: using AI to decode neural and behavioral data, and drawing on what we know about biological minds to architect better AI systems. Current focus: multi-modal learning and 3D animal behavior reconstruction. Long-term goal: cognitive architectures grounded in how minds develop and understand others.*
 {:.lead}
 
 [CV](/markdown-cv/){:.button} · [Google Scholar](https://scholar.google.com/citations?user=D_rZCWYAAAAJ){:.button} · [ORCID](https://orcid.org/0000-0002-2944-0697){:.button} · [GitHub](https://github.com/kafkapple){:.button}
@@ -39,7 +39,7 @@ permalink: /
 
 ## Research Interests
 
-> **NeuroAI** — studying how context shapes cognition across biological brains and AI systems, and building toward architectures grounded in neuroscience principles.
+> **NeuroAI** — decoding how biological minds perceive, learn, and understand one another, and using those principles to build AI systems that go beyond narrow tasks, toward intelligence shaped by development, context, and social experience.
 
 - **Context-dependent cognition** — situational, relational, and social context modulates perception and decision-making across species and substrates; from rodent empathy and social hierarchy ([GBB 2022](https://doi.org/10.1111/gbb.12822), [NatComm 2019](https://doi.org/10.1038/s41467-019-09923-8)) to emotion in LLMs and conditional visual similarity in VLMs (CLAY, CVPR 2026).
 - **Behavioral AI & 3D reconstruction** — quantitative, reproducible behavioral analysis for freely-moving animals via multi-view geometry and neural scene representations (3D Gaussian Splatting); bridging behavioral neuroscience with computer vision (AVATAR, CVPR CV4Animals 2022).
