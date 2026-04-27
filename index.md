@@ -91,6 +91,29 @@ A selection of engineering and research projects outside publications. [**View a
 <p class="proj-desc" style="margin-top:0.3em;font-size:0.88em;color:#777;">Stack: PyTorch · HuggingFace · LangChain · LightGBM · XGBoost · Hydra · W&amp;B · OpenAI · Anthropic · Gemini · Ollama · FAISS</p>
 </div>
 
+<div class="proj">
+<p class="proj-title">LLM-Based Parenting Coach — Dialogue Quality Assessment &amp; Plan Recommendation</p>
+<p class="proj-meta">Upstage AI Lab × ConnectsLab · Spring 2025</p>
+<p class="proj-desc">Built a multi-step LLM pipeline for parent-child dialogue analysis and personalized parenting plan recommendation. Pipeline: survey-based family persona generation → dialogue simulation → 4-dimensional quality scoring (emotional relationship, active listening, communication clarity, conflict resolution) → personalized plan recommendation via ensemble of dialogue- and survey-based signals. Multi-LLM backend (GPT-4o, Claude, Gemini, Llama) with Levenshtein key correction and retry mechanisms.</p>
+<p class="proj-desc" style="margin-top:0.3em;font-size:0.88em;color:#777;">Stack: LangChain · Hydra · W&amp;B · OpenAI · Anthropic · Google AI · Ollama</p>
+</div>
+
+### 2021 — Neuroscience × Art
+
+<div class="proj">
+<p class="proj-title">Project Doona Bae</p>
+<p class="proj-meta">Neuroscience · Book chapter · 2021</p>
+<p class="proj-desc">Behavioral and fMRI study of actress Doona Bae's empathic abilities, published as a chapter in the companion book <em>Actress Doona Bae</em>. Examined neural correlates of screen performance and empathic resonance using quantitative imaging methods.</p>
+</div>
+
+### 2019 — Performance
+
+<div class="proj">
+<p class="proj-title">Crowd Walk</p>
+<p class="proj-meta">Performance · BCI · Ilmin Museum · 2019</p>
+<p class="proj-desc">Performed with artist Lang Lee at Ilmin Museum of Art, Seoul. Real-time emotion recognition from facial expression and EEG drove a crowd-movement performance piece — the audience's collective affective state became a choreographic parameter.</p>
+</div>
+
 ### 2018 — Hardware × AI
 
 <div class="proj">
