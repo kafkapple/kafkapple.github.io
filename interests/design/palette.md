@@ -44,8 +44,208 @@ sitemap: false
 .apply-btn { display: inline-block; padding: 0.3em 0.9em; background: #36649B; color: white; border: 0; border-radius: 4px; cursor: pointer; font-size: 0.85em; font-weight: 600; }
 .apply-btn:hover { background: #244162; }
 .section-h { margin-top: 2em; padding-bottom: 0.3em; border-bottom: 2px solid #eee; }
+
+/* Pantone chip carousel */
+.pantone-carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  gap: 10px;
+  padding: 1em 0.25em 1.4em;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.pantone-carousel::-webkit-scrollbar { display: none; }
+.pantone-chip {
+  flex-shrink: 0;
+  width: 86px;
+  border-radius: 6px 6px 4px 4px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.14);
+  scroll-snap-align: center;
+  cursor: pointer;
+  transition: transform 220ms cubic-bezier(0.34,1.56,0.64,1), box-shadow 220ms ease;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+.pantone-chip:hover {
+  transform: translateY(-7px) scale(1.05);
+  box-shadow: 0 10px 26px rgba(0,0,0,0.22);
+}
+.pantone-chip__color {
+  height: 116px;
+  display: flex;
+  align-items: flex-end;
+  padding: 0 0 0.35em 0.42em;
+}
+.pantone-chip__year {
+  font-size: 0.6em;
+  font-weight: 700;
+  color: rgba(255,255,255,0.75);
+  letter-spacing: 0.05em;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.45);
+}
+.pantone-chip__body {
+  background: #fff;
+  padding: 0.48em 0.42em 0.52em;
+  border-top: 1px solid rgba(0,0,0,0.06);
+}
+.pantone-chip__name {
+  font-size: 0.6em;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.25;
+  margin-bottom: 0.18em;
+}
+.pantone-chip__code {
+  font-size: 0.54em;
+  color: #999;
+  font-family: monospace;
+  margin-bottom: 0.38em;
+  letter-spacing: 0.03em;
+}
+.pantone-chip__btn {
+  display: block;
+  width: 100%;
+  padding: 0.2em 0;
+  background: #f0f0f0;
+  border: none;
+  border-radius: 2px;
+  font-size: 0.56em;
+  font-weight: 700;
+  color: #555;
+  cursor: pointer;
+  text-align: center;
+  transition: background 130ms ease, color 130ms ease;
+}
+.pantone-chip__btn:hover { background: #36649B; color: #fff; }
+
+/* Swatch hover lift */
+.swatch { transition: transform 200ms ease, box-shadow 200ms ease; }
+.swatch:hover { transform: translateY(-3px); box-shadow: 0 6px 18px rgba(0,0,0,0.15); }
 </style>
 
+
+## Pantone Color of the Year
+{:.section-h}
+
+Nine annual colour choices, 2025 → 2017. Scroll or swipe to browse — each chip applies as a sidebar preview.
+
+<div class="pantone-carousel" role="list" aria-label="Pantone Color of the Year 2017–2025">
+
+<div class="pantone-chip" role="listitem">
+  <div class="pantone-chip__color" style="background:rgb(164,120,100);">
+    <span class="pantone-chip__year">2025</span>
+  </div>
+  <div class="pantone-chip__body">
+    <div class="pantone-chip__name">Mocha Mousse</div>
+    <div class="pantone-chip__code">17-1230</div>
+    <button class="pantone-chip__btn apply-btn" data-name="Pantone 2025 — Mocha Mousse" data-c1="rgb(128,89,77)" data-c2="rgb(164,120,100)">▶ Apply</button>
+  </div>
+</div>
+
+<div class="pantone-chip" role="listitem">
+  <div class="pantone-chip__color" style="background:rgb(255,190,152);">
+    <span class="pantone-chip__year" style="color:rgba(100,60,30,0.8);">2024</span>
+  </div>
+  <div class="pantone-chip__body">
+    <div class="pantone-chip__name">Peach Fuzz</div>
+    <div class="pantone-chip__code">13-1023</div>
+    <button class="pantone-chip__btn apply-btn" data-name="Pantone 2024 — Peach Fuzz" data-c1="rgb(219,146,112)" data-c2="rgb(255,190,152)">▶ Apply</button>
+  </div>
+</div>
+
+<div class="pantone-chip" role="listitem">
+  <div class="pantone-chip__color" style="background:rgb(187,38,73);">
+    <span class="pantone-chip__year">2023</span>
+  </div>
+  <div class="pantone-chip__body">
+    <div class="pantone-chip__name">Viva Magenta</div>
+    <div class="pantone-chip__code">18-1750</div>
+    <button class="pantone-chip__btn apply-btn" data-name="Pantone 2023 — Viva Magenta" data-c1="rgb(140,27,54)" data-c2="rgb(187,38,73)">▶ Apply</button>
+  </div>
+</div>
+
+<div class="pantone-chip" role="listitem">
+  <div class="pantone-chip__color" style="background:rgb(102,103,171);">
+    <span class="pantone-chip__year">2022</span>
+  </div>
+  <div class="pantone-chip__body">
+    <div class="pantone-chip__name">Very Peri</div>
+    <div class="pantone-chip__code">17-3938</div>
+    <button class="pantone-chip__btn apply-btn" data-name="Pantone 2022 — Very Peri" data-c1="rgb(77,78,128)" data-c2="rgb(102,103,171)">▶ Apply</button>
+  </div>
+</div>
+
+<div class="pantone-chip" role="listitem">
+  <div class="pantone-chip__color" style="background:rgb(147,149,151);">
+    <span class="pantone-chip__year">2021</span>
+  </div>
+  <div class="pantone-chip__body">
+    <div class="pantone-chip__name">Ult. Gray</div>
+    <div class="pantone-chip__code">17-5104</div>
+    <button class="pantone-chip__btn apply-btn" data-name="Pantone 2021 — Ultimate Gray" data-c1="rgb(111,113,115)" data-c2="rgb(147,149,151)">▶ Apply</button>
+  </div>
+</div>
+
+<div class="pantone-chip" role="listitem">
+  <div class="pantone-chip__color" style="background:rgb(245,223,77);">
+    <span class="pantone-chip__year" style="color:rgba(80,65,10,0.8);">2021b</span>
+  </div>
+  <div class="pantone-chip__body">
+    <div class="pantone-chip__name">Illuminating</div>
+    <div class="pantone-chip__code">13-0647</div>
+    <button class="pantone-chip__btn apply-btn" data-name="Pantone 2021 — Illuminating" data-c1="rgb(191,166,62)" data-c2="rgb(245,223,77)">▶ Apply</button>
+  </div>
+</div>
+
+<div class="pantone-chip" role="listitem">
+  <div class="pantone-chip__color" style="background:rgb(15,76,129);">
+    <span class="pantone-chip__year">2020</span>
+  </div>
+  <div class="pantone-chip__body">
+    <div class="pantone-chip__name">Classic Blue</div>
+    <div class="pantone-chip__code">19-4052</div>
+    <button class="pantone-chip__btn apply-btn" data-name="Pantone 2020 — Classic Blue" data-c1="rgb(8,52,94)" data-c2="rgb(15,76,129)">▶ Apply</button>
+  </div>
+</div>
+
+<div class="pantone-chip" role="listitem">
+  <div class="pantone-chip__color" style="background:rgb(255,111,97);">
+    <span class="pantone-chip__year">2019</span>
+  </div>
+  <div class="pantone-chip__body">
+    <div class="pantone-chip__name">Living Coral</div>
+    <div class="pantone-chip__code">16-1546</div>
+    <button class="pantone-chip__btn apply-btn" data-name="Pantone 2019 — Living Coral" data-c1="rgb(194,75,64)" data-c2="rgb(255,111,97)">▶ Apply</button>
+  </div>
+</div>
+
+<div class="pantone-chip" role="listitem">
+  <div class="pantone-chip__color" style="background:rgb(95,75,139);">
+    <span class="pantone-chip__year">2018</span>
+  </div>
+  <div class="pantone-chip__body">
+    <div class="pantone-chip__name">Ultra Violet</div>
+    <div class="pantone-chip__code">18-3838</div>
+    <button class="pantone-chip__btn apply-btn" data-name="Pantone 2018 — Ultra Violet" data-c1="rgb(66,53,98)" data-c2="rgb(95,75,139)">▶ Apply</button>
+  </div>
+</div>
+
+<div class="pantone-chip" role="listitem">
+  <div class="pantone-chip__color" style="background:rgb(136,176,75);">
+    <span class="pantone-chip__year" style="color:rgba(30,60,10,0.8);">2017</span>
+  </div>
+  <div class="pantone-chip__body">
+    <div class="pantone-chip__name">Greenery</div>
+    <div class="pantone-chip__code">15-0343</div>
+    <button class="pantone-chip__btn apply-btn" data-name="Pantone 2017 — Greenery" data-c1="rgb(96,127,53)" data-c2="rgb(136,176,75)">▶ Apply</button>
+  </div>
+</div>
+
+</div>
+
+---
 
 ## A. Academic Standards
 {:.section-h}
@@ -422,115 +622,6 @@ sitemap: false
 
 </div>
 
-## G. Pantone Color of the Year (chronological)
-{:.section-h}
-
-Official Pantone Color of the Year, 2017–2025. All cards same size for consistent comparison.
-
-<div class="swatch-grid">
-
-<div class="swatch">
-  <div class="swatch-top" style="background: linear-gradient(to bottom, rgb(96,127,53), rgb(136,176,75));">G1. 2017 — Greenery</div>
-  <div class="swatch-body">
-    <div class="swatch-name">Greenery</div>
-    <code>rgb(136,176,75)</code> · Pantone 15-0343
-    <div class="swatch-note"><ul><li>Fresh spring green</li><li>Use as accent only — too saturated for sidebar</li></ul></div>
-    <button class="apply-btn" data-name="G1. Greenery (2017)" data-c1="rgb(96,127,53)" data-c2="rgb(136,176,75)">▶ Apply</button>
-  </div>
-</div>
-
-<div class="swatch">
-  <div class="swatch-top" style="background: linear-gradient(to bottom, rgb(66,53,98), rgb(95,75,139));">G2. 2018 — Ultra Violet</div>
-  <div class="swatch-body">
-    <div class="swatch-name">Ultra Violet</div>
-    <code>rgb(95,75,139)</code> · Pantone 18-3838
-    <div class="swatch-note"><ul><li>Mystical / creative violet</li><li>Distinctive, sober</li></ul></div>
-    <button class="apply-btn" data-name="G2. Ultra Violet (2018)" data-c1="rgb(66,53,98)" data-c2="rgb(95,75,139)">▶ Apply</button>
-  </div>
-</div>
-
-<div class="swatch">
-  <div class="swatch-top" style="background: linear-gradient(to bottom, rgb(194,75,64), rgb(255,111,97));">G3. 2019 — Living Coral</div>
-  <div class="swatch-body">
-    <div class="swatch-name">Living Coral</div>
-    <code>rgb(255,111,97)</code> · Pantone 16-1546
-    <div class="swatch-note"><ul><li>Warm coral pink</li><li>⚠ Very high saturation — sparingly</li></ul></div>
-    <button class="apply-btn" data-name="G3. Living Coral (2019)" data-c1="rgb(194,75,64)" data-c2="rgb(255,111,97)">▶ Apply</button>
-  </div>
-</div>
-
-<div class="swatch">
-  <div class="swatch-top" style="background: linear-gradient(to bottom, rgb(8,52,94), rgb(15,76,129));">G4. 2020 — Classic Blue</div>
-  <div class="swatch-body">
-    <div class="swatch-name">Classic Blue</div>
-    <code>rgb(15,76,129)</code> · Pantone 19-4052
-    <div class="swatch-note"><ul><li>Trustworthy, calm</li><li>⭐ Best academic Pantone</li></ul></div>
-    <button class="apply-btn" data-name="G4. Classic Blue (2020)" data-c1="rgb(8,52,94)" data-c2="rgb(15,76,129)">▶ Apply</button>
-  </div>
-</div>
-
-<div class="swatch">
-  <div class="swatch-top" style="background: linear-gradient(to bottom, rgb(111,113,115), rgb(147,149,151));">G5. 2021 — Ultimate Gray</div>
-  <div class="swatch-body">
-    <div class="swatch-name">Ultimate Gray</div>
-    <code>rgb(147,149,151)</code> · Pantone 17-5104
-    <div class="swatch-note"><ul><li>True neutral monochrome</li><li>(2021 paired with Illuminating yellow)</li></ul></div>
-    <button class="apply-btn" data-name="G5. Ultimate Gray (2021)" data-c1="rgb(111,113,115)" data-c2="rgb(147,149,151)">▶ Apply</button>
-  </div>
-</div>
-
-<div class="swatch">
-  <div class="swatch-top" style="background: linear-gradient(to bottom, rgb(191,166,62), rgb(245,223,77)); color:#5C5018;">G5b. 2021 — Illuminating</div>
-  <div class="swatch-body">
-    <div class="swatch-name">Illuminating</div>
-    <code>rgb(245,223,77)</code> · Pantone 13-0647
-    <div class="swatch-note"><ul><li>Optimistic yellow (paired with Ultimate Gray)</li><li>⚠ Strong — accent only</li></ul></div>
-    <button class="apply-btn" data-name="G5b. Illuminating (2021)" data-c1="rgb(191,166,62)" data-c2="rgb(245,223,77)">▶ Apply</button>
-  </div>
-</div>
-
-<div class="swatch">
-  <div class="swatch-top" style="background: linear-gradient(to bottom, rgb(77,78,128), rgb(102,103,171));">G6. 2022 — Very Peri</div>
-  <div class="swatch-body">
-    <div class="swatch-name">Very Peri</div>
-    <code>rgb(102,103,171)</code> · Pantone 17-3938
-    <div class="swatch-note"><ul><li>Periwinkle blue-violet</li><li>Calm + curious</li></ul></div>
-    <button class="apply-btn" data-name="G6. Very Peri (2022)" data-c1="rgb(77,78,128)" data-c2="rgb(102,103,171)">▶ Apply</button>
-  </div>
-</div>
-
-<div class="swatch">
-  <div class="swatch-top" style="background: linear-gradient(to bottom, rgb(140,27,54), rgb(187,38,73));">G7. 2023 — Viva Magenta</div>
-  <div class="swatch-body">
-    <div class="swatch-name">Viva Magenta</div>
-    <code>rgb(187,38,73)</code> · Pantone 18-1750
-    <div class="swatch-note"><ul><li>Bold crimson-magenta</li><li>⚠ High intensity</li></ul></div>
-    <button class="apply-btn" data-name="G7. Viva Magenta (2023)" data-c1="rgb(140,27,54)" data-c2="rgb(187,38,73)">▶ Apply</button>
-  </div>
-</div>
-
-<div class="swatch">
-  <div class="swatch-top" style="background: linear-gradient(to bottom, rgb(219,146,112), rgb(255,190,152)); color:#5C3A2E;">G8. 2024 — Peach Fuzz</div>
-  <div class="swatch-body">
-    <div class="swatch-name">Peach Fuzz</div>
-    <code>rgb(255,190,152)</code> · Pantone 13-1023
-    <div class="swatch-note"><ul><li>Soft peach</li><li>⚠ Light — needs dark text</li></ul></div>
-    <button class="apply-btn" data-name="G8. Peach Fuzz (2024)" data-c1="rgb(219,146,112)" data-c2="rgb(255,190,152)">▶ Apply</button>
-  </div>
-</div>
-
-<div class="swatch">
-  <div class="swatch-top" style="background: linear-gradient(to bottom, rgb(128,89,77), rgb(164,120,100));">G9. 2025 — Mocha Mousse</div>
-  <div class="swatch-body">
-    <div class="swatch-name">Mocha Mousse</div>
-    <code>rgb(164,120,100)</code> · Pantone 17-1230
-    <div class="swatch-note"><ul><li>Warm latte / cocoa</li><li>Earthy, comforting</li></ul></div>
-    <button class="apply-btn" data-name="G9. Mocha Mousse (2025)" data-c1="rgb(128,89,77)" data-c2="rgb(164,120,100)">▶ Apply</button>
-  </div>
-</div>
-
-</div>
-
 ## F. Asian-Inspired
 {:.section-h}
 
@@ -580,11 +671,22 @@ Official Pantone Color of the Year, 2017–2025. All cards same size for consist
 
 ---
 
+---
+
+## Colour References
+
+- **[Pantone](https://www.pantone.com/color-of-the-year)** — official CoY archive with RGB/HEX conversions
+- **[Coolors](https://coolors.co/)** — instant palette generation + WCAG contrast checker
+- **[Color Hunt](https://colorhunt.co/)** — curated palettes, filterable by mood
+- **[Canva Colour Wheel](https://www.canva.com/colors/color-wheel/)** — harmony types (complementary, triadic, analogous) with interactive preview
+
+---
+
 ### Notes
 
-- **Currently applied**: A1. Slate Blue (`rgb(54,100,139)`) — change in `_config.yml` to commit a permanent switch.
+- **Currently applied**: Forest Green B1 (`rgb(46,85,56)`) — site accent committed in `_config.yml`.
 - **Recommended for academic homepages**: A1, A2, A7, A9, C2, C5, B1, B4, E1, E6.
-- **Strong / use sparingly**: A6 (Princeton Orange), D5 (Viva Magenta), B6 (Terracotta).
-- **Pantone Color of the Year set**: B2 / C2 / D3 / D4 / D5 / D6 / E5 — all from official Pantone yearly palettes 2018–2025.
+- **Strong / use sparingly**: A6 (Princeton Orange), Pantone 2023 (Viva Magenta), B6 (Terracotta).
+- **Pantone CoY hero**: scroll the chip carousel at the top — each chip applies as a live sidebar preview.
 
 Tell me a code (e.g., **C2** or **F1**) and I'll commit it to `_config.yml`.

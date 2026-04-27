@@ -163,6 +163,19 @@ redirect_from:
 }
 .lab-nav-link:hover { background: rgba(46,85,56,1); color: #fff; }
 @media (max-width: 767px) { #lab-nav-wrap { display: none; } }
+
+/* ── Bauhaus dual-mode tabs ── */
+.bauhaus-tab {
+  padding: 0.28em 0.9em; font-size: 0.76em; font-weight: 700;
+  font-family: monospace; letter-spacing: 0.06em; text-transform: uppercase;
+  background: rgba(14,22,16,0.92); color: rgba(90,160,110,0.65);
+  border: none; cursor: pointer;
+  transition: background 140ms ease, color 140ms ease;
+  border-right: 1px solid rgba(46,85,56,0.2);
+}
+.bauhaus-tab:last-child { border-right: none; }
+.bauhaus-tab.active { background: rgba(46,85,56,0.6); color: #d4edda; }
+.bauhaus-tab:hover:not(.active) { background: rgba(46,85,56,0.2); color: rgba(160,220,180,0.9); }
 </style>
 
 <div id="lab-nav-wrap">
@@ -452,15 +465,31 @@ Experiments in creative coding, generative systems, and browser-native interacti
 <div class="lab-section"><h2>Colour System</h2></div>
 
 <div class="interest-item fade-visible" id="bauhaus-palette" data-fade-init="1">
-<p class="interest-title">Bauhaus Colour Wheel <span class="interest-tag">Itten · design</span></p>
-<div id="bauhaus-wheel-container" style="position:relative;overflow:hidden;height:180px;background:#111;border-radius:6px;margin:0.6em 0 0.3em;cursor:grab;user-select:none;touch-action:pan-y;">
-  <div id="bauhaus-track" style="display:flex;align-items:center;position:absolute;top:0;left:0;height:100%;will-change:transform;">
-    <!-- Palette cards injected by JS -->
-  </div>
-  <div style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;background:linear-gradient(to right,#111 0%,transparent 18%,transparent 82%,#111 100%);"></div>
-  <div id="bauhaus-indicator" style="position:absolute;bottom:8px;left:0;right:0;display:flex;justify-content:center;gap:7px;pointer-events:none;"></div>
+<p class="interest-title">Bauhaus Colour System <span class="interest-tag">Itten · Wheel</span><span class="interest-tag">interactive</span></p>
+
+<div id="bauhaus-tabs" style="display:flex;margin:0.5em 0 0.6em;border-radius:4px;overflow:hidden;border:1px solid rgba(46,85,56,0.3);width:fit-content;">
+  <button class="bauhaus-tab active" data-mode="wheel">Wheel</button>
+  <button class="bauhaus-tab" data-mode="carousel">Carousel</button>
 </div>
-<p class="interest-desc">Itten's colour theory applied as four design palettes. <strong>Drag</strong> or <strong>scroll</strong> to rotate between Classic, Itten, Klee, and Night. Selected palette propagates to all listening canvases below.</p>
+
+<div id="bauhaus-wheel-panel">
+  <canvas id="bauhaus-wheel-canvas" width="280" height="280" style="display:block;border-radius:50%;cursor:crosshair;margin:0 auto;max-width:100%;"></canvas>
+  <div id="bauhaus-wheel-sampled" style="height:30px;border-radius:4px;margin:0.5em 0 0.3em;background:rgba(46,85,56,0.2);display:flex;align-items:center;justify-content:center;font-family:monospace;font-size:0.74em;color:rgba(100,160,120,0.7);letter-spacing:0.05em;transition:background 200ms,color 200ms;">click wheel to sample a colour</div>
+</div>
+
+<div id="bauhaus-carousel-panel" style="display:none;">
+  <div id="bauhaus-wheel-container" style="position:relative;overflow:hidden;height:180px;background:#111;border-radius:6px;margin:0 0 0.3em;cursor:grab;user-select:none;touch-action:pan-y;">
+    <div id="bauhaus-track" style="display:flex;align-items:center;position:absolute;top:0;left:0;height:100%;will-change:transform;">
+      <!-- Palette cards injected by JS -->
+    </div>
+    <div style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;background:linear-gradient(to right,#111 0%,transparent 18%,transparent 82%,#111 100%);"></div>
+    <div id="bauhaus-indicator" style="position:absolute;bottom:8px;left:0;right:0;display:flex;justify-content:center;gap:7px;pointer-events:none;"></div>
+  </div>
+</div>
+
+<div id="bauhaus-palette-strip" style="display:flex;height:34px;border-radius:4px;overflow:hidden;margin:0.3em 0 0.4em;background:rgba(14,20,16,0.8);"></div>
+
+<p class="interest-desc">Two modes: <strong>Wheel</strong> — click the HSL disc to sample any colour; Itten's RYB primary triad is marked. <strong>Carousel</strong> — drag or scroll through four Bauhaus theory palettes. Selected colour updates the palette strip and Lab Studio.</p>
 </div>
 
 <!-- Bauhaus palette JS: /assets/js/lab-bauhaus.js (SPA-safe) -->
