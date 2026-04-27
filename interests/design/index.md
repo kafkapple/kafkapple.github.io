@@ -40,10 +40,7 @@ A curated reference library for visual design, interaction patterns, and aesthet
 <p class="interest-desc">Sidebar color preview — click <strong>Apply</strong> to swap the site accent in real time, copy YAML snippet. Forty+ curated palettes from academic to Asian-inspired.</p>
 </div>
 
-<div class="interest-item">
-<p class="interest-title"><a href="/interests/design/trends/">🎞 Trends Lab</a> <span class="interest-tag">Interactive</span></p>
-<p class="interest-desc">Five browser-native demos — generative flow field, kinetic typography, Neo-Brutalism ↔ Glassmorphism toggle, Swiss modular grid builder, and Bauhaus color harmony wheel.</p>
-</div>
+<p style="font-size:0.88em;color:#667;margin:0.2em 0 0.4em;padding-left:0.2em;">For generative and canvas-based experiments — flow fields, matrix rain, particle systems, neural simulations — see <a href="/lab/">🧪 Lab →</a></p>
 
 ---
 

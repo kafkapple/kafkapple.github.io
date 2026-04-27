@@ -8,6 +8,8 @@ permalink: /interests/design/trends/
 sitemap: true
 ---
 
+<p style="font-size:0.88em;color:#667;margin-bottom:1.6em;">Design experiments — part of <a href="/lab/">🧪 Lab</a> · <a href="/interests/design/">← Design</a></p>
+
 <style>
 .trend-block {
   margin: 0 0 2.8em 0;

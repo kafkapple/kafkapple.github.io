@@ -85,12 +85,6 @@ menu:
         url:           /interests/
       - title:         "🎨 Design"
         url:           /interests/design/
-      - title:         "📚 Literature"
-        url:           /interests/literature/
-      - title:         "🎬 Film"
-        url:           /interests/film/
-      - title:         "🎵 Music"
-        url:           /interests/music/
       - title:         "🧪 Lab"
         url:           /lab/
   # ── General ──────────────────────────────────────────────
