@@ -25,20 +25,33 @@ A curated reference library for visual design, interaction patterns, and aesthet
 
 ## Interactive Tools
 
-<div class="interest-item">
-<p class="interest-title"><a href="/interests/design/theory/">📐 Theory</a> <span class="interest-tag">Reference</span></p>
-<p class="interest-desc">Grid systems, Gestalt principles, color psychology, generative art theory, and UX heuristics — a personal reference for design principles I draw on in data visualization and scientific figure-making.</p>
-</div>
+<nav class="nav-cards-grid">
 
-<div class="interest-item">
-<p class="interest-title"><a href="/interests/design/perception/">👁 Perception Lab</a> <span class="interest-tag">Interactive</span></p>
-<p class="interest-desc">Five interactive demos at the intersection of neuroscience and design — visual illusions, contrast sensitivity, and temporal perception. Hands-on exploration with adjustable parameters.</p>
-</div>
+<a class="nav-card nav-card--sm" href="/interests/design/theory/">
+<span class="nav-card__principle">Foundations</span>
+<p class="nav-card__title">Theory</p>
+<p class="nav-card__desc">Grid systems, Gestalt principles, color psychology, and UX heuristics — a reference for data visualization and scientific figure-making.</p>
+<span class="nav-card__tags">Reference</span>
+<span class="nav-card__arrow">→</span>
+</a>
 
-<div class="interest-item">
-<p class="interest-title"><a href="/interests/design/palette/">🎨 Palette Sandbox</a> <span class="interest-tag">Interactive</span></p>
-<p class="interest-desc">Sidebar color preview — click <strong>Apply</strong> to swap the site accent in real time, copy YAML snippet. Forty+ curated palettes from academic to Asian-inspired.</p>
-</div>
+<a class="nav-card nav-card--sm" href="/interests/design/perception/">
+<span class="nav-card__principle">Cognition</span>
+<p class="nav-card__title">Perception Lab</p>
+<p class="nav-card__desc">Five interactive demos at the intersection of neuroscience and design — visual illusions, contrast sensitivity, temporal perception.</p>
+<span class="nav-card__tags">Interactive</span>
+<span class="nav-card__arrow">→</span>
+</a>
+
+<a class="nav-card nav-card--sm" href="/interests/design/palette/">
+<span class="nav-card__principle">Color</span>
+<p class="nav-card__title">Palette Sandbox</p>
+<p class="nav-card__desc">Sidebar color preview — click Apply to swap the site accent in real time. Forty+ curated palettes from academic to Asian-inspired.</p>
+<span class="nav-card__tags">Interactive</span>
+<span class="nav-card__arrow">→</span>
+</a>
+
+</nav>
 
 <p style="font-size:0.88em;color:#667;margin:0.2em 0 0.4em;padding-left:0.2em;">For generative and canvas-based experiments — flow fields, matrix rain, particle systems, neural simulations — see <a href="/lab/">🧪 Lab →</a></p>
 

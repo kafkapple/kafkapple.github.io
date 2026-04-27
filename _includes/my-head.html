@@ -50,6 +50,74 @@
   .content .avatar { border: 0 !important; box-shadow: none !important; }
 </style>
 
+<style>
+/* Nav-card design system — full-box clickable cards with visible design principles */
+:root {
+  --nc-accent:       rgb(46,85,56);
+  --nc-accent-muted: rgba(46,85,56,0.07);
+  --nc-accent-hover: rgba(46,85,56,0.13);
+  --nc-accent-lt:    rgb(72,138,88);
+  --nc-bg:           #ffffff;
+  --nc-sub:          #60706a;
+  --nc-gap:          1px;
+  --nc-pad:          clamp(1.15rem,3vw,1.9rem);
+  --nc-title:        clamp(1.65rem,4vw,2.35rem);
+  --nc-title-feat:   clamp(2.1rem,5.5vw,3.2rem);
+  --nc-principle:    0.67rem;
+  --nc-radius:       4px;
+}
+[data-theme="dark"], .dark-mode {
+  --nc-bg:           #151a16;
+  --nc-sub:          #8a9e90;
+  --nc-accent-muted: rgba(46,85,56,0.13);
+  --nc-accent-hover: rgba(46,85,56,0.21);
+  --nc-accent-lt:    rgb(88,160,105);
+}
+.nav-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+  gap: var(--nc-gap);
+  background: var(--nc-accent);
+  border: var(--nc-gap) solid var(--nc-accent);
+  border-radius: calc(var(--nc-radius) + 1px);
+  overflow: hidden;
+  margin: 1.5em 0 2em;
+}
+.nav-card {
+  display: flex; flex-direction: column; justify-content: flex-end;
+  min-height: 196px; padding: var(--nc-pad); background: var(--nc-bg);
+  color: inherit; text-decoration: none !important; gap: 0.35rem;
+  transition: background 170ms ease;
+}
+.nav-card:hover, .nav-card:focus-visible { background: var(--nc-accent-muted); color: inherit; text-decoration: none !important; }
+.nav-card:focus-visible { outline: 2px solid var(--nc-accent); outline-offset: -2px; }
+.nav-card__principle {
+  font-size: var(--nc-principle); font-weight: 700; letter-spacing: 0.11em;
+  text-transform: uppercase; color: var(--nc-accent-lt);
+  align-self: flex-start; margin-bottom: auto;
+}
+.nav-card__title {
+  font-size: var(--nc-title); font-weight: 800; line-height: 1.06;
+  letter-spacing: -0.025em; margin: 0;
+}
+.nav-card__desc { font-size: clamp(0.81rem,1.5vw,0.91rem); line-height: 1.5; color: var(--nc-sub); margin: 0; }
+.nav-card__tags { font-size: 0.7em; color: var(--nc-sub); opacity: 0.75; }
+.nav-card__arrow { display: inline-block; color: var(--nc-accent-lt); font-size: 1.0em; margin-top: 0.45rem; align-self: flex-end; transition: transform 170ms ease; }
+.nav-card:hover .nav-card__arrow { transform: translateX(4px); }
+.nav-card--featured { grid-column: 1 / -1; min-height: 236px; background: var(--nc-accent-muted); }
+.nav-card--featured:hover { background: var(--nc-accent-hover); }
+.nav-card--featured .nav-card__title { font-size: var(--nc-title-feat); }
+.nav-card--sm { min-height: 155px; }
+.nav-card--sm .nav-card__title { font-size: clamp(1.3rem,3vw,1.75rem); }
+.nav-card.wip { opacity: 0.6; pointer-events: none; cursor: default; }
+.nav-principles {
+  font-size: 0.62em; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--nc-accent); opacity: 0.8; margin: 1.2em 0 0.5em;
+  padding-bottom: 0.55em; border-bottom: 1px solid rgba(46,85,56,0.2);
+}
+@media (max-width: 480px) { .nav-card { min-height: 155px; } }
+</style>
+
 {%- comment -%}
   JSON-LD structured data for LLM agents and search engines.
   - schema.org Person on the home page (about/landing)

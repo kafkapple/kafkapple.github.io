@@ -10,7 +10,37 @@ redirect_from:
 sitemap: true
 ---
 
-## Music — Bands
+<p class="nav-principles">Active practice</p>
+
+<nav class="nav-cards-grid">
+
+<a class="nav-card nav-card--featured" href="#music">
+<span class="nav-card__principle">Performance</span>
+<p class="nav-card__title">Music</p>
+<p class="nav-card__desc">Three bands across screamo, metalcore, and experimental post-rock — bass, guitar, and guest performance spanning 2007 to present.</p>
+<span class="nav-card__tags">49 Morphines · Noeazy · Jambinai</span>
+<span class="nav-card__arrow">↓</span>
+</a>
+
+<a class="nav-card" href="#performance">
+<span class="nav-card__principle">System</span>
+<p class="nav-card__title">Performance</p>
+<p class="nav-card__desc">Interdisciplinary work at the intersection of art, neuroscience, and embodied cognition.</p>
+<span class="nav-card__tags">BCI · Museum · Neuroscience</span>
+<span class="nav-card__arrow">↓</span>
+</a>
+
+<a class="nav-card" href="#writing">
+<span class="nav-card__principle">Language</span>
+<p class="nav-card__title">Writing</p>
+<p class="nav-card__desc">Science translation and literary criticism — communicating neuroscience across registers.</p>
+<span class="nav-card__tags">Translation · Essay · KAIST</span>
+<span class="nav-card__arrow">↓</span>
+</a>
+
+</nav>
+
+## Music — Bands {#music}
 
 ### [49 Morphines](/practice/49-morphines/)
 
@@ -51,7 +81,7 @@ Korean post-rock band fusing traditional instruments — geomungo, haegeum, piri
 
 ---
 
-## Performance & Interdisciplinary
+## Performance & Interdisciplinary {#performance}
 
 ### [Crowd Walk (2019)](/practice/crowd-walk/)
 
@@ -69,7 +99,7 @@ Behavioral and fMRI study of actress Doona Bae's empathic abilities, published a
 
 ---
 
-## Writing & Translation
+## Writing & Translation {#writing}
 
 ### [Translation Review (2022)](/practice/translation/)
 
