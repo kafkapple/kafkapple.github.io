@@ -34,12 +34,22 @@
         });
       }, { threshold: threshold, rootMargin: '0px 0px -40px 0px' });
 
-      document.querySelectorAll('.interest-item').forEach(function (el, i) {
+      var staggerI = 0;
+      document.querySelectorAll('.interest-item').forEach(function (el) {
         if (el.getAttribute(INIT_ATTR)) return;
+        // Canvas demos are always visible — fading them in breaks running animations
+        if (el.querySelector('canvas')) return;
         el.setAttribute(INIT_ATTR, '1');
-        el.dataset.staggerIdx = String(i);
+        el.dataset.staggerIdx = String(staggerI++);
         observer.observe(el);
       });
+
+      // Fallback: force-show any items IO missed after 2 s
+      setTimeout(function () {
+        document.querySelectorAll('.interest-item[data-fade-init]:not(.fade-visible)').forEach(function (el) {
+          el.classList.add(VISIBLE_CLS);
+        });
+      }, 2000);
     }
 
     function destroy() {
