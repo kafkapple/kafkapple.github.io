@@ -17,12 +17,15 @@
     rafIds = [];
   }
 
-  // Module-level callbacks for Lab Studio global text panel (set once, re-assigned on initLab)
-  var _studio = { crtUpdate: null, pixelApply: null };
+  // Module-level callbacks for Lab Studio global text/color panel
+  var _studio = { crtUpdate: null, pixelApply: null, setColor: null };
   document.addEventListener('lab:text-change', function (e) {
     if (!e.detail || !e.detail.text) return;
     if (_studio.crtUpdate) _studio.crtUpdate(e.detail.text);
     if (e.detail.action === 'apply' && _studio.pixelApply) _studio.pixelApply(e.detail.text);
+  });
+  document.addEventListener('lab:color-select', function (e) {
+    if (e.detail && e.detail.hex && _studio.setColor) _studio.setColor(e.detail.hex);
   });
 
   function initLab() {
@@ -120,8 +123,17 @@
         });
       }
 
-      // Register global handler (apply action from Lab Studio)
+      // Register global handlers for Lab Studio
       _studio.pixelApply = stampText;
+      _studio.setColor = function (hex) {
+        var idx = palette.indexOf(hex);
+        if (idx > -1) { colorIdx = idx; }
+        else { palette[colorIdx] = hex; }
+        updatePaletteBtns();
+        // Refresh border color on active button
+        var btns = document.querySelectorAll('#pixel-palette-btns .lab-btn');
+        if (btns[colorIdx]) btns[colorIdx].style.borderColor = hex;
+      };
 
       draw();
     })();
@@ -337,13 +349,15 @@
   if (_ps) {
     _ps.addEventListener('hy-push-state-start', cancelAll);
     _ps.addEventListener('hy-push-state-after', function () {
-      if (document.getElementById('pixel-canvas')) initLab();
+      requestAnimationFrame(function () {
+        if (document.getElementById('pixel-canvas')) initLab();
+      });
     });
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initLab);
+    document.addEventListener('DOMContentLoaded', function () { requestAnimationFrame(initLab); });
   } else {
-    initLab();
+    requestAnimationFrame(initLab);
   }
 })();

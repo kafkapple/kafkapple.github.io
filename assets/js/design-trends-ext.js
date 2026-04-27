@@ -27,7 +27,7 @@
     var cols = Math.floor(W / FS);
     var drops = new Float32Array(cols);
     var chars = 'ウエオカキクケコサシスタチツテナニヌネノハヒフヘホマミムメモヤユヨラリルレロワン012345689ABCDEF<>{}[]';
-    var speed = 1, paused = false;
+    var speed = 2, paused = false;
 
     for (var i = 0; i < cols; i++) drops[i] = -Math.random() * (H / FS);
 

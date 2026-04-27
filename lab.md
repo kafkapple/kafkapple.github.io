@@ -127,7 +127,7 @@ redirect_from:
 #lab-studio-toggle { opacity: 0.55; font-size: 1em; }
 #lab-studio-body { padding: 0.55em 0.7em 0.7em; display: flex; flex-direction: column; gap: 0.5em; }
 #lab-studio-hint { font-size: 0.62em; color: rgba(70,130,85,0.6); line-height: 1.4; }
-@media (max-width: 900px) { #lab-studio { display: none; } }
+@media (max-width: 767px) { #lab-studio { display: none; } }
 </style>
 
 Experiments in creative coding, generative systems, and browser-native interaction.
@@ -563,7 +563,11 @@ Experiments in creative coding, generative systems, and browser-native interacti
     <div class="lab-ctrl-group">
       <button class="lab-btn" id="lab-studio-apply" style="width:100%;text-align:center;">Stamp → Pixel Art</button>
     </div>
-    <div id="lab-studio-hint">Sends to: Matrix Rain · Particle Text · CRT · Pixel Art</div>
+    <div class="lab-ctrl-group" id="ls-palette-group" style="display:none;">
+      <span class="lab-label">Bauhaus palette</span>
+      <div id="ls-palette-swatches" style="display:flex;gap:2px;flex-wrap:wrap;margin-top:3px;"></div>
+    </div>
+    <div id="lab-studio-hint">Text → Matrix Rain · CRT · Pixel Art<br>Bauhaus wheel → palette</div>
   </div>
 </div>
 
@@ -601,6 +605,26 @@ Experiments in creative coding, generative systems, and browser-native interacti
   if (applyBtn) applyBtn.addEventListener('click', function () {
     var v = (input ? input.value.trim() : '').slice(0, 16);
     if (v) broadcast(v, 'apply');
+  });
+
+  // Bauhaus palette → panel swatches → color broadcast
+  document.addEventListener('lab:palette-change', function (e) {
+    var g = document.getElementById('ls-palette-group');
+    var sw = document.getElementById('ls-palette-swatches');
+    if (!g || !sw) return;
+    g.style.display = '';
+    sw.innerHTML = '';
+    (e.detail.palette.swatches || []).forEach(function (hex) {
+      var b = document.createElement('button');
+      b.style.cssText = 'width:22px;height:22px;background:' + hex + ';border:2px solid transparent;border-radius:2px;cursor:pointer;padding:0;flex-shrink:0;';
+      b.title = hex;
+      b.addEventListener('click', function () {
+        sw.querySelectorAll('button').forEach(function (x) { x.style.borderColor = 'transparent'; });
+        b.style.borderColor = '#fff';
+        document.dispatchEvent(new CustomEvent('lab:color-select', { detail: { hex: hex } }));
+      });
+      sw.appendChild(b);
+    });
   });
 })();
 </script>
