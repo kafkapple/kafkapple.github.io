@@ -1,13 +1,9 @@
 // Lab: Lorenz Attractor — strange attractor / chaos theory
 // Guard: #lorenz-canvas (unique to lab page)
 (function () {
-  var canvas = document.getElementById('lorenz-canvas');
-  if (!canvas) return;
-  var ctx = canvas.getContext('2d');
-  var W, H, SCALE, CX, CY;
-  var running = true, paused = false, hoverIdx = -1;
+  var canvas, ctx, W, H, SCALE, CX, CY;
+  var running = false, paused = false, hoverIdx = -1;
 
-  // Classic Lorenz parameters
   var sigma = 10, rho = 28, beta = 8 / 3;
   var x = 0.1, y = 0, z = 0;
   var trail = [], MAX_TRAIL = 4000;
@@ -71,74 +67,80 @@
     requestAnimationFrame(loop);
   }
 
-  function reset(keepParams) {
+  function reset() {
     x = 0.1 + (Math.random() - 0.5) * 0.04;
     y = (Math.random() - 0.5) * 0.04;
     z = (Math.random() - 0.5) * 0.04;
     trail = [];
   }
 
-  // Mouse hover: highlight nearest trail point; click: reset with perturbation
-  canvas.addEventListener('mousemove', function (e) {
-    var rect = canvas.getBoundingClientRect();
-    var mx = (e.clientX - rect.left) * (W / canvas.offsetWidth);
-    var my = (e.clientY - rect.top) * (H / canvas.offsetHeight);
-    var minD = 1e9, closest = -1;
-    for (var i = 0; i < trail.length; i += 4) {
-      var ddx = trail[i][0] - mx, ddy = trail[i][1] - my;
-      var dd = ddx * ddx + ddy * ddy;
-      if (dd < minD) { minD = dd; closest = i; }
+  function wireControls() {
+    canvas.addEventListener('mousemove', function (e) {
+      var rect = canvas.getBoundingClientRect();
+      var mx = (e.clientX - rect.left) * (W / canvas.offsetWidth);
+      var my = (e.clientY - rect.top) * (H / canvas.offsetHeight);
+      var minD = 1e9, closest = -1;
+      for (var i = 0; i < trail.length; i += 4) {
+        var ddx = trail[i][0] - mx, ddy = trail[i][1] - my;
+        var dd = ddx * ddx + ddy * ddy;
+        if (dd < minD) { minD = dd; closest = i; }
+      }
+      hoverIdx = (minD < 400) ? closest : -1;
+    });
+    canvas.addEventListener('mouseleave', function () { hoverIdx = -1; });
+    canvas.addEventListener('click', function (e) {
+      var rect = canvas.getBoundingClientRect();
+      var nx = (e.clientX - rect.left) / canvas.offsetWidth;
+      var ny = (e.clientY - rect.top) / canvas.offsetHeight;
+      x = (nx - 0.5) * 0.6;
+      y = (ny - 0.5) * 0.3;
+      z = 1 + nx * 12;
+      trail = [];
+    });
+
+    function wireSlider(id, setter, digits) {
+      var el = document.getElementById(id);
+      var lbl = document.getElementById(id + '-v');
+      if (!el) return;
+      el.oninput = function () {
+        setter(parseFloat(this.value));
+        if (lbl) lbl.textContent = parseFloat(this.value).toFixed(digits);
+        reset();
+      };
     }
-    hoverIdx = (minD < 400) ? closest : -1;
-  });
-  canvas.addEventListener('mouseleave', function () { hoverIdx = -1; });
-  canvas.addEventListener('click', function (e) {
-    var rect = canvas.getBoundingClientRect();
-    var nx = (e.clientX - rect.left) / canvas.offsetWidth;
-    var ny = (e.clientY - rect.top) / canvas.offsetHeight;
-    x = (nx - 0.5) * 0.6;
-    y = (ny - 0.5) * 0.3;
-    z = 1 + nx * 12;
-    trail = [];
-  });
+    wireSlider('lorenz-sigma', function (v) { sigma = v; }, 1);
+    wireSlider('lorenz-rho',   function (v) { rho = v; }, 1);
+    wireSlider('lorenz-beta',  function (v) { beta = v; }, 2);
 
-  resize();
-  window.addEventListener('resize', resize);
-  loop();
-
-  // Parameter sliders
-  function wireSlider(id, setter, digits) {
-    var el = document.getElementById(id);
-    var lbl = document.getElementById(id + '-v');
-    if (!el) return;
-    el.oninput = function () {
-      setter(parseFloat(this.value));
-      if (lbl) lbl.textContent = parseFloat(this.value).toFixed(digits);
-      reset();
+    var pauseBtn = document.getElementById('lorenz-pause');
+    var resetBtn = document.getElementById('lorenz-reset');
+    if (pauseBtn) pauseBtn.onclick = function () {
+      paused = !paused; this.textContent = paused ? 'Resume' : 'Pause';
     };
+    if (resetBtn) resetBtn.onclick = function () { reset(); };
   }
-  wireSlider('lorenz-sigma', function (v) { sigma = v; }, 1);
-  wireSlider('lorenz-rho',   function (v) { rho = v; }, 1);
-  wireSlider('lorenz-beta',  function (v) { beta = v; }, 2);
 
-  var pauseBtn = document.getElementById('lorenz-pause');
-  var resetBtn = document.getElementById('lorenz-reset');
-  if (pauseBtn) pauseBtn.onclick = function () {
-    paused = !paused; this.textContent = paused ? 'Resume' : 'Pause';
-  };
-  if (resetBtn) resetBtn.onclick = function () { reset(); };
+  function start() {
+    var c = document.getElementById('lorenz-canvas');
+    if (!c) return;
+    canvas = c;
+    ctx = canvas.getContext('2d');
+    running = true; paused = false; hoverIdx = -1;
+    reset();
+    resize();
+    loop();
+    wireControls();
+  }
 
-  // SPA wiring
+  start();
+  window.addEventListener('resize', function () { if (canvas) resize(); });
+
   var _ps = document.getElementById('_pushState');
   if (_ps) {
     _ps.addEventListener('hy-push-state-start', function () { running = false; });
     _ps.addEventListener('hy-push-state-after', function () {
-      var c2 = document.getElementById('lorenz-canvas');
-      if (c2) {
-        canvas = c2; ctx = canvas.getContext('2d');
-        running = true; paused = false;
-        reset(); resize(); loop();
-      }
+      running = false;
+      start();
     });
   }
 })();

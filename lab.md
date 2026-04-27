@@ -489,7 +489,7 @@ Experiments in creative coding, generative systems, and browser-native interacti
 
 <div id="bauhaus-palette-strip" style="display:flex;height:34px;border-radius:4px;overflow:hidden;margin:0.3em 0 0.4em;background:rgba(14,20,16,0.8);"></div>
 
-<p class="interest-desc">Two modes: <strong>Wheel</strong> — click the HSL disc to sample any colour; Itten's RYB primary triad is marked. <strong>Carousel</strong> — drag or scroll through four Bauhaus theory palettes. Selected colour updates the palette strip and Lab Studio.</p>
+<p class="interest-desc">Two modes: <strong>Wheel</strong> — drag the primary marker around the HSL disc; choose Single, Complementary, Triadic, or Analogous harmony to auto-position companion markers. Itten's RYB triad is marked for reference. <strong>Carousel</strong> — drag or scroll through four Bauhaus theory palettes. All selected colours update the palette strip below.</p>
 </div>
 
 <!-- Bauhaus palette JS: /assets/js/lab-bauhaus.js (SPA-safe) -->

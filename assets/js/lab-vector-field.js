@@ -1,15 +1,11 @@
 // Lab: Vector Field visualization — divergence / curl demo with particle tracers
 // Guard: #vector-field-canvas (unique to lab page)
 (function () {
-  var canvas = document.getElementById('vector-field-canvas');
-  if (!canvas) return;
-  var ctx = canvas.getContext('2d');
-  var W, H;
+  var canvas, ctx, W, H;
   var mode = 'rotation';
-  var t = 0, paused = false, running = true;
+  var t = 0, paused = false, running = false;
   var GRID = 26;
 
-  // Particle tracers
   var NPART = 140;
   var parts = [];
 
@@ -31,7 +27,6 @@
   function fieldAt(x, y) {
     var cx = W / 2, cy = H / 2, dx = x - cx, dy = y - cy;
     var d = Math.sqrt(dx * dx + dy * dy) + 0.01;
-    // Stronger time-varying perturbation for visible animation
     var breathe = 1 + Math.sin(t * 0.6) * 0.35;
     var twist   = Math.sin(t * 0.35) * 0.22;
     if (mode === 'rotation') return [(-dy + dx * twist) * 0.015 * breathe, (dx + dy * twist) * 0.015 * breathe];
@@ -50,7 +45,6 @@
     ctx.clearRect(0, 0, W, H);
     ctx.fillStyle = '#0a0e0c'; ctx.fillRect(0, 0, W, H);
 
-    // Arrow grid
     for (var x = GRID / 2; x < W; x += GRID) {
       for (var y = GRID / 2; y < H; y += GRID) {
         var v = fieldAt(x, y);
@@ -68,7 +62,6 @@
         var x1 = x + nx * len / 2, y1 = y + ny * len / 2;
         ctx.moveTo(x0, y0); ctx.lineTo(x1, y1); ctx.stroke();
 
-        // Arrowhead
         var px = -ny * 3, py = nx * 3;
         ctx.fillStyle = 'hsla(' + hue + ',72%,58%,' + alpha + ')';
         ctx.beginPath();
@@ -79,7 +72,6 @@
       }
     }
 
-    // Particle tracers
     for (var i = 0; i < parts.length; i++) {
       var p = parts[i];
       var lifeAlpha = Math.sin(p.age / p.maxAge * Math.PI);
@@ -92,14 +84,12 @@
       ctx.fill();
     }
 
-    // Fixed-point marker
     if (mode !== 'wave') {
       ctx.beginPath(); ctx.arc(W / 2, H / 2, 5, 0, Math.PI * 2);
       var colors = { rotation: '#f7c948', sink: '#7ec8e3', source: '#f26b5b', saddle: '#c8a0f7' };
       ctx.fillStyle = colors[mode] || '#fff'; ctx.fill();
     }
 
-    // Mode label
     ctx.fillStyle = 'rgba(255,255,255,0.28)'; ctx.font = '10px monospace';
     ctx.fillText(mode, 8, H - 8);
   }
@@ -135,38 +125,44 @@
     requestAnimationFrame(loop);
   }
 
-  resize();
-  window.addEventListener('resize', resize);
-  loop();
-
-  // Mode controls
-  var modeIds = ['rotation', 'sink', 'source', 'saddle', 'wave'];
-  modeIds.forEach(function (m) {
-    var btn = document.getElementById('vf-' + m);
-    if (!btn) return;
-    btn.onclick = function () {
-      mode = m; t = 0; initParts(); draw();
-      document.querySelectorAll('#vf-controls button').forEach(function (b) {
-        b.className = b === btn ? 'lab-btn active' : 'lab-btn';
-      });
+  function wireControls() {
+    var modeIds = ['rotation', 'sink', 'source', 'saddle', 'wave'];
+    modeIds.forEach(function (m) {
+      var btn = document.getElementById('vf-' + m);
+      if (!btn) return;
+      btn.onclick = function () {
+        mode = m; t = 0; initParts(); draw();
+        document.querySelectorAll('#vf-controls button').forEach(function (b) {
+          b.className = b === btn ? 'lab-btn active' : 'lab-btn';
+        });
+      };
+    });
+    var pauseBtn = document.getElementById('vf-pause');
+    if (pauseBtn) pauseBtn.onclick = function () {
+      paused = !paused; this.textContent = paused ? 'Resume' : 'Pause';
     };
-  });
-  var pauseBtn = document.getElementById('vf-pause');
-  if (pauseBtn) pauseBtn.onclick = function () {
-    paused = !paused; this.textContent = paused ? 'Resume' : 'Pause';
-  };
+  }
 
-  // SPA wiring
+  function start() {
+    var c = document.getElementById('vector-field-canvas');
+    if (!c) return;
+    canvas = c;
+    ctx = canvas.getContext('2d');
+    running = true; t = 0; paused = false;
+    resize();
+    loop();
+    wireControls();
+  }
+
+  start();
+  window.addEventListener('resize', function () { if (canvas) resize(); });
+
   var _ps = document.getElementById('_pushState');
   if (_ps) {
     _ps.addEventListener('hy-push-state-start', function () { running = false; });
     _ps.addEventListener('hy-push-state-after', function () {
-      var c2 = document.getElementById('vector-field-canvas');
-      if (c2) {
-        canvas = c2; ctx = canvas.getContext('2d');
-        running = true; t = 0; paused = false;
-        resize(); loop();
-      }
+      running = false;
+      start();
     });
   }
 })();

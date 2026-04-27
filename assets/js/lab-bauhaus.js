@@ -8,6 +8,8 @@
   ];
   var CARD_W = 220, GAP = 16;
   var _mode = 'wheel';
+  var _harmonyMode = 'single';
+  var _primaryHue  = 0;
 
   // ── Shared palette strip ──────────────────────────────────────────────
   function updateStrip(swatches) {
@@ -25,7 +27,7 @@
     });
   }
 
-  // ── HSL Colour Wheel ──────────────────────────────────────────────────
+  // ── HSL Colour Wheel (base draw) ──────────────────────────────────────
   function drawWheel(canvas) {
     var ctx = canvas.getContext('2d');
     var cx = canvas.width / 2, cy = canvas.height / 2;
@@ -57,21 +59,22 @@
     ctx.lineWidth = 1.5;
     ctx.stroke();
 
-    // Itten RYB primary triad markers
+    // Itten RYB reference triad (fixed decorative markers)
     [[0,'#D40000'],[120,'#F5C800'],[240,'#0057A8']].forEach(function (pair) {
       var angle = (pair[0] / 360) * Math.PI * 2 - Math.PI / 2;
       var mx = cx + r * 0.78 * Math.cos(angle);
       var my = cy + r * 0.78 * Math.sin(angle);
       ctx.beginPath();
-      ctx.arc(mx, my, 5, 0, Math.PI * 2);
+      ctx.arc(mx, my, 4, 0, Math.PI * 2);
       ctx.fillStyle = pair[1];
       ctx.fill();
-      ctx.strokeStyle = 'rgba(255,255,255,0.75)';
-      ctx.lineWidth = 1.5;
+      ctx.strokeStyle = 'rgba(255,255,255,0.6)';
+      ctx.lineWidth = 1;
       ctx.stroke();
     });
   }
 
+  // ── Harmony wheel init ────────────────────────────────────────────────
   function initWheel() {
     var canvas = document.getElementById('bauhaus-wheel-canvas');
     if (!canvas || canvas.dataset.bwInit) return;
@@ -81,48 +84,187 @@
     var sz = panel ? Math.min(Math.max(panel.offsetWidth - 16, 180), 280) : 280;
     canvas.width = sz; canvas.height = sz;
 
-    drawWheel(canvas);
+    var cx = canvas.width / 2, cy = canvas.height / 2;
+    var r  = Math.min(cx, cy) - 3;
+    var ctx = canvas.getContext('2d');
+    var dragging = false;
+    var DEAD = 22; // dead-zone radius near center (px)
 
-    var sampledEl = document.getElementById('bauhaus-wheel-sampled');
+    // hue (0-360) → #rrggbb at s=100%, l=50% — pure math, no pixel sampling
+    function hueToHex(hue) {
+      hue = ((hue % 360) + 360) % 360;
+      var h = hue / 60, X = 1 - Math.abs(h % 2 - 1);
+      var rv, gv, bv;
+      if      (h < 1) { rv=1;  gv=X;  bv=0;  }
+      else if (h < 2) { rv=X;  gv=1;  bv=0;  }
+      else if (h < 3) { rv=0;  gv=1;  bv=X;  }
+      else if (h < 4) { rv=0;  gv=X;  bv=1;  }
+      else if (h < 5) { rv=X;  gv=0;  bv=1;  }
+      else            { rv=1;  gv=0;  bv=X;  }
+      function hex(v) { return ('0' + Math.round(v * 255).toString(16)).slice(-2); }
+      return '#' + hex(rv) + hex(gv) + hex(bv);
+    }
 
-    canvas.addEventListener('click', function (e) {
+    // hue → canvas drawing angle (matching draw loop: hue 0 = 12 o'clock)
+    function hueToAngle(hue) {
+      return (hue / 360) * 2 * Math.PI - Math.PI / 2;
+    }
+
+    // pointer event → hue (corrected: atan2 + π/2 offset to match wheel orientation)
+    function posToHue(e) {
       var rect = canvas.getBoundingClientRect();
-      var sx = (e.clientX - rect.left) * (canvas.width / rect.width);
-      var sy = (e.clientY - rect.top) * (canvas.height / rect.height);
-      var cx = canvas.width / 2, cy = canvas.height / 2, r = Math.min(cx, cy) - 3;
-      if ((sx - cx) * (sx - cx) + (sy - cy) * (sy - cy) > r * r) return;
+      var dx = e.clientX - rect.left - cx;
+      var dy = e.clientY - rect.top  - cy;
+      if (Math.sqrt(dx * dx + dy * dy) < DEAD) return null;
+      var rawAngle = Math.atan2(dy, dx);
+      var hueRad = ((rawAngle + Math.PI / 2) % (2 * Math.PI) + 2 * Math.PI) % (2 * Math.PI);
+      return hueRad * 180 / Math.PI;
+    }
 
-      var px = canvas.getContext('2d').getImageData(Math.round(sx), Math.round(sy), 1, 1).data;
-      var hex = '#' + [px[0], px[1], px[2]].map(function (v) {
-        return ('0' + v.toString(16)).slice(-2);
-      }).join('');
+    function getHarmonyHues() {
+      var h = _primaryHue;
+      var mod = function (n) { return ((n % 360) + 360) % 360; };
+      if (_harmonyMode === 'complementary') return [h, mod(h + 180)];
+      if (_harmonyMode === 'triadic')       return [h, mod(h + 120), mod(h + 240)];
+      if (_harmonyMode === 'analogous')     return [h, mod(h + 30),  mod(h - 30)];
+      return [h];
+    }
 
-      drawWheel(canvas);
-      var ctx2 = canvas.getContext('2d');
-      ctx2.beginPath();
-      ctx2.arc(Math.round(sx), Math.round(sy), 9, 0, Math.PI * 2);
-      ctx2.strokeStyle = '#fff';
-      ctx2.lineWidth = 2.5;
-      ctx2.stroke();
-      ctx2.beginPath();
-      ctx2.arc(Math.round(sx), Math.round(sy), 9, 0, Math.PI * 2);
-      ctx2.strokeStyle = '#000';
-      ctx2.lineWidth = 1;
-      ctx2.stroke();
+    function drawMarker(hue, isPrimary) {
+      var angle = hueToAngle(hue);
+      var mr = r * 0.82;
+      var mx = cx + Math.cos(angle) * mr;
+      var my = cy + Math.sin(angle) * mr;
+      ctx.beginPath();
+      ctx.arc(mx, my, isPrimary ? 10 : 7, 0, Math.PI * 2);
+      ctx.strokeStyle = isPrimary ? 'rgba(255,255,255,0.92)' : 'rgba(255,255,255,0.55)';
+      ctx.lineWidth = isPrimary ? 2.5 : 1.5;
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(mx, my, isPrimary ? 6 : 4, 0, Math.PI * 2);
+      ctx.fillStyle = hueToHex(hue);
+      ctx.fill();
+      ctx.beginPath();
+      ctx.arc(mx, my, isPrimary ? 6 : 4, 0, Math.PI * 2);
+      ctx.strokeStyle = 'rgba(0,0,0,0.4)';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    }
 
-      if (sampledEl) {
-        sampledEl.style.background = hex;
-        sampledEl.textContent = hex;
-        var lum = px[0] * 0.299 + px[1] * 0.587 + px[2] * 0.114;
-        sampledEl.style.color = lum > 140 ? '#333' : '#eee';
-        sampledEl.style.fontWeight = '700';
+    function drawConnectors(hues) {
+      if (hues.length < 2) return;
+      ctx.save();
+      ctx.globalAlpha = 0.28;
+      ctx.strokeStyle = '#fff';
+      ctx.lineWidth = 1;
+      ctx.setLineDash([3, 3]);
+      var mr = r * 0.82;
+      var pts = hues.map(function (h) {
+        var a = hueToAngle(h);
+        return [cx + Math.cos(a) * mr, cy + Math.sin(a) * mr];
+      });
+      for (var i = 1; i < pts.length; i++) {
+        ctx.beginPath();
+        ctx.moveTo(pts[0][0], pts[0][1]);
+        ctx.lineTo(pts[i][0], pts[i][1]);
+        ctx.stroke();
       }
-      updateStrip([hex]);
-      document.dispatchEvent(new CustomEvent('lab:color-select', { detail: { hex: hex } }));
+      ctx.restore();
+    }
+
+    var LABELS = {
+      'single':        ['Primary'],
+      'complementary': ['Primary', 'Complement'],
+      'triadic':       ['Primary', 'Triad A', 'Triad B'],
+      'analogous':     ['Primary', 'Analog +30°', 'Analog −30°']
+    };
+
+    function updateSampled(hues) {
+      var el = document.getElementById('bauhaus-wheel-sampled');
+      if (!el) return;
+      el.innerHTML = '';
+      if (hues.length === 1) {
+        var hex = hueToHex(hues[0]);
+        var lum = parseInt(hex.slice(1,3),16)*0.299 + parseInt(hex.slice(3,5),16)*0.587 + parseInt(hex.slice(5,7),16)*0.114;
+        el.style.cssText = 'height:28px;border-radius:4px;margin:0.4em 0 0.3em;background:' + hex + ';display:flex;align-items:center;justify-content:center;font-family:monospace;font-size:0.74em;font-weight:700;color:' + (lum > 140 ? '#333' : '#eee') + ';letter-spacing:0.04em;transition:background 200ms,color 200ms;';
+        el.textContent = hex.toUpperCase() + '  ' + Math.round(_primaryHue) + '°';
+      } else {
+        var labels = LABELS[_harmonyMode] || ['Primary'];
+        el.style.cssText = 'height:auto;border-radius:4px;margin:0.4em 0 0.3em;background:none;display:flex;gap:3px;';
+        hues.forEach(function (hue, i) {
+          var hex = hueToHex(hue);
+          var wrap = document.createElement('div');
+          wrap.style.cssText = 'flex:1;border-radius:3px;overflow:hidden;';
+          var sw = document.createElement('div');
+          sw.style.cssText = 'height:18px;background:' + hex + ';';
+          var lb = document.createElement('div');
+          lb.style.cssText = 'padding:1px 2px;font-family:monospace;font-size:0.6em;color:rgba(200,220,210,0.75);text-align:center;line-height:1.5;white-space:pre;';
+          lb.textContent = (labels[i] || '') + '\n' + hex.toUpperCase();
+          wrap.appendChild(sw); wrap.appendChild(lb);
+          el.appendChild(wrap);
+        });
+      }
+    }
+
+    function render() {
+      drawWheel(canvas);
+      var hues = getHarmonyHues();
+      drawConnectors(hues);
+      for (var i = hues.length - 1; i >= 1; i--) drawMarker(hues[i], false);
+      drawMarker(hues[0], true);
+      updateStrip(hues.map(hueToHex));
+      updateSampled(hues);
       document.dispatchEvent(new CustomEvent('lab:palette-change', {
-        detail: { palette: { name: 'Sampled', swatches: [hex] }, index: -1 }
+        detail: { palette: { name: 'Wheel', swatches: hues.map(hueToHex) }, index: -1 }
       }));
+    }
+
+    // Pointer events (drag primary hue marker around wheel)
+    canvas.addEventListener('pointerdown', function (e) {
+      var hue = posToHue(e);
+      if (hue === null) return;
+      dragging = true;
+      canvas.setPointerCapture(e.pointerId);
+      _primaryHue = hue;
+      render();
     });
+    canvas.addEventListener('pointermove', function (e) {
+      if (!dragging) return;
+      var hue = posToHue(e);
+      if (hue === null) return;
+      _primaryHue = hue;
+      render();
+    });
+    canvas.addEventListener('pointerup',     function () { dragging = false; });
+    canvas.addEventListener('pointercancel', function () { dragging = false; });
+
+    // Mode buttons — inject once per panel, re-wire handlers on each initWheel call
+    var bwModesEl = panel && panel.querySelector('.bw-modes');
+    if (!bwModesEl) {
+      bwModesEl = document.createElement('div');
+      bwModesEl.className = 'bw-modes';
+      bwModesEl.style.cssText = 'display:flex;gap:4px;margin:0 0 0.35em;flex-wrap:wrap;';
+      [['single','Single'], ['complementary','Comp.'], ['triadic','Triadic'], ['analogous','Analog']].forEach(function (pair) {
+        var btn = document.createElement('button');
+        btn.className = 'lab-btn';
+        btn.textContent = pair[1];
+        btn.dataset.bwMode = pair[0];
+        bwModesEl.appendChild(btn);
+      });
+      if (panel) panel.insertBefore(bwModesEl, canvas);
+    }
+    bwModesEl.querySelectorAll('[data-bw-mode]').forEach(function (btn) {
+      btn.className = 'lab-btn' + (btn.dataset.bwMode === _harmonyMode ? ' active' : '');
+      btn.onclick = function () {
+        _harmonyMode = btn.dataset.bwMode;
+        bwModesEl.querySelectorAll('[data-bw-mode]').forEach(function (b) {
+          b.className = 'lab-btn' + (b === btn ? ' active' : '');
+        });
+        render();
+      };
+    });
+
+    render();
   }
 
   // ── Tab switching ─────────────────────────────────────────────────────
