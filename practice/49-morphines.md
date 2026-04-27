@@ -2,7 +2,7 @@
 layout: page
 title: 49 Morphines
 description: >
-  Bass guitar in 49 Morphines (49 몰핀스) — Korean hardcore/post-hardcore band.
+  Bass guitar in 49 Morphines (49 몰핀스) — Korean screamo / emotional hardcore band.
   Live recordings 2012–2025.
 permalink: /practice/49-morphines/
 redirect_from:
@@ -15,7 +15,7 @@ redirect_from:
 **Band**: 49 Morphines (49 몰핀스 / 49 몰핀즈).
 **Status**: Active member (ongoing).
 
-A Korean hardcore / post-hardcore band; I play bass. Below is a featured
+A Korean screamo / emotional hardcore band; I play bass. Below is a featured
 recent recording followed by a chronological list of live performances.
 
 ## Featured — EarthDom, Tokyo (Sep 15, 2025)
@@ -45,6 +45,6 @@ New Flash Vol. 5 show.
 
 ## Notes
 
-The bass-side perspective on this band is rhythmic glue + tonal weight —
+The bass-side perspective in screamo is rhythmic glue + tonal weight —
 different demands from the metalcore (Noeazy) or fusion-traditional
 (Jambinai) projects elsewhere on this site.

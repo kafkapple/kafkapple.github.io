@@ -395,7 +395,9 @@
   if (ps) {
     ps.addEventListener('hy-push-state-start', cancelAll);
     ps.addEventListener('hy-push-state-after', function () {
-      if (document.getElementById('ktype-demo')) initAll();
+      requestAnimationFrame(function () {
+        if (document.getElementById('ktype-demo')) initAll();
+      });
     });
   }
 
