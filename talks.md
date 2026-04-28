@@ -26,7 +26,7 @@ sitemap: true
 </style>
 
 <div class="talk-stats">
-  <div class="talk-stat"><strong>9</strong> talks / seminars</div>
+  <div class="talk-stat"><strong>10</strong> talks / seminars</div>
   <div class="talk-stat"><strong>8</strong> years active<br><span style="font-size:0.85em">2013–2026</span></div>
   <div class="talk-stat"><strong>5</strong> countries<br><span style="font-size:0.85em">KR · US · NL · CN · Virtual</span></div>
   <div class="talk-stat"><strong>2</strong> with video</div>
@@ -41,7 +41,7 @@ sitemap: true
   <div class="hm-col"><div class="hm-bar" style="height:1.8em;" title="2022: 1"></div><div class="hm-year">2022</div></div>
   <div class="hm-col"><div class="hm-bar" style="height:1.8em;" title="2023: 1"></div><div class="hm-year">2023</div></div>
   <div class="hm-col"><div class="hm-bar" style="height:3.0em;" title="2024: 2"></div><div class="hm-year">2024</div></div>
-  <div class="hm-col"><div class="hm-bar" style="height:4.5em;" title="2025: 2"></div><div class="hm-year">2025</div></div>
+  <div class="hm-col"><div class="hm-bar" style="height:6.0em;" title="2025: 3"></div><div class="hm-year">2025</div></div>
   <div class="hm-col"><div class="hm-bar" style="height:3.0em;" title="2026: 2"></div><div class="hm-year">2026</div></div>
 </div>
 
@@ -62,6 +62,16 @@ The talk frames NeuroAI as a two-direction loop — using AI to study brains and
 ---
 
 ## 2025
+
+<div class="talk-entry">
+<span class="role-badge badge-poster">Poster</span>
+<strong>Systematic Benchmarking of Prompt Engineering Strategies for LLM-based Emotion Recognition</strong><br>
+<span class="venue">Dec 2025 · 2025 RCV Next-Generation Collaboration and Research Exchange Workshop (RCV 초세대 협력 워크샵), KAIST, Daejeon</span>
+
+Systematic evaluation of modular prompt strategies (zero-shot, few-shot, RAG) and LLM ensemble architectures for text-based emotion recognition on ISEAR (7 categories, 7,328 samples). Proposer–Aggregator ensemble (GPT-4o + Claude-3.5 Sonnet as proposers, Qwen 2.5-14B as aggregator) achieves peak macro-F1 of 78.4%. Key finding: advanced prompting yields the largest gains for smaller models, while larger models (≥10B) show a scaling paradox — robust baselines with diminishing returns from complex prompts.
+
+<a href="https://doi.org/10.5281/zenodo.15126322">Zenodo preprint</a>
+</div>
 
 <div class="talk-entry">
 <span class="role-badge badge-workshop">Workshop</span>
