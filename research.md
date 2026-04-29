@@ -99,6 +99,14 @@ Each thread provides a distinct foundation: context-dependent cognition establis
 
 ---
 
+## Reading List
+
+Papers I'm tracking — organized by cognitive-function theme (Foundations, Representation, Learning & Memory, Cognition, Social Intelligence, Neuroethology). Includes status, priority ratings, and notes.
+
+→ [Browse the reading list](/reading-list/)
+
+---
+
 ## Get in touch
 
 Open to collaboration on:
