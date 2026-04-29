@@ -1,0 +1,1571 @@
+{
+  "meta": {
+    "total": 76,
+    "done": 1,
+    "to_read": 76,
+    "reading": 0,
+    "skipped": 0,
+    "pct_done": 1
+  },
+  "themes": [
+    "Theme 1: Foundations & Unifying Theories",
+    "Theme 2: Representation & Neural Coding",
+    "Theme 3: Learning & Memory",
+    "Theme 4: Cognition & Decision-Making",
+    "Theme 5: Embodiment & Adaptive Behavior",
+    "Theme 6: Computational Neuroethology",
+    "Peripheral (관심 있으나 핵심 테마와 거리)",
+    "Conditional Memory via Scalable Lookup (Engram)",
+    "Human-Inspired Episodic Memory for Infinite Context LLMs (EM-LLM)",
+    "Beyond Context Limits: Subconscious Threads for Long-Horizon Reasoning",
+    "Training LLMs to Reason in Continuous Latent Space (Coconut)",
+    "Reasoning by Superposition: Theory of Continuous CoT"
+  ],
+  "items": [
+    {
+      "title": "The free-energy principle: a unified brain theory?",
+      "venue": "Nat Rev Neurosci 2010",
+      "url": "https://doi.org/10.1038/nrn2787",
+      "tags": [
+        "FEP",
+        "predictive-coding",
+        "unified-theory",
+        "Friston"
+      ],
+      "status": "to-read",
+      "priority": 4,
+      "stars": 5,
+      "year": 2010,
+      "first_author": "",
+      "memo": "Friston. FEP 확장판 — perception/action/learning 통합. 인용 10K+. Hybrid PC 이론 상위 계층",
+      "done": false,
+      "theme": "Theme 1: Foundations & Unifying Theories",
+      "subtheme": "1a. Active Inference & Predictive Coding",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "A free energy principle for the brain",
+      "venue": "J Physiol Paris 2006",
+      "url": "https://doi.org/10.1016/j.jphysparis.2006.10.001",
+      "tags": [
+        "FEP",
+        "brain",
+        "Friston",
+        "original"
+      ],
+      "status": "to-read",
+      "priority": 4,
+      "stars": 4,
+      "year": 2006,
+      "first_author": "",
+      "memo": "Friston. FEP 원전",
+      "done": false,
+      "theme": "Theme 1: Foundations & Unifying Theories",
+      "subtheme": "1a. Active Inference & Predictive Coding",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "Active Inference: The Free Energy Principle in Mind, Brain, and Behavior",
+      "venue": "MIT Press 2022",
+      "url": "https://mitpress.mit.edu/9780262045353/",
+      "tags": [
+        "active-inference",
+        "textbook",
+        "FEP",
+        "embodied"
+      ],
+      "status": "to-read",
+      "priority": 4,
+      "stars": 5,
+      "year": 2022,
+      "first_author": "",
+      "memo": "Parr, Pezzulo, Friston. Active Inference 공식 교과서 — 3대 테마 전체 커버",
+      "done": false,
+      "theme": "Theme 1: Foundations & Unifying Theories",
+      "subtheme": "1a. Active Inference & Predictive Coding",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "Active Inference: A Process Theory",
+      "venue": "Neural Computation 2017",
+      "url": "https://doi.org/10.1162/NECO_a_00912",
+      "tags": [
+        "active-inference",
+        "process-theory",
+        "action-selection"
+      ],
+      "status": "to-read",
+      "priority": 4,
+      "stars": 4,
+      "year": 2017,
+      "first_author": "",
+      "memo": "Friston et al. Active Inference 알고리즘 정식화 — belief update + action 통합",
+      "done": false,
+      "theme": "Theme 1: Foundations & Unifying Theories",
+      "subtheme": "1a. Active Inference & Predictive Coding",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "Predictive coding in the visual cortex: a functional interpretation",
+      "venue": "Nat Neurosci 1999",
+      "url": "https://doi.org/10.1038/13534",
+      "tags": [
+        "predictive-coding",
+        "visual-cortex",
+        "hierarchical"
+      ],
+      "status": "to-read",
+      "priority": 4,
+      "stars": 5,
+      "year": 1999,
+      "first_author": "",
+      "memo": "Rao & Ballard. Predictive Coding 계산신경과학 원조 — 모든 PC 논문의 baseline",
+      "done": false,
+      "theme": "Theme 1: Foundations & Unifying Theories",
+      "subtheme": "1a. Active Inference & Predictive Coding",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "Whatever next? Predictive brains, situated agents, and cognitive science",
+      "venue": "Behav Brain Sci 2013",
+      "url": "https://doi.org/10.1017/S0140525X12000477",
+      "tags": [
+        "predictive-coding",
+        "embodied",
+        "philosophy",
+        "Clark"
+      ],
+      "status": "to-read",
+      "priority": 4,
+      "stars": 4,
+      "year": 2013,
+      "first_author": "",
+      "memo": "Andy Clark. PC↔AI 통합 manifesto — Embodied Social Intelligence 연결",
+      "done": false,
+      "theme": "Theme 1: Foundations & Unifying Theories",
+      "subtheme": "1a. Active Inference & Predictive Coding",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "Canonical microcircuits for predictive coding",
+      "venue": "Neuron 2012",
+      "url": "https://doi.org/10.1016/j.neuron.2012.12.001",
+      "tags": [
+        "predictive-coding",
+        "microcircuit",
+        "cortical-column"
+      ],
+      "status": "to-read",
+      "priority": 4,
+      "stars": 4,
+      "year": 2012,
+      "first_author": "",
+      "memo": "Bastos, Friston et al. PC를 cortical column microcircuit 수준으로 매핑 — brain-inspired AI 직결",
+      "done": false,
+      "theme": "Theme 1: Foundations & Unifying Theories",
+      "subtheme": "1a. Active Inference & Predictive Coding",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "Hybrid Predictive Coding: Inferring, Fast and Slow",
+      "venue": "PLOS Comp Bio 2023",
+      "url": "https://doi.org/10.1371/journal.pcbi.1011280",
+      "tags": [
+        "predictive-coding",
+        "system1-2",
+        "dual-process"
+      ],
+      "status": "to-read",
+      "priority": 4,
+      "stars": 4,
+      "year": 2023,
+      "first_author": "",
+      "memo": "System 1/2 통합 예측 부호화 — Active Inference 하위 구현체. Dual-Process 연결",
+      "done": false,
+      "theme": "Theme 1: Foundations & Unifying Theories",
+      "subtheme": "1a. Active Inference & Predictive Coding",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "Neuroscience-Inspired Artificial Intelligence",
+      "venue": "Neuron 2017",
+      "url": "https://doi.org/10.1016/j.neuron.2017.06.011",
+      "tags": [
+        "neuroai",
+        "foundational",
+        "survey"
+      ],
+      "status": "to-read",
+      "priority": 5,
+      "stars": 5,
+      "year": 2017,
+      "first_author": "",
+      "memo": "Hassabis, Kumaran, Summerfield, Botvinick. NeuroAI landmark 선언. 인용 5000+",
+      "done": false,
+      "theme": "Theme 1: Foundations & Unifying Theories",
+      "subtheme": "1b. NeuroAI Position Papers & Field Vision",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "Catalyzing next-generation Artificial Intelligence through NeuroAI",
+      "venue": "Nat Commun 2023",
+      "url": "https://doi.org/10.1038/s41467-023-37180-x",
+      "tags": [
+        "neuroai",
+        "roadmap",
+        "vision"
+      ],
+      "status": "to-read",
+      "priority": 5,
+      "stars": 5,
+      "year": 2023,
+      "first_author": "",
+      "memo": "Zador et al. NeuroAI 로드맵 — 다음 AI 돌파구는 neuroscience",
+      "done": false,
+      "theme": "Theme 1: Foundations & Unifying Theories",
+      "subtheme": "1b. NeuroAI Position Papers & Field Vision",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "Leveraging insights from neuroscience to build adaptive artificial intelligence",
+      "venue": "Nat Neurosci 2026",
+      "url": "https://doi.org/10.1038/s41593-025-02169-w",
+      "tags": [
+        "neuroai",
+        "adaptive-ai",
+        "review"
+      ],
+      "status": "to-read",
+      "priority": 5,
+      "stars": 5,
+      "year": 2026,
+      "first_author": "",
+      "memo": "Mathis 2026. 신경과학 원리 → 적응적 AI 설계 최신 포지션",
+      "done": false,
+      "theme": "Theme 1: Foundations & Unifying Theories",
+      "subtheme": "1b. NeuroAI Position Papers & Field Vision",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "Perceiver IO: Structured Inputs & Outputs",
+      "venue": "ICLR 2022",
+      "url": "https://arxiv.org/abs/2107.14795",
+      "tags": [
+        "architecture",
+        "cross-modal",
+        "universal"
+      ],
+      "status": "to-read",
+      "priority": 5,
+      "stars": 5,
+      "year": 2022,
+      "first_author": "",
+      "memo": "범용 입출력 아키텍처 — 임의 도메인 처리 단일 모델. NeuroAI 관점 유니버설 표상",
+      "done": false,
+      "theme": "Theme 1: Foundations & Unifying Theories",
+      "subtheme": "1c. Architectures & Efficiency",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "Nested Learning: The Illusion of Deep Learning Architectures",
+      "venue": "arXiv 2024",
+      "url": "https://arxiv.org/abs/2512.24695",
+      "tags": [
+        "SSM",
+        "multi-timescale",
+        "nested",
+        "architecture"
+      ],
+      "status": "to-read",
+      "priority": 4,
+      "stars": 3,
+      "year": 2024,
+      "first_author": "",
+      "memo": "Behrouz et al. 모든 딥러닝 아키텍처를 multi-timescale nested learning으로 통합 해석",
+      "done": false,
+      "theme": "Theme 1: Foundations & Unifying Theories",
+      "subtheme": "1c. Architectures & Efficiency",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "Decoding in Latent Spaces for LLM-Based Recommendation",
+      "venue": "EMNLP 2025",
+      "url": "https://aclanthology.org/2025.findings-emnlp.401",
+      "tags": [
+        "latent-decoding",
+        "recommendation",
+        "LLM"
+      ],
+      "status": "to-read",
+      "priority": 3,
+      "stars": 3,
+      "year": 2025,
+      "first_author": "",
+      "memo": "잠재 공간 디코딩 효율",
+      "done": false,
+      "theme": "Theme 1: Foundations & Unifying Theories",
+      "subtheme": "1c. Architectures & Efficiency",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "Attention Residuals",
+      "venue": "arXiv 2026",
+      "url": "https://arxiv.org/abs/2603.15031",
+      "tags": [
+        "attention",
+        "residual",
+        "architecture"
+      ],
+      "status": "to-read",
+      "priority": 4,
+      "stars": 2,
+      "year": 2026,
+      "first_author": "",
+      "memo": "Attention 잔차 연결",
+      "done": false,
+      "theme": "Theme 1: Foundations & Unifying Theories",
+      "subtheme": "1c. Architectures & Efficiency",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "A Framework for Intelligence Based on Grid Cells in the Neocortex",
+      "venue": "Frontiers 2018",
+      "url": "https://www.frontiersin.org/journals/neural-circuits/articles/10.3389/fncir.2018.00121/full",
+      "tags": [
+        "grid-cells",
+        "intelligence",
+        "cortical-column"
+      ],
+      "status": "to-read",
+      "priority": 5,
+      "stars": 5,
+      "year": 2018,
+      "first_author": "",
+      "memo": "Hawkins 원본. 격자 세포 기반 인지 프레임워크",
+      "done": false,
+      "theme": "Theme 2: Representation & Neural Coding",
+      "subtheme": "2a. Grid Cells, Spatial Coding & Reference Frames",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "Are Grid-Like Representations a Component of All Perception and Cognition?",
+      "venue": "Frontiers 2022",
+      "url": "https://www.frontiersin.org/journals/neural-circuits/articles/10.3389/fncir.2022.924016/full",
+      "tags": [
+        "grid-cells",
+        "universality",
+        "perception"
+      ],
+      "status": "to-read",
+      "priority": 5,
+      "stars": 5,
+      "year": 2022,
+      "first_author": "",
+      "memo": "Grid-like representation 범용 인지 역할",
+      "done": false,
+      "theme": "Theme 2: Representation & Neural Coding",
+      "subtheme": "2a. Grid Cells, Spatial Coding & Reference Frames",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "The Thousand Brains Project: A New Paradigm for Sensorimotor Intelligence",
+      "venue": "arXiv 2024",
+      "url": "https://arxiv.org/abs/2412.18354",
+      "tags": [
+        "cortical-column",
+        "sensorimotor",
+        "Numenta"
+      ],
+      "status": "to-read",
+      "priority": 5,
+      "stars": 5,
+      "year": 2024,
+      "first_author": "",
+      "memo": "Numenta 최신 구현. Cortical Column 기반 감각운동 지능",
+      "done": false,
+      "theme": "Theme 2: Representation & Neural Coding",
+      "subtheme": "2a. Grid Cells, Spatial Coding & Reference Frames",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "GridPE: Unifying Positional Encoding with a Grid Cell-Inspired Framework",
+      "venue": "arXiv 2024",
+      "url": "https://arxiv.org/abs/2406.07049",
+      "tags": [
+        "positional-encoding",
+        "grid-cells",
+        "transformer"
+      ],
+      "status": "to-read",
+      "priority": 3,
+      "stars": 3,
+      "year": 2024,
+      "first_author": "",
+      "memo": "Grid Cell → Positional Encoding 통합",
+      "done": false,
+      "theme": "Theme 2: Representation & Neural Coding",
+      "subtheme": "2a. Grid Cells, Spatial Coding & Reference Frames",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "RoFormer: Enhanced Transformer with Rotary Position Embedding",
+      "venue": "arXiv 2021",
+      "url": "https://arxiv.org/abs/2104.09864",
+      "tags": [
+        "RoPE",
+        "positional-encoding",
+        "transformer"
+      ],
+      "status": "to-read",
+      "priority": 3,
+      "stars": 3,
+      "year": 2021,
+      "first_author": "",
+      "memo": "RoPE. GridPE의 기반",
+      "done": false,
+      "theme": "Theme 2: Representation & Neural Coding",
+      "subtheme": "2a. Grid Cells, Spatial Coding & Reference Frames",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "How to Represent Part-Whole Hierarchies in a Neural Network (GLOM)",
+      "venue": "arXiv 2021",
+      "url": "https://arxiv.org/abs/2102.12627",
+      "tags": [
+        "hierarchy",
+        "capsule",
+        "part-whole",
+        "Hinton"
+      ],
+      "status": "to-read",
+      "priority": 5,
+      "stars": 5,
+      "year": 2021,
+      "first_author": "",
+      "memo": "Hinton. 부분-전체 계층 표상 — cortical column 구현 관점",
+      "done": false,
+      "theme": "Theme 2: Representation & Neural Coding",
+      "subtheme": "2b. Object-Centric & Hierarchical Representation",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "Structured World Modeling via Semantic Vector Quantization (NLoTM/SVQ)",
+      "venue": "arXiv 2024",
+      "url": "https://arxiv.org/abs/2402.01203",
+      "tags": [
+        "world-model",
+        "neuro-symbolic",
+        "VQ"
+      ],
+      "status": "to-read",
+      "priority": 3,
+      "stars": 3,
+      "year": 2024,
+      "first_author": "",
+      "memo": "NLoTM + SVQ 제안. Neuro-Symbolic 세계 모델링",
+      "done": false,
+      "theme": "Theme 2: Representation & Neural Coding",
+      "subtheme": "2b. Object-Centric & Hierarchical Representation",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "Human-like Object Concept Representations in Multimodal LLMs",
+      "venue": "arXiv 2024",
+      "url": "https://arxiv.org/html/2407.01067v3",
+      "tags": [
+        "representation",
+        "multimodal",
+        "object-concept"
+      ],
+      "status": "to-read",
+      "priority": 3,
+      "stars": 3,
+      "year": 2024,
+      "first_author": "",
+      "memo": "MLLM에서 인간 유사 객체 개념 표상 자연 발현",
+      "done": false,
+      "theme": "Theme 2: Representation & Neural Coding",
+      "subtheme": "2b. Object-Centric & Hierarchical Representation",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "Human-like Systematic Generalization through a Meta-Learning Neural Network",
+      "venue": "Nature 2023",
+      "url": "https://www.nature.com/articles/s41586-023-06668-3",
+      "tags": [
+        "systematic-generalization",
+        "meta-learning",
+        "MLC"
+      ],
+      "status": "to-read",
+      "priority": 4,
+      "stars": 4,
+      "year": 2023,
+      "first_author": "",
+      "memo": "MLC. 인간 수준 체계적 일반화 — Nature",
+      "done": false,
+      "theme": "Theme 2: Representation & Neural Coding",
+      "subtheme": "2b. Object-Centric & Hierarchical Representation",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "A Unified, Scalable Framework for Neural Population Decoding",
+      "venue": "arXiv 2023",
+      "url": "https://arxiv.org/pdf/2310.16046",
+      "tags": [
+        "neural-coding",
+        "decoding",
+        "population"
+      ],
+      "status": "to-read",
+      "priority": 2,
+      "stars": 2,
+      "year": 2023,
+      "first_author": "",
+      "memo": "신경 집단 디코딩 통합 프레임워크",
+      "done": false,
+      "theme": "Theme 2: Representation & Neural Coding",
+      "subtheme": "2c. Neural Coding & Population Geometry",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "Rate Coding or Direct Coding for SNN?",
+      "venue": "arXiv 2022",
+      "url": "https://arxiv.org/pdf/2202.03133",
+      "tags": [
+        "SNN",
+        "coding",
+        "rate-coding"
+      ],
+      "status": "to-read",
+      "priority": 2,
+      "stars": 2,
+      "year": 2022,
+      "first_author": "",
+      "memo": "SNN 코딩 방식 비교",
+      "done": false,
+      "theme": "Theme 2: Representation & Neural Coding",
+      "subtheme": "2c. Neural Coding & Population Geometry",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "Mixed selectivity: Cellular computations for complexity",
+      "venue": "Neuron 2024",
+      "url": "https://www.cell.com/neuron/fulltext/S0896-6273(24)00278-2",
+      "tags": [
+        "mixed-selectivity",
+        "neural-coding",
+        "PFC"
+      ],
+      "status": "to-read",
+      "priority": 4,
+      "stars": 4,
+      "year": 2024,
+      "first_author": "",
+      "memo": "Mixed selectivity 계산 원리 — 복잡 행동의 세포 연산 기반",
+      "done": false,
+      "theme": "Theme 2: Representation & Neural Coding",
+      "subtheme": "2c. Neural Coding & Population Geometry",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "Granule cells reorient cortical manifolds to separate contexts but preserve their geometry",
+      "venue": "bioRxiv 2026",
+      "url": "https://www.biorxiv.org/content/10.64898/2026.03.03.709240v1",
+      "tags": [
+        "granule-cells",
+        "manifold",
+        "context-separation"
+      ],
+      "status": "to-read",
+      "priority": 4,
+      "stars": 4,
+      "year": 2026,
+      "first_author": "",
+      "memo": "DG 과립세포가 맥락 분리하되 기하 구조는 보존 — Pattern separation 계산 기반",
+      "done": false,
+      "theme": "Theme 2: Representation & Neural Coding",
+      "subtheme": "2c. Neural Coding & Population Geometry",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "Brain Computation Is Organized via Power-of-Two-Based Permutation Logic",
+      "venue": "Front Syst Neurosci 2016",
+      "url": "https://www.frontiersin.org/journals/systems-neuroscience/articles/10.3389/fnsys.2016.00095/full",
+      "tags": [
+        "neural-coding",
+        "permutation",
+        "combinatorial"
+      ],
+      "status": "to-read",
+      "priority": 3,
+      "stars": 3,
+      "year": 2016,
+      "first_author": "",
+      "memo": "뇌 계산이 2의 거듭제곱 기반 순열 논리로 조직화",
+      "done": false,
+      "theme": "Theme 2: Representation & Neural Coding",
+      "subtheme": "2c. Neural Coding & Population Geometry",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "Transformers are SSMs: Generalized Models via Structured State Space Duality (Mamba-2)",
+      "venue": "ICML 2024",
+      "url": "https://arxiv.org/abs/2405.21060",
+      "tags": [
+        "SSM",
+        "Mamba",
+        "architecture"
+      ],
+      "status": "to-read",
+      "priority": 4,
+      "stars": 4,
+      "year": 2024,
+      "first_author": "",
+      "memo": "Dao & Gu. SSM과 Transformer 통합 이론 — Mamba-2 기반",
+      "done": false,
+      "theme": "Theme 2: Representation & Neural Coding",
+      "subtheme": "2d. State Space Models & Sequence Representation",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "Gated Delta Networks: Improving Mamba2 with Delta Rule",
+      "venue": "ICLR 2025",
+      "url": "https://arxiv.org/abs/2412.06464",
+      "tags": [
+        "SSM",
+        "delta-rule",
+        "gating"
+      ],
+      "status": "to-read",
+      "priority": 4,
+      "stars": 4,
+      "year": 2025,
+      "first_author": "",
+      "memo": "Yang et al. Mamba-2에 Delta Rule 도입 — 생물학적 Hebbian 학습 연결",
+      "done": false,
+      "theme": "Theme 2: Representation & Neural Coding",
+      "subtheme": "2d. State Space Models & Sequence Representation",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "JEPA: Self-Supervised Learning from Images with a Joint-Embedding Predictive Architecture",
+      "venue": "CVPR 2023",
+      "url": "https://arxiv.org/abs/2301.08243",
+      "tags": [
+        "JEPA",
+        "self-supervised",
+        "representation"
+      ],
+      "status": "to-read",
+      "priority": 4,
+      "stars": 5,
+      "year": 2023,
+      "first_author": "",
+      "memo": "LeCun. 임베딩 공간 예측 학습 — SSL 패러다임 전환",
+      "done": false,
+      "theme": "Theme 2: Representation & Neural Coding",
+      "subtheme": "2e. Self-Supervised Representation Learning",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "Discrete JEPA: Learning Discrete Token Representations without Reconstruction",
+      "venue": "arXiv 2025",
+      "url": "https://arxiv.org/abs/2506.14373",
+      "tags": [
+        "JEPA",
+        "discrete",
+        "tokenization"
+      ],
+      "status": "to-read",
+      "priority": 3,
+      "stars": 3,
+      "year": 2025,
+      "first_author": "",
+      "memo": "JEPA + 이산 토큰화 확장",
+      "done": false,
+      "theme": "Theme 2: Representation & Neural Coding",
+      "subtheme": "2e. Self-Supervised Representation Learning",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "Large Concept Models: Language Modeling in a Sentence Representation Space",
+      "venue": "arXiv 2024",
+      "url": "https://arxiv.org/abs/2412.08821",
+      "tags": [
+        "LCM",
+        "sentence-embedding",
+        "Meta"
+      ],
+      "status": "to-read",
+      "priority": 3,
+      "stars": 3,
+      "year": 2024,
+      "first_author": "",
+      "memo": "Meta LCM. 문장 수준 개념 모델링",
+      "done": false,
+      "theme": "Theme 2: Representation & Neural Coding",
+      "subtheme": "2e. Self-Supervised Representation Learning",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "The Platonic Representation Hypothesis",
+      "venue": "arXiv 2024",
+      "url": "https://arxiv.org/abs/2405.07987",
+      "tags": [
+        "representation",
+        "convergence",
+        "universality"
+      ],
+      "status": "to-read",
+      "priority": 4,
+      "stars": 5,
+      "year": 2024,
+      "first_author": "",
+      "memo": "Huh, Cheung, Wang, Isola (MIT). 이기종 모달리티 신경망 표상이 규모 커질수록 수렴 — Plato 이데아",
+      "done": false,
+      "theme": "Theme 2: Representation & Neural Coding",
+      "subtheme": "2f. Representational Convergence",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "Why there are complementary learning systems in the hippocampus and neocortex (CLS 원전)",
+      "venue": "Psychol Rev 1995",
+      "url": "https://doi.org/10.1037/0033-295X.102.3.419",
+      "tags": [
+        "CLS",
+        "hippocampus",
+        "consolidation",
+        "foundational"
+      ],
+      "status": "to-read",
+      "priority": 5,
+      "stars": 5,
+      "year": 1995,
+      "first_author": "",
+      "memo": "McClelland, McNaughton, O'Reilly. CLS 이론 원전 — H-SSM의 이론적 기반",
+      "done": false,
+      "theme": "Theme 3: Learning & Memory",
+      "subtheme": "3a. Biological Memory: CLS, Engrams & Hippocampal Computation",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "Complementary learning systems within the hippocampus (Updated CLS)",
+      "venue": "Trends Cogn Sci 2016",
+      "url": "https://doi.org/10.1016/j.tics.2016.05.004",
+      "tags": [
+        "CLS",
+        "schema",
+        "replay",
+        "bidirectional"
+      ],
+      "status": "to-read",
+      "priority": 5,
+      "stars": 5,
+      "year": 2016,
+      "first_author": "",
+      "memo": "Kumaran, Hassabis, McClelland. CLS 현대화 — schema-dependent 빠른 학습, 양방향 상호작용",
+      "done": false,
+      "theme": "Theme 3: Learning & Memory",
+      "subtheme": "3a. Biological Memory: CLS, Engrams & Hippocampal Computation",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "Rapid consolidation to hippocampus and cortex (Schema Consolidation)",
+      "venue": "Science 2007",
+      "url": "https://doi.org/10.1126/science.1135935",
+      "tags": [
+        "schema",
+        "consolidation",
+        "rapid-learning"
+      ],
+      "status": "to-read",
+      "priority": 5,
+      "stars": 5,
+      "year": 2007,
+      "first_author": "",
+      "memo": "Tse et al. Schema 있을 때 신피질 빠른 학습 가능 — Updated CLS 핵심 증거",
+      "done": false,
+      "theme": "Theme 3: Learning & Memory",
+      "subtheme": "3a. Biological Memory: CLS, Engrams & Hippocampal Computation",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "Optogenetic stimulation of a hippocampal engram activates fear memory recall",
+      "venue": "Nature 2012",
+      "url": "https://doi.org/10.1038/nature11028",
+      "tags": [
+        "engram",
+        "optogenetics",
+        "fear-memory",
+        "landmark"
+      ],
+      "status": "to-read",
+      "priority": 3,
+      "stars": 5,
+      "year": 2012,
+      "first_author": "",
+      "memo": "Liu, Ramirez, Tonegawa et al. 광유전학적 engram 첫 증명 — 역사적 landmark",
+      "done": false,
+      "theme": "Theme 3: Learning & Memory",
+      "subtheme": "3a. Biological Memory: CLS, Engrams & Hippocampal Computation",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "Engrams and the mechanisms of memory persistence",
+      "venue": "Science 2015, Silent Engram",
+      "url": "https://doi.org/10.1126/science.aaa5542",
+      "tags": [
+        "engram",
+        "silent-engram",
+        "persistence"
+      ],
+      "status": "to-read",
+      "priority": 3,
+      "stars": 5,
+      "year": 2015,
+      "first_author": "",
+      "memo": "Ryan, Bhatt, Tonegawa. Silent engram — 단백질 합성 억제 후에도 기억 구조 보존",
+      "done": false,
+      "theme": "Theme 3: Learning & Memory",
+      "subtheme": "3a. Biological Memory: CLS, Engrams & Hippocampal Computation",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "Memory engram cells have come of age",
+      "venue": "Science 2020",
+      "url": "https://doi.org/10.1126/science.aaz4940",
+      "tags": [
+        "engram",
+        "review",
+        "memory-allocation"
+      ],
+      "status": "to-read",
+      "priority": 4,
+      "stars": 5,
+      "year": 2020,
+      "first_author": "",
+      "memo": "Josselyn & Frankland. Engram 5대 특성 + CREB memory allocation 종합 리뷰",
+      "done": false,
+      "theme": "Theme 3: Learning & Memory",
+      "subtheme": "3a. Biological Memory: CLS, Engrams & Hippocampal Computation",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "Engrams and circuits crucial for systems consolidation of a memory",
+      "venue": "Science 2017",
+      "url": "https://doi.org/10.1126/science.aam6304",
+      "tags": [
+        "engram",
+        "CLS",
+        "cortex",
+        "maturation"
+      ],
+      "status": "to-read",
+      "priority": 3,
+      "stars": 5,
+      "year": 2017,
+      "first_author": "",
+      "memo": "Kitamura et al. 피질 engram이 처음부터 형성 (silent→active maturation) — CLS 'transfer' 모델에 도전. H-SSM 핵심 근거",
+      "done": false,
+      "theme": "Theme 3: Learning & Memory",
+      "subtheme": "3a. Biological Memory: CLS, Engrams & Hippocampal Computation",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "Increasing CREB function in the CA1 region of hippocampus rescues the spatial memory deficits",
+      "venue": "Science 2007",
+      "url": "https://doi.org/10.1126/science.1143839",
+      "tags": [
+        "CREB",
+        "memory-allocation",
+        "engram",
+        "hippocampus"
+      ],
+      "status": "to-read",
+      "priority": 4,
+      "stars": 4,
+      "year": 2007,
+      "first_author": "",
+      "memo": "Han et al. CREB 높은 뉴런 3-4배 높은 확률로 engram 편입 — memory allocation 기전",
+      "done": false,
+      "theme": "Theme 3: Learning & Memory",
+      "subtheme": "3a. Biological Memory: CLS, Engrams & Hippocampal Computation",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "Shared synaptic component links memory binding",
+      "venue": "Nature 2016, Engram Co-allocation",
+      "url": "https://doi.org/10.1038/nature17650",
+      "tags": [
+        "engram",
+        "co-allocation",
+        "memory-linking",
+        "time-window"
+      ],
+      "status": "to-read",
+      "priority": 4,
+      "stars": 4,
+      "year": 2016,
+      "first_author": "",
+      "memo": "Cai et al. 6시간 이내 사건 → engram 30-40% overlap → 기억 연합. 시간 창 규칙",
+      "done": false,
+      "theme": "Theme 3: Learning & Memory",
+      "subtheme": "3a. Biological Memory: CLS, Engrams & Hippocampal Computation",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "A generative model of memory construction and consolidation",
+      "venue": "Nat Hum Behav 2024",
+      "url": "https://www.nature.com/articles/s41562-023-01799-z",
+      "tags": [
+        "memory",
+        "generative",
+        "consolidation",
+        "computational"
+      ],
+      "status": "to-read",
+      "priority": 4,
+      "stars": 4,
+      "year": 2024,
+      "first_author": "",
+      "memo": "기억 형성·통합의 생성 모델 — H-SSM 계산 모델 비교 근거",
+      "done": false,
+      "theme": "Theme 3: Learning & Memory",
+      "subtheme": "3a. Biological Memory: CLS, Engrams & Hippocampal Computation",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "The Tolman-Eichenbaum Machine (TEM)",
+      "venue": "Cell 2020",
+      "url": "https://doi.org/10.1016/j.cell.2020.10.024",
+      "tags": [
+        "hippocampus",
+        "TEM",
+        "relational",
+        "spatial"
+      ],
+      "status": "to-read",
+      "priority": 4,
+      "stars": 4,
+      "year": 2020,
+      "first_author": "",
+      "memo": "Whittington et al. 해마 계산 모델 — 관계 추론 + 공간 매핑 통합",
+      "done": false,
+      "theme": "Theme 3: Learning & Memory",
+      "subtheme": "3a. Biological Memory: CLS, Engrams & Hippocampal Computation",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "Episodic and associative memory from spatial scaffolds in the hippocampus",
+      "venue": "Nature 2025",
+      "url": "https://www.nature.com/articles/s41586-024-08392-y",
+      "tags": [
+        "episodic-memory",
+        "spatial",
+        "hippocampus",
+        "Vector-HaSH"
+      ],
+      "status": "to-read",
+      "priority": 4,
+      "stars": 4,
+      "year": 2025,
+      "first_author": "",
+      "memo": "Chandra et al. Vector-HaSH 회로 — Grid cell scaffold로 고용량 에피소드·연합 기억 통합 (Nature 2025)",
+      "done": false,
+      "theme": "Theme 3: Learning & Memory",
+      "subtheme": "3a. Biological Memory: CLS, Engrams & Hippocampal Computation",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "Abstract representations emerge in human hippocampal neurons during inference",
+      "venue": "Nature 2024",
+      "url": "https://www.nature.com/articles/s41586-024-07799-x",
+      "tags": [
+        "abstract-representation",
+        "hippocampus",
+        "inference"
+      ],
+      "status": "to-read",
+      "priority": 4,
+      "stars": 4,
+      "year": 2024,
+      "first_author": "",
+      "memo": "인간 해마 뉴런에서 추론 중 추상 표상 발현",
+      "done": false,
+      "theme": "Theme 3: Learning & Memory",
+      "subtheme": "3a. Biological Memory: CLS, Engrams & Hippocampal Computation",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "Topography of hippocampal SWR and neocortical slow oscillations",
+      "venue": "Neuron 2024",
+      "url": "https://www.cell.com/neuron/fulltext/S0896-6273(24)00918-8",
+      "tags": [
+        "SWR",
+        "sharp-wave-ripple",
+        "oscillation",
+        "consolidation"
+      ],
+      "status": "to-read",
+      "priority": 4,
+      "stars": 4,
+      "year": 2024,
+      "first_author": "",
+      "memo": "SWR↔신피질 서파 양방향 상호작용 위상 지도 — 기억 통합 메커니즘",
+      "done": false,
+      "theme": "Theme 3: Learning & Memory",
+      "subtheme": "3a. Biological Memory: CLS, Engrams & Hippocampal Computation",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "Tuned geometries of hippocampal representations meet the computational demands of social memory",
+      "venue": "Neuron 2024",
+      "url": "https://www.cell.com/neuron/fulltext/S0896-6273(24)00047-3",
+      "tags": [
+        "CA2",
+        "social-memory",
+        "representational-geometry",
+        "hippocampus"
+      ],
+      "status": "to-read",
+      "priority": 4,
+      "stars": 4,
+      "year": 2024,
+      "first_author": "",
+      "memo": "Boyle et al. CA2가 사회 기억 요구에 맞춰 기하 구조 전환 — 저차원(추상화)↔고차원(개별 기억)",
+      "done": false,
+      "theme": "Theme 3: Learning & Memory",
+      "subtheme": "3a. Biological Memory: CLS, Engrams & Hippocampal Computation",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "Place cells may simply be memory cells: Memory compression leads to spatial tuning",
+      "venue": "PNAS 2021",
+      "url": "https://www.pnas.org/doi/epub/10.1073/pnas.2018422118",
+      "tags": [
+        "place-cells",
+        "memory-compression",
+        "spatial"
+      ],
+      "status": "to-read",
+      "priority": 4,
+      "stars": 4,
+      "year": 2021,
+      "first_author": "",
+      "memo": "Place cell = 공간 정보를 압축 저장하는 기억 세포 가설 — 기억 표상 재해석",
+      "done": false,
+      "theme": "Theme 3: Learning & Memory",
+      "subtheme": "3a. Biological Memory: CLS, Engrams & Hippocampal Computation",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "Key-Value Memory in the Brain",
+      "venue": "Neuron 2025",
+      "url": "https://arxiv.org/abs/2501.02950",
+      "tags": [
+        "KV-memory",
+        "neuroscience",
+        "brain"
+      ],
+      "status": "to-read",
+      "priority": 4,
+      "stars": 5,
+      "year": 2025,
+      "first_author": "",
+      "memo": "뇌의 KV 메모리 구조 신경과학 근거 — Transformer attention과 생물학적 연결",
+      "done": false,
+      "theme": "Theme 3: Learning & Memory",
+      "subtheme": "3a. Biological Memory: CLS, Engrams & Hippocampal Computation",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "Human-Inspired Episodic Memory for Infinite Context LLMs (EM-LLM)",
+      "venue": "ICLR 2025",
+      "url": "https://arxiv.org/abs/2407.09450",
+      "tags": [
+        "episodic-memory",
+        "LLM",
+        "context"
+      ],
+      "status": "to-read",
+      "priority": 5,
+      "stars": 5,
+      "year": 2025,
+      "first_author": "",
+      "memo": "에피소드 기억 기반 무한 컨텍스트 — NeuroAI 직결. 상세 리뷰 §하단",
+      "done": false,
+      "theme": "Theme 3: Learning & Memory",
+      "subtheme": "3b. AI Memory Architectures",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "SYNAPSE: LLM Agents with Episodic-Semantic Memory via Spreading Activation",
+      "venue": "arXiv 2026",
+      "url": "https://arxiv.org/pdf/2601.02744",
+      "tags": [
+        "episodic-memory",
+        "semantic",
+        "spreading-activation",
+        "agent"
+      ],
+      "status": "to-read",
+      "priority": 4,
+      "stars": 4,
+      "year": 2026,
+      "first_author": "",
+      "memo": "읽음 — → [[SYNAPSE_Episodic_Semantic_Memory]]",
+      "done": true,
+      "theme": "Theme 3: Learning & Memory",
+      "subtheme": "3b. AI Memory Architectures",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "AI Meets Brain: Unified Survey on Memory Systems",
+      "venue": "arXiv 2025",
+      "url": "https://arxiv.org/pdf/2512.23343",
+      "tags": [
+        "survey",
+        "memory",
+        "neuroai",
+        "agent"
+      ],
+      "status": "to-read",
+      "priority": 4,
+      "stars": 5,
+      "year": 2025,
+      "first_author": "",
+      "memo": "인지신경과학↔자율 에이전트 메모리 시스템 통합 서베이",
+      "done": false,
+      "theme": "Theme 3: Learning & Memory",
+      "subtheme": "3b. AI Memory Architectures",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "Titans: Learning to Memorize at Test Time",
+      "venue": "NeurIPS 2025",
+      "url": "https://arxiv.org/abs/2501.00663",
+      "tags": [
+        "memory",
+        "test-time",
+        "SSM"
+      ],
+      "status": "to-read",
+      "priority": 5,
+      "stars": 5,
+      "year": 2025,
+      "first_author": "",
+      "memo": "Behrouz et al. (Google). Fast/slow 이중 기억 구조 — CLS와 연결. 상세 리뷰 §하단",
+      "done": false,
+      "theme": "Theme 3: Learning & Memory",
+      "subtheme": "3b. AI Memory Architectures",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "Conditional Memory via Scalable Lookup (Engram)",
+      "venue": "arXiv 2026",
+      "url": "https://arxiv.org/abs/2601.07372",
+      "tags": [
+        "memory",
+        "MoE",
+        "sparsity",
+        "O1-lookup"
+      ],
+      "status": "to-read",
+      "priority": 4,
+      "stars": 5,
+      "year": 2026,
+      "first_author": "",
+      "memo": "MoE와 직교하는 새 sparsity 축. O(1) 조건부 메모리 — 상세 리뷰 §하단",
+      "done": false,
+      "theme": "Theme 3: Learning & Memory",
+      "subtheme": "3b. AI Memory Architectures",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "Monte Carlo Tree Diffusion for System 2 Planning (MCTD)",
+      "venue": "ICML 2025",
+      "url": "https://arxiv.org/abs/2502.07202",
+      "tags": [
+        "system-2",
+        "planning",
+        "diffusion",
+        "MCTS"
+      ],
+      "status": "to-read",
+      "priority": 4,
+      "stars": 4,
+      "year": 2025,
+      "first_author": "",
+      "memo": "Diffusion 기반 System 2 planning",
+      "done": false,
+      "theme": "Theme 4: Cognition & Decision-Making",
+      "subtheme": "4a. Reasoning, Planning & Cognitive Control",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "Hierarchical Reasoning Model (HRM)",
+      "venue": "arXiv 2025",
+      "url": "https://arxiv.org/abs/2506.21734",
+      "tags": [
+        "reasoning",
+        "hierarchy",
+        "LLM"
+      ],
+      "status": "to-read",
+      "priority": 4,
+      "stars": 3,
+      "year": 2025,
+      "first_author": "",
+      "memo": "계층적 추론 모델",
+      "done": false,
+      "theme": "Theme 4: Cognition & Decision-Making",
+      "subtheme": "4a. Reasoning, Planning & Cognitive Control",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "Recursive Language Models (RLMs)",
+      "venue": "arXiv 2025",
+      "url": "https://arxiv.org/abs/2512.24601",
+      "tags": [
+        "reasoning",
+        "recursive",
+        "LLM"
+      ],
+      "status": "to-read",
+      "priority": 3,
+      "stars": 3,
+      "year": 2025,
+      "first_author": "",
+      "memo": "재귀적 언어 모델",
+      "done": false,
+      "theme": "Theme 4: Cognition & Decision-Making",
+      "subtheme": "4a. Reasoning, Planning & Cognitive Control",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "Less is More: Recursive Reasoning with Tiny Networks (TRM)",
+      "venue": "arXiv 2025",
+      "url": "https://arxiv.org/abs/2510.04871",
+      "tags": [
+        "reasoning",
+        "recursive",
+        "efficiency"
+      ],
+      "status": "to-read",
+      "priority": 3,
+      "stars": 3,
+      "year": 2025,
+      "first_author": "",
+      "memo": "소규모 재귀 추론 — 효율성 관점",
+      "done": false,
+      "theme": "Theme 4: Cognition & Decision-Making",
+      "subtheme": "4a. Reasoning, Planning & Cognitive Control",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "The Molecular Structure of Thought: Mapping Topology of Long CoT",
+      "venue": "arXiv 2025",
+      "url": "https://arxiv.org/abs/2501.01295",
+      "tags": [
+        "CoT",
+        "topology",
+        "reasoning"
+      ],
+      "status": "to-read",
+      "priority": 3,
+      "stars": 3,
+      "year": 2025,
+      "first_author": "",
+      "memo": "장기 CoT의 위상 구조 분석",
+      "done": false,
+      "theme": "Theme 4: Cognition & Decision-Making",
+      "subtheme": "4a. Reasoning, Planning & Cognitive Control",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "From Tokens to Thoughts: How LLMs and Humans Trade Compression for Meaning",
+      "venue": "ICLR 2026",
+      "url": "https://arxiv.org/abs/2505.17117",
+      "tags": [
+        "compression",
+        "cognition",
+        "LLM"
+      ],
+      "status": "to-read",
+      "priority": 5,
+      "stars": 5,
+      "year": 2026,
+      "first_author": "",
+      "memo": "토큰↔사고 압축-의미 트레이드오프. 인지과학 연결",
+      "done": false,
+      "theme": "Theme 4: Cognition & Decision-Making",
+      "subtheme": "4a. Reasoning, Planning & Cognitive Control",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "Training LLMs to Reason in Continuous Latent Space (Coconut)",
+      "venue": "arXiv 2024",
+      "url": "https://arxiv.org/abs/2412.06769",
+      "tags": [
+        "latent-reasoning",
+        "continuous",
+        "token-efficiency"
+      ],
+      "status": "to-read",
+      "priority": 5,
+      "stars": 5,
+      "year": 2024,
+      "first_author": "",
+      "memo": "연속 잠재 공간 추론 — Reasoning by Superposition 출발점. 상세 리뷰 §하단",
+      "done": false,
+      "theme": "Theme 4: Cognition & Decision-Making",
+      "subtheme": "4a. Reasoning, Planning & Cognitive Control",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "Reasoning by Superposition: Theory of Continuous CoT",
+      "venue": "arXiv 2025",
+      "url": "https://arxiv.org/abs/2505.12514",
+      "tags": [
+        "continuous-CoT",
+        "superposition",
+        "theory"
+      ],
+      "status": "to-read",
+      "priority": 4,
+      "stars": 4,
+      "year": 2025,
+      "first_author": "",
+      "memo": "Coconut 이론 분석. 병렬 BFS superposition — 상세 리뷰 §하단",
+      "done": false,
+      "theme": "Theme 4: Cognition & Decision-Making",
+      "subtheme": "4a. Reasoning, Planning & Cognitive Control",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "Beyond Context Limits: Subconscious Threads for Long-Horizon Reasoning",
+      "venue": "arXiv 2025",
+      "url": "https://arxiv.org/abs/2507.16784",
+      "tags": [
+        "reasoning",
+        "KV-pruning",
+        "long-horizon"
+      ],
+      "status": "to-read",
+      "priority": 4,
+      "stars": 3,
+      "year": 2025,
+      "first_author": "",
+      "memo": "재귀적 reasoning tree + KV pruning — 상세 리뷰 §하단",
+      "done": false,
+      "theme": "Theme 4: Cognition & Decision-Making",
+      "subtheme": "4a. Reasoning, Planning & Cognitive Control",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "Emotion concepts and their function in a large language model",
+      "venue": "Anthropic 2025",
+      "url": "https://www.anthropic.com/research/emotion-concepts-function",
+      "tags": [
+        "emotion",
+        "LLM",
+        "interpretability",
+        "affective"
+      ],
+      "status": "to-read",
+      "priority": 5,
+      "stars": 5,
+      "year": 2025,
+      "first_author": "",
+      "memo": "Anthropic. LLM 내부 감정 개념 기능 분석",
+      "done": false,
+      "theme": "Theme 4: Cognition & Decision-Making",
+      "subtheme": "4b. Emotion & Affective Cognition",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "Do LLMs \"Feel\"? Emotion Circuits Discovery and Control",
+      "venue": "arXiv 2025",
+      "url": "https://arxiv.org/abs/2510.11328",
+      "tags": [
+        "emotion",
+        "circuits",
+        "interpretability",
+        "LLM"
+      ],
+      "status": "to-read",
+      "priority": 4,
+      "stars": 4,
+      "year": 2025,
+      "first_author": "",
+      "memo": "LLM 감정 회로 발견 및 제어 — Anthropic 논문과 쌍으로 읽기",
+      "done": false,
+      "theme": "Theme 4: Cognition & Decision-Making",
+      "subtheme": "4b. Emotion & Affective Cognition",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "Emergence of Language in the Developing Brain",
+      "venue": "arXiv 2025, Meta AI",
+      "url": "https://arxiv.org/abs/2512.05718",
+      "tags": [
+        "language",
+        "development",
+        "iEEG",
+        "neuroai"
+      ],
+      "status": "to-read",
+      "priority": 5,
+      "stars": 5,
+      "year": 2025,
+      "first_author": "",
+      "memo": "7400+ 전극 iEEG. 2-5세~성인 언어 계층 발달 매핑",
+      "done": false,
+      "theme": "Theme 5: Embodiment & Adaptive Behavior",
+      "subtheme": "5a. Embodied & Social Intelligence",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "Toddler-Inspired Visual Object Learning",
+      "venue": "NeurIPS 2018",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2018/hash/48ab2f9b45957ab574cf005eb8a76760-Abstract.html",
+      "tags": [
+        "development",
+        "object-learning",
+        "toddler"
+      ],
+      "status": "to-read",
+      "priority": 4,
+      "stars": 4,
+      "year": 2018,
+      "first_author": "",
+      "memo": "영아 시각 학습 원리 → AI 학습 구조 영감",
+      "done": false,
+      "theme": "Theme 5: Embodiment & Adaptive Behavior",
+      "subtheme": "5a. Embodied & Social Intelligence",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "From Sparse to Dense: Toddler-Inspired Reward Transition in Goal-Oriented RL",
+      "venue": "IEEE 2025",
+      "url": "https://ieeexplore.ieee.org/abstract/document/11297801",
+      "tags": [
+        "RL",
+        "developmental",
+        "reward-shaping",
+        "toddler"
+      ],
+      "status": "to-read",
+      "priority": 3,
+      "stars": 3,
+      "year": 2025,
+      "first_author": "",
+      "memo": "Junseok Park et al. (Byoung-Tak Zhang lab). 영아 발달 탐색→목표지향 전환을 S2D 보상 설계로 구현",
+      "done": false,
+      "theme": "Theme 5: Embodiment & Adaptive Behavior",
+      "subtheme": "5a. Embodied & Social Intelligence",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "Computational Neuroethology: A Call to Action",
+      "venue": "Neuron 2019",
+      "url": "https://www.cell.com/neuron/fulltext/S0896-6273(19)30841-4",
+      "tags": [
+        "neuroethology",
+        "behavior",
+        "manifesto"
+      ],
+      "status": "to-read",
+      "priority": 5,
+      "stars": 5,
+      "year": 2019,
+      "first_author": "",
+      "memo": "Datta et al. 분야 방향성 정의 논문",
+      "done": false,
+      "theme": "Theme 6: Computational Neuroethology",
+      "subtheme": "",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "Quantifying behavior to understand the brain",
+      "venue": "Nat Neurosci 2020",
+      "url": "https://www.nature.com/articles/s41593-020-00734-z",
+      "tags": [
+        "behavior",
+        "quantification",
+        "methods"
+      ],
+      "status": "to-read",
+      "priority": 5,
+      "stars": 5,
+      "year": 2020,
+      "first_author": "",
+      "memo": "Mathis & Mathis. 행동 정량화 방법론",
+      "done": false,
+      "theme": "Theme 6: Computational Neuroethology",
+      "subtheme": "",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "Measuring behavior across scales",
+      "venue": "BMC Biology 2018",
+      "url": "https://link.springer.com/article/10.1186/s12915-018-0494-7",
+      "tags": [
+        "behavior",
+        "multi-scale",
+        "neuroethology"
+      ],
+      "status": "to-read",
+      "priority": 5,
+      "stars": 5,
+      "year": 2018,
+      "first_author": "",
+      "memo": "Anderson & Bhatt. 다규모 행동 측정 프레임워크",
+      "done": false,
+      "theme": "Theme 6: Computational Neuroethology",
+      "subtheme": "",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "Bi-ICE: Inner Interpretable Framework for Image Classification",
+      "venue": "WACV 2026",
+      "url": "https://openaccess.thecvf.com/content/WACV2026/papers/Hong_Bi-ICE_An_Inner_Interpretable_Framework_for_Image_Classification_via_Bi-directional_WACV_2026_paper.pdf",
+      "tags": [
+        "interpretability",
+        "classification",
+        "vision"
+      ],
+      "status": "to-read",
+      "priority": 2,
+      "stars": 2,
+      "year": 2026,
+      "first_author": "",
+      "memo": "양방향 해석 가능 이미지 분류",
+      "done": false,
+      "theme": "Peripheral (관심 있으나 핵심 테마와 거리)",
+      "subtheme": "",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "ClusterMine: Concept Mining for OOD Detection",
+      "venue": "WACV 2026",
+      "url": "https://openaccess.thecvf.com/content/WACV2026/papers/Adaloglou_ClusterMine_Robust_Label-Free_Visual_Out-Of-Distribution_Detection_via_Concept_Mining_from_WACV_2026_paper.pdf",
+      "tags": [
+        "OOD",
+        "concept-mining",
+        "detection"
+      ],
+      "status": "to-read",
+      "priority": 2,
+      "stars": 2,
+      "year": 2026,
+      "first_author": "",
+      "memo": "Label-free OOD 탐지",
+      "done": false,
+      "theme": "Peripheral (관심 있으나 핵심 테마와 거리)",
+      "subtheme": "",
+      "domain": "📚 전체 목록"
+    }
+  ]
+}
