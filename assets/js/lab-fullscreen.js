@@ -113,7 +113,10 @@
        350ms window where a zombie overlay sits in DOM with a broken close btn.
        Fallback timer ensures removal even when transition is absent (e.g.
        prefers-reduced-motion) or transitionend never fires. */
-    var removeTimer = setTimeout(function () { if (el.parentNode) el.parentNode.removeChild(el); }, 600);
+    var removeTimer = setTimeout(function () {
+      el.removeEventListener('transitionend', onEnd);
+      if (el.parentNode) el.parentNode.removeChild(el);
+    }, 600);
     el.addEventListener('transitionend', function onEnd(e) {
       /* Filter by target and property so multi-property transitions don't
          remove the overlay before the fade-out visually completes. */
