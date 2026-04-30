@@ -351,15 +351,12 @@
 
   window._initLab = initLab;
 
-  var _ps = document.getElementById('_pushState');
-  if (_ps) {
-    _ps.addEventListener('hy-push-state-start', cancelAll);
-    _ps.addEventListener('hy-push-state-after', function () {
-      requestAnimationFrame(function () {
-        if (document.getElementById('pixel-canvas')) initLab();
-      });
+  document.addEventListener('hy-push-state-start', cancelAll);
+  document.addEventListener('hy-push-state-after', function () {
+    requestAnimationFrame(function () {
+      if (document.getElementById('pixel-canvas')) initLab();
     });
-  }
+  });
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function () { requestAnimationFrame(initLab); });

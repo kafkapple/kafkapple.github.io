@@ -120,27 +120,14 @@
       for (var t = 0; t < HIST_LEN; t++) {
         var tIdx = (histIdx - 1 - t + HIST_LEN) % HIST_LEN;
         if (spikeHist[ni * HIST_LEN + tIdx]) {
-          var sx = RW - 1 - t * colW;
+          var sx = (HIST_LEN - 1 - t) * colW;
           rCtx.fillStyle = 'rgba(80,255,140,0.92)';
           rCtx.fillRect(Math.round(sx), sy + 1, 2, Math.max(1, rowH - 2));
         }
       }
     }
-    var barY = RH - 12;
-    rCtx.fillStyle = 'rgba(46,85,56,0.5)'; rCtx.fillRect(0, barY, RW, 12);
-    for (var t = 0; t < HIST_LEN; t++) {
-      var tIdx = (histIdx - 1 - t + HIST_LEN) % HIST_LEN;
-      var count = 0;
-      for (var ni = 0; ni < N; ni++) count += spikeHist[ni * HIST_LEN + tIdx];
-      if (count > 0) {
-        var bh = Math.round((count / N) * 10);
-        var sx = RW - 1 - t * colW;
-        rCtx.fillStyle = 'rgba(80,255,140,' + (0.4 + count / N * 0.6) + ')';
-        rCtx.fillRect(sx, barY + 12 - bh, Math.max(1, colW), bh);
-      }
-    }
     rCtx.fillStyle = 'rgba(80,160,100,0.55)'; rCtx.font = '9px monospace';
-    rCtx.fillText('Raster  →  time', 4, RH - 1);
+    rCtx.fillText('← older   time →', 4, RH - 1);
   }
 
   function resetSim() {
@@ -190,9 +177,6 @@
 
   init();
   window.addEventListener('resize', resize);
-  var _ps = document.getElementById('_pushState');
-  if (_ps) {
-    _ps.addEventListener('hy-push-state-start', function () { running = false; if (io) io.disconnect(); });
-    _ps.addEventListener('hy-push-state-after', init);
-  }
+  document.addEventListener('hy-push-state-start', function () { running = false; if (io) io.disconnect(); });
+  document.addEventListener('hy-push-state-after', init);
 })();

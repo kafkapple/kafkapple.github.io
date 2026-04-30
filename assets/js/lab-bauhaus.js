@@ -429,11 +429,8 @@
     init();
   }
 
-  var _ps = document.getElementById('_pushState');
-  if (_ps) {
-    _ps.addEventListener('hy-push-state-after', function () {
-      _mode = 'wheel';
-      init();
-    });
-  }
+  document.addEventListener('hy-push-state-after', function () {
+    _mode = 'wheel';
+    init();
+  });
 })();

@@ -143,12 +143,9 @@
   window.addEventListener('resize', resize);
   io.observe(canvas);
 
-  var _ps = document.getElementById('_pushState');
-  if (_ps) {
-    _ps.addEventListener('hy-push-state-start', function () { io.disconnect(); running = false; });
-    _ps.addEventListener('hy-push-state-after', function () {
-      var c2 = document.getElementById('rd-canvas');
-      if (c2) { canvas = c2; ctx = canvas.getContext('2d'); resize(); initSim(); io.observe(canvas); wireControls(); }
-    });
-  }
+  document.addEventListener('hy-push-state-start', function () { io.disconnect(); running = false; });
+  document.addEventListener('hy-push-state-after', function () {
+    var c2 = document.getElementById('rd-canvas');
+    if (c2) { canvas = c2; ctx = canvas.getContext('2d'); resize(); initSim(); io.observe(canvas); wireControls(); }
+  });
 })();

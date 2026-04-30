@@ -37,8 +37,5 @@
 
   init();
 
-  var _ps = document.getElementById('_pushState');
-  if (_ps) {
-    _ps.addEventListener('hy-push-state-after', init);
-  }
+  document.addEventListener('hy-push-state-after', init);
 })();

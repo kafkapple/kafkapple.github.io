@@ -62,8 +62,10 @@ redirect_from:
 /* ── Lab Studio ── */
 #lab-studio {
   position: fixed; right: 16px; top: 68px; z-index: 900;
-  width: 172px; background: rgba(6,14,8,0.94); border: 1px solid rgba(46,85,56,0.38); border-radius: 6px;
-  backdrop-filter: blur(10px); box-shadow: 0 4px 22px rgba(0,0,0,0.65); overflow: hidden;
+  width: 172px; min-width: 140px; max-width: 320px;
+  background: rgba(6,14,8,0.94); border: 1px solid rgba(46,85,56,0.38); border-radius: 6px;
+  backdrop-filter: blur(10px); box-shadow: 0 4px 22px rgba(0,0,0,0.65);
+  overflow: auto; resize: horizontal;
 }
 #lab-studio.collapsed #lab-studio-body { display: none; }
 #lab-studio-header { padding: 0.44em 0.7em; cursor: grab; border-bottom: 1px solid rgba(46,85,56,0.18); font-family: monospace; font-size: 0.7em; font-weight: 700; color: rgba(100,185,125,0.85); user-select: none; }
@@ -352,15 +354,15 @@ Experiments in creative coding, generative systems, and browser-native interacti
     accBtn = document.getElementById('neo-accent-btn');
     if (!card || !cont) return;
 
-    card.onmousedown = function (e) {
+    card.addEventListener('mousedown', function (e) {
       dragging = true; sx = e.clientX; sy = e.clientY; ox = card.offsetLeft; oy = card.offsetTop; e.preventDefault();
-    };
-    window.onmousemove = function (e) {
+    });
+    document.addEventListener('mousemove', function (e) {
       if (!dragging) return;
       card.style.left = Math.max(0, Math.min(cont.offsetWidth - card.offsetWidth, ox + e.clientX - sx)) + 'px';
       card.style.top = Math.max(0, Math.min(cont.offsetHeight - card.offsetHeight, oy + e.clientY - sy)) + 'px';
-    };
-    window.onmouseup = function () { dragging = false; };
+    });
+    document.addEventListener('mouseup', function () { dragging = false; });
 
     modeBtn.onclick = function () {
       neoMode = !neoMode;
@@ -379,7 +381,6 @@ Experiments in creative coding, generative systems, and browser-native interacti
     accBtn.onclick = function () { ai = (ai + 1) % accents.length; accentEl.style.background = accents[ai]; };
   }
   init();
-  var _ps = document.getElementById('_pushState');
-  if (_ps) _ps.addEventListener('hy-push-state-after', init);
+  document.addEventListener('hy-push-state-after', init);
 })();
 </script>

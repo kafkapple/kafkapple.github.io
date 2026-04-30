@@ -143,9 +143,6 @@
 
   init();
   window.addEventListener('resize', resize);
-  var _ps = document.getElementById('_pushState');
-  if (_ps) {
-    _ps.addEventListener('hy-push-state-start', function () { running = false; if (io) io.disconnect(); if (intervalId) clearInterval(intervalId); });
-    _ps.addEventListener('hy-push-state-after', init);
-  }
+  document.addEventListener('hy-push-state-start', function () { running = false; if (io) io.disconnect(); if (intervalId) clearInterval(intervalId); });
+  document.addEventListener('hy-push-state-after', init);
 })();
