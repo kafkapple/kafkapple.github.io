@@ -86,9 +86,12 @@
     if (savedAttrs.width  !== null) canvas.setAttribute('width',  savedAttrs.width);
     if (savedAttrs.height !== null) canvas.setAttribute('height', savedAttrs.height);
 
-    /* Guard: SPA navigation may have removed originalParent from DOM. */
+    /* Guard: SPA navigation may have removed originalParent from DOM.
+       Detach canvas from overlay either way so it isn't destroyed with it. */
     if (originalParent && originalParent.isConnected) {
       originalParent.insertBefore(canvas, placeholder);
+    } else if (canvas.parentNode) {
+      canvas.parentNode.removeChild(canvas);
     }
     if (placeholder && placeholder.parentNode) { placeholder.remove(); }
     placeholder = null;
@@ -111,7 +114,10 @@
        Fallback timer ensures removal even when transition is absent (e.g.
        prefers-reduced-motion) or transitionend never fires. */
     var removeTimer = setTimeout(function () { if (el.parentNode) el.parentNode.removeChild(el); }, 600);
-    el.addEventListener('transitionend', function onEnd() {
+    el.addEventListener('transitionend', function onEnd(e) {
+      /* Filter by target and property so multi-property transitions don't
+         remove the overlay before the fade-out visually completes. */
+      if (e.target !== el || e.propertyName !== 'opacity') return;
       clearTimeout(removeTimer);
       el.removeEventListener('transitionend', onEnd);
       if (el.parentNode) el.parentNode.removeChild(el);
