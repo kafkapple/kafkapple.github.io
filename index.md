@@ -24,12 +24,6 @@ permalink: /
 
 <!--author-->
 
-*One question drives my work: How does the mind work — and can those principles build AI that truly generalizes? I'm a NeuroAI researcher and Postdoctoral Fellow at [KAIST AMILab](https://ami.kaist.ac.kr/) (PI: Prof. Tae-Hyun Oh), with a background spanning experimental neuroscience, developmental and social psychology, and computer vision.*
-{:.lead}
-
-*My research runs in both directions: using AI to decode neural and behavioral data, and drawing on what we know about biological minds to architect better AI systems. Current focus: multi-modal learning and 3D animal behavior reconstruction. Long-term goal: cognitive architectures grounded in how minds develop and understand others.*
-{:.lead}
-
 [CV](/markdown-cv/){:.button} · [Google Scholar](https://scholar.google.com/citations?user=D_rZCWYAAAAJ){:.button} · [ORCID](https://orcid.org/0000-0002-2944-0697){:.button} · [GitHub](https://github.com/kafkapple){:.button}
 
 ## News
@@ -42,11 +36,11 @@ permalink: /
 
 ## Research Interests
 
-> **NeuroAI** — decoding how biological minds perceive, learn, and understand one another, and using those principles to build AI systems that go beyond narrow tasks, toward intelligence shaped by development, context, and social experience.
+> **Brain-Inspired Cognitive Architecture** — Designing autonomous agents capable of systematic generalization and continual learning by implementing canonical neural computations.
 
-- **Context-dependent cognition** — situational, relational, and social context modulates perception and decision-making across species and substrates; from rodent empathy and social hierarchy ([GBB 2022](https://doi.org/10.1111/gbb.12822), [NatComm 2019](https://doi.org/10.1038/s41467-019-09923-8)) to emotion in LLMs and conditional visual similarity in VLMs (CLAY, CVPR 2026).
-- **Behavioral AI & 3D reconstruction** — quantitative, reproducible behavioral analysis for freely-moving animals via multi-view geometry and neural scene representations (3D Gaussian Splatting); bridging behavioral neuroscience with computer vision (AVATAR, CVPR CV4Animals 2022).
-- **Brain-inspired learning architectures** — translating neuroscience principles (hierarchical representation, continual learning, predictive coding) into testable AI design choices, evaluated against biological benchmarks rather than used merely as inspiration.
+- **Grounding via Universal Reference Frames** — Anchoring abstract knowledge to stable spatial representations inspired by grid cells (CLAY, CVPR 2026).
+- **Predictive Modeling in Canonical Circuits** — Learning world models through local prediction, mirroring cortical column computations (AVATAR, CVPR CV4Animals 2022).
+- **Structure/Content Factorization** — Separating reusable structural knowledge from variable content to enable lifelong learning.
 
 ## Experience
 
@@ -109,14 +103,6 @@ A selection of engineering and research projects outside publications. [**View a
 <p class="proj-desc" style="margin-top:0.3em;font-size:0.88em;color:#777;">Stack: LangChain · Hydra · W&amp;B · OpenAI · Anthropic · Google AI · Ollama</p>
 </div>
 
-### 2021 — Neuroscience × Art
-
-<div class="proj">
-<p class="proj-title">Project Doona Bae</p>
-<p class="proj-meta">Neuroscience · Book chapter · 2021</p>
-<p class="proj-desc">Behavioral and fMRI study of actress Doona Bae's empathic abilities, published as a chapter in the companion book <em>Actress Doona Bae</em>. Examined neural correlates of screen performance and empathic resonance using quantitative imaging methods.</p>
-</div>
-
 ### 2019 — Performance
 
 <div class="proj">
@@ -125,7 +111,7 @@ A selection of engineering and research projects outside publications. [**View a
 <p class="proj-desc">Performed with artist Lang Lee at Ilmin Museum of Art, Seoul. Real-time emotion recognition from facial expression and EEG drove a crowd-movement performance piece — the audience's collective affective state became a choreographic parameter.</p>
 </div>
 
-### 2018 — Hardware × AI
+### 2018 — Vision AI
 
 <div class="proj">
 <p class="proj-title"><span class="badge badge-1st">Grand Prize (DDSA)</span> NAS-Optimized CNN for Driver Monitoring with XAI</p>

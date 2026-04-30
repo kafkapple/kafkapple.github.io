@@ -48,54 +48,30 @@ author:
 
 # Add links to the sidebar.
 menu:
-  # ── Research & Career ────────────────────────────────────
-  - title:             About
-    url:               /
-  - title:             Publications
-    url:               /publications/
-  - title:             Projects
-    url:               /projects/
+  # ── Research ──────────────────────────────────────────────
   - title:             Research
     url:               /research/
     submenu:
-      - title:         Open Questions
-        url:           /research-questions/
-      - title:         How I Think
-        url:           /process/
-      - title:         Talks
-        url:           /talks/
-      - title:         Reading List
-        url:           /reading-list/
-  - title:             CV
-    url:               /markdown-cv/
-  # ── Creative & Personal ──────────────────────────────────
+      - title:         Projects
+        url:           /projects/
+
+  # ── Learning ──────────────────────────────────────────────
+  - title:             Learning
+    url:               /til/
+    submenu:
+      - title:         TIL
+        url:           /til/
+      - title:         Blog
+        url:           /blog/
+
+  # ── Creative ──────────────────────────────────────────────
   - title:             Creative
     url:               /practice/
     submenu:
-      - title:         Overview
-        url:           /practice/
-      - title:         Noeazy
-        url:           /practice/noeazy/
-      - title:         49 Morphines
-        url:           /practice/49-morphines/
-      - title:         Jambinai
-        url:           /practice/jambinai/
-  - title:             Interests
-    url:               /interests/
-    submenu:
-      - title:         Overview
+      - title:         Interests
         url:           /interests/
-      - title:         "🎨 Design"
-        url:           /interests/design/
-      - title:         "🧪 Lab"
+      - title:         Lab
         url:           /lab/
-  # ── General ──────────────────────────────────────────────
-  - title:             TIL
-    url:               /til/
-  - title:             Blog
-    url:               /blog/
-  - title:             "🔍 Search"
-    url:               /search/
 
 
 # Add links to the footer.
@@ -123,12 +99,12 @@ paginate_path:         /blog/:num/
 # ---------------------------------------------------------------------------------------
 
 # This will use the gem `jekyll-theme-hydejack`, as defined in the sibling `Gemfile`.
-#theme: jekyll-theme-hydejack
+theme: jekyll-theme-hydejack
 
 # You can uncomment `theme` above and replace it with `remote_theme` here iff you are using the 
 # `jekyll-remote-theme` plugin (which is the case when using the legacy GitHub Pages pipeline).
 # This will fetch the `v9` branch of the public Hydejack repository on GitHub.
-remote_theme: hydecorp/hydejack@v9
+# remote_theme: hydecorp/hydejack@v9
 
 # Customizaton
 # ----------------------------------------------------------------------------------------
@@ -325,7 +301,7 @@ hydejack:
   # Only use if you know what Service Workers are and how they can impact your site!
   offline:
     enabled:           true
-    cache_version:     34
+    cache_version:     35
     precache_assets:
       - /assets/img/swipe.svg
       - /assets/img/logo.png

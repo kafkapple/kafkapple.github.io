@@ -2,119 +2,73 @@
 layout: page
 title: Research
 description: >
-  My research, in plain language — what I work on, why, and how the
-  pieces connect.
+  Postdoc at KAIST AMILab. Designing brain-inspired cognitive architectures for systematic generalization and continual learning.
 permalink: /research/
 sitemap: true
 ---
 
-This page is for visitors who want a clear picture of my work without
-academic jargon. The technical version lives on the [main page](/) and in
-my [CV](/markdown-cv/).
+My work sits at the intersection of cognitive neuroscience and AI. The central question driving everything: what computational principles does biological intelligence use to generalize so gracefully, and can we build AI systems around those same principles?
+
+I approach this through a two-direction loop:
+
+1. **AI for Neuroscience** — using computer vision and generative models as "practical microscopes" to decode neural and behavioral data that was previously too complex to quantify.
+2. **Neuroscience for AI** — drawing on canonical neural computations (grid cells, cortical columns, complementary learning systems) to architect AI that generalizes more robustly.
+
+## Core Principles
+
+Three ideas from neuroscience anchor everything I build:
+
+1. **Universal Reference Frames** — Abstract knowledge anchored to stable spatial representations (inspired by hippocampal grid cells). See [CLAY, CVPR 2026](https://sohwi-lim.github.io/CLAY/).
+2. **Predictive Modeling in Canonical Circuits** — World models learned through local prediction, mirroring cortical column computations.
+3. **Structure / Content Factorization** — Separating reusable structure (the "grammar") from variable content (the "words") to enable lifelong learning without catastrophic forgetting.
 
 ---
 
-## In one sentence
+## 4-Stage Cognitive Architecture
 
-I study how *context* — shaped by biology, development, and social experience — determines what minds perceive and decide, and I use those principles to build and test AI cognitive architectures where each side genuinely informs the other.
+These principles map onto a modular hierarchy:
 
-## The Virtuous Cycle of NeuroAI
-
-I think of my work as a loop with two directions:
-
-**(1) AI used to study brains and behavior.**
-Modern AI (computer vision, vision-language models, LLMs) has become a
-practical microscope. I use it to read structure out of data that was
-previously too messy to handle — animal behavior video, neural recordings,
-human emotion expression — so we can ask sharper questions about how the
-brain works.
-
-**(2) Neuroscience used to inform AI.**
-Brains do something AI mostly doesn't: they generalize gracefully across
-context, recover quickly from sparse data, and integrate signals over
-many timescales. I look for places where principles from how brains
-actually work could shape better AI architectures — not as decoration, but
-as testable design choices.
-
-The interesting projects sit on the **boundary** where each direction
-informs the other.
+| Stage | Name | Function |
+|-------|------|----------|
+| I | Object-Centric Perception | Grounded object representations via Slot Attention + grid-cell reference frames |
+| II | Predictive Abstraction | JEPA-style prediction → discrete symbol conversion |
+| III | Semantic Consolidation | Episodic → semantic knowledge integration (CLS theory) |
+| IV | Metacognitive Control | MoE-PRM: dynamic routing between System 1 intuition and System 2 reasoning |
 
 ---
 
-## Three current threads
+## Research Themes
 
-### 1. Context shapes everything (perception → cognition)
+### Brain-Based Learning & Architecture
+Continual learning, representational hierarchies (cortical columns, CapsuleNet), world models and reference frames (Thousand Brains Theory), predictive coding.
 
-Most of my published work converges on a single observation: **identical
-inputs are interpreted differently when the surrounding context shifts.**
+### Computational Cognition & Decision-Making
+Dual-process theory (System 1/2), heuristics and cognitive bias, reward systems, atypical cognition modeling, AI safety intersections.
 
-- *In rodent empathy*: a mouse's fear response to a partner's distress
-  depends on the social hierarchy between them.
-- *In LLM emotion reasoning*: prompting strategy and few-shot examples
-  shift how a model resolves ambiguous emotional content.
-- *In vision-language models* (CLAY, CVPR 2026): visual similarity
-  itself can be modulated by a text condition, without retraining.
-
-I want a unified account of this — what is "context" doing computationally,
-and is the same mechanism showing up across biology and AI?
-
-### 2. 3D reconstruction for animal behavior
-
-At KAIST AMILab, I am building pipelines that reconstruct freely-moving
-animals in 3D using **multi-view geometry + neural representations
-(3D Gaussian Splatting)**. The goal is to extract behavioral descriptors
-that are *quantitative and reproducible* — not the bottleneck of human
-annotation that current behavioral neuroscience often relies on.
-
-This connects to thread (1): once we can measure behavior precisely,
-we can ask how context changes it.
-
-### 3. Brain-inspired architectures, rigorously tested
-
-"Brain-inspired" is often a slogan. I am interested in cases where a
-specific principle from neuroscience (e.g., predictive coding, sparse
-representations, hippocampal indexing) yields a *measurable* improvement
-on a real AI task, against properly-matched baselines. Without that
-discipline, NeuroAI risks becoming aesthetic rather than scientific.
+### Embodied Social Intelligence
+Social learning via inverse RL, multi-agent systems and theory of mind, sensorimotor integration, active inference.
 
 ---
 
-## Background
+## Current Work (2025–2026)
 
-I started in **experimental neuroscience** — chemogenetics, in-vivo
-electrophysiology, behavioral assays of empathy and social memory at IBS,
-KAIST, and KIST. I co-founded **ACTNOVA**, a neuroscience-AI startup, where
-I led behavior-analysis research for partners including UCSD, Broad
-Institute, and KAIST. Now at **KAIST AMILab** as a postdoc, I am applying
-modern computer vision and VLM methods to questions I first encountered
-as a neuroscientist.
+**Postdoctoral Fellow, [AMILab](https://ami.kaist.ac.kr/), KAIST** — PI: Prof. Tae-Hyun Oh
+
+- **3D Behavioral Reconstruction**: Freely-moving animal pose estimation using multi-view geometry and 3D Gaussian Splatting. Scaling single-subject behavioral phenotyping to group-level analysis.
+- **Conditional Visual Similarity (CLAY)**: Modulating semantic similarity in VLM embedding space via conditioning signals. Accepted at **CVPR 2026**.
+- **MoE-PRM**: Mixture-of-Experts process reward models for metacognitive control — dynamic switching between fast and deliberate reasoning.
 
 ---
 
-## Toward an Integrated Framework
+## Featured Reading
 
-The three threads above are not independent. My long-term goal is a unified framework in which context-sensitive perception, grounded behavioral understanding, and brain-inspired learning principles combine into AI systems that model cognition more completely than current architectures do.
+Papers I return to across my core themes. Full annotated list: [**Reading List →**](/reading-list/)
 
-Each thread provides a distinct foundation: context-dependent cognition establishes *what* needs to be modeled; 3D behavioral reconstruction enables *measurement* at the scale rigorous science requires; brain-inspired architectures supply *design principles* grounded in what biological systems actually do — rather than using neuroscience as decoration. A positions paper synthesizing these threads into a testable architectural framework is in preparation.
-
----
-
-## Reading List
-
-Papers I'm tracking — organized by cognitive-function theme (Foundations, Representation, Learning & Memory, Cognition, Social Intelligence, Neuroethology). Includes status, priority ratings, and notes.
-
-→ [Browse the reading list](/reading-list/)
+- **World Models**: Hawkins et al., *A Thousand Brains*; LeCun, *A Path Towards Autonomous Machine Intelligence*
+- **Continual Learning**: McClelland et al., *CLS Theory*; Kirkpatrick et al., *EWC*
+- **Social Intelligence**: Dunbar, *The Social Brain Hypothesis*; Ziebart et al., *Maximum Entropy IRL*
+- **Object-Centric**: Locatello et al., *Slot Attention*; Greff et al., *Binding Problem*
 
 ---
 
-## Get in touch
-
-Open to collaboration on:
-- Cross-species behavioral comparison
-- Context-conditioning in vision-language models
-- Brain-inspired AI evaluation methodology
-
-Email: [biasdrive@gmail.com](mailto:biasdrive@gmail.com)
-
-For specific open questions I'm pursuing, see the
-[Research Questions Registry](/research-questions/).
+*Publications and CV: [Google Scholar](https://scholar.google.com/citations?user=D_rZCWYAAAAJ) · [markdown-cv](/markdown-cv/)*

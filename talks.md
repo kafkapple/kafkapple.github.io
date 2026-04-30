@@ -64,16 +64,6 @@ The talk frames NeuroAI as a two-direction loop — using AI to study brains and
 ## 2025
 
 <div class="talk-entry">
-<span class="role-badge badge-poster">Poster</span>
-<strong>Systematic Benchmarking of Prompt Engineering Strategies for LLM-based Emotion Recognition</strong><br>
-<span class="venue">Dec 2025 · 2025 RCV Next-Generation Collaboration and Research Exchange Workshop (RCV 초세대 협력 워크샵), KAIST, Daejeon</span>
-
-Systematic evaluation of modular prompt strategies (zero-shot, few-shot, RAG) and LLM ensemble architectures for text-based emotion recognition on ISEAR (7 categories, 7,328 samples). Proposer–Aggregator ensemble (GPT-4o + Claude-3.5 Sonnet as proposers, Qwen 2.5-14B as aggregator) achieves peak macro-F1 of 78.4%. Key finding: advanced prompting yields the largest gains for smaller models, while larger models (≥10B) show a scaling paradox — robust baselines with diminishing returns from complex prompts.
-
-<a href="https://doi.org/10.5281/zenodo.15126322">Zenodo preprint</a>
-</div>
-
-<div class="talk-entry">
 <span class="role-badge badge-workshop">Workshop</span>
 <strong>Neuro-AI Convergence: Foundation Model Workflows for Neuroscience</strong><br>
 <span class="venue">Jun 2025 · DBDL, Dept. of BCS, KAIST, Daejeon</span>

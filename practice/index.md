@@ -22,19 +22,19 @@ sitemap: true
 <span class="nav-card__arrow">↓</span>
 </a>
 
-<a class="nav-card" href="#performance">
-<span class="nav-card__principle">System</span>
-<p class="nav-card__title">Performance</p>
-<p class="nav-card__desc">Interdisciplinary work at the intersection of art, neuroscience, and embodied cognition.</p>
-<span class="nav-card__tags">BCI · Museum · Neuroscience</span>
-<span class="nav-card__arrow">↓</span>
-</a>
-
 <a class="nav-card" href="#writing">
 <span class="nav-card__principle">Language</span>
 <p class="nav-card__title">Writing</p>
 <p class="nav-card__desc">Science translation and literary criticism — communicating neuroscience across registers.</p>
 <span class="nav-card__tags">Translation · Essay · KAIST</span>
+<span class="nav-card__arrow">↓</span>
+</a>
+
+<a class="nav-card" href="#performance">
+<span class="nav-card__principle">System</span>
+<p class="nav-card__title">Performance</p>
+<p class="nav-card__desc">Interdisciplinary work at the intersection of art, neuroscience, and embodied cognition.</p>
+<span class="nav-card__tags">BCI · Museum · Neuroscience</span>
 <span class="nav-card__arrow">↓</span>
 </a>
 
@@ -46,7 +46,7 @@ sitemap: true
 
 Bass · 2013–present · *Screamo / Emotional Hardcore*
 
-Korean screamo / emotional hardcore band — intense, chaotic, and cathartic. One of the few screamo acts to emerge from South Korea. Released internationally via Dog Knights Productions.
+Korean screamo / emotional hardcore band — intense, chaotic, and cathartic. Released internationally via Dog Knights Productions.
 
 <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;margin:1em 0 2em 0;">
 <iframe src="https://www.youtube.com/embed/VFlzVLBumpI" frameborder="0" allowfullscreen
@@ -59,7 +59,7 @@ Korean screamo / emotional hardcore band — intense, chaotic, and cathartic. On
 
 Guitar · 2007–2019 · *Metalcore*
 
-Korean metalcore band known for aggressive riffs and breakdowns. 3rd place at the Emergenza Festival International Final (Taubertal, Germany, 2016). Nominated for Korean Popular Music Awards (2019).
+Korean metalcore band. 3rd place at the Emergenza Festival International Final (Taubertal, Germany, 2016). Nominated for Korean Popular Music Awards (2019).
 
 <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;margin:1em 0 2em 0;">
 <iframe src="https://www.youtube.com/embed/zYNiCLNHMHo" frameborder="0" allowfullscreen
@@ -72,30 +72,12 @@ Korean metalcore band known for aggressive riffs and breakdowns. 3rd place at th
 
 Guitar (guest) · 2013–2014 · *Post-rock / Experimental / Gugak*
 
-Korean post-rock band fusing traditional instruments — geomungo, haegeum, piri — with electric guitar and percussion. Featured in NPR, Pitchfork, and Vice. [Wikipedia →](https://en.wikipedia.org/wiki/Jambinai)
+Korean post-rock band fusing traditional instruments with electric guitar and percussion. Featured in NPR, Pitchfork, and Vice.
 
 <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;margin:1em 0 2em 0;">
 <iframe src="https://www.youtube.com/embed/56dv3XHUISY" frameborder="0" allowfullscreen
   style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:4px;"></iframe>
 </div>
-
----
-
-## Performance & Interdisciplinary {#performance}
-
-### [Crowd Walk (2019)](/practice/crowd-walk/)
-
-Performed with artist **Lang Lee** at *Ilmin Museum of Art*, Seoul. Real-time emotion recognition from facial expression and EEG drove a crowd-movement performance piece — the audience's collective affective state became a choreographic parameter.
-
-`Performance · BCI · Ilmin Museum`
-
----
-
-### [Project Doona Bae (2021)](/practice/doona-bae/)
-
-Behavioral and fMRI study of actress Doona Bae's empathic abilities, published as a chapter in the companion book *Actress Doona Bae*. Examined neural correlates of screen performance and empathic resonance using quantitative imaging methods.
-
-`Neuroscience · Book chapter`
 
 ---
 
@@ -109,7 +91,7 @@ Contributed as a science reviewer for the Korean edition of Jeff Hawkins' ***A T
 
 ---
 
-### [KAIST Literary Award](/practice/literary/)
+### [KAIST Literary Award (2019)](/practice/literary/)
 
 Honorable Mention, 22nd KAIST Literary Contest, Essay/Criticism category. The piece explored the phenomenology of memory from a neuroscience perspective.
 
@@ -117,4 +99,14 @@ Honorable Mention, 22nd KAIST Literary Contest, Essay/Criticism category. The pi
 
 ---
 
-Academic honors are listed on the [main page](/#awards--honors). Talks and seminars: see [Talks](/talks/).
+## Performance & Interdisciplinary {#performance}
+
+### [Crowd Walk (2019)](/practice/crowd-walk/)
+
+Performed with artist **Lang Lee** at *Ilmin Museum of Art*, Seoul. Real-time emotion recognition from facial expression and EEG drove a crowd-movement performance piece.
+
+`Performance · BCI · Ilmin Museum`
+
+---
+
+Awards and honors: [main page](/#awards--honors). Talks: [Talks](/talks/).
