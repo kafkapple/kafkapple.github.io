@@ -222,7 +222,7 @@ Experiments in creative coding, generative systems, and browser-native interacti
 <div class="interest-item" id="neural-spike-propagation">
 <p class="interest-title">Neural Spike Propagation <span class="interest-tag">SNN</span></p>
 <canvas id="neural-spike-canvas" class="lab-canvas" width="640" height="240"></canvas>
-<canvas id="neural-raster-canvas" class="lab-canvas" width="640" height="80"></canvas>
+<canvas id="neural-raster-canvas" class="lab-canvas" width="640" height="80" data-fs-skip="1"></canvas>
 <p class="interest-desc">LIF neurons in a ring topology. Population firing rate and raster plot.</p>
 </div>
 

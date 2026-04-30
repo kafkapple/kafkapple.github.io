@@ -33,19 +33,16 @@
     originalParent = canvas.parentNode;
     originalNext   = canvas.nextSibling;
 
-    /* Save current CSS + attribute state */
     savedStyle = canvas.getAttribute('style') || '';
     savedAttrs = {
       width:  canvas.getAttribute('width'),
       height: canvas.getAttribute('height')
     };
 
-    /* Placeholder keeps the original position in DOM */
     placeholder = document.createElement('div');
     placeholder.style.display = 'none';
     originalParent.insertBefore(placeholder, originalNext);
 
-    /* Build overlay */
     overlay = document.createElement('div');
     overlay.id = 'lab-fs-overlay';
     overlay.innerHTML =
@@ -57,19 +54,22 @@
     overlay.querySelector('.lab-fs-close').addEventListener('click', close);
     document.body.appendChild(overlay);
 
-    /* Move canvas */
     overlay.appendChild(canvas);
     document.body.style.overflow = 'hidden';
 
-    /* Animate in */
+    /* Capture locals so stale rAF from a prior open/close cycle cannot
+       corrupt state if close() + open() fires before this frame runs. */
+    var capturedOverlay = overlay;
+    var capturedCanvas  = canvas;
     requestAnimationFrame(function () {
-      overlay.classList.add('lab-fs-active');
+      /* Guard: close() may have nulled overlay before this frame ran. */
+      if (!capturedOverlay || !capturedOverlay.parentNode) return;
+      capturedOverlay.classList.add('lab-fs-active');
 
-      /* Resize canvas to fill overlay */
-      var s = fsSize(canvas);
-      canvas.setAttribute('width',  s.W);
-      canvas.setAttribute('height', s.H);
-      canvas.style.cssText = 'width:' + s.W + 'px;height:' + s.H + 'px;display:block;border-radius:4px;';
+      var s = fsSize(capturedCanvas);
+      capturedCanvas.setAttribute('width',  s.W);
+      capturedCanvas.setAttribute('height', s.H);
+      capturedCanvas.style.cssText = 'width:' + s.W + 'px;height:' + s.H + 'px;display:block;border-radius:4px;';
       window.dispatchEvent(new Event('resize'));
     });
   }
@@ -79,24 +79,32 @@
     if (!overlay || !activeCanvas) return;
     var canvas = activeCanvas;
 
-    /* Restore canvas */
-    canvas.setAttribute('style', savedStyle);
-    if (savedAttrs.width)  canvas.setAttribute('width',  savedAttrs.width);
-    if (savedAttrs.height) canvas.setAttribute('height', savedAttrs.height);
+    /* Restore inline style — use removeAttribute when original had none. */
+    if (savedStyle) { canvas.setAttribute('style', savedStyle); }
+    else            { canvas.removeAttribute('style'); }
+    /* Restore dimensions — explicit null check so width="0" is preserved. */
+    if (savedAttrs.width  !== null) canvas.setAttribute('width',  savedAttrs.width);
+    if (savedAttrs.height !== null) canvas.setAttribute('height', savedAttrs.height);
 
-    /* Move back to original position */
-    originalParent.insertBefore(canvas, placeholder);
-    placeholder.remove();
+    /* Guard: SPA navigation may have removed originalParent from DOM. */
+    if (originalParent && originalParent.isConnected) {
+      originalParent.insertBefore(canvas, placeholder);
+    }
+    if (placeholder && placeholder.parentNode) { placeholder.remove(); }
     placeholder = null;
 
-    /* Remove overlay */
     overlay.classList.remove('lab-fs-active');
     var el = overlay;
     overlay = null;
     activeCanvas = null;
 
     document.body.style.overflow = '';
-    window.dispatchEvent(new Event('resize'));
+
+    /* Defer resize by one rAF so the browser has a layout pass after the
+       canvas is reinserted — prevents resize handlers reading offsetWidth=0. */
+    requestAnimationFrame(function () {
+      window.dispatchEvent(new Event('resize'));
+    });
 
     setTimeout(function () { if (el.parentNode) el.parentNode.removeChild(el); }, 350);
   }
@@ -111,15 +119,15 @@
   function attachButtons() {
     document.querySelectorAll('.lab-canvas').forEach(function (canvas) {
       if (canvas.dataset.fsReady) return;
+      /* Skip subordinate canvases that are part of a multi-canvas widget. */
+      if (canvas.dataset.fsSkip)  return;
       canvas.dataset.fsReady = '1';
 
-      /* Wrap canvas in relative container */
       var wrap = document.createElement('div');
       wrap.className = 'lab-fs-wrap';
       canvas.parentNode.insertBefore(wrap, canvas);
       wrap.appendChild(canvas);
 
-      /* Expand button */
       var btn = document.createElement('button');
       btn.className = 'lab-fs-btn';
       btn.title = 'Fullscreen';
