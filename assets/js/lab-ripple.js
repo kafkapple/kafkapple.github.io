@@ -1,19 +1,11 @@
-// Lab: Raindrop Ripple — finite-difference 2D wave equation
-// Guard: #ripple2-canvas (unique to lab page)
 (function () {
-  var canvas = document.getElementById('ripple2-canvas');
-  if (!canvas) return;
-  var ctx = canvas.getContext('2d');
-  var W, H, COLS, ROWS;
-  var running = true;
-  var curr, prev, next;
-  var imgData = null, pixels = null;
-
-  var CELL    = 4;
-  var DAMPING = 0.982;
+  var canvas, ctx, W, H, COLS, ROWS, curr, prev, next;
+  var running = false, io = null, imgData = null, pixels = null;
+  var CELL = 4, DAMPING = 0.982, rainTimer = 0;
 
   function resize() {
-    W = canvas.width  = canvas.offsetWidth  || parseInt(canvas.getAttribute('width'))  || 640;
+    if (!canvas) return;
+    W = canvas.width = canvas.offsetWidth || parseInt(canvas.getAttribute('width')) || 640;
     H = canvas.height = parseInt(canvas.getAttribute('height')) || 240;
     COLS = Math.ceil(W / CELL);
     ROWS = Math.ceil(H / CELL);
@@ -24,6 +16,7 @@
   }
 
   function drop(cx, cy, r, strength) {
+    if (!curr) return;
     var cc = Math.round(cx / CELL), cr = Math.round(cy / CELL);
     var ir = Math.round(r / CELL);
     for (var dy = -ir; dy <= ir; dy++) {
@@ -40,7 +33,6 @@
   }
 
   function update() {
-    // Finite-difference wave: u[t+1] = 2u[t] - u[t-1] + c²∇²u
     for (var r = 1; r < ROWS - 1; r++) {
       for (var c = 1; c < COLS - 1; c++) {
         var i = r * COLS + c;
@@ -53,19 +45,20 @@
   }
 
   function draw() {
+    if (!ctx) return;
     if (!imgData || imgData.width !== W || imgData.height !== H) {
       imgData = ctx.createImageData(W, H);
-      pixels  = imgData.data;
+      pixels = imgData.data;
     }
     for (var r = 0; r < ROWS; r++) {
       for (var c = 0; c < COLS; c++) {
-        var v  = curr[r * COLS + c];
+        var v = curr[r * COLS + c];
         var br = Math.floor((v + 1) * 127.5);
         var r0 = r * CELL, c0 = c * CELL;
         for (var dy = 0; dy < CELL && r0 + dy < H; dy++) {
           for (var dx = 0; dx < CELL && c0 + dx < W; dx++) {
             var px = ((r0 + dy) * W + (c0 + dx)) * 4;
-            pixels[px]     = v > 0 ? 30 + Math.floor(br * 0.5) : 10;
+            pixels[px] = v > 0 ? 30 + Math.floor(br * 0.5) : 10;
             pixels[px + 1] = 50 + Math.floor(br * 0.7);
             pixels[px + 2] = 80 + br;
             pixels[px + 3] = 255;
@@ -76,45 +69,49 @@
     ctx.putImageData(imgData, 0, 0);
   }
 
-  var rainTimer = 0;
   function loop() {
-    if (!running) return;
-    // Random raindrops
+    if (!running || !canvas || !canvas.isConnected) return;
     rainTimer++;
     if (rainTimer > 80 + Math.random() * 140) {
       drop(Math.random() * W, Math.random() * H, 7, 0.7);
       rainTimer = 0;
     }
-    update();
-    draw();
+    update(); draw();
     requestAnimationFrame(loop);
   }
 
-  resize();
-  loop();
+  function init() {
+    canvas = document.getElementById('ripple2-canvas');
+    if (!canvas) return;
+    ctx = canvas.getContext('2d');
+    resize();
 
-  canvas.addEventListener('click', function (e) {
-    var rect = canvas.getBoundingClientRect();
-    drop((e.clientX - rect.left) * (W / canvas.offsetWidth),
-         (e.clientY - rect.top)  * (H / canvas.offsetHeight), 18, 1.2);
-  });
-  canvas.addEventListener('mousemove', function (e) {
-    var rect = canvas.getBoundingClientRect();
-    drop((e.clientX - rect.left) * (W / canvas.offsetWidth),
-         (e.clientY - rect.top)  * (H / canvas.offsetHeight), 4, 0.14);
-  });
+    canvas.addEventListener('click', function (e) {
+      var rect = canvas.getBoundingClientRect();
+      drop((e.clientX - rect.left) * (W / canvas.offsetWidth),
+           (e.clientY - rect.top)  * (H / canvas.offsetHeight), 18, 1.2);
+    });
+    canvas.addEventListener('mousemove', function (e) {
+      var rect = canvas.getBoundingClientRect();
+      drop((e.clientX - rect.left) * (W / canvas.offsetWidth),
+           (e.clientY - rect.top)  * (H / canvas.offsetHeight), 4, 0.14);
+    });
 
+    if (io) io.disconnect();
+    io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting && !running) { running = true; loop(); }
+        else if (!e.isIntersecting) { running = false; }
+      });
+    }, { threshold: 0.1 });
+    io.observe(canvas);
+  }
+
+  init();
   window.addEventListener('resize', resize);
-
   var _ps = document.getElementById('_pushState');
   if (_ps) {
-    _ps.addEventListener('hy-push-state-start', function () { running = false; });
-    _ps.addEventListener('hy-push-state-after', function () {
-      var c2 = document.getElementById('ripple2-canvas');
-      if (c2) {
-        canvas = c2; ctx = canvas.getContext('2d');
-        running = true; resize(); loop();
-      }
-    });
+    _ps.addEventListener('hy-push-state-start', function () { running = false; if (io) io.disconnect(); });
+    _ps.addEventListener('hy-push-state-after', init);
   }
 })();

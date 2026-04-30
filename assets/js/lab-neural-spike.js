@@ -1,25 +1,12 @@
 (function () {
-  var canvas = document.getElementById('neural-spike-canvas');
-  if (!canvas) return;
-  var ctx = canvas.getContext('2d');
-  var rCanvas = document.getElementById('neural-raster-canvas');
-  var rCtx = rCanvas ? rCanvas.getContext('2d') : null;
+  var canvas, ctx, rCanvas, rCtx;
+  var W, H, N = 20, nodes = [], edges = [];
+  var running = false, io = null;
 
-  var W, H;
-  var N = 20;
-  var nodes = [], edges = [];
-
-  // LIF parameters tuned so neurons actually fire
   var V_REST = -70, V_THRESH = -55, V_PEAK = 40, V_RESET = -75;
-  var TAU = 8, REFRAC = 15;
-  var W_SYN = 28;   // large enough: total boost ≈ 28/8/0.15 ≈ 23V > 15V threshold gap
-  var DECAY = 0.82; // i_ext decay per step
+  var TAU = 8, REFRAC = 15, W_SYN = 28, DECAY = 0.82;
 
-  // Raster plot ring buffer
-  var HIST_LEN = 180;
-  var spikeHist = new Uint8Array(N * HIST_LEN);
-  var histIdx = 0;
-  var stepCount = 0;
+  var HIST_LEN = 180, spikeHist = null, histIdx = 0, stepCount = 0;
 
   function getNoise() {
     var el = document.getElementById('neural-noise');
@@ -27,6 +14,7 @@
   }
 
   function resize() {
+    if (!canvas) return;
     W = canvas.width = canvas.offsetWidth || parseInt(canvas.getAttribute('width')) || 640;
     H = canvas.height = parseInt(canvas.getAttribute('height')) || 240;
     if (rCanvas) {
@@ -43,11 +31,9 @@
       nodes.push({ x: W / 2 + Math.cos(angle) * rx, y: H / 2 + Math.sin(angle) * ry,
         v: V_REST + Math.random() * 4, refrac: 0, i_ext: 0, fired: false, fireAge: 999 });
     }
-    // Ring connections
     for (var i = 0; i < N; i++) {
       for (var k = 1; k <= 2; k++) edges.push({ from: i, to: (i + k) % N, pulse: 0, active: false, delay: 0 });
     }
-    // Random long-range connections (small-world)
     for (var s = 0; s < 6; s++) {
       var a = Math.floor(Math.random() * N), b = Math.floor(Math.random() * N);
       if (a !== b) edges.push({ from: a, to: b, pulse: 0, active: false, delay: 0 });
@@ -65,8 +51,6 @@
         n.v = V_PEAK; n.refrac = REFRAC; n.fired = true; n.fireAge = 0; fired.push(i);
       } else { n.fired = false; }
     }
-
-    // Propagate spikes through synapses
     for (var e = 0; e < edges.length; e++) {
       var ed = edges[e];
       if (ed.active) {
@@ -80,16 +64,12 @@
         if (edges[e].from === src && !edges[e].active) { edges[e].active = true; edges[e].delay = 8; edges[e].pulse = 0; }
       }
     }
-
-    // Spontaneous noise: higher i_ext so neuron actually fires
     if (Math.random() < getNoise()) {
       var ni = Math.floor(Math.random() * N);
       nodes[ni].i_ext += 55;
     }
-
-    // Record spikes in ring buffer
     stepCount++;
-    if (stepCount % 2 === 0) { // record every 2 sim steps (throttle raster density)
+    if (stepCount % 2 === 0 && spikeHist) {
       var col = histIdx % HIST_LEN;
       for (var i = 0; i < N; i++) spikeHist[i * HIST_LEN + col] = nodes[i].fired ? 1 : 0;
       histIdx = (histIdx + 1) % HIST_LEN;
@@ -105,9 +85,8 @@
   }
 
   function draw() {
+    if (!ctx) return;
     ctx.fillStyle = '#080e0a'; ctx.fillRect(0, 0, W, H);
-
-    // Draw edges
     for (var e = 0; e < edges.length; e++) {
       var ed = edges[e]; var fn = nodes[ed.from], tn = nodes[ed.to];
       ctx.strokeStyle = ed.active ? 'rgba(120,255,160,0.7)' : 'rgba(46,85,56,0.3)';
@@ -122,8 +101,6 @@
       } else { ctx.lineTo(tn.x, tn.y); }
       ctx.stroke();
     }
-
-    // Draw nodes
     for (var i = 0; i < N; i++) {
       var n = nodes[i]; var col = potentialToColor(n.v);
       var excitation = Math.max(0, (n.v - V_REST) / (V_THRESH - V_REST));
@@ -134,17 +111,10 @@
       }
       ctx.beginPath(); ctx.arc(n.x, n.y, radius, 0, Math.PI * 2); ctx.fillStyle = col; ctx.fill();
     }
-
-    // Draw raster plot
     if (!rCtx) return;
-    var RW = rCanvas.width || 640;
-    var RH = rCanvas.height || 80;
+    var RW = rCanvas.width || 640, RH = rCanvas.height || 80;
     rCtx.fillStyle = '#060c08'; rCtx.fillRect(0, 0, RW, RH);
-
-    var rowH = Math.max(1, (RH - 12) / N);
-    var colW = RW / HIST_LEN;
-
-    // Plot spikes as vertical tick bars (convention: thin bar spanning row height)
+    var rowH = Math.max(1, (RH - 12) / N), colW = RW / HIST_LEN;
     for (var ni = 0; ni < N; ni++) {
       var sy = ni * rowH;
       for (var t = 0; t < HIST_LEN; t++) {
@@ -156,8 +126,6 @@
         }
       }
     }
-
-    // Population rate bar (bottom strip)
     var barY = RH - 12;
     rCtx.fillStyle = 'rgba(46,85,56,0.5)'; rCtx.fillRect(0, barY, RW, 12);
     for (var t = 0; t < HIST_LEN; t++) {
@@ -171,68 +139,60 @@
         rCtx.fillRect(sx, barY + 12 - bh, Math.max(1, colW), bh);
       }
     }
-
-    // Labels
-    rCtx.fillStyle = 'rgba(80,160,100,0.55)';
-    rCtx.font = '9px monospace';
+    rCtx.fillStyle = 'rgba(80,160,100,0.55)'; rCtx.font = '9px monospace';
     rCtx.fillText('Raster  →  time', 4, RH - 1);
   }
 
-  canvas.addEventListener('click', function (e) {
-    var rect = canvas.getBoundingClientRect();
-    var mx = (e.clientX - rect.left) * (W / rect.width), my = (e.clientY - rect.top) * (H / rect.height);
-    var best = 0, bestD = 1e9;
-    for (var i = 0; i < N; i++) { var dx = nodes[i].x - mx, dy = nodes[i].y - my; var d = dx*dx+dy*dy; if (d < bestD) { bestD = d; best = i; } }
-    nodes[best].i_ext += 60;
-  });
-
   function resetSim() {
-    if (!W || !H) return;
     spikeHist = new Uint8Array(N * HIST_LEN);
     histIdx = 0; stepCount = 0;
     buildNetwork();
   }
 
-  function wireControls() {
+  function loop() {
+    if (!running || !canvas || !canvas.isConnected) return;
+    step(); draw();
+    requestAnimationFrame(loop);
+  }
+
+  function init() {
+    canvas = document.getElementById('neural-spike-canvas');
+    if (!canvas) return;
+    ctx = canvas.getContext('2d');
+    rCanvas = document.getElementById('neural-raster-canvas');
+    rCtx = rCanvas ? rCanvas.getContext('2d') : null;
+    resetSim();
+    resize();
+
+    canvas.addEventListener('click', function (e) {
+      var rect = canvas.getBoundingClientRect();
+      var mx = (e.clientX - rect.left) * (W / rect.width), my = (e.clientY - rect.top) * (H / rect.height);
+      var best = 0, bestD = 1e9;
+      for (var i = 0; i < N; i++) { var dx = nodes[i].x - mx, dy = nodes[i].y - my; var d = dx*dx+dy*dy; if (d < bestD) { bestD = d; best = i; } }
+      nodes[best].i_ext += 60;
+    });
+
     var sl = document.getElementById('neural-noise');
     var sv = document.getElementById('neural-noise-val');
     if (sl && sv) sl.addEventListener('input', function () { sv.textContent = parseFloat(sl.value).toFixed(2); });
     var rb = document.getElementById('neural-reset-btn');
     if (rb) rb.addEventListener('click', resetSim);
+
+    if (io) io.disconnect();
+    io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting && !running) { running = true; loop(); }
+        else if (!e.isIntersecting) { running = false; }
+      });
+    }, { threshold: 0.1 });
+    io.observe(canvas);
   }
 
-  wireControls();
-
-  function loop() {
-    if (!canvas.isConnected) return;
-    step(); draw();
-    requestAnimationFrame(loop);
-  }
-
-  var running = false;
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      if (e.isIntersecting && !running) { running = true; resize(); loop(); }
-      else if (!e.isIntersecting) { running = false; }
-    });
-  }, { threshold: 0.1 });
-
-  resize();
+  init();
   window.addEventListener('resize', resize);
-  io.observe(canvas);
-
   var _ps = document.getElementById('_pushState');
   if (_ps) {
-    _ps.addEventListener('hy-push-state-start', function () { io.disconnect(); running = false; });
-    _ps.addEventListener('hy-push-state-after', function () {
-      var c2 = document.getElementById('neural-spike-canvas');
-      if (c2) {
-        canvas = c2; ctx = canvas.getContext('2d');
-        rCanvas = document.getElementById('neural-raster-canvas');
-        rCtx = rCanvas ? rCanvas.getContext('2d') : null;
-        spikeHist = new Uint8Array(N * HIST_LEN); histIdx = 0; stepCount = 0;
-        resize(); io.observe(canvas); wireControls();
-      }
-    });
+    _ps.addEventListener('hy-push-state-start', function () { running = false; if (io) io.disconnect(); });
+    _ps.addEventListener('hy-push-state-after', init);
   }
 })();

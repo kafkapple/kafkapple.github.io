@@ -1,16 +1,14 @@
 (function () {
-  var canvas = document.getElementById('matrix-rain-canvas');
-  if (!canvas) return;
-  var ctx = canvas.getContext('2d');
-
-  var W, H, cols, drops;
+  var canvas, ctx, W, H, cols, drops;
+  var running = false, io = null;
   var CHARS = 'αβγδεζηθλμνξπρστφψω∫∇∂√∞≈±→↑ACGT0189';
   var WORDS = ['STDP','LTP','LTD','ReLU','axon','GABA','soma','NMDA','spike','neuron'];
   var wordTimers = {};
   var currentWord = '';
-  var stepTick = 0;
+  var stepTick = 0, frameCount = 0;
 
   function resize() {
+    if (!canvas) return;
     W = canvas.width = canvas.offsetWidth || parseInt(canvas.getAttribute('width')) || 640;
     H = canvas.height = parseInt(canvas.getAttribute('height')) || 240;
     cols = Math.floor(W / 14);
@@ -33,7 +31,6 @@
     return (el && el.value) ? el.value : '#ffffff';
   }
 
-  var frameCount = 0;
   function step() {
     var speed = getSpeed();
     var SKIP = Math.max(1, Math.round(3 / speed));
@@ -41,7 +38,6 @@
     if (frameCount % SKIP !== 0) return;
     stepTick++;
 
-    // Continuous injection
     var rate = getInjectRate();
     if (rate > 0 && currentWord) {
       var injectEvery = Math.max(1, Math.round(40 / rate));
@@ -74,30 +70,39 @@
   }
 
   function loop() {
-    if (!canvas.isConnected) return;
+    if (!running || !canvas || !canvas.isConnected) return;
     step();
     requestAnimationFrame(loop);
   }
 
-  function wireControls() {
-    // Speed slider display
+  function handleTextChange(e) {
+    if (!e.detail || !e.detail.text) return;
+    currentWord = e.detail.text.slice(0, 14);
+    var wi = document.getElementById('matrix-word-input');
+    if (wi) wi.value = currentWord;
+    for (var b = 0; b < Math.min(5, cols); b++) {
+      wordTimers[Math.floor(Math.random() * cols)] = { word: currentWord, remaining: currentWord.length };
+    }
+  }
+
+  function init() {
+    canvas = document.getElementById('matrix-rain-canvas');
+    if (!canvas) return;
+    ctx = canvas.getContext('2d');
+    resize();
+
     var speedSlider = document.getElementById('matrix-speed');
     var speedVal = document.getElementById('matrix-speed-val');
     if (speedSlider && speedVal) speedSlider.addEventListener('input', function () { speedVal.textContent = parseFloat(speedSlider.value).toFixed(1) + 'x'; });
 
-    // Inject rate display
     var rateSlider = document.getElementById('matrix-inject-rate');
     var rateVal = document.getElementById('matrix-inject-rate-val');
     if (rateSlider && rateVal) rateSlider.addEventListener('input', function () { rateVal.textContent = parseFloat(rateSlider.value).toFixed(1); });
 
-    // Word color display swatch
     var colorPicker = document.getElementById('matrix-word-color');
     var colorSwatch = document.getElementById('matrix-word-color-swatch');
-    if (colorPicker && colorSwatch) {
-      colorPicker.addEventListener('input', function () { colorSwatch.style.background = colorPicker.value; });
-    }
+    if (colorPicker && colorSwatch) { colorPicker.addEventListener('input', function () { colorSwatch.style.background = colorPicker.value; }); }
 
-    // Text input: Enter injects word as burst + sets currentWord for continuous injection
     var wordInput = document.getElementById('matrix-word-input');
     if (wordInput) {
       wordInput.addEventListener('keydown', function (e) {
@@ -109,44 +114,27 @@
           }
         }
       });
-      wordInput.addEventListener('input', function () {
-        if (!wordInput.value.trim()) currentWord = '';
-      });
+      wordInput.addEventListener('input', function () { if (!wordInput.value.trim()) currentWord = ''; });
     }
+
+    if (io) io.disconnect();
+    io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting && !running) { running = true; loop(); }
+        else if (!e.isIntersecting) { running = false; }
+      });
+    }, { threshold: 0.1 });
+    io.observe(canvas);
+
+    document.removeEventListener('lab:text-change', handleTextChange);
+    document.addEventListener('lab:text-change', handleTextChange);
   }
 
-  wireControls();
-
-  var running = false;
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      if (e.isIntersecting && !running) { running = true; resize(); loop(); }
-      else if (!e.isIntersecting) { running = false; }
-    });
-  }, { threshold: 0.1 });
-
-  resize();
+  init();
   window.addEventListener('resize', resize);
-  io.observe(canvas);
-
-  // Listen for Lab Studio global text broadcast
-  document.addEventListener('lab:text-change', function (e) {
-    if (!e.detail || !e.detail.text) return;
-    currentWord = e.detail.text.slice(0, 14);
-    var wi = document.getElementById('matrix-word-input');
-    if (wi) wi.value = currentWord;
-    // Burst inject on any broadcast
-    for (var b = 0; b < Math.min(5, cols); b++) {
-      wordTimers[Math.floor(Math.random() * cols)] = { word: currentWord, remaining: currentWord.length };
-    }
-  });
-
   var _ps = document.getElementById('_pushState');
   if (_ps) {
-    _ps.addEventListener('hy-push-state-start', function () { io.disconnect(); running = false; });
-    _ps.addEventListener('hy-push-state-after', function () {
-      var c2 = document.getElementById('matrix-rain-canvas');
-      if (c2) { canvas = c2; ctx = canvas.getContext('2d'); resize(); io.observe(canvas); wireControls(); }
-    });
+    _ps.addEventListener('hy-push-state-start', function () { running = false; if (io) io.disconnect(); });
+    _ps.addEventListener('hy-push-state-after', init);
   }
 })();

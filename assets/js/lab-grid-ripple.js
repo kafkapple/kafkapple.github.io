@@ -1,13 +1,12 @@
 (function () {
-  var canvas = document.getElementById('grid-ripple-canvas');
-  if (!canvas) return;
-  var ctx = canvas.getContext('2d');
-
+  var canvas, ctx, W, H, spacingX, spacingY;
   var COLS = 32, ROWS = 14;
-  var dots = [];
-  var W, H, spacingX, spacingY;
+  var dots = [], ripples = [];
+  var mouse = { x: -9999, y: -9999 };
+  var running = false, io = null;
 
   function resize() {
+    if (!canvas) return;
     W = canvas.width = canvas.offsetWidth || parseInt(canvas.getAttribute('width')) || 640;
     H = canvas.height = 240;
     spacingX = W / COLS;
@@ -19,20 +18,6 @@
       }
     }
   }
-
-  var mouse = { x: -9999, y: -9999 };
-  var ripples = [];
-
-  canvas.addEventListener('mousemove', function (e) {
-    var rect = canvas.getBoundingClientRect();
-    mouse.x = (e.clientX - rect.left) * (W / rect.width);
-    mouse.y = (e.clientY - rect.top) * (H / rect.height);
-  });
-  canvas.addEventListener('mouseleave', function () { mouse.x = -9999; mouse.y = -9999; });
-  canvas.addEventListener('click', function (e) {
-    var rect = canvas.getBoundingClientRect();
-    ripples.push({ x: (e.clientX - rect.left) * (W / rect.width), y: (e.clientY - rect.top) * (H / rect.height), t: 0 });
-  });
 
   function getConfig() {
     var springEl = document.getElementById('ripple-spring');
@@ -67,6 +52,7 @@
   }
 
   function draw() {
+    if (!ctx) return;
     ctx.clearRect(0, 0, W, H);
     for (var i = 0; i < dots.length; i++) {
       var d = dots[i];
@@ -82,30 +68,42 @@
   }
 
   function loop() {
-    if (!canvas.isConnected) return;
+    if (!running || !canvas || !canvas.isConnected) return;
     step(); draw();
     requestAnimationFrame(loop);
   }
 
-  // IntersectionObserver: start rAF only when visible
-  var running = false;
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      if (e.isIntersecting && !running) { running = true; resize(); loop(); }
-      else if (!e.isIntersecting) { running = false; }
+  function init() {
+    canvas = document.getElementById('grid-ripple-canvas');
+    if (!canvas) return;
+    ctx = canvas.getContext('2d');
+
+    canvas.addEventListener('mousemove', function (e) {
+      var rect = canvas.getBoundingClientRect();
+      mouse.x = (e.clientX - rect.left) * (W / rect.width);
+      mouse.y = (e.clientY - rect.top) * (H / rect.height);
     });
-  }, { threshold: 0.1 });
+    canvas.addEventListener('mouseleave', function () { mouse.x = -9999; mouse.y = -9999; });
+    canvas.addEventListener('click', function (e) {
+      var rect = canvas.getBoundingClientRect();
+      ripples.push({ x: (e.clientX - rect.left) * (W / rect.width), y: (e.clientY - rect.top) * (H / rect.height), t: 0 });
+    });
 
-  resize();
+    if (io) io.disconnect();
+    io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting && !running) { running = true; resize(); loop(); }
+        else if (!e.isIntersecting) { running = false; }
+      });
+    }, { threshold: 0.1 });
+    io.observe(canvas);
+  }
+
+  init();
   window.addEventListener('resize', resize);
-  io.observe(canvas);
-
   var _ps = document.getElementById('_pushState');
   if (_ps) {
-    _ps.addEventListener('hy-push-state-start', function () { io.disconnect(); running = false; });
-    _ps.addEventListener('hy-push-state-after', function () {
-      var c2 = document.getElementById('grid-ripple-canvas');
-      if (c2) { canvas = c2; ctx = canvas.getContext('2d'); resize(); io.observe(canvas); }
-    });
+    _ps.addEventListener('hy-push-state-start', function () { running = false; if (io) io.disconnect(); });
+    _ps.addEventListener('hy-push-state-after', init);
   }
 })();

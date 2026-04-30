@@ -1,25 +1,12 @@
-// Lab: Murmuration / Flocking — Reynolds Boids
-// Guard: #boids-canvas (unique to lab page)
 (function () {
-  var canvas = document.getElementById('boids-canvas');
-  if (!canvas) return;
-  var ctx = canvas.getContext('2d');
-  var W, H;
-  var running = true;
-  var N = 80;
-  var boids = [];
-  var mouse = null;
-
-  var SPEED    = 2.2;
-  var VIEW_R   = 60;
-  var SEP_R    = 18;
-  var SEP_W    = 1.5;
-  var ALI_W    = 1.0;
-  var COH_W    = 0.8;
-  var MOUSE_W  = 2.8;
+  var canvas, ctx, W, H, boids = [];
+  var running = false, io = null, mouse = null;
+  var N = 80, SPEED = 2.2, VIEW_R = 60, SEP_R = 18;
+  var SEP_W = 1.5, ALI_W = 1.0, COH_W = 0.8, MOUSE_W = 2.8;
 
   function resize() {
-    W = canvas.width  = canvas.offsetWidth  || parseInt(canvas.getAttribute('width'))  || 640;
+    if (!canvas) return;
+    W = canvas.width = canvas.offsetWidth || parseInt(canvas.getAttribute('width')) || 640;
     H = canvas.height = parseInt(canvas.getAttribute('height')) || 240;
   }
 
@@ -65,7 +52,6 @@
       }
       nvx += sx * 0.08 * SEP_W;
       nvy += sy * 0.08 * SEP_W;
-      // Mouse repulsion
       if (mouse) {
         var mdx = b.x - mouse.x, mdy = b.y - mouse.y;
         var md = Math.sqrt(mdx * mdx + mdy * mdy);
@@ -81,6 +67,7 @@
   }
 
   function draw() {
+    if (!ctx) return;
     ctx.fillStyle = 'rgba(8,14,10,0.20)';
     ctx.fillRect(0, 0, W, H);
     for (var i = 0; i < boids.length; i++) {
@@ -91,60 +78,66 @@
       ctx.rotate(angle);
       ctx.fillStyle = 'hsla(' + b.hue + ',78%,68%,0.88)';
       ctx.beginPath();
-      ctx.moveTo(7, 0);
-      ctx.lineTo(-4, 3.5);
-      ctx.lineTo(-4, -3.5);
-      ctx.closePath();
+      ctx.moveTo(7, 0); ctx.lineTo(-4, 3.5); ctx.lineTo(-4, -3.5); ctx.closePath();
       ctx.fill();
       ctx.restore();
     }
   }
 
   function loop() {
-    if (!running) return;
+    if (!running || !canvas || !canvas.isConnected) return;
     update(); draw();
     requestAnimationFrame(loop);
   }
 
-  resize();
-  initBoids(N);
-  loop();
-
-  canvas.addEventListener('mousemove', function (e) {
-    var rect = canvas.getBoundingClientRect();
-    mouse = { x: (e.clientX - rect.left) * (W / canvas.offsetWidth),
-               y: (e.clientY - rect.top)  * (H / canvas.offsetHeight) };
-  });
-  canvas.addEventListener('mouseleave', function () { mouse = null; });
-
-  var scatterBtn = document.getElementById('boids-scatter');
-  var flockBtn   = document.getElementById('boids-flock');
-  var nSlider    = document.getElementById('boids-n');
-  var nVal       = document.getElementById('boids-n-val');
-
-  if (scatterBtn) scatterBtn.onclick = function () {
-    boids.forEach(function (b) {
-      var a = Math.random() * Math.PI * 2;
-      b.vx = Math.cos(a) * SPEED * (0.5 + Math.random());
-      b.vy = Math.sin(a) * SPEED * (0.5 + Math.random());
-    });
-  };
-  if (flockBtn) flockBtn.onclick = function () { initBoids(N); };
-  if (nSlider) nSlider.oninput = function () {
-    N = parseInt(nSlider.value, 10);
-    if (nVal) nVal.textContent = N;
+  function init() {
+    canvas = document.getElementById('boids-canvas');
+    if (!canvas) return;
+    ctx = canvas.getContext('2d');
+    resize();
     initBoids(N);
-  };
 
+    canvas.addEventListener('mousemove', function (e) {
+      var rect = canvas.getBoundingClientRect();
+      mouse = { x: (e.clientX - rect.left) * (W / canvas.offsetWidth),
+                y: (e.clientY - rect.top)  * (H / canvas.offsetHeight) };
+    });
+    canvas.addEventListener('mouseleave', function () { mouse = null; });
+
+    var scatterBtn = document.getElementById('boids-scatter');
+    var flockBtn   = document.getElementById('boids-flock');
+    var nSlider    = document.getElementById('boids-n');
+    var nVal       = document.getElementById('boids-n-val');
+
+    if (scatterBtn) scatterBtn.onclick = function () {
+      boids.forEach(function (b) {
+        var a = Math.random() * Math.PI * 2;
+        b.vx = Math.cos(a) * SPEED * (0.5 + Math.random());
+        b.vy = Math.sin(a) * SPEED * (0.5 + Math.random());
+      });
+    };
+    if (flockBtn) flockBtn.onclick = function () { initBoids(N); };
+    if (nSlider) nSlider.oninput = function () {
+      N = parseInt(nSlider.value, 10);
+      if (nVal) nVal.textContent = N;
+      initBoids(N);
+    };
+
+    if (io) io.disconnect();
+    io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting && !running) { running = true; loop(); }
+        else if (!e.isIntersecting) { running = false; }
+      });
+    }, { threshold: 0.1 });
+    io.observe(canvas);
+  }
+
+  init();
+  window.addEventListener('resize', resize);
   var _ps = document.getElementById('_pushState');
   if (_ps) {
-    _ps.addEventListener('hy-push-state-start', function () { running = false; });
-    _ps.addEventListener('hy-push-state-after', function () {
-      var c2 = document.getElementById('boids-canvas');
-      if (c2) {
-        canvas = c2; ctx = canvas.getContext('2d');
-        running = true; resize(); initBoids(N); loop();
-      }
-    });
+    _ps.addEventListener('hy-push-state-start', function () { running = false; if (io) io.disconnect(); });
+    _ps.addEventListener('hy-push-state-after', init);
   }
 })();

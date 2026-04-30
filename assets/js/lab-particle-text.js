@@ -1,16 +1,9 @@
 (function () {
-  var canvas = document.getElementById('particle-text-canvas');
-  if (!canvas) return;
-  var ctx = canvas.getContext('2d');
-
+  var canvas, ctx, W, H, particles = [], targets = [];
   var WORDS = ['NeuroAI', 'Plasticity', 'Emergence', 'Spike', 'Context', 'Predict'];
-  var wordIdx = 0;
-  var particles = [];
-  var targets = [];
-  var W, H;
+  var wordIdx = 0, customWord = '', running = false, io = null, intervalId = null;
   var mouse = { x: -9999, y: -9999 };
   var REPEL = 55, SPRING = 0.10, DAMP = 0.80;
-  var customWord = '';
 
   var off = document.createElement('canvas');
   var octx = off.getContext('2d');
@@ -40,6 +33,7 @@
   }
 
   function resize() {
+    if (!canvas) return;
     W = canvas.width = canvas.offsetWidth || parseInt(canvas.getAttribute('width')) || 640;
     H = canvas.height = parseInt(canvas.getAttribute('height')) || 240;
     buildParticles(customWord || WORDS[wordIdx]);
@@ -64,35 +58,9 @@
     buildParticles(WORDS[wordIdx]);
   }
 
-  canvas.addEventListener('click', function () { customWord = ''; var ti = document.getElementById('particle-text-input'); if (ti) ti.value = ''; nextWord(); });
-  canvas.addEventListener('mousemove', function (e) {
-    var rect = canvas.getBoundingClientRect();
-    mouse.x = (e.clientX - rect.left) * (W / rect.width);
-    mouse.y = (e.clientY - rect.top) * (H / rect.height);
-  });
-  canvas.addEventListener('mouseleave', function () { mouse.x = -9999; mouse.y = -9999; });
-
-  function wireControls() {
-    var ti = document.getElementById('particle-text-input');
-    if (ti) {
-      ti.addEventListener('input', function () {
-        var v = ti.value.trim().slice(0, 16);
-        if (v) { customWord = v; buildParticles(customWord); }
-        else { customWord = ''; buildParticles(WORDS[wordIdx]); }
-      });
-    }
-    var sl = document.getElementById('particle-speed');
-    var sv = document.getElementById('particle-speed-val');
-    if (sl && sv) sl.addEventListener('input', function () { sv.textContent = parseFloat(sl.value).toFixed(1) + 'x'; });
-  }
-
-  wireControls();
-  var intervalId = setInterval(nextWord, 4000);
-
   function step() {
     var sp = getSpeed();
-    var spring = SPRING * sp;
-    var damp = Math.max(0.6, DAMP - (sp - 1) * 0.04);
+    var spring = SPRING * sp, damp = Math.max(0.6, DAMP - (sp - 1) * 0.04);
     for (var i = 0; i < particles.length; i++) {
       var p = particles[i];
       var dx = p.tx - p.x, dy = p.ty - p.y;
@@ -105,50 +73,79 @@
   }
 
   function draw() {
+    if (!ctx) return;
     ctx.clearRect(0, 0, W, H);
     ctx.fillStyle = '#0d1510'; ctx.fillRect(0, 0, W, H);
     for (var i = 0; i < particles.length; i++) {
       var p = particles[i];
-      var speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
-      var l = Math.round(55 + Math.min(speed * 4, 35));
+      var s = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
+      var l = Math.round(55 + Math.min(s * 4, 35));
       ctx.beginPath(); ctx.arc(p.x, p.y, 1.8, 0, Math.PI * 2);
       ctx.fillStyle = 'hsl(' + p.hue + ',70%,' + l + '%)'; ctx.fill();
     }
   }
 
   function loop() {
-    if (!canvas.isConnected) return;
+    if (!running || !canvas || !canvas.isConnected) return;
     step(); draw();
     requestAnimationFrame(loop);
   }
 
-  var running = false;
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      if (e.isIntersecting && !running) { running = true; resize(); loop(); }
-      else if (!e.isIntersecting) { running = false; }
-    });
-  }, { threshold: 0.1 });
-
-  resize();
-  window.addEventListener('resize', resize);
-  io.observe(canvas);
-
-  // Listen for Lab Studio global text broadcast
-  document.addEventListener('lab:text-change', function (e) {
+  function handleTextChange(e) {
     if (!e.detail || !e.detail.text) return;
     var w = e.detail.text.slice(0, 16);
     customWord = w; buildParticles(w);
     var ti = document.getElementById('particle-text-input');
     if (ti) ti.value = w;
-  });
+  }
 
+  function init() {
+    canvas = document.getElementById('particle-text-canvas');
+    if (!canvas) return;
+    ctx = canvas.getContext('2d');
+    resize();
+
+    canvas.addEventListener('click', function () { customWord = ''; var ti = document.getElementById('particle-text-input'); if (ti) ti.value = ''; nextWord(); });
+    canvas.addEventListener('mousemove', function (e) {
+      var rect = canvas.getBoundingClientRect();
+      mouse.x = (e.clientX - rect.left) * (W / rect.width);
+      mouse.y = (e.clientY - rect.top) * (H / rect.height);
+    });
+    canvas.addEventListener('mouseleave', function () { mouse.x = -9999; mouse.y = -9999; });
+
+    var ti = document.getElementById('particle-text-input');
+    if (ti) {
+      ti.addEventListener('input', function () {
+        var v = ti.value.trim().slice(0, 16);
+        if (v) { customWord = v; buildParticles(customWord); }
+        else { customWord = ''; buildParticles(WORDS[wordIdx]); }
+      });
+    }
+    var sl = document.getElementById('particle-speed');
+    var sv = document.getElementById('particle-speed-val');
+    if (sl && sv) sl.addEventListener('input', function () { sv.textContent = parseFloat(sl.value).toFixed(1) + 'x'; });
+
+    if (intervalId) clearInterval(intervalId);
+    intervalId = setInterval(nextWord, 4000);
+
+    if (io) io.disconnect();
+    io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting && !running) { running = true; loop(); }
+        else if (!e.isIntersecting) { running = false; }
+      });
+    }, { threshold: 0.1 });
+    io.observe(canvas);
+
+    document.removeEventListener('lab:text-change', handleTextChange);
+    document.addEventListener('lab:text-change', handleTextChange);
+  }
+
+  init();
+  window.addEventListener('resize', resize);
   var _ps = document.getElementById('_pushState');
   if (_ps) {
-    _ps.addEventListener('hy-push-state-start', function () { io.disconnect(); running = false; clearInterval(intervalId); });
-    _ps.addEventListener('hy-push-state-after', function () {
-      var c2 = document.getElementById('particle-text-canvas');
-      if (c2) { canvas = c2; ctx = canvas.getContext('2d'); resize(); io.observe(canvas); intervalId = setInterval(nextWord, 4000); wireControls(); }
-    });
+    _ps.addEventListener('hy-push-state-start', function () { running = false; if (io) io.disconnect(); if (intervalId) clearInterval(intervalId); });
+    _ps.addEventListener('hy-push-state-after', init);
   }
 })();
