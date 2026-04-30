@@ -115,13 +115,126 @@ sitemap: true
   opacity: 0; transition: opacity 0.4s ease;
 }
 .nav-card--lab:hover::before { opacity: 1; }
+
+/* ── Expand icon (top-right of each card) ── */
+.nc-expand {
+  position: absolute; top: 0.65rem; right: 0.65rem;
+  width: 28px; height: 28px;
+  display: flex; align-items: center; justify-content: center;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 4px;
+  color: var(--nc-accent-lt);
+  cursor: pointer; padding: 0;
+  opacity: 0;
+  transition: opacity 0.2s ease, background 0.18s ease, transform 0.2s ease, border-color 0.2s ease;
+  z-index: 5;
+}
+.nav-card:hover .nc-expand { opacity: 1; }
+.nc-expand:hover { background: var(--nc-accent-muted); border-color: var(--nc-accent-lt); transform: scale(1.1); }
+.nc-expand--pulse { animation: nc-expand-pulse 0.55s cubic-bezier(0.34,1.56,0.64,1); }
+@keyframes nc-expand-pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.4); }
+  100% { transform: scale(1); }
+}
+
+/* ── Click ripple ── */
+.nc-ripple {
+  position: absolute;
+  width: 8px; height: 8px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.5) 0%, transparent 70%);
+  transform: translate(-50%,-50%) scale(0);
+  pointer-events: none;
+  animation: nc-ripple-expand 0.6s cubic-bezier(0.25,0.46,0.45,0.94) forwards;
+  z-index: 10;
+}
+@keyframes nc-ripple-expand {
+  to { transform: translate(-50%,-50%) scale(60); opacity: 0; }
+}
+
+/* ── Fullscreen overlay ── */
+.nc-overlay {
+  position: fixed; inset: 0; z-index: 99999;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(0,0,0,0);
+  backdrop-filter: blur(0px) saturate(1);
+  -webkit-backdrop-filter: blur(0px) saturate(1);
+  transition: background 0.5s ease, backdrop-filter 0.5s ease, -webkit-backdrop-filter 0.5s ease;
+  pointer-events: none;
+}
+.nc-overlay--active {
+  background: var(--nc-overlay-bg, rgba(20,40,24,0.93));
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  pointer-events: all;
+}
+.nc-overlay--closing {
+  background: rgba(0,0,0,0) !important;
+  backdrop-filter: blur(0px) !important;
+  -webkit-backdrop-filter: blur(0px) !important;
+}
+/* Per-theme deep overlay backgrounds */
+.nc-overlay[data-theme="music"]   { --nc-overlay-bg: rgba(18,48,26,0.94); }
+.nc-overlay[data-theme="writing"] { --nc-overlay-bg: rgba(85,48,6,0.94); }
+.nc-overlay[data-theme="perf"]    { --nc-overlay-bg: rgba(30,18,70,0.94); }
+.nc-overlay[data-theme="lab"]     { --nc-overlay-bg: rgba(6,60,68,0.94); }
+
+.nc-overlay__inner {
+  position: relative; max-width: 580px; width: 90%;
+  padding: clamp(2rem,5vw,3.5rem) clamp(1.5rem,4vw,2.8rem);
+  color: rgba(255,255,255,0.95);
+  transform: translateY(32px) scale(0.96);
+  opacity: 0;
+  transition: transform 0.5s cubic-bezier(0.34,1.56,0.64,1), opacity 0.38s ease;
+}
+.nc-overlay--active .nc-overlay__inner { transform: translateY(0) scale(1); opacity: 1; }
+.nc-overlay__close {
+  position: absolute; top: 0; right: 0;
+  width: 38px; height: 38px;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 50%; color: rgba(255,255,255,0.65); cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.nc-overlay__close:hover { background: rgba(255,255,255,0.16); color: #fff; }
+.nc-overlay__label {
+  font-size: 0.63rem; font-weight: 700; letter-spacing: 0.15em;
+  text-transform: uppercase; color: rgba(255,255,255,0.45); margin: 0 0 0.5rem;
+}
+.nc-overlay__title {
+  font-size: clamp(2.4rem,8vw,4.2rem); font-weight: 800; line-height: 1.04;
+  letter-spacing: -0.03em; margin: 0 0 1rem; color: #fff;
+}
+.nc-overlay__desc {
+  font-size: clamp(0.92rem,2vw,1.08rem); line-height: 1.65;
+  color: rgba(255,255,255,0.68); margin: 0 0 2rem;
+}
+.nc-overlay__cta {
+  display: inline-block; padding: 0.58em 1.35em;
+  background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.24);
+  border-radius: 4px; color: rgba(255,255,255,0.88);
+  text-decoration: none; font-weight: 600; font-size: 0.88em;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+.nc-overlay__cta:hover { background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.5); color: #fff; text-decoration: none; }
+
+/* View Transitions: fade-in new state, instant-out old */
+::view-transition-old(root) { animation: none; mix-blend-mode: normal; }
+::view-transition-new(root) { animation: nc-vt-fadein 0.45s ease-out; }
+@keyframes nc-vt-fadein { from { opacity: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .nc-overlay, .nc-overlay__inner, .nc-ripple { transition: none !important; animation: none !important; }
+  .nc-expand--pulse { animation: none !important; }
+}
 </style>
 
 <p class="nav-principles">Active practice</p>
 
 <nav class="nav-cards-grid">
 
-<a class="nav-card nav-card--featured nav-card--music" href="#music">
+<a class="nav-card nav-card--featured nav-card--music" href="#music" data-card-theme="music">
 <span class="nav-card__principle">Performance</span>
 <p class="nav-card__title">Music</p>
 <p class="nav-card__desc">Three bands across screamo, metalcore, and experimental post-rock — bass, guitar, and guest performance spanning 2007 to present.</p>
@@ -129,7 +242,7 @@ sitemap: true
 <span class="nav-card__arrow">↓</span>
 </a>
 
-<a class="nav-card nav-card--writing" href="#writing">
+<a class="nav-card nav-card--writing" href="#writing" data-card-theme="writing">
 <span class="nav-card__principle">Language</span>
 <p class="nav-card__title">Writing</p>
 <p class="nav-card__desc">Science translation and literary criticism — communicating neuroscience across registers.</p>
@@ -137,7 +250,7 @@ sitemap: true
 <span class="nav-card__arrow">↓</span>
 </a>
 
-<a class="nav-card nav-card--perf" href="#performance">
+<a class="nav-card nav-card--perf" href="#performance" data-card-theme="perf">
 <span class="nav-card__principle">System</span>
 <p class="nav-card__title">Performance</p>
 <p class="nav-card__desc">Interdisciplinary work at the intersection of art, neuroscience, and embodied cognition.</p>
@@ -145,7 +258,7 @@ sitemap: true
 <span class="nav-card__arrow">↓</span>
 </a>
 
-<a class="nav-card nav-card--lab" href="/lab/">
+<a class="nav-card nav-card--lab" href="/lab/" data-card-theme="lab">
 <span class="nav-card__principle">Code</span>
 <p class="nav-card__title">Lab</p>
 <p class="nav-card__desc">Interactive experiments — generative art, physics simulations, creative coding. All canvas, zero dependencies.</p>
