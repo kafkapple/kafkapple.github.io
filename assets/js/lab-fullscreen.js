@@ -106,7 +106,16 @@
       window.dispatchEvent(new Event('resize'));
     });
 
-    setTimeout(function () { if (el.parentNode) el.parentNode.removeChild(el); }, 350);
+    /* Remove overlay after CSS fade-out completes; transitionend avoids the
+       350ms window where a zombie overlay sits in DOM with a broken close btn.
+       Fallback timer ensures removal even when transition is absent (e.g.
+       prefers-reduced-motion) or transitionend never fires. */
+    var removeTimer = setTimeout(function () { if (el.parentNode) el.parentNode.removeChild(el); }, 600);
+    el.addEventListener('transitionend', function onEnd() {
+      clearTimeout(removeTimer);
+      el.removeEventListener('transitionend', onEnd);
+      if (el.parentNode) el.parentNode.removeChild(el);
+    });
   }
 
   /* ── Keyboard ─────────────────────────────────────────────────────── */
