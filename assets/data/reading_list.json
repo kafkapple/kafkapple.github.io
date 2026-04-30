@@ -1,11 +1,11 @@
 {
   "meta": {
-    "total": 76,
-    "done": 1,
-    "to_read": 76,
+    "total": 74,
+    "done": 3,
+    "to_read": 74,
     "reading": 0,
     "skipped": 0,
-    "pct_done": 1
+    "pct_done": 4
   },
   "themes": [
     "Theme 1: Foundations & Unifying Theories",
@@ -201,7 +201,7 @@
       "year": 2017,
       "first_author": "",
       "memo": "Hassabis, Kumaran, Summerfield, Botvinick. NeuroAI landmark 선언. 인용 5000+",
-      "done": false,
+      "done": true,
       "theme": "Theme 1: Foundations & Unifying Theories",
       "subtheme": "1b. NeuroAI Position Papers & Field Vision",
       "domain": "📚 전체 목록"
@@ -221,7 +221,7 @@
       "year": 2023,
       "first_author": "",
       "memo": "Zador et al. NeuroAI 로드맵 — 다음 AI 돌파구는 neuroscience",
-      "done": false,
+      "done": true,
       "theme": "Theme 1: Foundations & Unifying Theories",
       "subtheme": "1b. NeuroAI Position Papers & Field Vision",
       "domain": "📚 전체 목록"
@@ -241,7 +241,7 @@
       "year": 2026,
       "first_author": "",
       "memo": "Mathis 2026. 신경과학 원리 → 적응적 AI 설계 최신 포지션",
-      "done": false,
+      "done": true,
       "theme": "Theme 1: Foundations & Unifying Theories",
       "subtheme": "1b. NeuroAI Position Papers & Field Vision",
       "domain": "📚 전체 목록"
@@ -1115,7 +1115,7 @@
       "year": 2026,
       "first_author": "",
       "memo": "읽음 — → [[SYNAPSE_Episodic_Semantic_Memory]]",
-      "done": true,
+      "done": false,
       "theme": "Theme 3: Learning & Memory",
       "subtheme": "3b. AI Memory Architectures",
       "domain": "📚 전체 목록"
@@ -1524,46 +1524,6 @@
       "memo": "Anderson & Bhatt. 다규모 행동 측정 프레임워크",
       "done": false,
       "theme": "Theme 6: Computational Neuroethology",
-      "subtheme": "",
-      "domain": "📚 전체 목록"
-    },
-    {
-      "title": "Bi-ICE: Inner Interpretable Framework for Image Classification",
-      "venue": "WACV 2026",
-      "url": "https://openaccess.thecvf.com/content/WACV2026/papers/Hong_Bi-ICE_An_Inner_Interpretable_Framework_for_Image_Classification_via_Bi-directional_WACV_2026_paper.pdf",
-      "tags": [
-        "interpretability",
-        "classification",
-        "vision"
-      ],
-      "status": "to-read",
-      "priority": 2,
-      "stars": 2,
-      "year": 2026,
-      "first_author": "",
-      "memo": "양방향 해석 가능 이미지 분류",
-      "done": false,
-      "theme": "Peripheral (관심 있으나 핵심 테마와 거리)",
-      "subtheme": "",
-      "domain": "📚 전체 목록"
-    },
-    {
-      "title": "ClusterMine: Concept Mining for OOD Detection",
-      "venue": "WACV 2026",
-      "url": "https://openaccess.thecvf.com/content/WACV2026/papers/Adaloglou_ClusterMine_Robust_Label-Free_Visual_Out-Of-Distribution_Detection_via_Concept_Mining_from_WACV_2026_paper.pdf",
-      "tags": [
-        "OOD",
-        "concept-mining",
-        "detection"
-      ],
-      "status": "to-read",
-      "priority": 2,
-      "stars": 2,
-      "year": 2026,
-      "first_author": "",
-      "memo": "Label-free OOD 탐지",
-      "done": false,
-      "theme": "Peripheral (관심 있으나 핵심 테마와 거리)",
       "subtheme": "",
       "domain": "📚 전체 목록"
     }
