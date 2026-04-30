@@ -80,7 +80,7 @@
 }
 .nav-cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: var(--nc-gap);
   background: var(--nc-accent);
   border: var(--nc-gap) solid var(--nc-accent);
@@ -120,7 +120,10 @@
   color: var(--nc-accent); opacity: 0.8; margin: 1.2em 0 0.5em;
   padding-bottom: 0.55em; border-bottom: 1px solid rgba(46,85,56,0.2);
 }
-@media (max-width: 480px) { .nav-card { min-height: 155px; } }
+@media (max-width: 540px) {
+  .nav-cards-grid { grid-template-columns: 1fr; }
+  .nav-card { min-height: 155px; }
+}
 </style>
 
 <style>

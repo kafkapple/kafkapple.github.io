@@ -62,31 +62,28 @@ sitemap: true
   box-shadow: 0 16px 36px rgba(46,85,56,0.20), 0 3px 10px rgba(46,85,56,0.10);
 }
 
-/* Writing — very faint warm tint */
+/* Writing — white default, warm tint on hover */
 .nav-card--writing {
-  --nc-accent-muted: rgba(90,60,15,0.04);
-  --nc-accent-hover: rgba(90,60,15,0.08);
-  background: var(--nc-accent-muted);
+  --nc-accent-muted: rgba(90,60,15,0.14);
+  --nc-accent-hover: rgba(90,60,15,0.20);
 }
 .nav-card--writing:not(.wip):hover {
   box-shadow: 0 12px 30px rgba(46,85,56,0.18), 0 2px 8px rgba(46,85,56,0.08);
 }
 
-/* Performance — very faint cool tint */
+/* Performance — white default, cool tint on hover */
 .nav-card--perf {
-  --nc-accent-muted: rgba(50,40,80,0.04);
-  --nc-accent-hover: rgba(50,40,80,0.08);
-  background: var(--nc-accent-muted);
+  --nc-accent-muted: rgba(50,40,80,0.13);
+  --nc-accent-hover: rgba(50,40,80,0.18);
 }
 .nav-card--perf:not(.wip):hover {
   box-shadow: 0 12px 30px rgba(46,85,56,0.18), 0 2px 8px rgba(46,85,56,0.08);
 }
 
-/* Lab — very faint teal tint */
+/* Lab — white default, teal tint on hover */
 .nav-card--lab {
-  --nc-accent-muted: rgba(15,80,90,0.05);
-  --nc-accent-hover: rgba(15,80,90,0.10);
-  background: var(--nc-accent-muted);
+  --nc-accent-muted: rgba(15,80,90,0.14);
+  --nc-accent-hover: rgba(15,80,90,0.20);
 }
 .nav-card--lab:not(.wip):hover {
   box-shadow: 0 12px 30px rgba(46,85,56,0.18), 0 2px 8px rgba(46,85,56,0.08);
