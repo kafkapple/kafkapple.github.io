@@ -79,6 +79,42 @@ redirect_from:
 }
 #neo-card:active { cursor: grabbing; }
 #neo-accent { position: absolute; top: 0; left: 0; width: 100%; height: 6px; background: #f7c948; }
+
+/* ── Lab Fullscreen ── */
+.lab-fs-wrap {
+  position: relative;
+  display: block;
+}
+.lab-fs-btn {
+  position: absolute; top: 7px; right: 7px; z-index: 10;
+  width: 28px; height: 28px;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(6,14,8,0.72); border: 1px solid rgba(46,85,56,0.4);
+  border-radius: 4px; color: rgba(100,190,125,0.75); cursor: pointer; padding: 0;
+  opacity: 0; transition: opacity 0.2s ease, background 0.18s ease, transform 0.18s ease;
+}
+.lab-fs-wrap:hover .lab-fs-btn { opacity: 1; }
+.lab-fs-btn:hover { background: rgba(46,85,56,0.55); color: #b0dcb8; transform: scale(1.08); }
+#lab-fs-overlay {
+  position: fixed; inset: 0; z-index: 99990;
+  background: rgba(4,10,6,0.97);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; transition: opacity 0.28s ease;
+}
+#lab-fs-overlay.lab-fs-active { opacity: 1; }
+.lab-fs-close {
+  position: absolute; top: 14px; right: 18px;
+  width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(46,85,56,0.22); border: 1px solid rgba(46,85,56,0.45);
+  border-radius: 50%; color: rgba(130,210,155,0.85); cursor: pointer;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+.lab-fs-close:hover { background: rgba(46,85,56,0.6); color: #d4edda; }
+@media (prefers-reduced-motion: reduce) {
+  #lab-fs-overlay { transition: none; }
+  .lab-fs-btn { transition: none; }
+}
 </style>
 
 ---
