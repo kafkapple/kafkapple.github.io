@@ -26,14 +26,12 @@ sitemap: true
     rgba(255,255,255,0.11) 0%,
     transparent 100%
   );
-  /* smooth return when mouse leaves */
   transition:
     background-image 0s,
     transform 0.35s cubic-bezier(0.34,1.56,0.64,1),
     filter 0.35s ease,
     box-shadow 0.3s ease;
 }
-/* While JS is active, let rAF handle transform (no CSS delay) */
 .nav-card--music.is-tilting,
 .nav-card--writing.is-tilting,
 .nav-card--perf.is-tilting,
@@ -41,18 +39,17 @@ sitemap: true
   transition: background-image 0s, filter 0.1s ease, box-shadow 0.3s ease;
 }
 
-/* Music — forest green + horizontal shimmer */
+/* Music — featured, forest green shimmer */
 .nav-card--music {
-  --nc-accent: rgb(46,85,56);
-  --nc-accent-lt: rgb(80,150,100);
-  --nc-accent-muted: rgba(46,85,56,0.10);
-  --nc-accent-hover: rgba(46,85,56,0.19);
+  --nc-accent-muted: rgba(46,85,56,0.07);
+  --nc-accent-hover: rgba(46,85,56,0.13);
+  background: var(--nc-accent-muted);
 }
 .nav-card--music::before {
   top: 0 !important; left: 0 !important;
   width: 100% !important; height: 100% !important;
   background: linear-gradient(105deg,
-    transparent 28%, rgba(80,150,100,0.10) 50%, transparent 72%
+    transparent 28%, rgba(80,150,100,0.08) 50%, transparent 72%
   ) !important;
   background-size: 300% 100% !important;
   animation: music-shimmer 6s linear infinite !important;
@@ -62,45 +59,39 @@ sitemap: true
   100% { background-position: -100% 0; }
 }
 .nav-card--music:not(.wip):hover {
-  box-shadow: 0 16px 36px rgba(46,85,56,0.24), 0 3px 10px rgba(46,85,56,0.12);
+  box-shadow: 0 16px 36px rgba(46,85,56,0.20), 0 3px 10px rgba(46,85,56,0.10);
 }
 
-/* Writing — warm amber, literary */
+/* Writing — very faint warm tint */
 .nav-card--writing {
-  --nc-accent: rgb(155,100,28);
-  --nc-accent-lt: rgb(200,148,60);
-  --nc-accent-muted: rgba(155,100,28,0.07);
-  --nc-accent-hover: rgba(155,100,28,0.13);
+  --nc-accent-muted: rgba(90,60,15,0.04);
+  --nc-accent-hover: rgba(90,60,15,0.08);
+  background: var(--nc-accent-muted);
 }
 .nav-card--writing:not(.wip):hover {
-  box-shadow: 0 12px 30px rgba(155,100,28,0.22), 0 2px 8px rgba(155,100,28,0.10);
-}
-.nav-card--writing:hover .nav-card__title {
-  transform: translateX(5px) skewX(-2deg);
+  box-shadow: 0 12px 30px rgba(46,85,56,0.18), 0 2px 8px rgba(46,85,56,0.08);
 }
 
-/* Performance — indigo/violet, BCI & neuroscience art */
+/* Performance — very faint cool tint */
 .nav-card--perf {
-  --nc-accent: rgb(82,58,148);
-  --nc-accent-lt: rgb(128,98,208);
-  --nc-accent-muted: rgba(82,58,148,0.07);
-  --nc-accent-hover: rgba(82,58,148,0.13);
+  --nc-accent-muted: rgba(50,40,80,0.04);
+  --nc-accent-hover: rgba(50,40,80,0.08);
+  background: var(--nc-accent-muted);
 }
 .nav-card--perf:not(.wip):hover {
-  box-shadow: 0 12px 30px rgba(82,58,148,0.26), 0 2px 8px rgba(82,58,148,0.12);
+  box-shadow: 0 12px 30px rgba(46,85,56,0.18), 0 2px 8px rgba(46,85,56,0.08);
 }
 
-/* Lab — electric cyan/teal, code & creativity */
+/* Lab — very faint teal tint */
 .nav-card--lab {
-  --nc-accent: rgb(22,130,140);
-  --nc-accent-lt: rgb(50,190,200);
-  --nc-accent-muted: rgba(22,130,140,0.08);
-  --nc-accent-hover: rgba(22,130,140,0.15);
+  --nc-accent-muted: rgba(15,80,90,0.05);
+  --nc-accent-hover: rgba(15,80,90,0.10);
+  background: var(--nc-accent-muted);
 }
 .nav-card--lab:not(.wip):hover {
-  box-shadow: 0 12px 30px rgba(22,130,140,0.26), 0 2px 8px rgba(22,130,140,0.12);
+  box-shadow: 0 12px 30px rgba(46,85,56,0.18), 0 2px 8px rgba(46,85,56,0.08);
 }
-/* Lab: scanline pulse suggesting digital energy */
+/* Lab: subtle scanline texture on hover */
 .nav-card--lab::before {
   content: '';
   position: absolute; inset: 0;
@@ -108,8 +99,8 @@ sitemap: true
     0deg,
     transparent,
     transparent 3px,
-    rgba(50,190,200,0.03) 3px,
-    rgba(50,190,200,0.03) 4px
+    rgba(46,85,56,0.025) 3px,
+    rgba(46,85,56,0.025) 4px
   );
   pointer-events: none; z-index: 0;
   opacity: 0; transition: opacity 0.4s ease;
