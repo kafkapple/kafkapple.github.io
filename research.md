@@ -7,6 +7,30 @@ permalink: /research/
 sitemap: true
 ---
 
+<style>
+.research-nav { display: flex; flex-wrap: wrap; gap: 0.55em; margin: 0.2em 0 1.8em 0; }
+.research-nav a {
+  display: inline-flex; align-items: center; gap: 0.35em;
+  padding: 0.38em 0.85em;
+  background: rgba(46,85,56,0.07); color: rgb(46,85,56);
+  border: 1px solid rgba(46,85,56,0.22); border-radius: 4px;
+  font-size: 0.86em; font-weight: 600; text-decoration: none;
+  transition: background 0.18s, border-color 0.18s, transform 0.12s;
+}
+.research-nav a:hover {
+  background: rgba(46,85,56,0.18); border-color: rgba(46,85,56,0.5);
+  transform: translateY(-1px); text-decoration: none;
+}
+</style>
+
+<nav class="research-nav">
+  <a href="https://scholar.google.com/citations?user=D_rZCWYAAAAJ">📄 Google Scholar</a>
+  <a href="/reading-list/">📚 Reading List</a>
+  <a href="/talks/">🎤 Talks</a>
+  <a href="/projects/">🔬 Projects</a>
+  <a href="/markdown-cv/">📋 CV</a>
+</nav>
+
 My work sits at the intersection of cognitive neuroscience and AI. The central question driving everything: what computational principles does biological intelligence use to generalize so gracefully, and can we build AI systems around those same principles?
 
 I approach this through a two-direction loop:
@@ -18,7 +42,7 @@ I approach this through a two-direction loop:
 
 Three ideas from neuroscience anchor everything I build:
 
-1. **Universal Reference Frames** — Abstract knowledge anchored to stable spatial representations (inspired by hippocampal grid cells). See [CLAY, CVPR 2026](https://sohwi-lim.github.io/CLAY/).
+1. **Universal Reference Frames** — Abstract knowledge anchored to stable spatial representations (inspired by hippocampal grid cells).
 2. **Predictive Modeling in Canonical Circuits** — World models learned through local prediction, mirroring cortical column computations.
 3. **Structure / Content Factorization** — Separating reusable structure (the "grammar") from variable content (the "words") to enable lifelong learning without catastrophic forgetting.
 
@@ -50,25 +74,4 @@ Social learning via inverse RL, multi-agent systems and theory of mind, sensorim
 
 ---
 
-## Current Work (2025–2026)
-
-**Postdoctoral Fellow, [AMILab](https://ami.kaist.ac.kr/), KAIST** — PI: Prof. Tae-Hyun Oh
-
-- **3D Behavioral Reconstruction**: Freely-moving animal pose estimation using multi-view geometry and 3D Gaussian Splatting. Scaling single-subject behavioral phenotyping to group-level analysis.
-- **Conditional Visual Similarity (CLAY)**: Modulating semantic similarity in VLM embedding space via conditioning signals. Accepted at **CVPR 2026**.
-- **MoE-PRM**: Mixture-of-Experts process reward models for metacognitive control — dynamic switching between fast and deliberate reasoning.
-
----
-
-## Featured Reading
-
-Papers I return to across my core themes. Full annotated list: [**Reading List →**](/reading-list/)
-
-- **World Models**: Hawkins et al., *A Thousand Brains*; LeCun, *A Path Towards Autonomous Machine Intelligence*
-- **Continual Learning**: McClelland et al., *CLS Theory*; Kirkpatrick et al., *EWC*
-- **Social Intelligence**: Dunbar, *The Social Brain Hypothesis*; Ziebart et al., *Maximum Entropy IRL*
-- **Object-Centric**: Locatello et al., *Slot Attention*; Greff et al., *Binding Problem*
-
----
-
-*Publications and CV: [Google Scholar](https://scholar.google.com/citations?user=D_rZCWYAAAAJ) · [markdown-cv](/markdown-cv/)*
+*Publications and CV: [Google Scholar](https://scholar.google.com/citations?user=D_rZCWYAAAAJ) · [CV](/markdown-cv/)*

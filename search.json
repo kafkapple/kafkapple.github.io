@@ -5,8 +5,10 @@ permalink: /search.json
 ---
 [
   {% assign search_items = site.posts | concat: site.pages | concat: site.projects %}
+  {% assign first_item = true %}
   {% for item in search_items %}
     {% if item.title and item.sitemap != false and item.search != false %}
+    {% unless first_item %},{% endunless %}
     {
       "title":    {{ item.title | jsonify }},
       "url":      {{ item.url | jsonify }},
@@ -14,7 +16,8 @@ permalink: /search.json
       "category": {{ item.categories | first | default: "page" | jsonify }},
       "tags":     {{ item.tags | jsonify }},
       "content":  {{ item.content | strip_html | strip_newlines | truncate: 1500 | jsonify }}
-    }{% if forloop.last == false %},{% endif %}
+    }
+    {% assign first_item = false %}
     {% endif %}
   {% endfor %}
 ]

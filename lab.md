@@ -40,6 +40,11 @@ redirect_from:
   .lab-ctrl-panel { width: 100%; }
 }
 
+/* ── Inline button row ── */
+.lab-inline-btns { display: flex; gap: 0.3em; flex-wrap: wrap; margin: 0.4em 0 0.3em; }
+/* ── Range slider ── */
+.lab-slider { width: 100%; accent-color: rgb(46,85,56); }
+
 /* ── Controls ── */
 .lab-ctrl-group { display: flex; flex-direction: column; gap: 0.28em; }
 .lab-label { font-size: 0.68em; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: rgba(110,190,135,0.7); }

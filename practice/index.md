@@ -10,11 +10,76 @@ redirect_from:
 sitemap: true
 ---
 
+<style>
+/* ── Creative cards: per-type color themes ── */
+
+/* Music — forest green + rhythmic shimmer */
+.nav-card--music {
+  --nc-accent: rgb(46,85,56);
+  --nc-accent-lt: rgb(80,150,100);
+  --nc-accent-muted: rgba(46,85,56,0.10);
+  --nc-accent-hover: rgba(46,85,56,0.19);
+}
+/* Override the featured card's rotating radial with a horizontal shimmer */
+.nav-card--music::before {
+  top: 0 !important; left: 0 !important;
+  width: 100% !important; height: 100% !important;
+  background: linear-gradient(105deg,
+    transparent 28%, rgba(80,150,100,0.10) 50%, transparent 72%
+  ) !important;
+  background-size: 300% 100% !important;
+  animation: music-shimmer 5s linear infinite !important;
+}
+@keyframes music-shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -100% 0; }
+}
+.nav-card--music:not(.wip):hover {
+  box-shadow: 0 14px 32px rgba(46,85,56,0.22), 0 3px 8px rgba(46,85,56,0.10);
+}
+
+/* Writing — warm amber, literary & humanistic */
+.nav-card--writing {
+  --nc-accent: rgb(155,100,28);
+  --nc-accent-lt: rgb(200,148,60);
+  --nc-accent-muted: rgba(155,100,28,0.07);
+  --nc-accent-hover: rgba(155,100,28,0.13);
+}
+.nav-card--writing:not(.wip):hover {
+  box-shadow: 0 10px 28px rgba(155,100,28,0.20), 0 2px 6px rgba(155,100,28,0.09);
+}
+.nav-card--writing:hover .nav-card__title {
+  transform: translateX(5px) skewX(-2deg);
+}
+
+/* Performance — indigo/violet, BCI & neuroscience art */
+.nav-card--perf {
+  --nc-accent: rgb(82,58,148);
+  --nc-accent-lt: rgb(128,98,208);
+  --nc-accent-muted: rgba(82,58,148,0.07);
+  --nc-accent-hover: rgba(82,58,148,0.13);
+}
+.nav-card--perf:not(.wip):hover {
+  box-shadow: 0 10px 28px rgba(82,58,148,0.24), 0 2px 6px rgba(82,58,148,0.10);
+}
+/* Radial glow from top-right corner on hover */
+.nav-card--perf::before {
+  content: '';
+  position: absolute; top: -20px; right: -20px;
+  width: 140px; height: 140px;
+  background: radial-gradient(circle, rgba(128,98,208,0.18) 0%, transparent 68%);
+  pointer-events: none; opacity: 0;
+  transition: opacity 0.45s ease;
+  z-index: 0;
+}
+.nav-card--perf:hover::before { opacity: 1; }
+</style>
+
 <p class="nav-principles">Active practice</p>
 
 <nav class="nav-cards-grid">
 
-<a class="nav-card nav-card--featured" href="#music">
+<a class="nav-card nav-card--featured nav-card--music" href="#music">
 <span class="nav-card__principle">Performance</span>
 <p class="nav-card__title">Music</p>
 <p class="nav-card__desc">Three bands across screamo, metalcore, and experimental post-rock — bass, guitar, and guest performance spanning 2007 to present.</p>
@@ -22,7 +87,7 @@ sitemap: true
 <span class="nav-card__arrow">↓</span>
 </a>
 
-<a class="nav-card" href="#writing">
+<a class="nav-card nav-card--writing" href="#writing">
 <span class="nav-card__principle">Language</span>
 <p class="nav-card__title">Writing</p>
 <p class="nav-card__desc">Science translation and literary criticism — communicating neuroscience across registers.</p>
@@ -30,7 +95,7 @@ sitemap: true
 <span class="nav-card__arrow">↓</span>
 </a>
 
-<a class="nav-card" href="#performance">
+<a class="nav-card nav-card--perf" href="#performance">
 <span class="nav-card__principle">System</span>
 <p class="nav-card__title">Performance</p>
 <p class="nav-card__desc">Interdisciplinary work at the intersection of art, neuroscience, and embodied cognition.</p>
