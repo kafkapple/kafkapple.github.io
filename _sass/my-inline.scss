@@ -152,41 +152,58 @@ html.dark-mode a:hover, html[hy-mode="dark"] a:hover, html[data-theme="dark"] a:
 }
 
 // ── Sidebar menu group separators ────────────────────────────────────────────
-// Visual rule before "Creative" (Creative & Personal group)
-.nav-item > a[href="/practice/"] {
-  margin-top: 0.7em !important;
-  padding-top: 0.7em !important;
-  border-top: 1px solid rgba(255,255,255,0.22) !important;
+// Visual rule before "Research" (Intellect group)
+.sidebar-nav-item[href="/research/"] {
+  margin-top: 0.5em !important;
+  padding-top: 0.5em !important;
+  border-top: 1px solid rgba(255,255,255,0.15) !important;
 }
 
-// Visual rule before "TIL" (Notes group)
-.nav-item > a[href="/til/"] {
-  margin-top: 0.7em !important;
-  padding-top: 0.7em !important;
-  border-top: 1px solid rgba(255,255,255,0.22) !important;
-}
-
-// Group label above each section
-.nav-item > a[href="/practice/"]::before {
-  content: "Creative & Personal";
+.sidebar-nav-item[href="/research/"]::before {
+  content: "Intellect";
   display: block;
-  font-size: 0.6em;
-  opacity: 0.55;
+  font-size: 0.65em;
+  opacity: 0.45;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-bottom: 0.3em;
-  font-weight: 600;
+  letter-spacing: 0.12em;
+  margin-bottom: 0.25em;
+  font-weight: 700;
 }
 
-.nav-item > a[href="/til/"]::before {
-  content: "Notes & Search";
+// Visual rule before "TIL" (Logs group)
+.sidebar-nav-item[href="/til/"] {
+  margin-top: 0.8em !important;
+  padding-top: 0.8em !important;
+  border-top: 1px solid rgba(255,255,255,0.15) !important;
+}
+
+.sidebar-nav-item[href="/til/"]::before {
+  content: "Logs";
   display: block;
-  font-size: 0.6em;
-  opacity: 0.55;
+  font-size: 0.65em;
+  opacity: 0.45;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-bottom: 0.3em;
-  font-weight: 600;
+  letter-spacing: 0.12em;
+  margin-bottom: 0.25em;
+  font-weight: 700;
+}
+
+// Visual rule before "Creative" (Creative group)
+.sidebar-nav-item[href="/practice/"] {
+  margin-top: 0.8em !important;
+  padding-top: 0.8em !important;
+  border-top: 1px solid rgba(255,255,255,0.15) !important;
+}
+
+.sidebar-nav-item[href="/practice/"]::before {
+  content: "Creative";
+  display: block;
+  font-size: 0.65em;
+  opacity: 0.45;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 0.25em;
+  font-weight: 700;
 }
 
 // ── Design System (design_config.yml driven) ─────────────────────────────────
@@ -208,6 +225,42 @@ h1.page-title {
   font-size: #{"clamp(1.55rem, 1.2rem + 1.8vw, 2.5rem)"};
   letter-spacing: -0.02em;
   line-height: 1.15;
+}
+
+// ── Nav Card Enhancements ──────────────────────────────────────────────────
+.nav-card {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+}
+.nav-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+}
+
+// Featured card (Lab) pulsing animation
+@keyframes nav-card-pulse {
+  0% { border-color: rgba(46,85,56,0.3); box-shadow: 0 0 0 0 rgba(46,85,56,0.2); }
+  50% { border-color: rgba(46,85,56,0.8); box-shadow: 0 0 20px 5px rgba(46,85,56,0.15); }
+  100% { border-color: rgba(46,85,56,0.3); box-shadow: 0 0 0 0 rgba(46,85,56,0.2); }
+}
+
+.nav-card--featured {
+  position: relative;
+  overflow: hidden;
+  animation: nav-card-pulse 3s infinite ease-in-out;
+}
+
+.nav-card--featured::before {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%; width: 200%; height: 200%;
+  background: radial-gradient(circle, rgba(46,85,56,0.05) 0%, transparent 70%);
+  animation: nav-card-rotate 10s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes nav-card-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 // ── Lab Card Hover Glow ───────────────────────────────────────────────────────
@@ -353,8 +406,8 @@ html[data-theme="dark"] #design-spotlight {
   width: 0%;
   background: linear-gradient(
     90deg,
-    rgb(var(--glow-rgb)),
-    rgba(var(--glow-rgb), 0.4)
+    rgba(46, 85, 56, 1),
+    rgba(46, 85, 56, 0.4)
   );
   z-index: 9998;
   transition: width 80ms linear;
@@ -365,8 +418,8 @@ html.dark-mode #reading-progress-bar,
 html[data-theme="dark"] #reading-progress-bar {
   background: linear-gradient(
     90deg,
-    rgb(var(--glow-light-rgb)),
-    rgba(var(--glow-light-rgb), 0.4)
+    rgba(110, 190, 135, 1),
+    rgba(110, 190, 135, 0.4)
   );
 }
 

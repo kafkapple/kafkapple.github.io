@@ -4,14 +4,17 @@ sitemap: false
 permalink: /search.json
 ---
 [
-  {% for post in site.posts %}
+  {% assign search_items = site.posts | concat: site.pages | concat: site.projects %}
+  {% for item in search_items %}
+    {% if item.title and item.sitemap != false and item.search != false %}
     {
-      "title":    {{ post.title | jsonify }},
-      "url":      {{ post.url | jsonify }},
-      "date":     {{ post.date | date: "%Y-%m-%d" | jsonify }},
-      "category": {{ post.categories | first | default: "post" | jsonify }},
-      "tags":     {{ post.tags | jsonify }},
-      "content":  {{ post.content | strip_html | strip_newlines | truncate: 2000 | jsonify }}
-    }{% unless forloop.last %},{% endunless %}
+      "title":    {{ item.title | jsonify }},
+      "url":      {{ item.url | jsonify }},
+      "date":     {{ item.date | date: "%Y-%m-%d" | jsonify }},
+      "category": {{ item.categories | first | default: "page" | jsonify }},
+      "tags":     {{ item.tags | jsonify }},
+      "content":  {{ item.content | strip_html | strip_newlines | truncate: 1500 | jsonify }}
+    }{% if forloop.last == false %},{% endif %}
+    {% endif %}
   {% endfor %}
 ]

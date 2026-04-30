@@ -1,0 +1,207 @@
+<!-- Global Floating UI: Search & MoC (Table of Contents) -->
+
+<style>
+/* ── FAB Container ── */
+#floating-ui-wrap {
+  position: fixed; bottom: 1.5em; right: 1.5em; z-index: 9000;
+  display: flex; flex-direction: column; align-items: flex-end; gap: 0.6em;
+}
+
+/* ── FAB Base ── */
+.fab-btn {
+  width: 2.8em; height: 2.8em; border-radius: 50%;
+  border: 1.5px solid rgba(46,85,56,0.5);
+  background: rgba(46,85,56,0.88); color: #fff;
+  font-size: 1.1em; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transition: background 0.2s, transform 0.15s, opacity 0.2s;
+  backdrop-filter: blur(8px);
+}
+.fab-btn:hover { background: rgb(46,85,56); transform: scale(1.08); }
+.fab-btn svg { width: 1.2em; height: 1.2em; fill: currentColor; }
+
+/* ── Search Modal ── */
+#search-overlay {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.85); backdrop-filter: blur(5px);
+  z-index: 10000; display: none; align-items: flex-start; justify-content: center;
+  padding: 10vh 5% 5vh;
+}
+#search-modal {
+  width: 100%; max-width: 700px; background: #fff; border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5); overflow: hidden;
+  display: flex; flex-direction: column; max-height: 80vh;
+}
+#search-input-wrap { padding: 1.2em; border-bottom: 1px solid #eee; display: flex; align-items: center; gap: 0.8em; }
+#search-input { flex: 1; border: none; font-size: 1.2em; outline: none; background: transparent; }
+#search-results-wrap { flex: 1; overflow-y: auto; padding: 0 1.2em 1.2em; }
+.search-hit { padding: 1em 0; border-bottom: 1px solid #f5f5f5; }
+.search-hit:last-child { border-bottom: none; }
+.search-hit a { font-weight: 600; color: #2e5538; text-decoration: none; }
+.search-hit small { color: #888; font-size: 0.85em; }
+.search-hit .snippet { font-size: 0.9em; color: #555; margin-top: 0.3em; }
+
+/* ── MoC Menu ── */
+#moc-menu {
+  display: none; flex-direction: column; gap: 0.3em; align-items: flex-end;
+  margin-bottom: 0.4em; max-height: 60vh; overflow-y: auto;
+  padding-right: 0.2em;
+}
+.moc-link {
+  font-size: 0.75em; font-family: monospace; font-weight: 700;
+  letter-spacing: 0.05em; text-transform: uppercase;
+  padding: 0.4em 0.8em;
+  background: rgba(46,85,56,0.92); color: rgba(200,240,210,0.95);
+  border: 1px solid rgba(46,85,56,0.4);
+  border-radius: 4px; text-decoration: none !important;
+  backdrop-filter: blur(10px);
+  display: block; white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  transition: background 150ms, color 150ms;
+}
+.moc-link:hover { background: #2e5538; color: #fff; }
+.moc-link.h3 { font-size: 0.68em; opacity: 0.9; margin-right: 0.8em; }
+
+@media (max-width: 767px) {
+  #floating-ui-wrap { bottom: 1em; right: 1em; }
+  .fab-btn { width: 2.5em; height: 2.5em; font-size: 1em; }
+}
+</style>
+
+<div id="floating-ui-wrap">
+  <!-- MoC -->
+  <div id="moc-menu"></div>
+  <button id="moc-fab" class="fab-btn" title="Table of Contents" style="display:none;">
+    <svg viewBox="0 0 24 24"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10V7h2v2h-2zm0 6h2v-2h-2v2z"/></svg>
+  </button>
+
+  <!-- Search -->
+  <button id="search-fab" class="fab-btn" title="Search Site">
+    <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+  </button>
+</div>
+
+<!-- Search Overlay -->
+<div id="search-overlay">
+  <div id="search-modal">
+    <div id="search-input-wrap">
+      <svg width="20" height="20" fill="#888" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+      <input type="text" id="search-input" placeholder="Type to search..." autocomplete="off">
+      <button id="search-close" style="background:none;border:none;font-size:1.5em;cursor:pointer;color:#888;">&times;</button>
+    </div>
+    <div id="search-results-wrap"></div>
+  </div>
+</div>
+
+<script src="https://unpkg.com/lunr@2.3.9/lunr.min.js"></script>
+<script>
+(function () {
+  // ── Global State & Init ──
+  var searchIdx = null, searchDocs = [];
+  var searchFab = document.getElementById('search-fab');
+  var searchOverlay = document.getElementById('search-overlay');
+  var searchInput = document.getElementById('search-input');
+  var searchResults = document.getElementById('search-results-wrap');
+  var searchClose = document.getElementById('search-close');
+
+  var mocFab = document.getElementById('moc-fab');
+  var mocMenu = document.getElementById('moc-menu');
+
+  function init() {
+    setupSearch();
+    setupMoC();
+  }
+
+  // ── Search Logic ──
+  function setupSearch() {
+    if (!searchFab) return;
+    searchFab.onclick = function() {
+      searchOverlay.style.display = 'flex';
+      searchInput.focus();
+      if (!searchIdx) loadSearchIndex();
+    };
+    searchClose.onclick = function() { searchOverlay.style.display = 'none'; };
+    searchOverlay.onclick = function(e) { if (e.target === searchOverlay) searchOverlay.style.display = 'none'; };
+
+    searchInput.oninput = function() {
+      var q = searchInput.value.trim();
+      if (!searchIdx || q.length < 2) { searchResults.innerHTML = ''; return; }
+      try {
+        var hits = searchIdx.search(q + '*');
+        renderSearch(hits);
+      } catch (e) {}
+    };
+  }
+
+  function loadSearchIndex() {
+    fetch('/search.json').then(r => r.json()).then(data => {
+      searchDocs = data;
+      searchIdx = lunr(function () {
+        this.ref('url'); this.field('title', { boost: 10 }); this.field('content');
+        data.forEach(d => this.add(d), this);
+      });
+    });
+  }
+
+  function renderSearch(hits) {
+    searchResults.innerHTML = hits.length ? '' : '<div style="padding:1em;color:#888;">No results found.</div>';
+    hits.slice(0, 20).forEach(h => {
+      var d = searchDocs.find(x => x.url === h.ref);
+      if (!d) return;
+      var div = document.createElement('div');
+      div.className = 'search-hit';
+      div.innerHTML = `<a href="${d.url}">${d.title}</a> <small>${d.date || ''}</small>` +
+                      `<div class="snippet">${(d.content || '').substring(0, 140)}...</div>`;
+      searchResults.appendChild(div);
+    });
+  }
+
+  // ── MoC Logic ──
+  function setupMoC() {
+    if (!mocFab) return;
+    var headers = Array.from(document.querySelectorAll('main h2, main h3'));
+    if (headers.length < 2) { mocFab.style.display = 'none'; return; }
+
+    mocFab.style.display = 'flex';
+    mocMenu.innerHTML = '';
+    headers.forEach((h, i) => {
+      if (!h.id) h.id = 'h-' + i;
+      var a = document.createElement('a');
+      a.href = '#' + h.id;
+      a.className = 'moc-link' + (h.tagName === 'H3' ? ' h3' : '');
+      a.textContent = h.textContent.replace(' Permalink', '').trim();
+      a.onclick = () => { mocMenu.style.display = 'none'; mocFab.textContent = ''; mocFab.appendChild(tocIcon()); };
+      mocMenu.appendChild(a);
+    });
+
+    var open = false;
+    function tocIcon() {
+      var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      svg.setAttribute("viewBox", "0 0 24 24");
+      svg.innerHTML = '<path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10V7h2v2h-2zm0 6h2v-2h-2v2z"/>';
+      return svg;
+    }
+    function closeIcon() {
+      var span = document.createElement('span');
+      span.textContent = '✕';
+      return span;
+    }
+
+    mocFab.onclick = (e) => {
+      e.stopPropagation();
+      open = !open;
+      mocMenu.style.display = open ? 'flex' : 'none';
+      mocFab.innerHTML = '';
+      mocFab.appendChild(open ? closeIcon() : tocIcon());
+    };
+    document.addEventListener('click', () => {
+      if (open) { open = false; mocMenu.style.display = 'none'; mocFab.innerHTML = ''; mocFab.appendChild(tocIcon()); }
+    });
+  }
+
+  init();
+  var _ps = document.getElementById('_pushState');
+  if (_ps) _ps.addEventListener('hy-push-state-after', init);
+})();
+</script>

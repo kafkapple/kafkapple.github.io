@@ -200,55 +200,75 @@ Example code for using Matamo as alternative analytics solution.
     var jsonEl = document.getElementById('til-dates-json');
     if (!jsonEl) return;
     var dates;
-    try { dates = JSON.parse(jsonEl.textContent); } catch (e) { return; }
+    try { dates = JSON.parse(jsonEl.textContent); } catch (e) {
+      statsEl.textContent = 'Error parsing TIL data.';
+      return;
+    }
     var hmap = document.getElementById('til-heatmap');
     var mstats = document.getElementById('til-month-stats');
     if (!hmap || !mstats) return;
-    if (!dates.length) { statsEl.textContent = '아직 TIL 포스트가 없습니다.'; return; }
+    if (!dates.length) {
+      statsEl.textContent = 'No TIL posts yet.';
+      return;
+    }
+
     var byDate = {}, byMonth = {}, byYear = {};
     dates.forEach(function (d) {
       byDate[d] = (byDate[d] || 0) + 1;
-      byMonth[d.substring(0, 7)] = (byMonth[d.substring(0, 7)] || 0) + 1;
-      byYear[d.substring(0, 4)] = (byYear[d.substring(0, 4)] || 0) + 1;
+      var m = d.substring(0, 7);
+      var y = d.substring(0, 4);
+      byMonth[m] = (byMonth[m] || 0) + 1;
+      byYear[y] = (byYear[y] || 0) + 1;
     });
+
     var sorted = dates.slice().sort();
+    var totalNotes = dates.length;
     var totalDays = Object.keys(byDate).length;
     statsEl.innerHTML =
-      '총 <strong>' + dates.length + '</strong>개 · 작성한 날 <strong>' + totalDays + '</strong>일 · ' +
-      '기간 <strong>' + sorted[0] + ' ~ ' + sorted[sorted.length - 1] + '</strong>';
+      'Total <strong>' + totalNotes + '</strong> notes · <strong>' + totalDays + '</strong> days active · ' +
+      'Period: <strong>' + sorted[0] + ' ~ ' + sorted[sorted.length - 1] + '</strong>';
+
+    var lastDateInDocs = new Date(sorted[sorted.length - 1]);
     var today = new Date();
+    var referenceDate = lastDateInDocs > today ? lastDateInDocs : today;
+
     var rows = ['', '', '', '', '', '', ''];
-    var dayNames = ['일', '월', '화', '수', '목', '금', '토'];
+    var dayLabels = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
     for (var w = 52; w >= 0; w--) {
       for (var d = 0; d < 7; d++) {
-        var date = new Date(today);
-        date.setDate(today.getDate() - (w * 7) - (today.getDay() - d));
+        var date = new Date(referenceDate);
+        date.setDate(referenceDate.getDate() - (w * 7) - (referenceDate.getDay() - d));
         var key = date.toISOString().substring(0, 10);
-        var c = byDate[key] || 0;
-        var sym = c === 0 ? '⬜' : c === 1 ? '🟩' : c === 2 ? '🟢' : c === 3 ? '💚' : '🌳';
+        var count = byDate[key] || 0;
+        var sym = count === 0 ? '⬜' : count === 1 ? '🟩' : count === 2 ? '🟢' : count === 3 ? '💚' : '🌳';
         rows[d] += sym;
       }
     }
+
     hmap.innerHTML = rows.map(function (r, i) {
-      return '<div>' + dayNames[i] + ' ' + r + '</div>';
+      return '<div style="white-space:nowrap;"><span style="display:inline-block;width:2.5em;color:#aaa;">' + dayLabels[i] + '</span> ' + r + '</div>';
     }).join('') +
-      '<div style="margin-top:0.5em;color:#666;">⬜ 0 · 🟩 1 · 🟢 2 · 💚 3 · 🌳 4+ 노트/일</div>';
-    var months = Object.keys(byMonth).sort();
+      '<div style="margin-top:0.8em;color:#888;font-size:0.85em;">⬜ 0 · 🟩 1 · 🟢 2 · 💚 3 · 🌳 4+ notes/day</div>';
+
+    var months = Object.keys(byMonth).sort().reverse().slice(0, 12).reverse();
     var maxMonth = Math.max.apply(null, Object.values(byMonth));
     var monthRows = months.map(function (m) {
       var n = byMonth[m];
-      var bar = '█'.repeat(Math.max(1, Math.round(n / maxMonth * 30)));
-      return '<tr><td style="padding-right:1em;">' + m + '</td>' +
-             '<td style="font-family:monospace;color:#36649B;">' + bar + '</td>' +
-             '<td style="padding-left:0.5em;">' + n + '</td></tr>';
+      var barWidth = Math.max(1, Math.round(n / maxMonth * 30));
+      var bar = '█'.repeat(barWidth);
+      return '<tr><td style="padding-right:1em;color:#666;">' + m + '</td>' +
+             '<td style="font-family:monospace;color:rgb(46,85,56);">' + bar + '</td>' +
+             '<td style="padding-left:0.5em;font-weight:600;">' + n + '</td></tr>';
     }).join('');
+
     var years = Object.keys(byYear).sort().reverse();
     mstats.innerHTML =
-      '<details open><summary style="font-weight:600;cursor:pointer;">📅 월별 누적</summary>' +
-      '<table style="border-collapse:collapse;margin-top:0.5em;">' + monthRows + '</table></details>' +
-      '<details><summary style="font-weight:600;cursor:pointer;margin-top:0.6em;">📆 연도별 합계</summary>' +
+      '<details open><summary style="font-weight:600;cursor:pointer;color:rgb(46,85,56);">📅 Monthly Activity (Last 12m)</summary>' +
+      '<table style="border-collapse:collapse;margin-top:0.5em;font-size:0.95em;">' + monthRows + '</table></details>' +
+      '<details style="margin-top:0.6em;"><summary style="font-weight:600;cursor:pointer;color:rgb(46,85,56);">📆 Yearly Totals</summary>' +
       '<ul style="margin:0.4em 0 0 1em;">' +
-      years.map(function (y) { return '<li>' + y + ': <strong>' + byYear[y] + '</strong>개</li>'; }).join('') +
+      years.map(function (y) { return '<li>' + y + ': <strong>' + byYear[y] + '</strong> notes</li>'; }).join('') +
       '</ul></details>';
   }
   if (document.readyState === 'loading') {
@@ -258,3 +278,5 @@ Example code for using Matamo as alternative analytics solution.
   if (_ps2) _ps2.addEventListener('hy-push-state-after', renderTilStats);
 })();
 </script>
+
+{% include floating-ui.html %}
