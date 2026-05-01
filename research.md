@@ -55,9 +55,9 @@ These principles map onto a modular hierarchy:
 | Stage | Name | Function |
 |-------|------|----------|
 | I | Object-Centric Perception | Grounded object representations via Slot Attention + grid-cell reference frames |
-| II | Predictive Abstraction | JEPA-style prediction → discrete symbol conversion |
+| II | Predictive Abstraction | JEPA (Joint Embedding Predictive Architecture)-style prediction → discrete symbol conversion |
 | III | Semantic Consolidation | Episodic → semantic knowledge integration (CLS theory) |
-| IV | Metacognitive Control | MoE-PRM: dynamic routing between System 1 intuition and System 2 reasoning |
+| IV | Metacognitive Control | MoE-PRM (Mixture-of-Experts Process Reward Model): dynamic routing between System 1 intuition and System 2 reasoning |
 
 ---
 
