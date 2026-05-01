@@ -270,8 +270,11 @@ Experiments in creative coding, generative systems, and browser-native interacti
   <button id="vf-sink" class="lab-btn">Sink</button>
   <button id="vf-source" class="lab-btn">Source</button>
   <button id="vf-saddle" class="lab-btn">Saddle</button>
+  <button id="vf-wave" class="lab-btn">Wave</button>
+  <button id="vf-pause" class="lab-btn">Pause</button>
+  <button id="vf-heatmap" class="lab-btn">Heatmap: OFF</button>
 </div>
-<p class="interest-desc">Grid of arrows showing 2D vector field dynamics. <em>Planned:</em> live drag for source position, time-varying mix.</p>
+<p class="interest-desc">2D vector field with arrows and tracer particles. Drag on canvas to reposition the source point. Heatmap shows field magnitude.</p>
 </div>
 
 <div class="interest-item" id="lorenz-attractor-demo">
