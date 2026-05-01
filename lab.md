@@ -283,7 +283,12 @@ Experiments in creative coding, generative systems, and browser-native interacti
 <div class="interest-item" id="fractal-explorer">
 <p class="interest-title">Fractal Dynamics <span class="interest-tag">math</span><span class="interest-tag">complex</span></p>
 <canvas id="fractal-canvas" class="lab-canvas" width="640" height="240"></canvas>
-<p class="interest-desc">Interactive Julia Set explorer. Move mouse to shift the complex constant <em>c</em>. <em>Planned:</em> auto-orbit + zoom dial.</p>
+<div class="lab-inline-btns">
+  <button id="fractal-mode-btn" class="lab-btn">Julia</button>
+  <button id="fractal-orbit-btn" class="lab-btn">Orbit: ON</button>
+  <button id="fractal-reset-btn" class="lab-btn">Reset Zoom</button>
+</div>
+<p class="interest-desc">Julia/Mandelbrot explorer. Orbit animates <em>c</em> through parameter space (Lissajous path). Scroll to zoom. Disable Orbit to steer <em>c</em> with mouse.</p>
 </div>
 
 <div class="interest-item" id="fourier-nn-viz">
