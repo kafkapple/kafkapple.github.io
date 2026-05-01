@@ -135,53 +135,53 @@ sitemap: true
 .rl-status-badge { font-weight: 600; font-size: 0.82em; }
 </style>
 
-<div id="rl-stats">로딩 중...</div>
+<div id="rl-stats">Loading...</div>
 
 <div class="rl-toolbar">
-  <button class="rl-view-btn" data-view="card">🃏 카드</button>
-  <button class="rl-view-btn" data-view="table">📊 테이블</button>
+  <button class="rl-view-btn" data-view="card">🃏 Cards</button>
+  <button class="rl-view-btn" data-view="table">📊 Table</button>
 
   <select id="rl-filter-theme">
-    <option value="all">모든 테마</option>
+    <option value="all">All themes</option>
   </select>
 
   <select id="rl-filter-status">
-    <option value="all">모든 상태</option>
-    <option value="to-read">읽을 예정</option>
-    <option value="reading">읽는 중</option>
-    <option value="done">완독</option>
+    <option value="all">All statuses</option>
+    <option value="to-read">To read</option>
+    <option value="reading">Reading</option>
+    <option value="done">Done</option>
   </select>
 
   <select id="rl-filter-stars">
-    <option value="0">모든 별점</option>
-    <option value="5">★★★★★ 만</option>
-    <option value="4">★★★★ 이상</option>
-    <option value="3">★★★ 이상</option>
+    <option value="0">All ratings</option>
+    <option value="5">★★★★★ only</option>
+    <option value="4">★★★★ and above</option>
+    <option value="3">★★★ and above</option>
   </select>
 
   <select id="rl-filter-year">
-    <option value="all">모든 연도</option>
+    <option value="all">All years</option>
   </select>
 
   <div id="rl-sort-wrap">
     <select id="rl-sort">
-      <option value="priority-desc">별점 높은순</option>
-      <option value="priority-asc">별점 낮은순</option>
-      <option value="year-desc">연도 최신순</option>
-      <option value="year-asc">연도 오래된순</option>
-      <option value="title-asc">제목 가나다순</option>
-      <option value="author-asc">저자 가나다순</option>
-      <option value="status-asc">상태순</option>
+      <option value="title-asc">Title (A-Z)</option>
+      <option value="author-asc">Author (A-Z)</option>
+      <option value="priority-desc">Rating (high-low)</option>
+      <option value="priority-asc">Rating (low-high)</option>
+      <option value="year-desc">Year (newest)</option>
+      <option value="year-asc">Year (oldest)</option>
+      <option value="status-asc">Status</option>
     </select>
   </div>
 
-  <input type="text" id="rl-search" placeholder="제목 · 저자 · 태그 검색…">
+  <input type="text" id="rl-search" placeholder="Search title · author · tag…">
 
   <span class="rl-count" id="rl-count"></span>
 </div>
 
 <div id="rl-container">
-  <p style="opacity:0.5;text-align:center;padding:2em">데이터를 불러오는 중...</p>
+  <p style="opacity:0.5;text-align:center;padding:2em">Loading data...</p>
 </div>
 
 <script src="/assets/js/reading-list.js"></script>

@@ -19,7 +19,7 @@
     status:  lsGet("status", "all"),
     stars:   lsGet("stars",  "0"),
     year:    lsGet("year",   "all"),
-    sort:    lsGet("sort",   "priority-desc"),
+    sort:    lsGet("sort",   "title-asc"),
     query:   "",
   };
 
@@ -38,7 +38,7 @@
   // ── Helpers ────────────────────────────────────────────────────────────────
   function stars(n) { return "★".repeat(n) + "☆".repeat(Math.max(0, 5 - n)); }
 
-  const STATUS_LABEL = { "to-read": "읽을 예정", reading: "읽는 중", done: "완독", "in-progress": "읽는 중", skipped: "보류" };
+  const STATUS_LABEL = { "to-read": "To read", reading: "Reading", done: "Done", "in-progress": "In progress", skipped: "Skipped" };
   const STATUS_COLOR = { "to-read": "#888", reading: "#FFD700", done: "#4CAF50", "in-progress": "#FFD700", skipped: "#9E9E9E" };
 
   function applyFilters(items) {
@@ -76,7 +76,7 @@
     renderStats();
     renderToolbar();
     const filtered = applySortKey(applyFilters(allItems));
-    document.getElementById("rl-count").textContent = `${filtered.length} / ${allItems.length}건`;
+    document.getElementById("rl-count").textContent = `${filtered.length} / ${allItems.length} items`;
     if (state.view === "table") renderTable(filtered);
     else renderCards(filtered);
   }
@@ -88,10 +88,10 @@
     const bar = `<div style="background:#e0e0e0;border-radius:4px;height:6px;width:120px;display:inline-block;vertical-align:middle">
       <div style="width:${pct}%;background:#4CAF50;height:100%;border-radius:4px"></div></div>`;
     el.innerHTML = `
-      <span class="rl-stat">전체 <strong>${meta.total}</strong></span>
-      <span class="rl-stat">완독 <strong style="color:#4CAF50">${meta.done}</strong></span>
-      <span class="rl-stat">읽는중 <strong style="color:#FFD700">${meta.reading}</strong></span>
-      <span class="rl-stat">완독율 ${bar} <strong>${pct}%</strong></span>`;
+      <span class="rl-stat">Total <strong>${meta.total}</strong></span>
+      <span class="rl-stat">Done <strong style="color:#4CAF50">${meta.done}</strong></span>
+      <span class="rl-stat">Reading <strong style="color:#FFD700">${meta.reading}</strong></span>
+      <span class="rl-stat">Progress ${bar} <strong>${pct}%</strong></span>`;
   }
 
   function renderToolbar() {
@@ -146,7 +146,7 @@
     if (tableEl) tableEl.style.display = "none";
 
     if (!items.length) {
-      container.innerHTML = '<p style="opacity:0.5;text-align:center;padding:2em">결과 없음</p>';
+      container.innerHTML = '<p style="opacity:0.5;text-align:center;padding:2em">No results</p>';
       return;
     }
 
@@ -163,7 +163,7 @@
 
       const h = document.createElement("h3");
       h.className = "rl-theme-heading";
-      h.textContent = theme || "기타";
+      h.textContent = theme || "Other";
       section.appendChild(h);
 
       const grid = document.createElement("div");
@@ -203,11 +203,11 @@
 
   const TABLE_COLS = [
     { label: "⭐", key: "priority",     width: "50px"  },
-    { label: "제목", key: "title",      width: null    },
-    { label: "연도", key: "year",       width: "58px"  },
-    { label: "저자", key: "author",     width: "110px" },
-    { label: "태그", key: null,         width: "100px" },
-    { label: "상태", key: "status",     width: "80px"  },
+    { label: "Title", key: "title",      width: null    },
+    { label: "Year", key: "year",       width: "58px"  },
+    { label: "Author", key: "author",     width: "110px" },
+    { label: "Tags", key: null,         width: "100px" },
+    { label: "Status", key: "status",     width: "80px"  },
   ];
 
   function renderTable(items) {
@@ -235,7 +235,7 @@
       if (col.width) th.style.width = col.width;
       if (col.key) {
         th.style.cursor = "pointer";
-        th.title = "클릭하여 정렬";
+        th.title = "Click to sort";
         const isActive = tableSort.key === col.key ||
           (col.key === "author" && tableSort.key === "author") ||
           (col.key === "priority" && tableSort.key === "priority");
@@ -262,7 +262,7 @@
       const row = tbody.insertRow();
       const cell = row.insertCell();
       cell.colSpan = TABLE_COLS.length;
-      cell.textContent = "결과 없음";
+      cell.textContent = "No results";
       cell.style.textAlign = "center";
       cell.style.padding = "2em";
     } else {
@@ -361,7 +361,7 @@
       })
       .catch(err => {
         const el = document.getElementById("rl-container");
-        if (el) el.innerHTML = `<p style="color:red">데이터 로드 실패: ${err.message}</p>`;
+        if (el) el.innerHTML = `<p style="color:red">Data load failed: ${err.message}</p>`;
       });
   }
 

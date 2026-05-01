@@ -8,18 +8,18 @@
     "pct_done": 12
   },
   "themes": [
+    "Beyond Context Limits: Subconscious Threads for Long-Horizon Reasoning",
+    "Conditional Memory via Scalable Lookup (Engram)",
+    "Human-Inspired Episodic Memory for Infinite Context LLMs (EM-LLM)",
+    "Peripheral (관심 있으나 핵심 테마와 거리)",
+    "Reasoning by Superposition: Theory of Continuous CoT",
     "Theme 1: Foundations & Unifying Theories",
     "Theme 2: Representation & Neural Coding",
     "Theme 3: Learning & Memory",
     "Theme 4: Cognition & Decision-Making",
     "Theme 5: Developmental Learning & Embodied Intelligence",
     "Theme 6: Computational Neuroethology",
-    "Peripheral (관심 있으나 핵심 테마와 거리)",
-    "Conditional Memory via Scalable Lookup (Engram)",
-    "Human-Inspired Episodic Memory for Infinite Context LLMs (EM-LLM)",
-    "Beyond Context Limits: Subconscious Threads for Long-Horizon Reasoning",
-    "Training LLMs to Reason in Continuous Latent Space (Coconut)",
-    "Reasoning by Superposition: Theory of Continuous CoT"
+    "Training LLMs to Reason in Continuous Latent Space (Coconut)"
   ],
   "items": [
     {
@@ -334,7 +334,7 @@
       "publish": "auto",
       "done": false,
       "theme": "Theme 3: Learning & Memory",
-      "subtheme": "3a. Biological Memory: CLS, Engrams & Hippocampal Computation",
+      "subtheme": "3a. [Neuro] Biological Memory: CLS, Engrams & Hippocampal Computation",
       "domain": "📚 전체 목록"
     },
     {
@@ -359,7 +359,7 @@
       "publish": "auto",
       "done": false,
       "theme": "Theme 3: Learning & Memory",
-      "subtheme": "3a. Biological Memory: CLS, Engrams & Hippocampal Computation",
+      "subtheme": "3a. [Neuro] Biological Memory: CLS, Engrams & Hippocampal Computation",
       "domain": "📚 전체 목록"
     },
     {
@@ -383,7 +383,7 @@
       "publish": "auto",
       "done": false,
       "theme": "Theme 3: Learning & Memory",
-      "subtheme": "3a. Biological Memory: CLS, Engrams & Hippocampal Computation",
+      "subtheme": "3a. [Neuro] Biological Memory: CLS, Engrams & Hippocampal Computation",
       "domain": "📚 전체 목록"
     },
     {
@@ -407,7 +407,7 @@
       "publish": "auto",
       "done": false,
       "theme": "Theme 3: Learning & Memory",
-      "subtheme": "3b. AI Memory Architectures",
+      "subtheme": "3b. [AI] Memory Architectures (LLM·Agent·SSM)",
       "domain": "📚 전체 목록"
     },
     {
@@ -431,7 +431,7 @@
       "publish": "auto",
       "done": false,
       "theme": "Theme 3: Learning & Memory",
-      "subtheme": "3b. AI Memory Architectures",
+      "subtheme": "3b. [AI] Memory Architectures (LLM·Agent·SSM)",
       "domain": "📚 전체 목록"
     },
     {
@@ -455,7 +455,7 @@
       "publish": "auto",
       "done": false,
       "theme": "Theme 4: Cognition & Decision-Making",
-      "subtheme": "4a. Reasoning, Planning & Cognitive Control",
+      "subtheme": "4a. [AI] Reasoning, Planning & Cognitive Control",
       "domain": "📚 전체 목록"
     },
     {
@@ -479,7 +479,7 @@
       "publish": "auto",
       "done": false,
       "theme": "Theme 4: Cognition & Decision-Making",
-      "subtheme": "4a. Reasoning, Planning & Cognitive Control",
+      "subtheme": "4a. [AI] Reasoning, Planning & Cognitive Control",
       "domain": "📚 전체 목록"
     },
     {
@@ -504,7 +504,7 @@
       "publish": "auto",
       "done": false,
       "theme": "Theme 4: Cognition & Decision-Making",
-      "subtheme": "4b. Emotion & Affective Cognition",
+      "subtheme": "4b. [AI] Emotion & Affective Cognition",
       "domain": "📚 전체 목록"
     },
     {
@@ -522,14 +522,14 @@
       "stars": 5,
       "year": 2025,
       "first_author": "",
-      "memo": "Evanson et al. 7400+ electrode iEEG, 46 participants. Maps hierarchical language development from ages 2-5 to adulthood. (소속 기관: 프랑스 임상 신경과학 컨소시엄)",
+      "memo": "Evanson et al. 7400+ electrode iEEG, 46 participants. Hierarchical language development from ages 2-5 to adulthood. (French clinical neuroscience consortium)",
       "tldr": "",
       "citation": 8,
       "venue_tier": "?",
       "publish": "auto",
       "done": false,
       "theme": "Theme 5: Developmental Learning & Embodied Intelligence",
-      "subtheme": "5a. Developmental Learning & Social Intelligence",
+      "subtheme": "5a. [Neuro] Developmental Brain & Language",
       "domain": "📚 전체 목록"
     },
     {

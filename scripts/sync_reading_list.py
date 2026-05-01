@@ -137,7 +137,7 @@ def main():
 
     output = {
         "meta":   stats,
-        "themes": themes,
+        "themes": sorted(themes),  # alphabetical Theme order
         "items":  items,
     }
 
