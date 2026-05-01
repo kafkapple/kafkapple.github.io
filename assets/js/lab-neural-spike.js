@@ -64,7 +64,7 @@
         if (edges[e].from === src && !edges[e].active) { edges[e].active = true; edges[e].delay = 8; edges[e].pulse = 0; }
       }
     }
-    if (Math.random() < getNoise()) {
+    if (Math.random() < getNoise() + _chaosMul * 0.06) {
       var ni = Math.floor(Math.random() * N);
       nodes[ni].i_ext += 55;
     }
@@ -138,7 +138,9 @@
 
   function loop() {
     if (!running || !canvas || !canvas.isConnected) return;
-    step(); draw();
+    var reps = Math.max(1, Math.round(_speedMul * 2));
+    for (var _i = 0; _i < reps; _i++) step();
+    draw();
     requestAnimationFrame(loop);
   }
 
@@ -174,6 +176,12 @@
     }, { threshold: 0.1 });
     io.observe(canvas);
   }
+
+  var _speedMul = 1.0, _chaosMul = 0.3;
+  document.addEventListener('lab:studio', function (e) {
+    if (e.detail.kind === 'speed') _speedMul = Math.max(0.1, e.detail.value);
+    if (e.detail.kind === 'chaos') _chaosMul = e.detail.value;
+  });
 
   init();
   window.addEventListener('resize', resize);

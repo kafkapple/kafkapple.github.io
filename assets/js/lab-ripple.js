@@ -72,8 +72,8 @@
   function loop() {
     if (!running || !canvas || !canvas.isConnected) return;
     rainTimer++;
-    if (rainTimer > 80 + Math.random() * 140) {
-      drop(Math.random() * W, Math.random() * H, 7, 0.7);
+    if (rainTimer > (80 + Math.random() * 140) / Math.max(0.2, _speedMul)) {
+      drop(Math.random() * W, Math.random() * H, 7, 0.7 + _chaosMul * 0.5);
       rainTimer = 0;
     }
     update(); draw();
@@ -106,6 +106,12 @@
     }, { threshold: 0.1 });
     io.observe(canvas);
   }
+
+  var _speedMul = 1.0, _chaosMul = 0.3;
+  document.addEventListener('lab:studio', function (e) {
+    if (e.detail.kind === 'speed') _speedMul = Math.max(0.1, e.detail.value);
+    if (e.detail.kind === 'chaos') _chaosMul = e.detail.value;
+  });
 
   init();
   window.addEventListener('resize', resize);

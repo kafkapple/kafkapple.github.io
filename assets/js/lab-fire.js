@@ -32,7 +32,7 @@
 
   function update() {
     for (var c = 0; c < COLS; c++) {
-      grid[(ROWS - 1) * COLS + c] = Math.random() > 0.25 ? Math.random() * 0.95 : 0;
+      grid[(ROWS - 1) * COLS + c] = Math.random() > Math.max(0.05, 0.25 - _chaosMul * 0.2) ? Math.random() * 0.95 : 0;
     }
     for (var r = 0; r < ROWS - 1; r++) {
       for (var c = 0; c < COLS; c++) {
@@ -76,7 +76,9 @@
   function loop() {
     if (!running || !canvas || !canvas.isConnected) return;
     if (mouse) heat(mouse.x, mouse.y, 16, 0.28);
-    update(); draw();
+    var reps = Math.max(1, Math.round(_speedMul));
+    for (var _i = 0; _i < reps; _i++) update();
+    draw();
     requestAnimationFrame(loop);
   }
 
@@ -107,6 +109,12 @@
     }, { threshold: 0.1 });
     io.observe(canvas);
   }
+
+  var _speedMul = 1.0, _chaosMul = 0.3;
+  document.addEventListener('lab:studio', function (e) {
+    if (e.detail.kind === 'speed') _speedMul = Math.max(0.1, e.detail.value);
+    if (e.detail.kind === 'chaos') _chaosMul = e.detail.value;
+  });
 
   init();
   window.addEventListener('resize', resize);

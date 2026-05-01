@@ -59,7 +59,7 @@
   }
 
   function step() {
-    var sp = getSpeed();
+    var sp = getSpeed() * _speedMul;
     var spring = SPRING * sp, damp = Math.max(0.6, DAMP - (sp - 1) * 0.04);
     for (var i = 0; i < particles.length; i++) {
       var p = particles[i];
@@ -68,6 +68,7 @@
       var mx = p.x - mouse.x, my = p.y - mouse.y;
       var mr = Math.sqrt(mx * mx + my * my) || 1;
       if (mr < REPEL) { var f = (REPEL - mr) / REPEL * 6; p.vx += (mx / mr) * f; p.vy += (my / mr) * f; }
+      if (_chaosMul > 0.05) { p.vx += (Math.random() - 0.5) * _chaosMul * 0.8; p.vy += (Math.random() - 0.5) * _chaosMul * 0.8; }
       p.vx *= damp; p.vy *= damp; p.x += p.vx; p.y += p.vy;
     }
   }
@@ -140,6 +141,12 @@
     document.removeEventListener('lab:text-change', handleTextChange);
     document.addEventListener('lab:text-change', handleTextChange);
   }
+
+  var _speedMul = 1.0, _chaosMul = 0.3;
+  document.addEventListener('lab:studio', function (e) {
+    if (e.detail.kind === 'speed') _speedMul = Math.max(0.1, e.detail.value);
+    if (e.detail.kind === 'chaos') _chaosMul = e.detail.value;
+  });
 
   init();
   window.addEventListener('resize', resize);
