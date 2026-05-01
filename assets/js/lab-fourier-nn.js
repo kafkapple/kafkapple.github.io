@@ -1,7 +1,7 @@
 (function () {
   'use strict';
   var canvas, ctx, W, H;
-  var running = false, io = null;
+  var running = false, io = null, rafId = null;
   var t = 0;
   var N = 5;
   var preset = 'square';
@@ -22,7 +22,7 @@
     TRAIL_X0 = Math.round(W * 0.35);
     TRAIL_X1 = Math.round(W * 0.481);
     NN_X0    = Math.round(W * 0.494);
-    MAX_REACH = Math.min(CX - 8, TRAIL_X0 - CX - 6, CY - 10, H - CY - 10);
+    MAX_REACH = Math.max(1, Math.min(CX - 8, TRAIL_X0 - CX - 6, CY - 10, H - CY - 10));
   }
 
   function getHarmonics() {
@@ -60,6 +60,7 @@
       y += r * Math.sin(angle);
 
       // Orbit circle
+      if (r <= 0) continue;
       ctx.beginPath(); ctx.arc(px, py, r, 0, Math.PI * 2);
       ctx.strokeStyle = 'rgba(46,139,87,0.3)'; ctx.lineWidth = 0.7;
       ctx.stroke();
@@ -185,10 +186,10 @@
   }
 
   function loop() {
-    if (!running || !canvas || !canvas.isConnected) return;
+    if (!running || !canvas || !canvas.isConnected) { rafId = null; return; }
     t += 0.025 * _speedMul;
     draw();
-    requestAnimationFrame(loop);
+    rafId = requestAnimationFrame(loop);
   }
 
   function resize() {
@@ -256,6 +257,10 @@
 
   init();
   window.addEventListener('resize', resize);
-  document.addEventListener('hy-push-state-start', function () { running = false; if (io) io.disconnect(); });
+  document.addEventListener('hy-push-state-start', function () {
+    running = false;
+    if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+    if (io) io.disconnect();
+  });
   document.addEventListener('hy-push-state-after', init);
 })();

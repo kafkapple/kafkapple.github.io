@@ -301,7 +301,7 @@ Experiments in creative coding, generative systems, and browser-native interacti
   <button id="fourier-square" class="lab-btn active" data-preset="square">Square</button>
   <button id="fourier-sawtooth" class="lab-btn" data-preset="sawtooth">Sawtooth</button>
   <button id="fourier-triangle" class="lab-btn" data-preset="triangle">Triangle</button>
-  <label style="font-size:0.82em;opacity:0.7;margin-left:0.6em">n=<span id="fourier-n-label">5</span></label>
+  <label for="fourier-n-slider" style="font-size:0.82em;opacity:0.7;margin-left:0.6em">n=<span id="fourier-n-label">5</span></label>
   <input id="fourier-n-slider" type="range" min="1" max="15" value="5" style="width:80px;vertical-align:middle">
 </div>
 <p class="interest-desc">Fourier series (left) → wave trail (center) → neural network (right). Preset selects harmonic series type; slider controls harmonic count. ANN activations are driven by live wave amplitude.</p>
