@@ -66,7 +66,7 @@ These principles map onto a modular hierarchy:
 These three pillars integrate the core principles above with my research trajectory.
 
 ### Structured Representation & Memory Consolidation
-Compositional generalization through structure / content factorization; episodic-to-semantic integration via complementary learning systems (CLS); representational hierarchies inspired by cortical columns; sparse and disentangled coding for continual learning.
+Compositional generalization through structure / content factorization; context-sensitive coordination of working and long-term memory; episodic-to-semantic integration via complementary learning systems (CLS); representational hierarchies inspired by cortical columns; sparse and disentangled coding for continual learning.
 
 ### Multi-modal Grounding via Reference Frames
 Spatial anchoring through grid-cell-inspired coding; cross-modal binding and grounding of abstract concepts; world models learned through local prediction in canonical circuits; reference-frame–based generalization.
