@@ -23,8 +23,8 @@
     var springEl = document.getElementById('ripple-spring');
     var repelEl  = document.getElementById('ripple-repel');
     return {
-      SPRING: springEl ? parseFloat(springEl.value) : 0.12,
-      REPEL:  repelEl  ? parseFloat(repelEl.value)  : 60,
+      SPRING: (springEl ? parseFloat(springEl.value) : 0.12) * _speedMul,
+      REPEL:  (repelEl  ? parseFloat(repelEl.value)  : 60) * (1 + _chaosMul),
       DAMP:   0.78
     };
   }
@@ -98,6 +98,12 @@
     }, { threshold: 0.1 });
     io.observe(canvas);
   }
+
+  var _speedMul = 1.0, _chaosMul = 0.3;
+  document.addEventListener('lab:studio', function (e) {
+    if (e.detail.kind === 'speed') _speedMul = Math.max(0.1, e.detail.value);
+    if (e.detail.kind === 'chaos') _chaosMul = e.detail.value;
+  });
 
   init();
   window.addEventListener('resize', resize);
