@@ -8,7 +8,7 @@
   ];
   var CARD_W = 220, GAP = 16;
   var _mode = 'wheel';
-  var _harmonyMode = 'single';
+  var _harmonyMode = 'complementary';
   var _primaryHue  = 0;
 
   // ── Shared palette strip ──────────────────────────────────────────────
@@ -173,7 +173,6 @@
     }
 
     var LABELS = {
-      'single':        ['Primary'],
       'complementary': ['Primary', 'Complement'],
       'triadic':       ['Primary', 'Triad A', 'Triad B'],
       'analogous':     ['Primary', 'Analog +30°', 'Analog −30°']
@@ -244,7 +243,7 @@
       bwModesEl = document.createElement('div');
       bwModesEl.className = 'bw-modes';
       bwModesEl.style.cssText = 'display:flex;gap:4px;margin:0 0 0.35em;flex-wrap:wrap;';
-      [['single','Single'], ['complementary','Comp.'], ['triadic','Triadic'], ['analogous','Analog']].forEach(function (pair) {
+      [['complementary','Comp.'], ['triadic','Triadic'], ['analogous','Analog']].forEach(function (pair) {
         var btn = document.createElement('button');
         btn.className = 'lab-btn';
         btn.textContent = pair[1];
