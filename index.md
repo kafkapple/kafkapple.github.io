@@ -2,7 +2,7 @@
 layout: about
 title: Jungjoon Park
 description: >
-  Postdoctoral Fellow at KAIST AMILab. NeuroAI research at the interface of neuroscience and AI.
+  Postdoctoral Fellow at KAIST AMILab, working at the NeuroAI interface — cognitive & social neuroscience meets computer vision.
 hide_description: true
 permalink: /
 ---
