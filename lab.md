@@ -171,10 +171,17 @@ redirect_from:
   position: absolute; width: 160px; padding: 1em 1.1em; background: #fff; border: 2.5px solid #111;
   box-shadow: 6px 6px 0 #111; border-radius: 2px; cursor: grab; user-select: none; font-size: 0.85em; font-weight: 700;
   left: 20px; top: 20px;
-  transition: transform 0.12s ease, box-shadow 0.18s ease;
+  transition: transform 0.12s ease, box-shadow 0.18s ease, background 0.3s ease, border-color 0.3s ease, border-radius 0.3s ease, color 0.3s ease;
 }
 #neo-card:hover { transform: translate(-1px,-1px); box-shadow: 8px 8px 0 #111; }
 #neo-card:active { cursor: grabbing; }
+#neo-card.glass {
+  background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2); border-radius: 12px;
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); color: #fff;
+}
+#neo-card.glass:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
+#neobru-demo.glass-bg { background: linear-gradient(135deg,#6a11cb,#2575fc,#f093fb); }
 #neo-accent { position: absolute; top: 0; left: 0; width: 100%; height: 6px; background: #f7c948; }
 
 /* ── Lab Fullscreen (fully opaque, isolated) ── */
@@ -565,19 +572,10 @@ window.LabDrag = window.LabDrag || function (handle, target, opts) {
       modeBtn.dataset.ready = '1';
       modeBtn.onclick = function () {
         neoMode = !neoMode;
-        var keepLeft = card.style.left || '20px';
-        var keepTop  = card.style.top  || '20px';
-        if (neoMode) {
-          modeBtn.textContent = 'Toggle: Neo-Bru';
-          cont.style.background = '#f5f5f5';
-          card.style.cssText = 'position:absolute;width:160px;padding:1em 1.1em;background:#fff;border:2.5px solid #111;box-shadow:6px 6px 0 #111;border-radius:2px;cursor:grab;user-select:none;font-size:0.85em;font-weight:700;left:' + keepLeft + ';top:' + keepTop + ';transition:transform 0.12s ease, box-shadow 0.18s ease;';
-          if (accentEl) accentEl.style.display = 'block';
-        } else {
-          modeBtn.textContent = 'Toggle: Glassmorphism';
-          cont.style.background = 'linear-gradient(135deg,#6a11cb,#2575fc,#f093fb)';
-          card.style.cssText = 'position:absolute;width:160px;padding:1em 1.1em;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);box-shadow:0 8px 32px rgba(0,0,0,0.2);border-radius:12px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);cursor:grab;user-select:none;font-size:0.85em;font-weight:700;color:#fff;left:' + keepLeft + ';top:' + keepTop + ';transition:transform 0.12s ease, box-shadow 0.18s ease;';
-          if (accentEl) accentEl.style.display = 'none';
-        }
+        card.classList.toggle('glass', !neoMode);
+        cont.classList.toggle('glass-bg', !neoMode);
+        if (accentEl) accentEl.style.display = neoMode ? 'block' : 'none';
+        modeBtn.textContent = neoMode ? 'Toggle: Neo-Bru' : 'Toggle: Glassmorphism';
       };
     }
     if (accBtn && !accBtn.dataset.ready) {
