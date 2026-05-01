@@ -95,17 +95,29 @@ def main():
         tags_raw = parse_inline(stripped, "tags", "")
         tags = [t.strip() for t in tags_raw.split(",") if t.strip()]
 
+        # Site publish filter — explicit opt-in via [publish:: yes]
+        # OR auto-publish for Selected (priority 5)
+        publish_field = parse_inline(stripped, "publish", "")
+        priority = parse_priority(stripped)
+        is_published = publish_field == "yes" or priority >= 5
+        if not is_published:
+            continue
+
         items.append({
             "title":        title,
             "venue":        venue,
             "url":          parse_inline(stripped, "url"),
             "tags":         tags,
             "status":       status,
-            "priority":     parse_priority(stripped),
+            "priority":     priority,
             "stars":        parse_stars(stripped),
             "year":         parse_year(stripped),
             "first_author": parse_inline(stripped, "first_author"),
             "memo":         parse_inline(stripped, "memo"),
+            "tldr":         parse_inline(stripped, "tldr"),
+            "citation":     int(re.search(r'\[citation:: (\d+)\]', stripped).group(1)) if re.search(r'\[citation:: \d+\]', stripped) else 0,
+            "venue_tier":   re.search(r'\[venue_tier:: (\S+)\]', stripped).group(1) if re.search(r'\[venue_tier:: \S+\]', stripped) else "",
+            "publish":      publish_field or ("auto" if priority >= 5 else ""),
             "done":         parse_done(stripped),
             "theme":        cur_theme,
             "subtheme":     cur_subtheme,
