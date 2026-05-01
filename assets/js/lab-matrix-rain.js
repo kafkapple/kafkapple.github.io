@@ -32,7 +32,7 @@
   }
 
   function step() {
-    var speed = getSpeed();
+    var speed = getSpeed() * _speedMul;
     var SKIP = Math.max(1, Math.round(3 / speed));
     frameCount++;
     if (frameCount % SKIP !== 0) return;
@@ -49,7 +49,7 @@
 
     ctx.fillStyle = 'rgba(10,16,12,0.18)'; ctx.fillRect(0, 0, W, H);
     ctx.font = '13px monospace';
-    var wordColor = getWordColor();
+    var wordColor = _accentColor || getWordColor();
     for (var i = 0; i < cols; i++) {
       var y = drops[i] * 14;
       var isWord = wordTimers[i] && wordTimers[i].remaining > 0;
@@ -62,7 +62,7 @@
         var ch = CHARS[Math.floor(Math.random() * CHARS.length)];
         ctx.fillStyle = 'rgba(0,220,80,' + (0.5 + Math.random() * 0.5) + ')';
         ctx.fillText(ch, i * 14, y);
-        if (Math.random() < 0.003) { var w = WORDS[Math.floor(Math.random() * WORDS.length)]; wordTimers[i] = { word: w, remaining: w.length }; }
+        if (Math.random() < 0.003 + _chaosMul * 0.015) { var w = WORDS[Math.floor(Math.random() * WORDS.length)]; wordTimers[i] = { word: w, remaining: w.length }; }
       }
       if (drops[i] * 14 > H && Math.random() > 0.975) drops[i] = 0;
       drops[i]++;
@@ -129,6 +129,13 @@
     document.removeEventListener('lab:text-change', handleTextChange);
     document.addEventListener('lab:text-change', handleTextChange);
   }
+
+  var _speedMul = 1.0, _chaosMul = 0.3, _accentColor = null;
+  document.addEventListener('lab:studio', function (e) {
+    if (e.detail.kind === 'speed') _speedMul = Math.max(0.1, e.detail.value);
+    if (e.detail.kind === 'chaos') _chaosMul = e.detail.value;
+    if (e.detail.kind === 'color') _accentColor = e.detail.value;
+  });
 
   init();
   window.addEventListener('resize', resize);
