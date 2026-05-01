@@ -209,9 +209,11 @@ redirect_from:
   #lab-fs-overlay { transition: none; }
   .lab-fs-btn { transition: none; }
   .interest-item, .interest-item:hover { transition: none; transform: none; }
-  .lab-section::after { animation: none; }
+  .lab-section::after,
+  .lab-section.lab-experimental::after { animation: none; }
   .lab-section.lab-experimental h2 { animation: none; }
   .interest-item.lab-exp-item::after { animation: none; }
+  #neo-card { transition: none; }
 }
 </style>
 
@@ -350,6 +352,17 @@ Experiments in creative coding, generative systems, and browser-native interacti
   <canvas id="pixel-canvas" class="lab-canvas" width="640" height="200"></canvas>
   <div class="lab-ctrl-panel">
     <div class="lab-ctrl-group">
+      <span class="lab-label">Palette</span>
+      <div id="pixel-palette-btns" style="display:flex;flex-wrap:wrap;gap:3px;">
+        <button class="lab-btn active" data-color="#2e5538" style="background:#2e5538;width:22px;height:22px;padding:0;"></button>
+        <button class="lab-btn" data-color="#f7c948" style="background:#f7c948;width:22px;height:22px;padding:0;"></button>
+        <button class="lab-btn" data-color="#f26b5b" style="background:#f26b5b;width:22px;height:22px;padding:0;"></button>
+        <button class="lab-btn" data-color="#7ec8e3" style="background:#7ec8e3;width:22px;height:22px;padding:0;"></button>
+        <button class="lab-btn" data-color="#c8a0f7" style="background:#c8a0f7;width:22px;height:22px;padding:0;"></button>
+        <button class="lab-btn" data-color="#161c20" style="background:#161c20;width:22px;height:22px;padding:0;"></button>
+      </div>
+    </div>
+    <div class="lab-ctrl-group">
       <span class="lab-label">Stamp text</span>
       <input type="text" id="pixel-input" class="lab-text-input" placeholder="Type + Enter…">
     </div>
@@ -358,7 +371,7 @@ Experiments in creative coding, generative systems, and browser-native interacti
     </div>
   </div>
 </div>
-<p class="interest-desc">Paint pixels or stamp text. Pick colors from the Bauhaus wheel above.</p>
+<p class="interest-desc">Paint pixels or stamp text. Click a swatch above or sample from the Bauhaus wheel.</p>
 </div>
 
 <div class="interest-item lab-exp-item" id="color-cycle">
@@ -424,8 +437,12 @@ Experiments in creative coding, generative systems, and browser-native interacti
 /* Avoids the all-mousemove-always-listening pattern that caused the
    Lab-Studio ↔ Style-Hybrid conflict (multiple closures polling the same
    document mousemove independently). Now each drag adds listeners only
-   while held, removes on release. */
+   while held, removes on release.
+   handle.dataset.labDragReady prevents duplicate mousedown listeners on
+   SPA back-navigation (inline <script> re-execution by Hydejack). */
 window.LabDrag = window.LabDrag || function (handle, target, opts) {
+  if (handle.dataset.labDragReady) return;
+  handle.dataset.labDragReady = '1';
   opts = opts || {};
   handle.addEventListener('mousedown', function (e) {
     if (opts.skipIf && opts.skipIf(e)) return;
@@ -455,7 +472,12 @@ window.LabDrag = window.LabDrag || function (handle, target, opts) {
 };
 
 /* ── Lab Studio: drag + broadcast text/color/speed/chaos ── */
+/* Guard against SPA re-execution: Hydejack re-runs inline <script> on
+   hy-push-state-after; without this guard, every nav adds another set
+   of toggle/input/color/speed/chaos listeners (audit S1). */
 (function () {
+  if (window.__labStudioReady) return;
+  window.__labStudioReady = true;
   var panel    = document.getElementById('lab-studio');
   var header   = document.getElementById('lab-studio-header');
   var toggle   = document.getElementById('lab-studio-toggle');
@@ -509,7 +531,12 @@ window.LabDrag = window.LabDrag || function (handle, target, opts) {
 
 <script>
 /* ── Style Hybrid (Neo-Brutalism / Glassmorphism) ── */
+/* Outer IIFE guard: hy-push-state-after listener must not be re-registered
+   on SPA navigation (audit S1). init() itself is idempotent via
+   card.dataset.dragReady. */
 (function () {
+  if (window.__styleHybridReady) return;
+  window.__styleHybridReady = true;
   var card, cont, accentEl, modeBtn, accBtn;
   var accents = ['#f7c948', '#f26b5b', '#60c8a0', '#7ec8e3', '#c8a0f7'], ai = 0;
   var neoMode = true;
