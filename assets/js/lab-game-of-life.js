@@ -87,8 +87,14 @@
   function loop() {
     if (!running || !canvas || !canvas.isConnected) return;
     frameCount++;
-    var skip = Math.max(1, Math.round(3 / getSpeed()));
-    if (frameCount % skip === 0) step();
+    var skip = Math.max(1, Math.round(3 / (getSpeed() * _speedMul)));
+    if (frameCount % skip === 0) {
+      if (_chaosMul > 0.1 && Math.random() < _chaosMul * 0.003) {
+        var ci = Math.floor(Math.random() * grid.length);
+        grid[ci] = 1; age[ci] = 1;
+      }
+      step();
+    }
     draw();
     requestAnimationFrame(loop);
   }
@@ -134,6 +140,12 @@
     }, { threshold: 0.1 });
     io.observe(canvas);
   }
+
+  var _speedMul = 1.0, _chaosMul = 0.3;
+  document.addEventListener('lab:studio', function (e) {
+    if (e.detail.kind === 'speed') _speedMul = Math.max(0.1, e.detail.value);
+    if (e.detail.kind === 'chaos') _chaosMul = e.detail.value;
+  });
 
   init();
   window.addEventListener('resize', resize);

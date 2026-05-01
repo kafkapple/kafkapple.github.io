@@ -51,9 +51,25 @@
   }
 
   var STEPS = 14;
+  var _speedMul = 1.0, _chaosMul = 0.3;
+  document.addEventListener('lab:studio', function (e) {
+    if (e.detail.kind === 'speed') _speedMul = Math.max(0.1, e.detail.value);
+    if (e.detail.kind === 'chaos') _chaosMul = e.detail.value;
+  });
+
   function loop() {
     if (!running || !canvas || !canvas.isConnected) return;
-    if (!paused) { for (var i = 0; i < STEPS; i++) step(); redraw(); }
+    if (!paused) {
+      var steps = Math.round(STEPS * _speedMul);
+      var sav_s = sigma, sav_r = rho;
+      if (_chaosMul > 0.05) {
+        sigma = sav_s + (Math.random() - 0.5) * _chaosMul * 8;
+        rho   = sav_r + (Math.random() - 0.5) * _chaosMul * 6;
+      }
+      for (var i = 0; i < steps; i++) step();
+      sigma = sav_s; rho = sav_r;
+      redraw();
+    }
     requestAnimationFrame(loop);
   }
 

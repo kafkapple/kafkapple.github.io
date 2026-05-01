@@ -130,6 +130,13 @@
     io.observe(canvas);
   }
 
+  var _speedMul = 1.0, _chaosMul = 0.3, _accentColor = null;
+  document.addEventListener('lab:studio', function (e) {
+    if (e.detail.kind === 'speed') _speedMul = Math.max(0.1, e.detail.value);
+    if (e.detail.kind === 'chaos') _chaosMul = e.detail.value;
+    if (e.detail.kind === 'color') _accentColor = e.detail.value;
+  }); // [TEMP-B1] wire to demo in B3
+
   init();
   window.addEventListener('resize', resize);
   document.addEventListener('hy-push-state-start', function () { running = false; if (io) io.disconnect(); });

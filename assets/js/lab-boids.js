@@ -42,7 +42,7 @@
       }
       var nvx = b.vx, nvy = b.vy;
       if (cn > 0) {
-        var ali = limit(ax / cn, ay / cn, SPEED);
+        var ali = limit(ax / cn, ay / cn, SPEED * _speedMul);
         nvx += (ali[0] - b.vx) * 0.1 * ALI_W;
         nvy += (ali[1] - b.vy) * 0.1 * ALI_W;
         var tx = cx / cn - b.x, ty = cy / cn - b.y;
@@ -57,7 +57,8 @@
         var md = Math.sqrt(mdx * mdx + mdy * mdy);
         if (md < 90 && md > 0) { nvx += mdx / md * MOUSE_W; nvy += mdy / md * MOUSE_W; }
       }
-      var lim = limit(nvx, nvy, SPEED * 1.6);
+      if (_chaosMul > 0.05) { nvx += (Math.random() - 0.5) * _chaosMul * 1.2; nvy += (Math.random() - 0.5) * _chaosMul * 1.2; }
+      var lim = limit(nvx, nvy, SPEED * 1.6 * _speedMul);
       b.vx = lim[0]; b.vy = lim[1];
       b.x += b.vx; b.y += b.vy;
       if (b.x < 0) b.x += W; if (b.x > W) b.x -= W;
@@ -132,6 +133,12 @@
     }, { threshold: 0.1 });
     io.observe(canvas);
   }
+
+  var _speedMul = 1.0, _chaosMul = 0.3;
+  document.addEventListener('lab:studio', function (e) {
+    if (e.detail.kind === 'speed') _speedMul = Math.max(0.1, e.detail.value);
+    if (e.detail.kind === 'chaos') _chaosMul = e.detail.value;
+  });
 
   init();
   window.addEventListener('resize', resize);
