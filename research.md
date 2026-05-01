@@ -69,7 +69,7 @@ These three pillars integrate the core principles above with my research traject
 Compositional generalization through structure / content factorization; context-sensitive coordination of working and long-term memory; episodic-to-semantic integration via complementary learning systems (CLS); representational hierarchies inspired by cortical columns; sparse and disentangled coding for continual learning.
 
 ### Multi-modal Grounding via Reference Frames
-Spatial anchoring through grid-cell-inspired coding; cross-modal binding and grounding of abstract concepts; world models learned through local prediction in canonical circuits; reference-frame–based generalization.
+Spatial anchoring through grid-cell-inspired coding; cross-modal binding of vision, language, and other sensory streams; world models learned through local prediction in canonical circuits; reference-frame–based generalization.
 
 ### Social & Context-Adaptive Cognition
 Empathy and social inference grounded in *perception–action coupling* and *theory of mind*; context-conditioned representations that modulate behavior across situations; multi-agent interaction and active inference. This pillar grew out of rodent affective-empathy neuroscience and now informs human-aligned multi-modal AI.

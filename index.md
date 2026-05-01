@@ -2,7 +2,7 @@
 layout: about
 title: Jungjoon Park
 description: >
-  Postdoctoral Fellow at KAIST AMILab, working at the NeuroAI interface — behavioral, cognitive & social neuroscience meets computer vision.
+  Postdoctoral Fellow at KAIST AMILab, working at the NeuroAI interface — behavioral, cognitive & social neuroscience meets multimodal AI.
 hide_description: true
 permalink: /
 ---
@@ -39,7 +39,7 @@ permalink: /
 > **Brain-Inspired Cognitive Architecture**, grounded in behavioral neuroscience — designing adaptive agents capable of systematic generalization, continual learning, and context-sensitive coordination of working and long-term memory through canonical neural computations.
 
 - **Structured Representation & Memory Consolidation** — Separating reusable structure from variable content to enable *compositional generalization*; coordinating working and long-term memory under task context, with episodic-to-semantic integration through complementary learning systems (hippocampal–neocortical interplay).
-- **Multi-modal Grounding via Reference Frames** — Anchoring abstract concepts to stable spatial representations and binding sensory streams across modalities, drawing on grid-cell coding and predictive computations in canonical cortical circuits.
+- **Multi-modal Grounding via Reference Frames** — Anchoring abstract concepts to stable spatial representations and binding vision, language, and other sensory streams, drawing on grid-cell coding and predictive computations in canonical cortical circuits.
 - **Social & Context-Adaptive Cognition** — Modeling empathy and social inference through *perception–action coupling* and *theory of mind*; learning context-conditioned representations that adapt to *who, where, and why* — extending a research trajectory from rodent affective empathy and behavioral phenotyping toward multi-agent and human-aligned systems.
 
 ## Experience
