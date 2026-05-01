@@ -297,7 +297,14 @@ Experiments in creative coding, generative systems, and browser-native interacti
 <div class="interest-item" id="fourier-nn-viz">
 <p class="interest-title">Neural &amp; Frequency <span class="interest-tag">Fourier</span><span class="interest-tag">ANN</span></p>
 <canvas id="fourier-nn-canvas" class="lab-canvas" width="640" height="320"></canvas>
-<p class="interest-desc">Combined visualization of Fourier series approximation (left) and neural network activation patterns (right). <em>Planned:</em> harmonic count + activation density dials.</p>
+<div id="fourier-nn-controls" class="lab-inline-btns">
+  <button id="fourier-square" class="lab-btn active" data-preset="square">Square</button>
+  <button id="fourier-sawtooth" class="lab-btn" data-preset="sawtooth">Sawtooth</button>
+  <button id="fourier-triangle" class="lab-btn" data-preset="triangle">Triangle</button>
+  <label style="font-size:0.82em;opacity:0.7;margin-left:0.6em">n=<span id="fourier-n-label">5</span></label>
+  <input id="fourier-n-slider" type="range" min="1" max="15" value="5" style="width:80px;vertical-align:middle">
+</div>
+<p class="interest-desc">Fourier series (left) → wave trail (center) → neural network (right). Preset selects harmonic series type; slider controls harmonic count. ANN activations are driven by live wave amplitude.</p>
 </div>
 
 <div class="interest-item" id="boids-flocking">
