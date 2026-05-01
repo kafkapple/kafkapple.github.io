@@ -36,19 +36,16 @@ permalink: /
 
 ## Research Interests
 
-> **Brain-Inspired Cognitive Architecture** — Designing autonomous agents capable of systematic generalization and continual learning by implementing canonical neural computations.
+> **Brain-Inspired Cognitive Architecture** — Designing autonomous agents capable of systematic generalization, continual learning, and context-adaptive reasoning by implementing canonical neural computations.
 
-- **Grounding via Universal Reference Frames** — Anchoring abstract knowledge to stable spatial representations inspired by grid cells (CLAY, CVPR 2026).
-- **Predictive Modeling in Canonical Circuits** — Learning world models through local prediction, mirroring cortical column computations (AVATAR, CVPR CV4Animals 2022).
-- **Structure/Content Factorization** — Separating reusable structural knowledge from variable content to enable lifelong learning.
+- **Structured Representation & Memory Consolidation** — Separating reusable structure from variable content to enable *compositional generalization*; integrating episodic experience into semantic knowledge through complementary learning systems (hippocampal–neocortical interplay).
+- **Multi-modal Grounding via Reference Frames** — Anchoring abstract concepts to stable spatial representations and binding sensory streams across modalities, drawing on grid-cell coding and predictive computations in canonical cortical circuits.
+- **Social & Context-Adaptive Cognition** — Modeling empathy and social inference through *perception–action coupling* and *theory of mind*; learning context-conditioned representations that adapt to *who, where, and why* — extending a research trajectory from rodent affective empathy and behavioral phenotyping toward multi-agent and human-aligned systems.
 
 ## Experience
 
 `Aug 2025 – Aug 2026` **Postdoctoral Fellow** — [AMILab](https://ami.kaist.ac.kr/), KAIST School of Computing.<br>
 Host: Prof. Tae-Hyun Oh. Supported by the **InnoCore Postdoctoral Program**. Vision-Language Models (CLAY, CVPR 2026); 3D Gaussian Splatting for freely-moving animal reconstruction (ongoing).
-
-`Oct 2024 – Jun 2025` **AI Engineer** — Upstage AI Lab (AI Lab Boot Camp).<br>
-Completed 5 ML engineering competitions; led external company project: LLM-based parenting dialogue quality assessment system (ConnectsLab).
 
 `Oct 2024 – May 2025` **Impact Scholar** — Impact Scholars Program (ISP), Neuromatch Academy.<br>
 Mentored research on LLM-based emotion recognition.
@@ -56,17 +53,20 @@ Mentored research on LLM-based emotion recognition.
 `Sep 2022 – May 2024` **Co-Founder, COO & Research Director** — ACTNOVA.<br>
 Co-founded and scaled a neuroscience-AI startup (₩4.3B pre-Series A). Built YOLOv8 + XGBoost pipeline for automated behavioral phenotyping (−70% analysis time); cross-lab collaboration with MIT, KAIST, and Broad Institute. Core project: [AVATAR](https://www.cv4animals.com/2022-accepted-papers) — 3D real-time behavioral analysis system (CV4Animals @ CVPR 2022).
 
-`Mar 2018 – Aug 2022` **Graduate Researcher** — Brain Dynamics Laboratory, KAIST.<br>
-Rodent behavioral genetics and empathy neuroscience. Ph.D. completed Aug 2022.
-
 `Nov 2014 – Feb 2018` **Researcher** (Trainee from Jan 2012) — Center for Cognition and Sociality (CCS), Institute for Basic Science (IBS).<br>
 Chemogenetics, in-vivo electrophysiology, and behavioral assays on affective empathy and social memory.
 
 `Mar 2011 – Dec 2012` **Trainee** — Brain Science Institute (BSI), KIST.<br>
 Rodent social behavior and system consolidation mechanisms.
 
-`Mar 2006 – Aug 2010` **Undergraduate Researcher** — Brain Dynamics Laboratory, KAIST.<br>
-URP project: behavioral data analysis in non-human primates. Graduation research: human fMRI study, cognitive neuroscience.
+## Education
+
+`Sep 2013 – Aug 2022` **Ph.D., Bio & Brain Engineering** — KAIST.<br>
+Dissertation: *Behavioral and Genetic Study on Postnatal Factors of Empathy — The Differential Contributions of Social Context and Brain Areas on Observational Fear Learning.*
+
+`Sep 2010 – Aug 2013` **M.S., Bio & Brain Engineering** — KAIST.
+
+`Mar 2005 – Aug 2010` **B.S., Bio & Brain Engineering** (Minor: Business Economics) — KAIST.
 
 ## Publications
 
@@ -122,7 +122,7 @@ A selection of engineering and research projects outside publications. [**View a
 ## Teaching & Mentorship
 
 `Nov 2025 – Feb 2026` **Research Mentor** — Seongyoon Park, KAIST AMILab (Individual Research Program).<br>
-Co-mentor: Dr. Chenshuang Zhang. *Do Models See Like Humans? Landmark Identity under Perturbations in Foundation Models* — Triplet-based 2AFC comparing human vs. foundation-model (OpenCLIP, DINO, SigLIP) identity judgments on landmark images under controlled perturbations (color, background, weather). Three experiments: (1) human-model preference alignment (Kendall's τ), (2) which perturbation type dominates model decisions, (3) quantitative influence of background via center-crop ratio sweep. Key finding: DINO most robust; background dominates; OpenCLIP aligns with humans on color, DINO on background.
+Co-mentor: Dr. Chenshuang Zhang. Mentored research on human-alignment in multi-modal foundation models.
 
 `Jun 2025` **Workshop Instructor** — *Neuro-AI Convergence: Foundation Model Workflows for Neuroscience*, DBDL, Dept. of BCS, KAIST.<br>
 3-hour seminar + hands-on workshop applying foundation models to brain and behavior data.

@@ -40,11 +40,11 @@ I approach this through a two-direction loop:
 
 ## Core Principles
 
-Three ideas from neuroscience anchor everything I build:
+Three mechanistic ideas from neuroscience anchor everything I build:
 
-1. **Universal Reference Frames** — Abstract knowledge anchored to stable spatial representations (inspired by hippocampal grid cells).
+1. **Universal Reference Frames** — Abstract knowledge anchored to stable spatial representations (inspired by hippocampal grid cells and the Thousand Brains theory).
 2. **Predictive Modeling in Canonical Circuits** — World models learned through local prediction, mirroring cortical column computations.
-3. **Structure / Content Factorization** — Separating reusable structure (the "grammar") from variable content (the "words") to enable lifelong learning without catastrophic forgetting.
+3. **Structure / Content Factorization** — Separating reusable structure (the "grammar") from variable content (the "words") to enable *compositional generalization* and lifelong learning without catastrophic forgetting.
 
 ---
 
@@ -63,14 +63,16 @@ These principles map onto a modular hierarchy:
 
 ## Research Themes
 
-### Brain-Based Learning & Architecture
-Continual learning, representational hierarchies (cortical columns, CapsuleNet), world models and reference frames (Thousand Brains Theory), predictive coding.
+These three pillars integrate the core principles above with my research trajectory.
 
-### Computational Cognition & Decision-Making
-Dual-process theory (System 1/2), heuristics and cognitive bias, reward systems, atypical cognition modeling, AI safety intersections.
+### Structured Representation & Memory Consolidation
+Compositional generalization through structure / content factorization; episodic-to-semantic integration via complementary learning systems (CLS); representational hierarchies inspired by cortical columns; sparse and disentangled coding for continual learning.
 
-### Embodied Social Intelligence
-Social learning via inverse RL, multi-agent systems and theory of mind, sensorimotor integration, active inference.
+### Multi-modal Grounding via Reference Frames
+Spatial anchoring through grid-cell-inspired coding; cross-modal binding and grounding of abstract concepts; world models learned through local prediction in canonical circuits; reference-frame–based generalization.
+
+### Social & Context-Adaptive Cognition
+Empathy and social inference grounded in *perception–action coupling* and *theory of mind*; context-conditioned representations that modulate behavior across situations; multi-agent interaction and active inference. This pillar grew out of rodent affective-empathy neuroscience and now informs human-aligned multi-modal AI.
 
 ---
 
