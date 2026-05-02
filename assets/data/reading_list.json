@@ -1,11 +1,11 @@
 {
   "meta": {
-    "total": 36,
+    "total": 35,
     "done": 3,
-    "to_read": 32,
+    "to_read": 31,
     "reading": 1,
     "skipped": 0,
-    "pct_done": 8
+    "pct_done": 9
   },
   "themes": [
     "Theme 1: Foundations & Unifying Theories",
@@ -115,27 +115,6 @@
       "tldr": "It is argued and reason the rationale why grid responses may be universal in the brain for a wide range of perceptual and cognitive tasks that involve locomotio",
       "citation": 4,
       "venue_tier": "T3",
-      "publish": "yes",
-      "done": false,
-      "theme": "Theme 2: Representation & Neural Coding",
-      "subtheme": "2a. Grid Cells, Spatial Coding & Reference Frames",
-      "domain": "📚 전체 목록"
-    },
-    {
-      "title": "The Thousand Brains Project: A New Paradigm for Sensorimotor Intelligence",
-      "venue": "arXiv 2024",
-      "url": "https://arxiv.org/abs/2412.18354",
-      "tags": [
-        "cortical-column",
-        "sensorimotor",
-        "Numenta"
-      ],
-      "status": "to-read",
-      "year": 2024,
-      "first_author": "Clay",
-      "tldr": "An early version of a thousand-brains system is presented, a sensorimotor agent that is uniquely suited to quickly learn a wide range of tasks and eventually im",
-      "citation": 5,
-      "venue_tier": "W",
       "publish": "yes",
       "done": false,
       "theme": "Theme 2: Representation & Neural Coding",
