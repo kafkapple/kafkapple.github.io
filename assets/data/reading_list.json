@@ -1,9 +1,9 @@
 {
   "meta": {
-    "total": 35,
+    "total": 32,
     "done": 3,
-    "to_read": 31,
-    "reading": 1,
+    "to_read": 27,
+    "reading": 2,
     "skipped": 0,
     "pct_done": 9
   },
@@ -101,27 +101,6 @@
       "domain": "📚 전체 목록"
     },
     {
-      "title": "Are Grid-Like Representations a Component of All Perception and Cognition?",
-      "venue": "Frontiers 2022",
-      "url": "https://www.frontiersin.org/journals/neural-circuits/articles/10.3389/fncir.2022.924016/full",
-      "tags": [
-        "grid-cells",
-        "universality",
-        "perception"
-      ],
-      "status": "to-read",
-      "year": 2022,
-      "first_author": "Chen",
-      "tldr": "It is argued and reason the rationale why grid responses may be universal in the brain for a wide range of perceptual and cognitive tasks that involve locomotio",
-      "citation": 4,
-      "venue_tier": "T3",
-      "publish": "yes",
-      "done": false,
-      "theme": "Theme 2: Representation & Neural Coding",
-      "subtheme": "2a. Grid Cells, Spatial Coding & Reference Frames",
-      "domain": "📚 전체 목록"
-    },
-    {
       "title": "How to Represent Part-Whole Hierarchies in a Neural Network (GLOM)",
       "venue": "arXiv 2021",
       "url": "https://arxiv.org/abs/2102.12627",
@@ -173,33 +152,12 @@
         "manifold",
         "context-separation"
       ],
-      "status": "to-read",
+      "status": "reading",
       "year": 2026,
       "first_author": "Garcia-Garcia",
       "tldr": "This work simultaneously imaged key nodes in the universal cortico-cerebellar pathway during parallel learning of two distinct skills with shared temporal struc",
       "citation": 0,
       "venue_tier": "W",
-      "publish": "yes",
-      "done": false,
-      "theme": "Theme 2: Representation & Neural Coding",
-      "subtheme": "2c. Neural Coding & Population Geometry",
-      "domain": "📚 전체 목록"
-    },
-    {
-      "title": "Brain Computation Is Organized via Power-of-Two-Based Permutation Logic",
-      "venue": "Front Syst Neurosci 2016",
-      "url": "https://www.frontiersin.org/journals/systems-neuroscience/articles/10.3389/fnsys.2016.00095/full",
-      "tags": [
-        "neural-coding",
-        "permutation",
-        "combinatorial"
-      ],
-      "status": "to-read",
-      "year": 2016,
-      "first_author": "Xie",
-      "tldr": "It is shown that this power-of-two-based permutation logic is widely used in cortical and subcortical circuits across animal species and is conserved for the pr",
-      "citation": 30,
-      "venue_tier": "T3",
       "publish": "yes",
       "done": false,
       "theme": "Theme 2: Representation & Neural Coding",
@@ -313,28 +271,6 @@
       "domain": "📚 전체 목록"
     },
     {
-      "title": "Nested Learning: The Illusion of Deep Learning Architectures",
-      "venue": "arXiv 2024",
-      "url": "https://arxiv.org/abs/2512.24695",
-      "tags": [
-        "SSM",
-        "multi-timescale",
-        "nested",
-        "architecture"
-      ],
-      "status": "in-progress",
-      "year": 2024,
-      "first_author": "Behrouz",
-      "tldr": "A continual learning module, called Hope, is presented, showing promising results in language modeling, knowledge incorporation, and few-shot generalization tas",
-      "citation": 36,
-      "venue_tier": "W",
-      "publish": "yes",
-      "done": false,
-      "theme": "Theme 2: Representation & Neural Coding",
-      "subtheme": "2g. Architectures & Efficiency",
-      "domain": "📚 전체 목록"
-    },
-    {
       "title": "Why there are complementary learning systems in the hippocampus and neocortex (CLS original)",
       "venue": "Psychol Rev 1995",
       "url": "https://doi.org/10.1037/0033-295X.102.3.419",
@@ -422,6 +358,27 @@
       "domain": "📚 전체 목록"
     },
     {
+      "title": "Memory engrams: Recalling the past and imagining the future",
+      "venue": "Science 2020",
+      "url": "https://doi.org/10.1126/science.aaw4325",
+      "tags": [
+        "engram",
+        "review",
+        "future-thinking"
+      ],
+      "status": "to-read",
+      "year": 2020,
+      "first_author": "Josselyn",
+      "tldr": "It is suggested that once formed, an engram may exist in different states on the basis of their retrievability, and increased intrinsic excitability and synapti",
+      "citation": 851,
+      "venue_tier": "T1",
+      "publish": "yes",
+      "done": false,
+      "theme": "Theme 3: Learning & Memory",
+      "subtheme": "3a. [Neuro] Biological Memory: CLS, Engrams & Hippocampal Computation",
+      "domain": "📚 전체 목록"
+    },
+    {
       "title": "The Tolman-Eichenbaum Machine (TEM)",
       "venue": "Cell 2020",
       "url": "https://doi.org/10.1016/j.cell.2020.10.024",
@@ -473,7 +430,7 @@
         "LLM",
         "context"
       ],
-      "status": "to-read",
+      "status": "reading",
       "year": 2025,
       "first_author": "Fountas",
       "tldr": "EM-LLM is introduced, a novel approach that integrates key aspects of human episodic memory and event cognition into LLMs with no fine-tuning, enabling them to",
@@ -529,6 +486,27 @@
       "domain": "📚 전체 목록"
     },
     {
+      "title": "From Tokens to Thoughts: How LLMs and Humans Trade Compression for Meaning",
+      "venue": "arXiv 2025",
+      "url": "https://arxiv.org/abs/2505.17117",
+      "tags": [
+        "compression",
+        "cognition",
+        "LLM"
+      ],
+      "status": "to-read",
+      "year": 2025,
+      "first_author": "Shani",
+      "tldr": "An Information Bottleneck framework is applied to compare human conceptual structure with embeddings from 40+ LLMs using classic categorization benchmarks, find",
+      "citation": 21,
+      "venue_tier": "W",
+      "publish": "yes",
+      "done": false,
+      "theme": "Theme 4: Cognition & Decision-Making",
+      "subtheme": "4a. [AI] Reasoning, Planning & Cognitive Control",
+      "domain": "📚 전체 목록"
+    },
+    {
       "title": "Training LLMs to Reason in Continuous Latent Space (Coconut)",
       "venue": "arXiv 2024",
       "url": "https://arxiv.org/abs/2412.06769",
@@ -564,48 +542,6 @@
       "tldr": "The Hierarchical Reasoning Model is proposed, a novel recurrent architecture that attains significant computational depth while maintaining both training stabil",
       "citation": 82,
       "venue_tier": "W",
-      "publish": "yes",
-      "done": false,
-      "theme": "Theme 4: Cognition & Decision-Making",
-      "subtheme": "4a. [AI] Reasoning, Planning & Cognitive Control",
-      "domain": "📚 전체 목록"
-    },
-    {
-      "title": "Beyond Context Limits: Subconscious Threads for Long-Horizon Reasoning",
-      "venue": "arXiv 2025",
-      "url": "https://arxiv.org/abs/2507.16784",
-      "tags": [
-        "reasoning",
-        "KV-pruning",
-        "long-horizon"
-      ],
-      "status": "to-read",
-      "year": 2025,
-      "first_author": "Luo",
-      "tldr": "",
-      "citation": 0,
-      "venue_tier": "?",
-      "publish": "yes",
-      "done": false,
-      "theme": "Theme 4: Cognition & Decision-Making",
-      "subtheme": "4a. [AI] Reasoning, Planning & Cognitive Control",
-      "domain": "📚 전체 목록"
-    },
-    {
-      "title": "Less is More: Recursive Reasoning with Tiny Networks (TRM)",
-      "venue": "arXiv 2025",
-      "url": "https://arxiv.org/abs/2510.04871",
-      "tags": [
-        "reasoning",
-        "recursive",
-        "efficiency"
-      ],
-      "status": "to-read",
-      "year": 2025,
-      "first_author": "Jolicoeur-Martineau",
-      "tldr": "",
-      "citation": 0,
-      "venue_tier": "?",
       "publish": "yes",
       "done": false,
       "theme": "Theme 4: Cognition & Decision-Making",
