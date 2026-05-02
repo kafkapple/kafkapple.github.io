@@ -57,10 +57,14 @@ menu:
 
   # ── Learning ──────────────────────────────────────────────
   - title:             Learning
-    url:               /til/
+    url:               /learning/
     submenu:
       - title:         TIL
         url:           /til/
+      - title:         Books
+        url:           /books/
+      - title:         Papers
+        url:           /reading-list/
       - title:         Blog
         url:           /blog/
 

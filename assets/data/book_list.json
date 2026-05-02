@@ -1,0 +1,80 @@
+[
+  {
+    "title": "This Is Water",
+    "author": "David Foster Wallace",
+    "year": 2009,
+    "genre": ["Philosophy", "Essay"],
+    "isbn": "9780316068222",
+    "url": "https://www.amazon.com/dp/0316068225",
+    "status": "to-read",
+    "priority": 4,
+    "description": "Kenyon College commencement address on empathy, consciousness, and the difficulty of living deliberately. A short, profound meditation on adult life and mindful awareness.",
+    "pages": 144,
+    "publisher": "Little, Brown and Company"
+  },
+  {
+    "title": "Thinking, Fast and Slow",
+    "author": "Daniel Kahneman",
+    "year": 2011,
+    "genre": ["Psychology", "Behavioral Economics"],
+    "isbn": "9780374533557",
+    "url": "https://www.amazon.com/dp/0374533555",
+    "status": "to-read",
+    "priority": 5,
+    "description": "Explores two systems of thought — System 1 (fast, intuitive) vs System 2 (slow, deliberate) — synthesizing decades of research on cognitive biases, heuristics, and decision-making.",
+    "pages": 512,
+    "publisher": "Farrar, Straus and Giroux"
+  },
+  {
+    "title": "How the Mind Works",
+    "author": "Steven Pinker",
+    "year": 1997,
+    "genre": ["Cognitive Science", "Evolutionary Psychology"],
+    "isbn": "9780393318487",
+    "url": "https://stevenpinker.com/publications/how-mind-works-19972009",
+    "status": "to-read",
+    "priority": 4,
+    "description": "Reverse-engineers human cognition through evolutionary psychology — explaining perception, emotion, language, art, and consciousness. A landmark work in cognitive science.",
+    "pages": 672,
+    "publisher": "W. W. Norton & Company"
+  },
+  {
+    "title": "The Alignment Problem",
+    "author": "Brian Christian",
+    "year": 2020,
+    "genre": ["AI", "Technology", "Ethics"],
+    "isbn": "9780393635829",
+    "url": "https://www.amazon.com/dp/0393635821",
+    "status": "to-read",
+    "priority": 5,
+    "description": "An in-depth exploration of building AI systems aligned with human values, based on interviews with leading researchers. Covers prediction, reinforcement learning, and value alignment.",
+    "pages": 464,
+    "publisher": "W. W. Norton & Company"
+  },
+  {
+    "title": "On Intelligence",
+    "author": "Jeff Hawkins",
+    "year": 2004,
+    "genre": ["AI", "Neuroscience", "Cognitive Science"],
+    "isbn": "9780805078534",
+    "url": "https://www.amazon.com/Intelligence-Understanding-Creation-Intelligent-Machines/dp/0805078533",
+    "status": "to-read",
+    "priority": 4,
+    "description": "Proposes the Memory-Prediction Framework (HTM): the brain as a predictive hierarchy. Hawkins (Palm/Numenta founder) argues intelligence emerges from hierarchical temporal memory.",
+    "pages": 272,
+    "publisher": "Times Books"
+  },
+  {
+    "title": "A Brief History of Intelligence",
+    "author": "Max S. Bennett",
+    "year": 2023,
+    "genre": ["NeuroAI", "Popular Science", "Brain Evolution"],
+    "isbn": "9780063233997",
+    "url": "https://www.amazon.com/dp/0063233997",
+    "status": "to-read",
+    "priority": 5,
+    "description": "Traces 5 key evolutionary breakthroughs in brain development from bilaterians to humans and explores their implications for building general AI. Academic companion: 'Five breakthroughs' (Frontiers 2021).",
+    "pages": 368,
+    "publisher": "HarperCollins"
+  }
+]

@@ -46,13 +46,16 @@ sitemap: true
   background: var(--nc-accent-muted);
 }
 .nav-card--music::before {
-  top: 0 !important; left: 0 !important;
-  width: 100% !important; height: 100% !important;
+  content: '';
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
   background: linear-gradient(105deg,
     transparent 28%, rgba(80,150,100,0.08) 50%, transparent 72%
-  ) !important;
-  background-size: 300% 100% !important;
-  animation: music-shimmer 6s linear infinite !important;
+  );
+  background-size: 300% 100%;
+  animation: music-shimmer 6s linear infinite;
+  pointer-events: none;
+  z-index: 0;
 }
 @keyframes music-shimmer {
   0%   { background-position: 200% 0; }
