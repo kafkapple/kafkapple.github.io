@@ -8,18 +8,12 @@
     "pct_done": 8
   },
   "themes": [
-    "Beyond Context Limits: Subconscious Threads for Long-Horizon Reasoning",
-    "Conditional Memory via Scalable Lookup (Engram)",
-    "Human-Inspired Episodic Memory for Infinite Context LLMs (EM-LLM)",
-    "Peripheral (of interest but outside core themes)",
-    "Reasoning by Superposition: Theory of Continuous CoT",
     "Theme 1: Foundations & Unifying Theories",
     "Theme 2: Representation & Neural Coding",
     "Theme 3: Learning & Memory",
     "Theme 4: Cognition & Decision-Making",
     "Theme 5: Developmental Learning & Embodied Intelligence",
-    "Theme 6: Computational Neuroethology",
-    "Training LLMs to Reason in Continuous Latent Space (Coconut)"
+    "Theme 6: Computational Neuroethology"
   ],
   "items": [
     {
