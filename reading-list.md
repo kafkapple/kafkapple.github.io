@@ -177,6 +177,8 @@ sitemap: true
 
   <input type="text" id="rl-search" placeholder="Search title · author · tag…">
 
+  <button class="rl-view-btn" id="rl-reset" title="Reset all filters and sort to defaults">↺ Reset</button>
+
   <span class="rl-count" id="rl-count"></span>
 </div>
 

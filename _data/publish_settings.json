@@ -1,0 +1,24 @@
+{
+  "_comment": "Homepage publish field exposure toggles. true = include in JSON output, false = strip. Edit via Obsidian dashboard 🌐 settings panel OR hand-edit. Required core fields (title, url) always exported.",
+  "_updated": "2026-05-02",
+  "fields": {
+    "title": true,
+    "url": true,
+    "venue": true,
+    "venue_tier": true,
+    "year": true,
+    "first_author": true,
+    "tldr": true,
+    "citation": true,
+    "tags": true,
+    "status": true,
+    "done": true,
+    "theme": true,
+    "subtheme": true,
+    "domain": true,
+    "publish": true,
+    "priority": false,
+    "stars": false,
+    "memo": false
+  }
+}

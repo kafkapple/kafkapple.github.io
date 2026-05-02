@@ -150,14 +150,23 @@
       return;
     }
 
-    // Group by theme
+    // Group by theme (preserve sort order WITHIN each theme)
     const byTheme = new Map();
     items.forEach(it => {
-      if (!byTheme.has(it.theme)) byTheme.set(it.theme, []);
-      byTheme.get(it.theme).push(it);
+      const key = it.theme || "Other";
+      if (!byTheme.has(key)) byTheme.set(key, []);
+      byTheme.get(key).push(it);
     });
 
-    byTheme.forEach((group, theme) => {
+    // Section render order: follow allThemes (Theme N number-ordered from sync), then "Other" last.
+    // This decouples section order from per-theme item sort.
+    const sectionOrder = [...allThemes.filter(t => byTheme.has(t)),
+                         ...[...byTheme.keys()].filter(t => !allThemes.includes(t))];
+
+    sectionOrder.forEach(theme => {
+      const group = byTheme.get(theme);
+      if (!group || !group.length) return;
+
       const section = document.createElement("div");
       section.className = "rl-section";
 
@@ -196,6 +205,16 @@
       section.appendChild(grid);
       container.appendChild(section);
     });
+  }
+
+  // ── Reset filters/sort ─────────────────────────────────────────────────────
+  function resetState() {
+    state = { view: "card", theme: "all", status: "all", stars: "0", year: "all", sort: "title-asc", query: "" };
+    Object.entries(state).forEach(([k, v]) => { if (k !== "query") lsSet(k, v); });
+    const searchEl = document.getElementById("rl-search");
+    if (searchEl) searchEl.value = "";
+    tableSort = { key: "title", dir: "asc" };
+    render();
   }
 
   // ── Table View ─────────────────────────────────────────────────────────────
@@ -342,6 +361,9 @@
         render();
       });
     }
+
+    const resetEl = document.getElementById("rl-reset");
+    if (resetEl) resetEl.addEventListener("click", resetState);
   }
 
   // ── Boot ───────────────────────────────────────────────────────────────────

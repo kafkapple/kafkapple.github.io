@@ -1,5 +1,15 @@
 #!/usr/bin/env python3
-"""Sync Research_Interests_Literature.md → _data/reading_list.json for GitHub Pages."""
+"""Sync Research_Interests_Literature.md → _data/reading_list.json for GitHub Pages.
+
+Publish gate (2026-05-02 final):
+  - ONLY explicit opt-in: [publish:: yes]
+  - REMOVED: priority>=5 auto-publish (subjective + double-counted with tier)
+  - REMOVED: tier S/A auto-publish (sync should not depend on internal scoring;
+    user prefers manual curation only)
+
+Tier is NEVER serialized — internal scoring artifact, not a fact.
+Output JSON contains only verifiable fields (citation/venue/year/author).
+"""
 
 import re
 import json
@@ -9,10 +19,30 @@ ROOT  = Path(__file__).parent.parent
 SRC   = ROOT / "_obsidian" / "reading_list.md"
 DEST  = ROOT / "assets" / "data" / "reading_list.json"
 DEST2 = ROOT / "_data" / "reading_list.json"  # for Liquid templates
+SETTINGS = ROOT / "_data" / "publish_settings.json"  # field exposure toggles
+
+# Always-exported core fields (cannot be toggled off — needed for any rendering)
+REQUIRED_FIELDS = {"title", "url"}
+
+
+def load_field_settings() -> dict:
+    """Load field-exposure toggles. Default: all true if file missing."""
+    if not SETTINGS.exists():
+        return {}
+    try:
+        return json.loads(SETTINGS.read_text()).get("fields", {})
+    except (json.JSONDecodeError, KeyError):
+        return {}
 
 
 def parse_inline(line: str, field: str, default="") -> str:
+    # Match both [field:: "Quoted"] and [field:: Unquoted] formats.
+    # Dashboard toggle writes unquoted (e.g. [publish:: yes]); S2 fetch writes
+    # quoted strings (e.g. [memo:: "..."]). Fall through quoted → unquoted.
     m = re.search(rf'\[{field}:: "([^"]*)"\]', line)
+    if m:
+        return m.group(1)
+    m = re.search(rf'\[{field}:: ([^\s\]]+)\]', line)
     return m.group(1) if m else default
 
 
@@ -51,6 +81,12 @@ def parse_venue(line: str) -> str:
     return m.group(1)
 
 
+def _theme_sort_key(t: str):
+    """Sort 'Theme N: ...' by N first, then alphabetical fallback."""
+    m = re.match(r'^Theme\s+(\d+):', t)
+    return (0, int(m.group(1))) if m else (1, t.lower())
+
+
 def main():
     if not SRC.exists():
         print(f"ERROR: source not found: {SRC}")
@@ -59,7 +95,6 @@ def main():
     raw = SRC.read_text(encoding="utf-8").splitlines()
 
     items   = []
-    themes  = []  # unique theme list in order
     cur_domain  = ""
     cur_theme   = ""
     cur_subtheme = ""
@@ -72,8 +107,6 @@ def main():
         elif stripped.startswith("### "):
             cur_theme = stripped.lstrip("#").strip()
             cur_subtheme = ""
-            if cur_theme not in themes:
-                themes.append(cur_theme)
         elif stripped.startswith("## "):
             cur_domain = stripped.lstrip("#").strip()
             cur_theme = ""
@@ -95,13 +128,16 @@ def main():
         tags_raw = parse_inline(stripped, "tags", "")
         tags = [t.strip() for t in tags_raw.split(",") if t.strip()]
 
-        # Site publish filter — explicit opt-in via [publish:: yes]
-        # OR auto-publish for Selected (priority 5)
+        # Site publish filter (2026-05-02 final):
+        #   ONLY explicit [publish:: yes]. No automatic publish from any signal.
         publish_field = parse_inline(stripped, "publish", "")
-        priority = parse_priority(stripped)
-        is_published = publish_field == "yes" or priority >= 5
-        if not is_published:
+        if publish_field != "yes":
             continue
+
+        priority = parse_priority(stripped)
+        citation = int(re.search(r'\[citation:: (\d+)\]', stripped).group(1)) if re.search(r'\[citation:: \d+\]', stripped) else 0
+        venue_tier = re.search(r'\[venue_tier:: (\S+)\]', stripped).group(1) if re.search(r'\[venue_tier:: \S+\]', stripped) else "?"
+        venue_tier = venue_tier.rstrip("]")  # safety
 
         items.append({
             "title":        title,
@@ -115,9 +151,9 @@ def main():
             "first_author": parse_inline(stripped, "first_author"),
             "memo":         parse_inline(stripped, "memo"),
             "tldr":         parse_inline(stripped, "tldr"),
-            "citation":     int(re.search(r'\[citation:: (\d+)\]', stripped).group(1)) if re.search(r'\[citation:: \d+\]', stripped) else 0,
-            "venue_tier":   re.search(r'\[venue_tier:: (\S+)\]', stripped).group(1) if re.search(r'\[venue_tier:: \S+\]', stripped) else "",
-            "publish":      publish_field or ("auto" if priority >= 5 else ""),
+            "citation":     citation,
+            "venue_tier":   venue_tier,  # raw venue ranking (T1/T2/T3/W) — fact about venue
+            "publish":      "yes",
             "done":         parse_done(stripped),
             "theme":        cur_theme,
             "subtheme":     cur_subtheme,
@@ -135,9 +171,24 @@ def main():
         "pct_done": round(done / total * 100) if total else 0,
     }
 
+    # Apply field-exposure settings (mask out fields toggled off in publish_settings.json)
+    field_settings = load_field_settings()
+    if field_settings:
+        masked_items = []
+        for it in items:
+            masked_items.append({
+                k: v for k, v in it.items()
+                if k in REQUIRED_FIELDS or field_settings.get(k, True)
+            })
+        items = masked_items
+
+    # Derive themes from items only (skip section headers without items, e.g. §상세 리뷰)
+    # Sort by Theme number ("Theme 1" < "Theme 2"), with non-numeric themes last.
+    themes_used = sorted(set(it["theme"] for it in items if it.get("theme")), key=_theme_sort_key)
+
     output = {
         "meta":   stats,
-        "themes": sorted(themes),  # alphabetical Theme order
+        "themes": themes_used,
         "items":  items,
     }
 
@@ -149,7 +200,7 @@ def main():
     print(f"✅ Wrote {total} items ({done} done)")
     print(f"   → {DEST}")
     print(f"   → {DEST2}")
-    print(f"   Themes: {len(themes)}")
+    print(f"   Themes: {len(themes_used)}")
 
 
 if __name__ == "__main__":
