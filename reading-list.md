@@ -89,11 +89,11 @@ sitemap: true
   margin-bottom: 4px;
 }
 .rl-stars { color: #FFA000; font-size: 0.8em; letter-spacing: 1px; }
-.rl-status { font-size: 0.78em; font-weight: 600; }
+.rl-status { display: none; }
 .rl-card__title { font-weight: 600; margin-bottom: 3px; }
 .rl-card__title a { color: inherit; text-decoration: none; }
 .rl-card__title a:hover { text-decoration: underline; }
-.rl-card__venue { font-size: 0.8em; opacity: 0.6; margin-bottom: 5px; }
+.rl-card__venue { font-size: 0.82em; opacity: 0.8; margin-bottom: 5px; font-weight: 500; }
 .rl-card__tags { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 5px; }
 .rl-card__memo { font-size: 0.8em; opacity: 0.65; line-height: 1.4; border-top: 1px dotted #ccc; padding-top: 5px; margin-top: 4px; }
 
@@ -169,7 +169,7 @@ sitemap: true
       <option value="author-asc">Author (A-Z)</option>
       <option value="priority-desc">Rating (high-low)</option>
       <option value="priority-asc">Rating (low-high)</option>
-      <option value="year-desc">Year (newest)</option>
+      <option value="year-desc" selected>Year (newest)</option>
       <option value="year-asc">Year (oldest)</option>
       <option value="status-asc">Status</option>
     </select>

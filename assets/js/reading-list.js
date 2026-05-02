@@ -19,7 +19,7 @@
     status:  lsGet("status", "all"),
     stars:   lsGet("stars",  "0"),
     year:    lsGet("year",   "all"),
-    sort:    lsGet("sort",   "title-asc"),
+    sort:    lsGet("sort",   "year-desc"),
     query:   "",
   };
 
@@ -190,12 +190,11 @@
         card.innerHTML = `
           <div class="rl-card__top">
             <span class="rl-stars" title="${it.stars}★">${stars(it.stars)}</span>
-            <span class="rl-status" style="color:${stColor}">${STATUS_LABEL[it.status] || it.status}</span>
           </div>
           <div class="rl-card__title">${it.url
             ? `<a href="${it.url}" target="_blank" rel="noopener">${it.title}</a>`
             : it.title}</div>
-          <div class="rl-card__venue">${[it.first_author, it.venue].filter(Boolean).join(" · ")}</div>
+          <div class="rl-card__venue">${[it.year || null, it.first_author, it.venue].filter(Boolean).join(" · ")}</div>
           ${tagsHtml ? `<div class="rl-card__tags">${tagsHtml}</div>` : ""}
           ${it.memo ? `<div class="rl-card__memo">${it.memo}</div>` : ""}`;
 
@@ -209,7 +208,7 @@
 
   // ── Reset filters/sort ─────────────────────────────────────────────────────
   function resetState() {
-    state = { view: "card", theme: "all", status: "all", stars: "0", year: "all", sort: "title-asc", query: "" };
+    state = { view: "card", theme: "all", status: "all", stars: "0", year: "all", sort: "year-desc", query: "" };
     Object.entries(state).forEach(([k, v]) => { if (k !== "query") lsSet(k, v); });
     const searchEl = document.getElementById("rl-search");
     if (searchEl) searchEl.value = "";
