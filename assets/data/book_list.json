@@ -9,7 +9,6 @@
   "genres": [
     "Philosophy",
     "Psychology",
-    "Cognitive Science",
     "AI",
     "NeuroAI"
   ],
@@ -53,7 +52,7 @@
       "author": "Steven Pinker",
       "year": 1997,
       "genre": [
-        "Cognitive Science",
+        "Psychology",
         "Evolutionary Psychology",
         "Perception",
         "Language"
