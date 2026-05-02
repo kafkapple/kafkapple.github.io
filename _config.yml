@@ -51,6 +51,7 @@ menu:
   # ── Research ──────────────────────────────────────────────
   - title:             Research
     url:               /research/
+    label:             Inquiry
     submenu:
       - title:         Projects
         url:           /projects/
@@ -58,6 +59,7 @@ menu:
   # ── Learning ──────────────────────────────────────────────
   - title:             Learning
     url:               /learning/
+    label:             Knowledge
     submenu:
       - title:         TIL
         url:           /til/
@@ -71,6 +73,7 @@ menu:
   # ── Creative ──────────────────────────────────────────────
   - title:             Creative
     url:               /practice/
+    label:             Create
     submenu:
       - title:         Interests
         url:           /interests/
