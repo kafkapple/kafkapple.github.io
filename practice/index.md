@@ -43,7 +43,7 @@ sitemap: true
 .nav-card--music {
   --nc-accent-muted: rgba(46,85,56,0.07);
   --nc-accent-hover: rgba(46,85,56,0.13);
-  background: var(--nc-accent-muted);
+  background-color: var(--nc-accent-muted);
 }
 .nav-card--music::before {
   content: '';
@@ -219,6 +219,45 @@ sitemap: true
   .nc-overlay, .nc-overlay__inner, .nc-ripple { transition: none !important; animation: none !important; }
   .nc-expand--pulse { animation: none !important; }
 }
+
+/* ── Content sections ── */
+.cr-section {
+  margin: 2.5em 0 3em;
+}
+.cr-section__header {
+  font-size: 0.62em; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  opacity: 0.85; margin: 0 0 1.2em;
+  padding-bottom: 0.55em;
+}
+.cr-section--music .cr-section__header  { color: rgb(46,85,56);  border-bottom: 2px solid rgba(46,85,56,0.25); }
+.cr-section--writing .cr-section__header { color: rgb(90,60,15); border-bottom: 2px solid rgba(90,60,15,0.25); }
+.cr-section--perf .cr-section__header   { color: rgb(50,40,80);  border-bottom: 2px solid rgba(50,40,80,0.25); }
+
+.cr-entry {
+  border-left: 3px solid;
+  padding: 0.5em 0 0.5em 1.2em;
+  margin-bottom: 2em;
+}
+.cr-section--music  .cr-entry { border-color: rgba(46,85,56,0.30); }
+.cr-section--writing .cr-entry { border-color: rgba(90,60,15,0.30); }
+.cr-section--perf   .cr-entry { border-color: rgba(50,40,80,0.30); }
+
+.cr-entry__title { font-size: 1em; font-weight: 700; margin: 0 0 0.25em; }
+.cr-entry__title a { color: inherit; text-decoration: none; }
+.cr-entry__title a:hover { text-decoration: underline; }
+.cr-entry__meta { font-size: 0.82em; opacity: 0.55; margin: 0 0 0.5em; font-style: italic; }
+.cr-entry__desc { font-size: 0.88em; line-height: 1.6; margin: 0 0 0.5em; }
+.cr-entry__video {
+  position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;
+  margin: 0.8em 0 0;
+}
+.cr-entry__video iframe {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 4px;
+}
+.cr-footer {
+  font-size: 0.85em; opacity: 0.6; margin-top: 2em;
+  padding-top: 1em; border-top: 1px solid rgba(46,85,56,0.15);
+}
 </style>
 
 <p class="nav-principles">Active practice</p>
@@ -259,73 +298,64 @@ sitemap: true
 
 </nav>
 
-## Music — Bands {#music}
+<section class="cr-section cr-section--music" id="music">
+<p class="cr-section__header">Music — Bands</p>
 
-### [49 Morphines](/practice/49-morphines/)
-
-Bass · 2013–present · *Screamo / Emotional Hardcore*
-
-Korean screamo / emotional hardcore band — intense, chaotic, and cathartic. Released internationally via Dog Knights Productions.
-
-<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;margin:1em 0 2em 0;">
-<iframe src="https://www.youtube.com/embed/VFlzVLBumpI" frameborder="0" allowfullscreen
-  style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:4px;"></iframe>
+<div class="cr-entry">
+<p class="cr-entry__title"><a href="/practice/49-morphines/">49 Morphines</a></p>
+<p class="cr-entry__meta">Bass · 2013–present · Screamo / Emotional Hardcore</p>
+<p class="cr-entry__desc">Korean screamo / emotional hardcore band — intense, chaotic, and cathartic. Released internationally via Dog Knights Productions.</p>
+<div class="cr-entry__video">
+<iframe src="https://www.youtube.com/embed/VFlzVLBumpI" frameborder="0" allowfullscreen></iframe>
+</div>
 </div>
 
----
-
-### [Noeazy](/practice/noeazy/)
-
-Guitar · 2007–2019 · *Metalcore*
-
-Korean metalcore band. 3rd place at the Emergenza Festival International Final (Taubertal, Germany, 2016). Nominated for Korean Popular Music Awards (2019).
-
-<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;margin:1em 0 2em 0;">
-<iframe src="https://www.youtube.com/embed/zYNiCLNHMHo" frameborder="0" allowfullscreen
-  style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:4px;"></iframe>
+<div class="cr-entry">
+<p class="cr-entry__title"><a href="/practice/noeazy/">Noeazy</a></p>
+<p class="cr-entry__meta">Guitar · 2007–2019 · Metalcore</p>
+<p class="cr-entry__desc">Korean metalcore band. 3rd place at the Emergenza Festival International Final (Taubertal, Germany, 2016). Nominated for Korean Popular Music Awards (2019).</p>
+<div class="cr-entry__video">
+<iframe src="https://www.youtube.com/embed/zYNiCLNHMHo" frameborder="0" allowfullscreen></iframe>
+</div>
 </div>
 
----
-
-### [Jambinai](/practice/jambinai/)
-
-Guitar (guest) · 2013–2014 · *Post-rock / Experimental / Gugak*
-
-Korean post-rock band fusing traditional instruments with electric guitar and percussion. Featured in NPR, Pitchfork, and Vice.
-
-<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;margin:1em 0 2em 0;">
-<iframe src="https://www.youtube.com/embed/56dv3XHUISY" frameborder="0" allowfullscreen
-  style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:4px;"></iframe>
+<div class="cr-entry">
+<p class="cr-entry__title"><a href="/practice/jambinai/">Jambinai</a></p>
+<p class="cr-entry__meta">Guitar (guest) · 2013–2014 · Post-rock / Experimental / Gugak</p>
+<p class="cr-entry__desc">Korean post-rock band fusing traditional instruments with electric guitar and percussion. Featured in NPR, Pitchfork, and Vice.</p>
+<div class="cr-entry__video">
+<iframe src="https://www.youtube.com/embed/56dv3XHUISY" frameborder="0" allowfullscreen></iframe>
+</div>
 </div>
 
----
+</section>
 
-## Writing & Translation {#writing}
+<section class="cr-section cr-section--writing" id="writing">
+<p class="cr-section__header">Writing &amp; Translation</p>
 
-### [Translation Review (2022)](/practice/translation/)
+<div class="cr-entry">
+<p class="cr-entry__title"><a href="/practice/translation/">Translation Review (2022)</a></p>
+<p class="cr-entry__meta">Translation · Science writing</p>
+<p class="cr-entry__desc">Contributed as a science reviewer for the Korean edition of Jeff Hawkins' <em>A Thousand Brains: A New Theory of Intelligence</em> (천 개의 뇌, 이데아, 2022). Verified technical accuracy of neuroscience and memory hierarchy passages.</p>
+</div>
 
-Contributed as a science reviewer for the Korean edition of Jeff Hawkins' ***A Thousand Brains: A New Theory of Intelligence*** (천 개의 뇌, 이데아, 2022). Verified technical accuracy of neuroscience and memory hierarchy passages.
+<div class="cr-entry">
+<p class="cr-entry__title"><a href="/practice/literary/">KAIST Literary Award (2019)</a></p>
+<p class="cr-entry__meta">Essay · Honorable Mention</p>
+<p class="cr-entry__desc">Honorable Mention, 22nd KAIST Literary Contest, Essay/Criticism category. The piece explored the phenomenology of memory from a neuroscience perspective.</p>
+</div>
 
-`Translation · Science writing`
+</section>
 
----
+<section class="cr-section cr-section--perf" id="performance">
+<p class="cr-section__header">Performance &amp; Interdisciplinary</p>
 
-### [KAIST Literary Award (2019)](/practice/literary/)
+<div class="cr-entry">
+<p class="cr-entry__title"><a href="/practice/crowd-walk/">Crowd Walk (2019)</a></p>
+<p class="cr-entry__meta">Performance · BCI · Ilmin Museum</p>
+<p class="cr-entry__desc">Performed with artist <strong>Lang Lee</strong> at <em>Ilmin Museum of Art</em>, Seoul. Real-time emotion recognition from facial expression and EEG drove a crowd-movement performance piece.</p>
+</div>
 
-Honorable Mention, 22nd KAIST Literary Contest, Essay/Criticism category. The piece explored the phenomenology of memory from a neuroscience perspective.
+</section>
 
-`Essay · Honorable Mention`
-
----
-
-## Performance & Interdisciplinary {#performance}
-
-### [Crowd Walk (2019)](/practice/crowd-walk/)
-
-Performed with artist **Lang Lee** at *Ilmin Museum of Art*, Seoul. Real-time emotion recognition from facial expression and EEG drove a crowd-movement performance piece.
-
-`Performance · BCI · Ilmin Museum`
-
----
-
-Awards and honors: [main page](/#awards--honors). Talks: [Talks](/talks/).
+<p class="cr-footer">Awards and honors: <a href="/#awards--honors">main page</a>. Talks: <a href="/talks/">Talks</a>.</p>

@@ -8,43 +8,46 @@ sitemap: true
 ---
 
 <style>
-/* ── Learning cards: subtle hue variations of site base green rgb(46,85,56) ── */
+/* ── Learning cards: TIL featured (permanent tint), others white base + distinct hover ── */
 .nav-card--til {
-  --nc-accent-muted: rgba(20,85,65,0.07);
-  --nc-accent-hover: rgba(20,85,65,0.13);
-  background-color: var(--nc-accent-muted);
+  --nc-accent-muted: rgba(20,85,65,0.08);
+  --nc-accent-hover: rgba(20,85,65,0.15);
+  /* featured rule in my-head.html supplies background-color */
 }
 .nav-card--til:not(.wip):hover {
   box-shadow: 0 14px 36px rgba(20,85,65,0.15), 0 3px 8px rgba(20,85,65,0.08);
 }
 
 .nav-card--books {
-  --nc-accent-muted: rgba(60,82,28,0.07);
-  --nc-accent-hover: rgba(60,82,28,0.13);
-  background-color: var(--nc-accent-muted);
+  --nc-accent-muted: rgba(68,82,20,0.11);
+  --nc-accent-hover: rgba(68,82,20,0.19);
+  /* white base — tint appears on hover only */
 }
 .nav-card--books:not(.wip):hover {
-  box-shadow: 0 12px 30px rgba(60,82,28,0.15), 0 2px 8px rgba(60,82,28,0.08);
+  background-color: var(--nc-accent-muted);
+  box-shadow: 0 12px 30px rgba(68,82,20,0.14), 0 2px 8px rgba(68,82,20,0.07);
 }
 
 .nav-card--papers {
-  --nc-accent-muted: rgba(46,85,56,0.07);
-  --nc-accent-hover: rgba(46,85,56,0.13);
-  background-color: var(--nc-accent-muted);
+  --nc-accent-muted: rgba(14,72,62,0.11);
+  --nc-accent-hover: rgba(14,72,62,0.19);
 }
 .nav-card--papers:not(.wip):hover {
-  box-shadow: 0 12px 30px rgba(46,85,56,0.15), 0 2px 8px rgba(46,85,56,0.08);
+  background-color: var(--nc-accent-muted);
+  box-shadow: 0 12px 30px rgba(14,72,62,0.14), 0 2px 8px rgba(14,72,62,0.07);
 }
 
 .nav-card--blog {
-  --nc-accent-muted: rgba(46,70,52,0.06);
-  --nc-accent-hover: rgba(46,70,52,0.11);
-  background-color: var(--nc-accent-muted);
+  --nc-accent-muted: rgba(44,54,44,0.10);
+  --nc-accent-hover: rgba(44,54,44,0.17);
 }
 .nav-card--blog:not(.wip):hover {
-  box-shadow: 0 12px 30px rgba(46,70,52,0.13), 0 2px 8px rgba(46,70,52,0.07);
+  background-color: var(--nc-accent-muted);
+  box-shadow: 0 12px 30px rgba(44,54,44,0.12), 0 2px 8px rgba(44,54,44,0.06);
 }
 </style>
+
+<p>Active learning — continuous notes, curated reading, and writing on NeuroAI, cognitive science, and the tools of research.</p>
 
 <p class="nav-principles">Active learning</p>
 
