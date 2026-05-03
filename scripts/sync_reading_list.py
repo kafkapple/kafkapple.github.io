@@ -139,6 +139,7 @@ def main():
         venue_tier = re.search(r'\[venue_tier:: (\S+)\]', stripped).group(1) if re.search(r'\[venue_tier:: \S+\]', stripped) else "?"
         venue_tier = venue_tier.rstrip("]")  # safety
         article_type = parse_inline(stripped, "article_type", "")
+        pub_status   = parse_inline(stripped, "pub_status", "preprint")
 
         items.append({
             "title":        title,
@@ -155,6 +156,7 @@ def main():
             "citation":     citation,
             "venue_tier":   venue_tier,  # raw venue ranking (T1/T2/T3/W) — fact about venue
             "article_type": article_type,
+            "pub_status":   pub_status,
             "publish":      "yes",
             "done":         parse_done(stripped),
             "theme":        cur_theme,

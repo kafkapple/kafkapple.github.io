@@ -42,10 +42,11 @@
   const STATUS_COLOR = { "to-read": "#888", reading: "#FFD700", done: "#4CAF50", "in-progress": "#FFD700", skipped: "#9E9E9E" };
 
   const TYPE_STYLE = {
-    "Review":      { bg: "#e3f2fd", color: "#1565c0", border: "#1565c0" },
-    "Original":    { bg: "#f5f5f5", color: "#555",    border: "#999"    },
-    "Preprint":    { bg: "#fff8e1", color: "#e65100", border: "#e65100" },
-    "Perspective": { bg: "#f3e5f5", color: "#6a1b9a", border: "#6a1b9a" },
+    "Review":      { bg: "#e8f5e9", color: "#2e7d32", border: "#2e7d32" },
+    "Article":     { bg: "#f5f5f5", color: "#555",    border: "#999"    },
+    "Preprint":    { bg: "#f5f5f5", color: "#888",    border: "#bbb"    },
+    "Perspective": { bg: "#fff3e0", color: "#e65100", border: "#e65100" },
+    "Position":    { bg: "#f3e5f5", color: "#6a1b9a", border: "#6a1b9a" },
   };
 
   function typeStyle(t) {
