@@ -48,41 +48,12 @@ author:
 
 # Add links to the sidebar.
 menu:
-  # ── Research ──────────────────────────────────────────────
   - title:             Research
     url:               /research/
-    label:             Inquiry
-    submenu:
-      - title:         Projects
-        url:           /projects/
-
-  # ── Learning ──────────────────────────────────────────────
   - title:             Learning
     url:               /learning/
-    label:             Knowledge
-    submenu:
-      - title:         Papers
-        url:           /reading-list/
-      - title:         Books
-        url:           /books/
-      - title:         TIL
-        url:           /til/
-      - title:         Blog
-        url:           /blog/
-
-  # ── Creative ──────────────────────────────────────────────
   - title:             Creative
     url:               /practice/
-    label:             Expression
-    submenu:
-      - title:         Music
-        url:           /practice/#music
-      - title:         Performance
-        url:           /practice/#performance
-      - title:         Writing
-        url:           /practice/#writing
-      - title:         Lab
-        url:           /lab/
 
 
 # Add links to the footer.
