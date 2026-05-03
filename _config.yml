@@ -51,6 +51,7 @@ menu:
   # ── Research ──────────────────────────────────────────────
   - title:             Research
     url:               /research/
+    label:             Inquiry
     submenu:
       - title:         Projects
         url:           /projects/
@@ -72,6 +73,7 @@ menu:
   # ── Creative ──────────────────────────────────────────────
   - title:             Creative
     url:               /practice/
+    label:             Expression
     submenu:
       - title:         Music
         url:           /practice/#music
