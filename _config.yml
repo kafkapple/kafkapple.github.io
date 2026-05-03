@@ -61,10 +61,10 @@ menu:
     url:               /learning/
     label:             Knowledge
     submenu:
-      - title:         Books
-        url:           /books/
       - title:         Papers
         url:           /reading-list/
+      - title:         Books
+        url:           /books/
       - title:         TIL
         url:           /til/
       - title:         Blog

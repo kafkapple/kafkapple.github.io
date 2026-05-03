@@ -4,9 +4,9 @@
 sync:
 	python3 scripts/sync_reading_list.py
 
-# Local dev server
+# Local dev server (uses _config.local.yml to override remote_theme → local gem)
 serve: sync
-	bundle exec jekyll serve --livereload
+	bundle exec jekyll serve --livereload --config _config.yml,_config.local.yml
 
 # Production build
 build: sync

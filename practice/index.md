@@ -272,19 +272,19 @@ sitemap: true
 <span class="nav-card__arrow">↓</span>
 </a>
 
-<a class="nav-card nav-card--writing" href="#writing" data-card-theme="writing">
-<span class="nav-card__principle">Language</span>
-<p class="nav-card__title">Writing</p>
-<p class="nav-card__desc">Science translation and literary criticism — communicating neuroscience across registers.</p>
-<span class="nav-card__tags">Translation · Essay · KAIST</span>
-<span class="nav-card__arrow">↓</span>
-</a>
-
 <a class="nav-card nav-card--perf" href="#performance" data-card-theme="perf">
 <span class="nav-card__principle">System</span>
 <p class="nav-card__title">Performance</p>
 <p class="nav-card__desc">Interdisciplinary work at the intersection of art, neuroscience, and embodied cognition.</p>
 <span class="nav-card__tags">BCI · Museum · Neuroscience</span>
+<span class="nav-card__arrow">↓</span>
+</a>
+
+<a class="nav-card nav-card--writing" href="#writing" data-card-theme="writing">
+<span class="nav-card__principle">Language</span>
+<p class="nav-card__title">Writing</p>
+<p class="nav-card__desc">Science translation and literary criticism — communicating neuroscience across registers.</p>
+<span class="nav-card__tags">Translation · Essay · KAIST</span>
 <span class="nav-card__arrow">↓</span>
 </a>
 

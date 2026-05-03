@@ -53,11 +53,11 @@ sitemap: true
 
 <nav class="nav-cards-grid">
 
-<a class="nav-card nav-card--featured nav-card--til" href="/til/">
-<span class="nav-card__principle">Knowledge</span>
-<p class="nav-card__title">TIL</p>
-<p class="nav-card__desc">Today I Learned — short notes on research, tools, and techniques encountered day to day. NeuroAI, ML, and cognitive science.</p>
-<span class="nav-card__tags">NeuroAI · ML · Neuroscience · Tools</span>
+<a class="nav-card nav-card--featured nav-card--papers" href="/reading-list/">
+<span class="nav-card__principle">Research</span>
+<p class="nav-card__title">Papers</p>
+<p class="nav-card__desc">Curated reading list of papers in NeuroAI, vision, and computational neuroscience — with Tier ratings.</p>
+<span class="nav-card__tags">NeuroAI · Vision · Computation</span>
 <span class="nav-card__arrow">→</span>
 </a>
 
@@ -69,11 +69,11 @@ sitemap: true
 <span class="nav-card__arrow">→</span>
 </a>
 
-<a class="nav-card nav-card--papers" href="/reading-list/">
-<span class="nav-card__principle">Research</span>
-<p class="nav-card__title">Papers</p>
-<p class="nav-card__desc">Curated reading list of papers in NeuroAI, vision, and computational neuroscience — with Tier ratings.</p>
-<span class="nav-card__tags">NeuroAI · Vision · Computation</span>
+<a class="nav-card nav-card--til" href="/til/">
+<span class="nav-card__principle">Knowledge</span>
+<p class="nav-card__title">TIL</p>
+<p class="nav-card__desc">Today I Learned — short notes on research, tools, and techniques encountered day to day. NeuroAI, ML, and cognitive science.</p>
+<span class="nav-card__tags">NeuroAI · ML · Neuroscience · Tools</span>
 <span class="nav-card__arrow">→</span>
 </a>
 
