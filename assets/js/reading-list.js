@@ -49,10 +49,10 @@
       if (state.year !== "all" && String(it.year) !== state.year) return false;
       if (state.query) {
         const q = state.query.toLowerCase();
-        if (!it.title.toLowerCase().includes(q) &&
-            !it.first_author.toLowerCase().includes(q) &&
+        if (!(it.title || "").toLowerCase().includes(q) &&
+            !(it.first_author || "").toLowerCase().includes(q) &&
             !(it.tags || []).join(" ").toLowerCase().includes(q) &&
-            !it.memo.toLowerCase().includes(q)) return false;
+            !(it.memo || "").toLowerCase().includes(q)) return false;
       }
       return true;
     });
@@ -63,11 +63,11 @@
     const [key, dir] = m ? [m[1], m[2]] : ["priority", "desc"];
     const sign = dir === "asc" ? 1 : -1;
     return [...arr].sort((a, b) => {
-      if (key === "year")     return sign * ((a.year || 0) - (b.year || 0)) || b.priority - a.priority;
-      if (key === "author")   return sign * (a.first_author || "").localeCompare(b.first_author || "") || b.priority - a.priority;
-      if (key === "title")    return sign * a.title.localeCompare(b.title);
-      if (key === "status")   return sign * (a.status || "").localeCompare(b.status || "") || b.priority - a.priority;
-      return sign * (a.priority - b.priority) || a.title.localeCompare(b.title);
+      if (key === "year")     return sign * ((a.year || 0) - (b.year || 0)) || (b.priority || 0) - (a.priority || 0);
+      if (key === "author")   return sign * (a.first_author || "").localeCompare(b.first_author || "") || (b.priority || 0) - (a.priority || 0);
+      if (key === "title")    return sign * (a.title || "").localeCompare(b.title || "");
+      if (key === "status")   return sign * (a.status || "").localeCompare(b.status || "") || (b.priority || 0) - (a.priority || 0);
+      return sign * ((a.priority || 0) - (b.priority || 0)) || (a.title || "").localeCompare(b.title || "");
     });
   }
 
@@ -372,7 +372,10 @@
     if (m) { tableSort.key = m[1]; tableSort.dir = m[2]; }
 
     fetch(DATA_URL)
-      .then(r => r.json())
+      .then(r => {
+        if (!r.ok) throw new Error(`HTTP ${r.status}: ${DATA_URL}`);
+        return r.json();
+      })
       .then(data => {
         allItems  = data.items  || [];
         allThemes = data.themes || [];
