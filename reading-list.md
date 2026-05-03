@@ -90,13 +90,52 @@ sitemap: true
 }
 .rl-stars { color: #FFA000; font-size: 0.8em; letter-spacing: 1px; }
 .rl-status { display: none; }
+.rl-card__subtheme {
+  font-size: 0.74em;
+  opacity: 0.55;
+  margin-bottom: 4px;
+  font-style: italic;
+}
 .rl-card__title { font-weight: 600; margin-bottom: 3px; }
 .rl-card__title a { color: inherit; text-decoration: none; }
 .rl-card__title a:hover { text-decoration: underline; }
-.rl-card__venue { font-size: 0.82em; opacity: 0.8; margin-bottom: 5px; font-weight: 500; }
+.rl-card__venue { font-size: 0.82em; opacity: 0.8; margin-bottom: 4px; font-weight: 500; }
+.rl-card__tldr {
+  font-size: 0.79em;
+  opacity: 0.7;
+  line-height: 1.4;
+  margin-bottom: 5px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
 .rl-card__tags { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 5px; }
 .rl-card__memo { font-size: 0.8em; opacity: 0.65; line-height: 1.4; border-top: 1px dotted #ccc; padding-top: 5px; margin-top: 4px; }
 
+/* ── Type badge — distinct from content tags ────────────────── */
+.rl-type-badge {
+  display: inline-block;
+  font-size: 0.72em;
+  font-weight: 600;
+  padding: 1px 7px;
+  border-radius: 10px;
+  border: 1px solid;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+/* ── Type section label (within theme) ──────────────────────── */
+.rl-type-section-label {
+  font-size: 0.75em;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.45;
+  margin: 10px 0 6px;
+}
+
+/* ── Content tags ────────────────────────────────────────────── */
 .rl-tag {
   background: var(--accent-color, #4c8bf5);
   color: #fff;
@@ -106,6 +145,10 @@ sitemap: true
   opacity: 0.8;
 }
 .rl-tag--sm { font-size: 0.72em; padding: 1px 5px; }
+
+/* ── Hide Status and Stars filters ──────────────────────────── */
+#rl-filter-status,
+#rl-filter-stars { display: none; }
 
 /* ── Table ──────────────────────────────────────────────────── */
 .rl-table {
@@ -131,8 +174,9 @@ sitemap: true
 .rl-table td { padding: 5px 8px; vertical-align: top; }
 .rl-row--done td { opacity: 0.55; }
 .rl-td-center { text-align: center; }
+.rl-td-theme { font-size: 0.8em; opacity: 0.75; }
+.rl-td-subtheme { font-size: 0.78em; opacity: 0.65; font-style: italic; }
 .rl-table-memo { font-size: 0.78em; opacity: 0.6; margin-top: 2px; line-height: 1.3; }
-.rl-status-badge { font-weight: 600; font-size: 0.82em; }
 </style>
 
 <div id="rl-stats">Loading...</div>
