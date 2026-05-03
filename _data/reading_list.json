@@ -36,7 +36,7 @@
       "publish": "yes",
       "done": true,
       "theme": "Theme 1: Foundations, Frameworks & Unifying Theories",
-      "subtheme": "1b. NeuroAI Position Papers & Field Vision",
+      "subtheme": "1b. NeuroAI Field Vision",
       "domain": "📚 전체 목록"
     },
     {
@@ -57,7 +57,7 @@
       "publish": "yes",
       "done": true,
       "theme": "Theme 1: Foundations, Frameworks & Unifying Theories",
-      "subtheme": "1b. NeuroAI Position Papers & Field Vision",
+      "subtheme": "1b. NeuroAI Field Vision",
       "domain": "📚 전체 목록"
     },
     {
@@ -78,139 +78,7 @@
       "publish": "yes",
       "done": true,
       "theme": "Theme 1: Foundations, Frameworks & Unifying Theories",
-      "subtheme": "1b. NeuroAI Position Papers & Field Vision",
-      "domain": "📚 전체 목록"
-    },
-    {
-      "title": "From Tokens to Thoughts: How LLMs and Humans Trade Compression for Meaning",
-      "venue": "arXiv 2025",
-      "url": "https://arxiv.org/abs/2505.17117",
-      "tags": [
-        "compression",
-        "cognition",
-        "LLM",
-        "neuroai"
-      ],
-      "status": "to-read",
-      "year": 2025,
-      "first_author": "Shani",
-      "tldr": "",
-      "citation": 21,
-      "venue_tier": "W",
-      "publish": "yes",
-      "done": false,
-      "theme": "Theme 1: Foundations, Frameworks & Unifying Theories",
-      "subtheme": "1b. NeuroAI Position Papers & Field Vision",
-      "domain": "📚 전체 목록"
-    },
-    {
-      "title": "Emotion concepts and their function in a large language model",
-      "venue": "Anthropic 2026",
-      "url": "https://www.anthropic.com/research/emotion-concepts-function",
-      "tags": [
-        "emotion",
-        "LLM",
-        "interpretability",
-        "affective",
-        "neuroai"
-      ],
-      "status": "to-read",
-      "year": 2026,
-      "first_author": "Sofroniew",
-      "tldr": "",
-      "citation": 11,
-      "venue_tier": "?",
-      "publish": "yes",
-      "done": false,
-      "theme": "Theme 1: Foundations, Frameworks & Unifying Theories",
-      "subtheme": "1b. NeuroAI Position Papers & Field Vision",
-      "domain": "📚 전체 목록"
-    },
-    {
-      "title": "Emergence of Language in the Developing Brain",
-      "venue": "arXiv 2025",
-      "url": "https://arxiv.org/abs/2512.05718",
-      "tags": [
-        "language",
-        "development",
-        "iEEG",
-        "neuroai"
-      ],
-      "status": "to-read",
-      "year": 2025,
-      "first_author": "Evanson",
-      "tldr": "",
-      "citation": 8,
-      "venue_tier": "?",
-      "publish": "yes",
-      "done": false,
-      "theme": "Theme 1: Foundations, Frameworks & Unifying Theories",
-      "subtheme": "1b. NeuroAI Position Papers & Field Vision",
-      "domain": "📚 전체 목록"
-    },
-    {
-      "title": "Key-Value Memory in the Brain",
-      "venue": "arXiv 2025",
-      "url": "https://arxiv.org/abs/2501.02950",
-      "tags": [
-        "KV-memory",
-        "neuroscience",
-        "brain",
-        "hippocampus",
-        "neuroai"
-      ],
-      "status": "to-read",
-      "year": 2025,
-      "first_author": "Gershman",
-      "tldr": "",
-      "citation": 31,
-      "venue_tier": "T1",
-      "publish": "yes",
-      "done": false,
-      "theme": "Theme 1: Foundations, Frameworks & Unifying Theories",
-      "subtheme": "1b. NeuroAI Position Papers & Field Vision",
-      "domain": "📚 전체 목록"
-    },
-    {
-      "title": "Hierarchical Reasoning Model (HRM)",
-      "venue": "arXiv 2025",
-      "url": "https://arxiv.org/abs/2506.21734",
-      "tags": [
-        "reasoning",
-        "hierarchy",
-        "LLM"
-      ],
-      "status": "to-read",
-      "year": 2025,
-      "first_author": "Wang",
-      "tldr": "The Hierarchical Reasoning Model is proposed, a novel recurrent architecture that attains significant computational depth while maintaining both training stabil",
-      "citation": 82,
-      "venue_tier": "W",
-      "publish": "yes",
-      "done": false,
-      "theme": "Theme 1: Foundations, Frameworks & Unifying Theories",
-      "subtheme": "1c. Computational Reasoning Frameworks",
-      "domain": "📚 전체 목록"
-    },
-    {
-      "title": "Training LLMs to Reason in Continuous Latent Space (Coconut)",
-      "venue": "arXiv 2024",
-      "url": "https://arxiv.org/abs/2412.06769",
-      "tags": [
-        "latent-reasoning",
-        "continuous",
-        "token-efficiency"
-      ],
-      "status": "to-read",
-      "year": 2024,
-      "first_author": "Hao",
-      "tldr": "This work introduces a new paradigm called Coconut (Chain of Continuous Thought), which utilizes the last hidden state of the LLM as a representation of the rea",
-      "citation": 459,
-      "venue_tier": "W",
-      "publish": "yes",
-      "done": false,
-      "theme": "Theme 1: Foundations, Frameworks & Unifying Theories",
-      "subtheme": "1c. Computational Reasoning Frameworks",
+      "subtheme": "1b. NeuroAI Field Vision",
       "domain": "📚 전체 목록"
     },
     {
@@ -233,6 +101,27 @@
       "done": false,
       "theme": "Theme 1: Foundations, Frameworks & Unifying Theories",
       "subtheme": "1d. Hierarchical Representation Theory",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "The Platonic Representation Hypothesis",
+      "venue": "arXiv 2024",
+      "url": "https://arxiv.org/abs/2405.07987",
+      "tags": [
+        "representation",
+        "convergence",
+        "universality"
+      ],
+      "status": "to-read",
+      "year": 2024,
+      "first_author": "Huh",
+      "tldr": "It is argued that representations in AI models, particularly deep networks, are converging, and hypothesize that this convergence is driving toward a shared sta",
+      "citation": 312,
+      "venue_tier": "?",
+      "publish": "yes",
+      "done": false,
+      "theme": "Theme 1: Foundations, Frameworks & Unifying Theories",
+      "subtheme": "1e. Convergent Representation Theories",
       "domain": "📚 전체 목록"
     },
     {
@@ -388,24 +277,26 @@
       "domain": "📚 전체 목록"
     },
     {
-      "title": "The Platonic Representation Hypothesis",
-      "venue": "arXiv 2024",
-      "url": "https://arxiv.org/abs/2405.07987",
+      "title": "Key-Value Memory in the Brain",
+      "venue": "arXiv 2025",
+      "url": "https://arxiv.org/abs/2501.02950",
       "tags": [
-        "representation",
-        "convergence",
-        "universality"
+        "KV-memory",
+        "neuroscience",
+        "brain",
+        "hippocampus",
+        "neuroai"
       ],
       "status": "to-read",
-      "year": 2024,
-      "first_author": "Huh",
-      "tldr": "It is argued that representations in AI models, particularly deep networks, are converging, and hypothesize that this convergence is driving toward a shared sta",
-      "citation": 312,
-      "venue_tier": "?",
+      "year": 2025,
+      "first_author": "Gershman",
+      "tldr": "",
+      "citation": 31,
+      "venue_tier": "T1",
       "publish": "yes",
       "done": false,
       "theme": "Theme 3: Representation & Neural Coding",
-      "subtheme": "3d. Representational Convergence",
+      "subtheme": "3d. Brain Memory Architecture",
       "domain": "📚 전체 목록"
     },
     {
@@ -600,6 +491,28 @@
       "domain": "📚 전체 목록"
     },
     {
+      "title": "From Tokens to Thoughts: How LLMs and Humans Trade Compression for Meaning",
+      "venue": "arXiv 2025",
+      "url": "https://arxiv.org/abs/2505.17117",
+      "tags": [
+        "compression",
+        "cognition",
+        "LLM",
+        "neuroai"
+      ],
+      "status": "to-read",
+      "year": 2025,
+      "first_author": "Shani",
+      "tldr": "",
+      "citation": 21,
+      "venue_tier": "W",
+      "publish": "yes",
+      "done": false,
+      "theme": "Theme 4: Cognitive Inspired",
+      "subtheme": "",
+      "domain": "📚 전체 목록"
+    },
+    {
       "title": "Why there are complementary learning systems in the hippocampus and neocortex (CLS original)",
       "venue": "Psychol Rev 1995",
       "url": "https://doi.org/10.1037/0033-295X.102.3.419",
@@ -774,6 +687,71 @@
       "domain": "📚 전체 목록"
     },
     {
+      "title": "Hierarchical Reasoning Model (HRM)",
+      "venue": "arXiv 2025",
+      "url": "https://arxiv.org/abs/2506.21734",
+      "tags": [
+        "reasoning",
+        "hierarchy",
+        "LLM"
+      ],
+      "status": "to-read",
+      "year": 2025,
+      "first_author": "Wang",
+      "tldr": "The Hierarchical Reasoning Model is proposed, a novel recurrent architecture that attains significant computational depth while maintaining both training stabil",
+      "citation": 82,
+      "venue_tier": "W",
+      "publish": "yes",
+      "done": false,
+      "theme": "Theme 6: Cognition & Decision-Making",
+      "subtheme": "6a. [AI] Reasoning, Planning & Cognitive Control",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "Training LLMs to Reason in Continuous Latent Space (Coconut)",
+      "venue": "arXiv 2024",
+      "url": "https://arxiv.org/abs/2412.06769",
+      "tags": [
+        "latent-reasoning",
+        "continuous",
+        "token-efficiency"
+      ],
+      "status": "to-read",
+      "year": 2024,
+      "first_author": "Hao",
+      "tldr": "This work introduces a new paradigm called Coconut (Chain of Continuous Thought), which utilizes the last hidden state of the LLM as a representation of the rea",
+      "citation": 459,
+      "venue_tier": "W",
+      "publish": "yes",
+      "done": false,
+      "theme": "Theme 6: Cognition & Decision-Making",
+      "subtheme": "6a. [AI] Reasoning, Planning & Cognitive Control",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "Emotion concepts and their function in a large language model",
+      "venue": "Anthropic 2026",
+      "url": "https://www.anthropic.com/research/emotion-concepts-function",
+      "tags": [
+        "emotion",
+        "LLM",
+        "interpretability",
+        "affective",
+        "neuroai"
+      ],
+      "status": "to-read",
+      "year": 2026,
+      "first_author": "Sofroniew",
+      "tldr": "",
+      "citation": 11,
+      "venue_tier": "?",
+      "publish": "yes",
+      "done": false,
+      "theme": "Theme 6: Cognition & Decision-Making",
+      "subtheme": "6b. [AI] Emotion & Affective Cognition",
+      "domain": "📚 전체 목록"
+    },
+    {
       "title": "A framework for studying the neurobiology of value-based decision making",
       "venue": "Nat Rev Neurosci 2008",
       "url": "https://doi.org/10.1038/nrn2357",
@@ -879,6 +857,28 @@
       "tldr": "",
       "citation": 3300,
       "venue_tier": "T1",
+      "publish": "yes",
+      "done": false,
+      "theme": "Theme 7: Developmental Learning & Embodied Intelligence",
+      "subtheme": "7a. [Neuro] Language & Brain",
+      "domain": "📚 전체 목록"
+    },
+    {
+      "title": "Emergence of Language in the Developing Brain",
+      "venue": "arXiv 2025",
+      "url": "https://arxiv.org/abs/2512.05718",
+      "tags": [
+        "language",
+        "development",
+        "iEEG",
+        "neuroai"
+      ],
+      "status": "to-read",
+      "year": 2025,
+      "first_author": "Evanson",
+      "tldr": "",
+      "citation": 8,
+      "venue_tier": "?",
       "publish": "yes",
       "done": false,
       "theme": "Theme 7: Developmental Learning & Embodied Intelligence",
