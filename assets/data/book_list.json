@@ -1,9 +1,9 @@
 {
   "meta": {
-    "total": 6,
+    "total": 7,
     "done": 0,
     "reading": 0,
-    "to_read": 6,
+    "to_read": 7,
     "pct_done": 0
   },
   "genres": [
@@ -82,6 +82,24 @@
       "description": "Building AI systems aligned with human values. Based on interviews with leading AI researchers. 3 parts: Prophecy (prediction) / Agency (RL) / Normativity (values). 2022 Schmidt Award",
       "done": false,
       "section": "AI / Technology"
+    },
+    {
+      "title": "A Thousand Brains: A New Theory of Intelligence",
+      "author": "Jeff Hawkins",
+      "year": 2021,
+      "genre": [
+        "NeuroAI",
+        "Neuroscience",
+        "AI",
+        "Intelligence"
+      ],
+      "isbn": "9781541675803",
+      "url": "https://www.numenta.com/resources/books/a-thousand-brains-by-jeff-hawkins/",
+      "status": "to-read",
+      "priority": 5,
+      "description": "A New Theory of Intelligence. Explores how the brain builds a model of the world using map-like structures called reference frames. Covers the Thousand Brains Theory, the future of AI, and the survival of humanity. Recommended by Bill Gates.",
+      "done": false,
+      "section": "NeuroAI / Popular Science"
     },
     {
       "title": "A Brief History of Intelligence",
