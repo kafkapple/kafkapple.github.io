@@ -3,7 +3,7 @@
 # Safety: main branch only, allowlisted file staging, no --force, no --no-verify.
 set -e
 
-cd /Users/joon/dev/kafkapple.github.io
+cd /Users/joon/dev/pages_repo/kafkapple.github.io
 
 # Branch safety — only operate on main
 BRANCH=$(git rev-parse --abbrev-ref HEAD)
@@ -35,5 +35,8 @@ COUNT=$(python3 -c "import json; print(json.load(open('_data/reading_list.json')
 # Step 5: commit + push (no --force, no --no-verify)
 git commit -m "deploy: reading list — ${COUNT} items ($(date +%Y-%m-%d))"
 git push origin main
+
+# Step 6: Verify deployment status
+python3 scripts/verify_deployment.py
 
 echo "✅ Deployed ${COUNT} items"
