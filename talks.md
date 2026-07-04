@@ -26,8 +26,8 @@ sitemap: true
 </style>
 
 <div class="talk-stats">
-  <div class="talk-stat"><strong>10</strong> talks / seminars</div>
-  <div class="talk-stat"><strong>8</strong> years active<br><span style="font-size:0.85em">2013–2026</span></div>
+  <div class="talk-stat"><strong>14</strong> talks / seminars</div>
+  <div class="talk-stat"><strong>9</strong> years active<br><span style="font-size:0.85em">2013–2026</span></div>
   <div class="talk-stat"><strong>5</strong> countries<br><span style="font-size:0.85em">KR · US · NL · CN · Virtual</span></div>
   <div class="talk-stat"><strong>2</strong> with video</div>
 </div>
@@ -35,19 +35,26 @@ sitemap: true
 **Activity by year**
 
 <div class="heatmap">
-  <div class="hm-col"><div class="hm-bar" style="height:1.0em;" title="2013: 1"></div><div class="hm-year">2013</div></div>
-  <div class="hm-col"><div class="hm-bar" style="height:1.8em;" title="2018: 1"></div><div class="hm-year">2018</div></div>
-  <div class="hm-col"><div class="hm-bar" style="height:1.0em;" title="2019: 1"></div><div class="hm-year">2019</div></div>
-  <div class="hm-col"><div class="hm-bar" style="height:1.8em;" title="2022: 1"></div><div class="hm-year">2022</div></div>
-  <div class="hm-col"><div class="hm-bar" style="height:1.8em;" title="2023: 1"></div><div class="hm-year">2023</div></div>
-  <div class="hm-col"><div class="hm-bar" style="height:3.0em;" title="2024: 2"></div><div class="hm-year">2024</div></div>
-  <div class="hm-col"><div class="hm-bar" style="height:6.0em;" title="2025: 3"></div><div class="hm-year">2025</div></div>
-  <div class="hm-col"><div class="hm-bar" style="height:3.0em;" title="2026: 2"></div><div class="hm-year">2026</div></div>
+  <div class="hm-col"><div class="hm-bar" style="height:1.2em;" title="2013: 1"></div><div class="hm-year">2013</div></div>
+  <div class="hm-col"><div class="hm-bar" style="height:1.2em;" title="2018: 1"></div><div class="hm-year">2018</div></div>
+  <div class="hm-col"><div class="hm-bar" style="height:1.2em;" title="2019: 1"></div><div class="hm-year">2019</div></div>
+  <div class="hm-col"><div class="hm-bar" style="height:1.2em;" title="2020: 1"></div><div class="hm-year">2020</div></div>
+  <div class="hm-col"><div class="hm-bar" style="height:2.4em;" title="2022: 2"></div><div class="hm-year">2022</div></div>
+  <div class="hm-col"><div class="hm-bar" style="height:1.2em;" title="2023: 1"></div><div class="hm-year">2023</div></div>
+  <div class="hm-col"><div class="hm-bar" style="height:1.2em;" title="2024: 1"></div><div class="hm-year">2024</div></div>
+  <div class="hm-col"><div class="hm-bar" style="height:4.8em;" title="2025: 4"></div><div class="hm-year">2025</div></div>
+  <div class="hm-col"><div class="hm-bar" style="height:2.4em;" title="2026: 2"></div><div class="hm-year">2026</div></div>
 </div>
 
 ---
 
 ## 2026
+
+<div class="talk-entry">
+<span class="role-badge badge-invited">Invited</span>
+<strong>A NeuroAI Perspective on Neural 3D Behavioral Analysis and Context-Dependent Neural Computation</strong><br>
+<span class="venue">May 19, 2026 · Neuroscience-inspired AI Research Group, Center for Memory and Glioscience, Institute for Basic Science (IBS), Daejeon</span>
+</div>
 
 <div class="talk-entry">
 <span class="role-badge badge-seminar">Lab Seminar</span>
@@ -64,6 +71,12 @@ The talk frames NeuroAI as a two-direction loop — using AI to study brains and
 ## 2025
 
 <div class="talk-entry">
+<span class="role-badge badge-poster">Poster</span>
+<strong>Systematic Benchmarking of Prompt Engineering Strategies for LLM-based Emotion Recognition</strong><br>
+<span class="venue">Dec 29, 2025 · 2025 RCV Next-Generation Collaboration and Research Exchange Workshop, KAIST, Daejeon</span>
+</div>
+
+<div class="talk-entry">
 <span class="role-badge badge-workshop">Workshop</span>
 <strong>Neuro-AI Convergence: Foundation Model Workflows for Neuroscience</strong><br>
 <span class="venue">Jun 2025 · DBDL, Dept. of BCS, KAIST, Daejeon</span>
@@ -74,9 +87,15 @@ The talk frames NeuroAI as a two-direction loop — using AI to study brains and
 <div class="talk-entry">
 <span class="role-badge badge-seminar">Program Seminar</span>
 <strong>Advancing Emotion Recognition in LLMs</strong><br>
-<span class="venue">Mar 2025 · Impact Scholars Program (Neuromatch Academy), Virtual</span>
+<span class="venue">Mar 29, 2025 · Impact Scholars Program (Neuromatch Academy), Virtual</span>
 
 Co-presentation of findings from the ISP mentored research project: comparative study of prompt strategies (zero-shot, CoT, few-shot) and model ensembling for emotion recognition in LLMs across GoEmotions and SemEval benchmarks.
+</div>
+
+<div class="talk-entry">
+<span class="role-badge badge-seminar">Seminar</span>
+<strong>An Integrated Perspective on Emotion: Multi-modal Representation & Categorical-Dimensional Mapping</strong><br>
+<span class="venue">Feb 20, 2025 · Neuraka</span>
 </div>
 
 ---
@@ -85,10 +104,8 @@ Co-presentation of findings from the ISP mentored research project: comparative 
 
 <div class="talk-entry">
 <span class="role-badge badge-invited">Invited</span>
-<strong>Behavioral Video Analysis for Predicting Attraction towards Others</strong><br>
-<span class="venue">Jan 2024 · BC & Behavior Workshop, DBDL @ KAIST, Daejeon</span>
-
-Presentation on using pose estimation and behavioral trajectory analysis to predict social affiliation and attraction in rodent dyadic interactions. Covered cross-session temporal modeling and unsupervised behavioral state discovery.
+<strong>Trends in Computational Neuroethology: The Past & Future of Automated Behavior Analysis</strong><br>
+<span class="venue">Jan 2024 · BC & Behavior Workshop, DBDL, Dept. of BCS, KAIST, Daejeon</span>
 </div>
 
 ---
@@ -96,8 +113,8 @@ Presentation on using pose estimation and behavioral trajectory analysis to pred
 ## 2023
 
 <div class="talk-entry">
-<span class="role-badge badge-poster">Poster</span>
-<strong>Mice Hierarchy and Empathy Study</strong><br>
+<span class="role-badge badge-invited">Invited</span>
+<strong>Experience of a Hierarchical Relationship between a Pair of Mice Influences Social Transfer of Fear</strong><br>
 <span class="venue">Aug 2023 · 50th European Brain & Behaviour Society Meeting (EBBS), Amsterdam, Netherlands</span>
 
 Presented the hierarchy-empathy paper (Genes Brain Behav 2022): social hierarchy between mouse pairs specifically modulates affective empathy expression, and this effect is directional (dominant → subordinate asymmetry).
@@ -108,11 +125,29 @@ Presented the hierarchy-empathy paper (Genes Brain Behav 2022): social hierarchy
 ## 2022
 
 <div class="talk-entry">
+<span class="role-badge badge-invited">Invited</span>
+<strong>From Social Cognition to Artificial General Intelligence</strong><br>
+<span class="venue">Aug 18, 2022 · SKKU LNPO Seminar</span>
+</div>
+
+<div class="talk-entry">
 <span class="role-badge badge-poster">Poster</span>
 <strong>AVATAR: AI Vision Analysis for Three-Dimensional Action in Real-Time</strong><br>
 <span class="venue">Jun 2022 · CV4Animals Workshop @ CVPR 2022, New Orleans, USA · Poster ID 8, Track I</span>
 
 <a href="https://www.cv4animals.com/2022-accepted-papers">Workshop page</a> · <a href="https://doi.org/10.1101/2021.12.31.474634">bioRxiv</a>
+</div>
+
+---
+
+## 2020
+
+<div class="talk-entry">
+<span class="role-badge badge-seminar">Moderator & Presenter</span>
+<strong>Why "Theoretical Framework" Matters?: Systematic Thinking to Understand "How the Mind Works" and Implement Intelligence</strong><br>
+<span class="venue">Sep 28, 2020 · KAIST NeuroAI Media Seminar</span>
+
+<a href="https://kaistneuroaimedia.wixsite.com/mysite/%EB%B3%B5%EC%A0%9C-bayesian-brain-1">Link</a>
 </div>
 
 ---

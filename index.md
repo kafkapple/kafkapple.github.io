@@ -28,6 +28,8 @@ permalink: /
 
 ## News
 
+- **May 2026** — Patent filed (co-inventor): *Method for Modality Retrieval Based on Condition Information and Electronic Device Performing the Same*, Samsung Electronics × KAIST (Korean Patent Application No. 10-2026-0097790).
+- **May 2026** — Invited talk at **IBS**: *A NeuroAI Perspective on Neural 3D Behavioral Analysis and Context-Dependent Neural Computation*, Neuroscience-inspired AI Research Group, Center for Memory and Glioscience.
 - **Apr 2026** — **CLAY** accepted to **CVPR 2026** (first author: Sohwi Lim). Conditional visual similarity modulation in VLM embedding space. [Project page](https://sohwi-lim.github.io/CLAY/)
 - **Feb 2026** — Gave lab seminar *The Virtuous Cycle of NeuroAI: Bridging Biological and Artificial Intelligence* at KAIST AMILab.
 - **Aug 2025** — Started as **Postdoctoral Fellow** at KAIST AMILab (PI: Prof. Tae-Hyun Oh) under the **InnoCore Postdoctoral Program**. Working on 3D Gaussian Splatting for animal behavior analysis.
@@ -82,6 +84,13 @@ Dissertation: *Behavioral and Genetic Study on Postnatal Factors of Empathy — 
 {% endfor %}
 
 <p class="pub-footnote"><small>* denotes equal contribution; <strong>bold</strong> denotes the author. <a href="https://scholar.google.com/citations?user=D_rZCWYAAAAJ">Google Scholar</a></small></p>
+
+## Patents
+
+<div class="proj">
+<p class="proj-title">Method for Modality Retrieval Based on Condition Information and Electronic Device Performing the Same</p>
+<p class="proj-meta">Co-inventor · Applicants: Samsung Electronics Co., Ltd. / KAIST · Korean Patent Application No. 10-2026-0097790 (filed May 29, 2026) · Filed, pending examination</p>
+</div>
 
 ## Selected Projects
 
@@ -140,6 +149,8 @@ Literature review, experimental design, analysis, and manuscript preparation.
 
 ## Awards & Honors
 
+- **2026** Outstanding Poster Award, IPIU 2026 (38th Workshop on Image Processing and Image Understanding) — for CLAY (co-author; poster presented by a co-author).
+- **2024** Wiley Top Cited Article 2022–2023 — top 10 most-cited papers in *Genes, Brain and Behavior* (Jan 2022–Dec 2023), for the 2022 hierarchical-empathy paper.
 - **2022** Committee Member, Convergence Division, 2022 Science-Belt Research Society Idea Concert (INNOPOLIS).
 - **2022** Excellence Prize (Instructor & Course Designer), Neuroscience 101, KAIST.
 - **2019** Excellence Prize, Ultimate Question Competition, KAIST.
