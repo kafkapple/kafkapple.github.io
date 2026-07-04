@@ -28,7 +28,6 @@ permalink: /
 
 ## News
 
-- **May 2026** — Patent filed (co-inventor): *Method for Modality Retrieval Based on Condition Information and Electronic Device Performing the Same*, Samsung Electronics × KAIST (Korean Patent Application No. 10-2026-0097790).
 - **May 2026** — Invited talk at **IBS**: *A NeuroAI Perspective on Neural 3D Behavioral Analysis and Context-Dependent Neural Computation*, Neuroscience-inspired AI Research Group, Center for Memory and Glioscience.
 - **Apr 2026** — **CLAY** accepted to **CVPR 2026** (first author: Sohwi Lim). Conditional visual similarity modulation in VLM embedding space. [Project page](https://sohwi-lim.github.io/CLAY/)
 - **Feb 2026** — Gave lab seminar *The Virtuous Cycle of NeuroAI: Bridging Biological and Artificial Intelligence* at KAIST AMILab.
