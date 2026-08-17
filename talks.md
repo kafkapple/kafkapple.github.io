@@ -29,7 +29,7 @@ sitemap: true
   <div class="talk-stat"><strong>14</strong> talks / seminars</div>
   <div class="talk-stat"><strong>9</strong> years active<br><span style="font-size:0.85em">2013–2026</span></div>
   <div class="talk-stat"><strong>5</strong> countries<br><span style="font-size:0.85em">KR · US · NL · CN · Virtual</span></div>
-  <div class="talk-stat"><strong>2</strong> with video</div>
+  <div class="talk-stat"><strong>3</strong> with video</div>
 </div>
 
 **Activity by year**
@@ -59,11 +59,11 @@ sitemap: true
 <div class="talk-entry">
 <span class="role-badge badge-seminar">Lab Seminar</span>
 <strong>The Virtuous Cycle of NeuroAI: Bridging Biological and Artificial Intelligence</strong><br>
-<span class="venue">Feb 2026 · KAIST AMILab, Daejeon</span>
+<span class="venue">Feb 27, 2026 · KAIST AMILab, Daejeon</span>
 
 The talk frames NeuroAI as a two-direction loop — using AI to study brains and behavior, and drawing on neuroscience to inform AI architectures — and walks through three concrete projects (rodent empathy, emotion-aware LLMs, conditional visual similarity in VLMs) where this loop is operative.
 
-> 🔒 Recording (`pNfBXntZh10`) is currently **Private** on YouTube. Contact me for access.
+{% include youtube.html id="2Y3hPRAyylA" title="The Virtuous Cycle of NeuroAI: Bridging Biological and Artificial Intelligence" quality="maxresdefault" %}
 </div>
 
 ---
@@ -148,6 +148,8 @@ Presented the hierarchy-empathy paper (Genes Brain Behav 2022): social hierarchy
 <span class="venue">Sep 28, 2020 · KAIST NeuroAI Media Seminar</span>
 
 <a href="https://kaistneuroaimedia.wixsite.com/mysite/%EB%B3%B5%EC%A0%9C-bayesian-brain-1">Link</a>
+
+{% include youtube.html id="pNfBXntZh10" title="Why Theoretical Framework Matters? — KAIST NeuroAI Media Seminar (2020)" quality="maxresdefault" %}
 </div>
 
 ---
