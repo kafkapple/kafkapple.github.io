@@ -255,8 +255,13 @@
   count.js skips localhost / 127.0.0.1 / file:// on its own, so `jekyll serve` is not counted.
   Hydejack navigates with hy-push-state (`hydejack.no_push_state: false`), so the automatic
   on-load pageview only ever fires for the entry page — every in-site navigation has to be
-  counted by hand off `hy-push-state-load`. The delay mirrors the theme's own analytics
-  include, which waits for the new location to settle before reading it.
+  counted by hand.
+
+  It hangs off `hy-push-state-start`, not `-load`: measured on the live site, a real
+  navigation emits only `start`, while `load`/`ready`/`after` never reach a listener on
+  `#_pushState` (the theme's own analytics include listens for `-load`, and counts nothing
+  as a result). `start` carries the destination in `detail.url`, so the path is read from
+  the event rather than from `location`, which still holds the old path at that point.
 {%- endcomment -%}
 {%- assign gc = site.goatcounter -%}
 {%- if gc.code and gc.code != '' %}
@@ -266,14 +271,11 @@
 document.addEventListener('DOMContentLoaded', function () {
   var pushStateEl = document.getElementById('_pushState');
   if (!pushStateEl) return;
-  var timeoutId;
-  pushStateEl.addEventListener('hy-push-state-load', function () {
-    clearTimeout(timeoutId);
-    timeoutId = setTimeout(function () {
-      if (window.goatcounter && window.goatcounter.count) {
-        window.goatcounter.count({ path: location.pathname + location.search });
-      }
-    }, 500);
+  pushStateEl.addEventListener('hy-push-state-start', function (e) {
+    if (!e.detail || !e.detail.url) return;
+    if (!window.goatcounter || !window.goatcounter.count) return;
+    var url = new URL(e.detail.url);
+    window.goatcounter.count({ path: url.pathname + url.search });
   });
 });
 </script>
