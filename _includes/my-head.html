@@ -249,3 +249,32 @@
 }
 </script>
 
+
+{%- comment -%}
+  Analytics — GoatCounter. Configured in `_config.yml` under `goatcounter:`; empty code = no-op.
+  count.js skips localhost / 127.0.0.1 / file:// on its own, so `jekyll serve` is not counted.
+  Hydejack navigates with hy-push-state (`hydejack.no_push_state: false`), so the automatic
+  on-load pageview only ever fires for the entry page — every in-site navigation has to be
+  counted by hand off `hy-push-state-load`. The delay mirrors the theme's own analytics
+  include, which waits for the new location to settle before reading it.
+{%- endcomment -%}
+{%- assign gc = site.goatcounter -%}
+{%- if gc.code and gc.code != '' %}
+<script data-goatcounter="https://{{ gc.code }}.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var pushStateEl = document.getElementById('_pushState');
+  if (!pushStateEl) return;
+  var timeoutId;
+  pushStateEl.addEventListener('hy-push-state-load', function () {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(function () {
+      if (window.goatcounter && window.goatcounter.count) {
+        window.goatcounter.count({ path: location.pathname + location.search });
+      }
+    }, 500);
+  });
+});
+</script>
+{%- endif -%}
