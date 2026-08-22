@@ -152,6 +152,4 @@ switch on together.
   </p>
 </div>
 
-<script src="/assets/js/stats.js"></script>
-
 {%- endif %}

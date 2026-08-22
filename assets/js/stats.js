@@ -4,6 +4,11 @@
  * This lives in its own file rather than inline in the page: the HTML is served
  * with newlines stripped, which turns any `//` comment in an inline <script> into
  * a comment swallowing the rest of the script.
+ *
+ * It is loaded on every page from _includes/my-head.html rather than from stats.md,
+ * because hy-push-state does not execute scripts in the content it swaps in — a
+ * <script src> on the page itself runs only when /stats/ is loaded directly. Hence
+ * the boot on `hy-push-state-after` as well, and the guard on the container.
  */
 
 (function () {
@@ -82,9 +87,15 @@
     const root = document.querySelector(".stats[data-gc-code]");
     if (!root) return;
     base = "https://" + root.getAttribute("data-gc-code") + ".goatcounter.com/counter/";
+    attempted = 0;
+    failed = 0;
+    document.getElementById("stat-sections").innerHTML = "";
     Promise.all([renderTotals(), renderSections()]).then(reportErrors);
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
   else boot();
+
+  const pushStateEl = document.getElementById("_pushState");
+  if (pushStateEl) pushStateEl.addEventListener("hy-push-state-after", boot);
 })();
