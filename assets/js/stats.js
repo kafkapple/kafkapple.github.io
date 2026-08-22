@@ -83,19 +83,26 @@
     });
   }
 
+  let bootedRoot = null;
+
   function boot() {
     const root = document.querySelector(".stats[data-gc-code]");
-    if (!root) return;
+    if (!root || root === bootedRoot) return;
+    bootedRoot = root;
     base = "https://" + root.getAttribute("data-gc-code") + ".goatcounter.com/counter/";
     attempted = 0;
     failed = 0;
-    document.getElementById("stat-sections").innerHTML = "";
     Promise.all([renderTotals(), renderSections()]).then(reportErrors);
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
   else boot();
 
+  /* Arriving via hy-push-state: of its events, only `hy-push-state-start` reaches a
+   * listener here, and it fires before the new content exists. So watch the swap
+   * itself — boot() is idempotent per container, and its own DOM writes are ignored. */
   const pushStateEl = document.getElementById("_pushState");
-  if (pushStateEl) pushStateEl.addEventListener("hy-push-state-after", boot);
+  if (pushStateEl && "MutationObserver" in window) {
+    new MutationObserver(boot).observe(pushStateEl, { childList: true, subtree: true });
+  }
 })();
