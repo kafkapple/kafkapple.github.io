@@ -49,7 +49,7 @@ permalink: /
 `Sep 2026 – Present` **Postdoctoral Researcher** — IBS Center for Memory and Glioscience (CMG), [NeuroAI Group](https://neuroai-ibs.github.io/).<br>
 Host: Sungho Hong. Bridging systems and behavioral neuroscience with multimodal AI — system consolidation, social cognition, and context-dependent information processing toward cumulative learning.
 
-`Aug 2025 – Aug 2026` **Postdoctoral Fellow** — [AMILab](https://ami.kaist.ac.kr/), KAIST School of Computing.<br>
+`Aug 2025 – Aug 2026` **Postdoctoral Fellow** — [AMILab (Advanced Machine Intelligence)](https://ami.kaist.ac.kr/), KAIST School of Computing.<br>
 Host: Prof. Tae-Hyun Oh. Supported by the **InnoCore Postdoctoral Program**. Vision-Language Models (CLAY, CVPR 2026); 3D Gaussian Splatting for freely-moving animal reconstruction (ongoing).
 
 `Oct 2024 – May 2025` **Impact Scholar** — Impact Scholars Program (ISP), Neuromatch Academy.<br>
