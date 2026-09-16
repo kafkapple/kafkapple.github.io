@@ -2,7 +2,7 @@
 layout: about
 title: Jungjoon Park
 description: >
-  Postdoctoral Fellow at KAIST AMILab, working at the NeuroAI interface — behavioral, cognitive & social neuroscience meets multimodal AI.
+  Bridging systems neuroscience and multimodal AI to build cognitive architectures capable of systematic generalization.
 hide_description: true
 permalink: /
 ---
@@ -28,6 +28,7 @@ permalink: /
 
 ## News
 
+- **Sep 2026** — Started as **Postdoctoral Researcher** at the [IBS Center for Memory and Glioscience](https://ibs.re.kr/), NeuroAI Group (PI: Sungho Hong).
 - **May 2026** — Invited talk at **IBS**: *A NeuroAI Perspective on Neural 3D Behavioral Analysis and Context-Dependent Neural Computation*, Neuroscience-inspired AI Research Group, Center for Memory and Glioscience.
 - **Apr 2026** — **CLAY** accepted to **CVPR 2026** (first author: Sohwi Lim). Conditional visual similarity modulation in VLM embedding space. [Project page](https://sohwi-lim.github.io/CLAY/)
 - **Feb 2026** — Gave lab seminar *The Virtuous Cycle of NeuroAI: Bridging Biological and Artificial Intelligence* at KAIST AMILab.
@@ -44,6 +45,9 @@ permalink: /
 - **Social & Context-Adaptive Cognition** — Modeling empathy and social inference through *perception–action coupling* and *theory of mind*; learning context-conditioned representations that adapt to *who, where, and why* — extending a research trajectory from rodent affective empathy and behavioral phenotyping toward multi-agent and human-aligned systems.
 
 ## Experience
+
+`Sep 2026 – Present` **Postdoctoral Researcher** — [IBS Center for Memory and Glioscience](https://ibs.re.kr/), NeuroAI Group.<br>
+Host: Sungho Hong. Bridging systems and behavioral neuroscience with multimodal AI — system consolidation, social cognition, and context-dependent information processing toward cumulative learning.
 
 `Aug 2025 – Aug 2026` **Postdoctoral Fellow** — [AMILab](https://ami.kaist.ac.kr/), KAIST School of Computing.<br>
 Host: Prof. Tae-Hyun Oh. Supported by the **InnoCore Postdoctoral Program**. Vision-Language Models (CLAY, CVPR 2026); 3D Gaussian Splatting for freely-moving animal reconstruction (ongoing).

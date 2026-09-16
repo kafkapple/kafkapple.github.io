@@ -8,7 +8,7 @@ author1:
   # Used at the bottom of each page and at the top of the `about` layout
   # Markdown enabled, can use multiple paragraphs (enabled by `|`)
   about:             |
-    Postdoctoral Fellow at [AMILab](https://ami.kaist.ac.kr/), KAIST School of Computing.
+    I am a NeuroAI researcher bridging systems neuroscience and artificial intelligence. Previously, I decoded social behaviors from a micro-to-macro perspective and translated these insights into automated AI platforms as a startup founder. Currently, as a Postdoctoral Researcher at the [IBS Center for Memory and Glioscience](https://ibs.re.kr/) (NeuroAI Group), I integrate multimodal AI with principles of memory and social cognition to build cognitive architectures capable of systematic generalization and cumulative learning.
 
     Ph.D. in Bio & Brain Engineering (KAIST, 2022).
 
