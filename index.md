@@ -28,11 +28,11 @@ permalink: /
 
 ## News
 
-- **Sep 2026** — Started as **Postdoctoral Researcher** at the IBS Center for Memory and Glioscience (CMG), [NeuroAI Group](https://neuroai-ibs.github.io/) (PI: Sungho Hong).
+- **Sep 2026** — Started as **Postdoctoral Researcher** at the IBS Center for Memory and Glioscience (CMG), [NeuroAI Group](https://neuroai-ibs.github.io/) (PI: Dr. Sungho Hong).
 - **May 2026** — Invited talk at **IBS**: *A NeuroAI Perspective on Neural 3D Behavioral Analysis and Context-Dependent Neural Computation*, Neuroscience-inspired AI Research Group, Center for Memory and Glioscience.
 - **Apr 2026** — **CLAY** accepted to **CVPR 2026** (first author: Sohwi Lim). Conditional visual similarity modulation in VLM embedding space. [Project page](https://sohwi-lim.github.io/CLAY/)
 - **Feb 2026** — Gave lab seminar *The Virtuous Cycle of NeuroAI: Bridging Biological and Artificial Intelligence* at KAIST AMILab.
-- **Aug 2025** — Started as **Postdoctoral Fellow** at KAIST AMILab (PI: Prof. Tae-Hyun Oh) under the **InnoCore Postdoctoral Program**. Working on 3D Gaussian Splatting for animal behavior analysis.
+- **Aug 2025** — Started as **Postdoctoral Fellow** at KAIST AMILab (Advanced Machine Intelligence) (PI: Prof. Tae-Hyun Oh) under the **InnoCore Postdoctoral Program**. Working on 3D Gaussian Splatting for animal behavior analysis.
 - **Jun 2025** — Led workshop *Neuro-AI Convergence — Foundation Model Workflows for Neuroscience* at DBDL, Dept. of BCS, KAIST.
 - **Apr 2025** — Preprint released: *Toward Advancing Emotion Recognition in LLMs* (Zenodo, Impact Scholars Program, Neuromatch Academy).
 
@@ -47,9 +47,9 @@ permalink: /
 ## Experience
 
 `Sep 2026 – Present` **Postdoctoral Researcher** — IBS Center for Memory and Glioscience (CMG), [NeuroAI Group](https://neuroai-ibs.github.io/).<br>
-Host: Sungho Hong. Bridging systems and behavioral neuroscience with multimodal AI — system consolidation, social cognition, and context-dependent information processing toward cumulative learning.
+Host: Dr. Sungho Hong. Bridging systems and behavioral neuroscience with multimodal AI — system consolidation, social cognition, and context-dependent information processing toward cumulative learning.
 
-`Aug 2025 – Aug 2026` **Postdoctoral Fellow** — [AMILab (Advanced Machine Intelligence)](https://ami.kaist.ac.kr/), KAIST School of Computing.<br>
+`Aug 2025 – Aug 2026` **Postdoctoral Fellow** — [AMILab](https://ami.kaist.ac.kr/), KAIST School of Computing.<br>
 Host: Prof. Tae-Hyun Oh. Supported by the **InnoCore Postdoctoral Program**. Vision-Language Models (CLAY, CVPR 2026); 3D Gaussian Splatting for freely-moving animal reconstruction (ongoing).
 
 `Oct 2024 – May 2025` **Impact Scholar** — Impact Scholars Program (ISP), Neuromatch Academy.<br>
