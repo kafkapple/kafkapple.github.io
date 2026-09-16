@@ -69,7 +69,8 @@ Rodent social behavior and system consolidation mechanisms.
 `Sep 2013 – Aug 2022` **Ph.D., Bio & Brain Engineering** — KAIST.<br>
 Dissertation: *Behavioral and Genetic Study on Postnatal Factors of Empathy — The Differential Contributions of Social Context and Brain Areas on Observational Fear Learning.*
 
-`Sep 2010 – Aug 2013` **M.S., Bio & Brain Engineering** — KAIST.
+`Sep 2010 – Aug 2013` **M.S., Bio & Brain Engineering** — KAIST.<br>
+Thesis: *Investigation of Empathy in Terms of Age and Memory.*
 
 `Mar 2005 – Aug 2010` **B.S., Bio & Brain Engineering** (Minor: Business Economics) — KAIST.
 
