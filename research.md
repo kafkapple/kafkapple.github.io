@@ -2,7 +2,7 @@
 layout: page
 title: Research
 description: >
-  Postdoc at KAIST AMILab. Designing brain-inspired cognitive architectures for systematic generalization and continual learning.
+  Postdoc at IBS Center for Memory and Glioscience (NeuroAI Group); previously KAIST AMILab. Designing brain-inspired cognitive architectures for systematic generalization and continual learning.
 permalink: /research/
 sitemap: true
 ---
